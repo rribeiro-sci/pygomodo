@@ -58,7 +58,7 @@ class sharedFunctions:
         else:
             ext = " -o "
         f = open(output, "w+")
-        command = "hhblits -cpu " + str(ncpus) + " -i " + seqfile + " -d "+ hhblitsDbsPath  + ext + output  + " -n " + str(rounds)
+        command = hhsuitePath+"hhblits -cpu " + str(ncpus) + " -i " + seqfile + " -d "+ hhblitsDbsPath  + ext + output  + " -n " + str(rounds)
         subprocess.call(command, shell=True)
         f.close()
         sharedFunctions.update_logfile(logfilePath, command, "hhblits")
