@@ -1,11 +1,12 @@
 import os, re, subprocess
+homedir=os.getcwd()
 
-HHMdatabase='/home/rribeiro/storage/databases/HuGPCRdb/huGPCRseqs'
-templatesDatabase = "/home/rribeiro/storage/databases/costum_db/wo_isoforms/gpcr_db_wo_isoforms"
-mypython='/home/rribeiro/.conda/envs/compbio/bin/python'
-hhsuitePath="/opt/Progs/hhsuite/v3.3.0/scripts/"
-processedPDB="/home/rribeiro/storage/databases/costum_db/wo_isoforms/gpcr_db_wo_isoforms"
-GPCR_Ref = '/home/rribeiro/storage/databases/GPCR_Ref.sqlite3'
+HHMdatabase=os.path.join(homedir,'databases/pyGOMODO/pyGOMODO')
+templatesDatabase = os.path.join(homedir,'databases/costum_db/wo_isoforms/gpcr_db_wo_isoforms')
+mypython='python'
+hhsuitePath=os.environ['HHSUITEPATH']
+processedPDB=os.path.join(homedir,'ProcessedPdbs_wo_isoforms')
+GPCR_Ref = os.path.join(homedir,'databases/GPCR_Ref.sqlite3')
 
 class sharedFunctions:
     def charPerLine(t,n):
