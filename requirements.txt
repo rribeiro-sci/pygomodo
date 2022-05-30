@@ -1,0 +1,17 @@
+###### Requirements without Version Specifiers ######`
+numpy
+#scipy
+#sympy
+pandas
+matplotlib
+#plotly
+scikit-learn
+db-sqlite3
+#seaborn
+#pubchempy
+biopython
+bioservices
+#qgrid
+#kaleido
+#modeller
+py3dmol
