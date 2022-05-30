@@ -1,2 +1,2 @@
-# pygomodo
+# pyGOMoDo
 pyGOMoDo
