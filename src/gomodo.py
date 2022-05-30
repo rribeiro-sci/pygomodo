@@ -1,12 +1,12 @@
 import os, re, subprocess
-homedir=os.getcwd()
+homedirectory=os.getcwd()
 
-HHMdatabase=os.path.join(homedir,'databases/pyGOMODO/pyGOMODO')
-templatesDatabase = os.path.join(homedir,'databases/costum_db/wo_isoforms/gpcr_db_wo_isoforms')
+HHMdatabase=os.path.join(homedirectory,'databases/pyGOMODO/pyGOMODO')
+templatesDatabase = os.path.join(homedirectory,'databases/costum_db/wo_isoforms/gpcr_db_wo_isoforms')
 mypython='python'
 hhsuitePath=os.environ['HHSUITEPATH']
-processedPDB=os.path.join(homedir,'ProcessedPdbs_wo_isoforms')
-GPCR_Ref = os.path.join(homedir,'databases/GPCR_Ref.sqlite3')
+processedPDB=os.path.join(homedirectory,'ProcessedPdbs_wo_isoforms')
+GPCR_Ref = os.path.join(homedirectory,'databases/GPCR_Ref.sqlite3')
 
 class sharedFunctions:
     def charPerLine(t,n):
