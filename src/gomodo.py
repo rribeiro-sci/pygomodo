@@ -1,5 +1,5 @@
 import os, re, subprocess
-homedirectory=os.getcwd()
+homedirectory=os.path.dirname(__file__)
 
 HHMdatabase=os.path.join(homedirectory,'databases/pyGOMODO/pyGOMODO')
 templatesDatabase = os.path.join(homedirectory,'databases/costum_db/wo_isoforms/gpcr_db_wo_isoforms')
