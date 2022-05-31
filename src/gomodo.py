@@ -6,7 +6,7 @@ templatesDatabase = os.path.join(homedirectory,'databases/costum_db/wo_isoforms/
 mypython='python'
 hhsuitePath=os.environ['HHSUITEPATH']
 hhsuitescripts=os.environ['HHSUITESCRIPTS']
-processedPDB=os.path.join(homedirectory,'ProcessedPdbs_wo_isoforms')
+processedPDB=os.path.join(homedirectory,'databases/ProcessedPdbs_wo_isoforms')
 GPCR_Ref = os.path.join(homedirectory,'databases/GPCR_Ref.sqlite3')
 
 class sharedFunctions:
