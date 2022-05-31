@@ -625,7 +625,9 @@ class gomodo:
     def makeModels(self, **kwargs):
                
         if 'loop' in kwargs:
-            self._loop = kwargs.pop('loop')
+            loop = kwargs.pop('loop')
+            if loop == 'Yes':
+                self._loop=True
         else: self._loop=False
         
         if 'trim' in kwargs:
