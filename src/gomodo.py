@@ -623,11 +623,12 @@ class gomodo:
         return df
 
     def makeModels(self, **kwargs):
-               
+        self._loop = False      
         if 'loop' in kwargs:
             loop = kwargs.pop('loop')
             if loop == 'Yes':
                 self._loop=True
+            else: pass
         else: self._loop=False
         
         if 'trim' in kwargs:
