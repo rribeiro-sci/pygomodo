@@ -1,3 +1,26 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+# Copyright 2021 Rui Ribeiro
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+"""
+This python wrap-up of the GOMoDO webserver
+"""
+__author__ = "Rui Ribeiro"
+__email__ = "rui.ribeiro@univr.it"
+
 import os, re, subprocess
 homedirectory=os.path.dirname(__file__)
 
@@ -670,5 +693,72 @@ class gomodo:
             models = sharedFunctions.modeller('sequence', self._templates, pir_name, self._jobdir, templates_dir, self._ncpus, self._nmodels)
 
         return models
-        
 
+    def qmeanbrane(self, **kwargs):
+        import json
+        import requests
+        import time
+        qmean_url = "https://swissmodel.expasy.org/qmean/submit/"
+
+        if 'email' in kwargs:
+            email = kwargs.pop('email')
+        else: raise ValueError('Email unknown. An email adress is required by the swissmodel webserver.')
+
+        if 'models' in kwargs:
+            models = kwargs.pop('models')
+            if isinstance(models, list):
+                if len(models) > 5: raise ValueError('Too many models. (Max. 5 models)')
+                else: 
+                    import tarfile
+                    tar = tarfile.open("models.tar.gz", "w:gz")
+                    for name in models:
+                        tar.add(name)
+                    tar.close()
+            else: raise ValueError('Please introduce a list of models.')
+            
+        else: raise ValueError('Please introduce a list of models.')
+    
+        def getstatus(response):
+            current_status = requests.get(response.json()["results_json"])
+            status = current_status.json()['status']
+            return status
+        
+        def getresultspage(response):
+            current_status = requests.get(response.json()["results_json"])
+            page = current_status.json()['results_page']
+            return page
+        #############################################################
+        # To upload a local file found at /path/to/my_structure.pdb
+        # ('rb' is recommended to allow zip file upload)
+        response = requests.post(url=qmean_url, data={"email":email ,"method":"qmeanbrane"},files={"structure": open('models.tar.gz', 'rb')})
+        ##############################################################
+        
+        status = getstatus(response)
+        if status == 'QUEUEING':
+            print(status+"\n")
+        while status == 'QUEUEING':
+            #print(status+"\n")
+            time.sleep(5)
+            status=getstatus(response)
+            
+        if status == 'RUNNING':
+            print(status+"\n")    
+        while status == 'RUNNING':
+            #print(status+"\n")
+            time.sleep(5)
+            status=getstatus(response)
+        
+        if status == 'COMPLETED':
+            print(status+"\n")
+            page = getresultspage(response)
+            print(page)
+        return
+        
+    def gdrive(self, **kwargs):
+        import subprocess
+        if 'path' in kwargs:
+            path=kwargs.pop('path')
+            command='cp -r '+os.path.join(self._cwd,self._jobname)+' '+path
+            subprocess.call(command, shell=True)
+        else: raise ValueError('Destination path unknown.')
+        return
