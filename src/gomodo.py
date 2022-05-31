@@ -5,6 +5,7 @@ HHMdatabase=os.path.join(homedirectory,'databases/pyGOMODO_db/pyGOMODO')
 templatesDatabase = os.path.join(homedirectory,'databases/costum_db/wo_isoforms/gpcr_db_wo_isoforms')
 mypython='python'
 hhsuitePath=os.environ['HHSUITEPATH']
+hhsuitescripts=os.environ['HHSUITESCRIPTS']
 processedPDB=os.path.join(homedirectory,'ProcessedPdbs_wo_isoforms')
 GPCR_Ref = os.path.join(homedirectory,'databases/GPCR_Ref.sqlite3')
 
@@ -190,7 +191,7 @@ class sharedFunctions:
 
     def hhmakemodel(logfilePath, hhsuitePath, input_file, mydir, seqname, templates_dir, nmodel = 1):
         """create a .ali file (pir format - necessary as Modeller input)"""
-        command = mypython+" "+os.path.join(hhsuitePath, "hhmakemodel.py ")+input_file+" "+templates_dir+" "+os.path.join(mydir,seqname + ".ali")+" ./ -m "+str(nmodel)
+        command = mypython+" "+os.path.join(hhsuitescripts, "hhmakemodel.py ")+input_file+" "+templates_dir+" "+os.path.join(mydir,seqname + ".ali")+" ./ -m "+str(nmodel)
         subprocess.call(command, shell=True)
         sharedFunctions.update_logfile(logfilePath, command, "hhmakemodel")
 
@@ -663,7 +664,7 @@ class gomodo:
         #modeling (MODELLER)
         if self._loop:
             #print('*'*100 + '\n loop')
-            models = sharedFunctions.modellerLoop(myseq, self._templates, pir_name, self._cwd, templates_dir, self._ncpus, self._nmodels, self._nloops)
+            models = sharedFunctions.modellerLoop('sequence', self._templates, pir_name, self._cwd, templates_dir, self._ncpus, self._nmodels, self._nloops)
         else:
             #print('*'*100 + '\n automodel')
             models = sharedFunctions.modeller('sequence', self._templates, pir_name, self._jobdir, templates_dir, self._ncpus, self._nmodels)
