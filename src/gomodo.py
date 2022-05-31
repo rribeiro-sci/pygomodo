@@ -543,12 +543,11 @@ class gomodo:
         if 'sequence' in kwargs:
             self._fasta = kwargs.pop('sequence')
 
-        if self._uniprotID:
+        if self._uniprotID.strip():
             self._fasta =get.seq_from_uniprot(uniprotID=self._uniprotID)
             with open(os.path.join(self._jobdir,'sequence.seq'), 'w') as f:
                 f.write(self._fasta)
-        
-        elif self._uniprotID==None and self._fasta:
+        elif not self._uniprotID.strip() and self._fasta:
             with open(os.path.join(self._jobdir,'sequence.seq'), 'w') as f:
                 f.write(self._fasta)
         
