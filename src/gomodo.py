@@ -22,15 +22,20 @@ __author__ = "Rui Ribeiro"
 __email__ = "rui.ribeiro@univr.it"
 
 import os, re, subprocess
+import pandas as pd
 homedirectory=os.path.dirname(__file__)
 
 HHMdatabase=os.path.join(homedirectory,'databases/pyGOMODO_db/pyGOMODO')
 templatesDatabase = os.path.join(homedirectory,'databases/costum_db/wo_isoforms/gpcr_db_wo_isoforms')
 mypython='python'
-hhsuitePath=os.environ['HHSUITEPATH']
-hhsuitescripts=os.environ['HHSUITESCRIPTS']
+try:
+    hhsuitePath=os.environ['HHSUITEPATH']
+    hhsuitescripts=os.environ['HHSUITESCRIPTS']
+except:
+    print('Warning: HH-suite unknown')
 processedPDB=os.path.join(homedirectory,'databases/ProcessedPdbs_wo_isoforms')
 GPCR_Ref = os.path.join(homedirectory,'databases/GPCR_Ref.sqlite3')
+vina_path = os.path.join(homedirectory,'opt/vina1.1.2/bin/vina')
 
 class sharedFunctions:
     def charPerLine(t,n):
@@ -764,3 +769,137 @@ class gomodo:
             subprocess.call(command, shell=True)
         else: raise ValueError('Destination path unknown.')
         return
+
+class docking:
+    class vina:
+
+        def __init__(self, **kwargs):
+            self._receptor_name = None
+            self._receptor_family ='GPCR'
+            
+            if 'receptors' in kwargs:
+                self._receptors = kwargs.pop('receptors')
+            if 'ligands' in kwargs:
+                self._ligands = kwargs.pop('ligands')
+            if 'cpus' in kwargs:
+                self._ncpu = kwargs.pop('cpus')
+            if 'dirpath' in kwargs:
+                self._output_path=kwargs.pop('dirpath')
+            self._reference_files_dir = os.path.join(homedirectory,'autogrids/reference_files/') ###REVIEW###
+            return
+
+        def grid(self, **kwargs):
+            #def grid(receptor_name, family):
+            """
+            perform an automatic detection of the binding pocket center coordinates, 
+               for specific proteins families (also works for heteromultimer)
+            """     
+            if 'receptor' in kwargs:
+                receptor = kwargs.pop('receptor')
+            else: raise ValueError('Unknown receptor. Please select a receptor file.')
+
+            print('Calculating grid...\n')
+            from src.autogrids.auto_grids import auto_grids
+            self._box = auto_grids(receptor, self._receptor_family, self._reference_files_dir)
+            return self._box
+        
+        def run(self, **kwargs):
+            import subprocess
+
+            if 'size_x' in kwargs:
+                self._boxsize_x = kwargs.pop('size_x')
+            if 'size_y' in kwargs:
+                self._boxsize_y = kwargs.pop('size_y')
+            if 'size_z' in kwargs:
+                self._boxsize_z = kwargs.pop('size_z')
+            if 'center_x' in kwargs:
+                self._boxcenter_x = kwargs.pop('center_x')
+            if 'center_y' in kwargs:
+                self._boxcenter_y = kwargs.pop('center_y')
+            if 'center_z' in kwargs:
+                self._boxcenter_z = kwargs.pop('center_z')
+            if 'exhaustiveness' in kwargs:
+                self._exhaustiveness = kwargs.pop('exhaustiveness')
+            if 'energy_range' in kwargs:
+                self._energy_range = kwargs.pop('energy_range')
+            if 'num_modes' in kwargs:
+                self._num_modes = kwargs.pop('num_modes')
+
+            #colocar sizes e center no self._box
+            if not self._box:
+                raise ValueError('Vina box undefined. Please introduce box coordinates or run grid() for automatic detection.')            
+            
+            #convert pdb into pdbqt with openbabel
+            def pdb2pdbqt(file, filename, path, hyd=False):
+                from openbabel import openbabel
+                obConversion = openbabel.OBConversion()
+                obConversion.SetInAndOutFormats('pdb', 'pdbqt')
+                mol = openbabel.OBMol()
+                obConversion.ReadFile(mol,file)
+                if hyd==True:
+                    mol.AddHydrogens()
+                else:
+                    mol.DeleteHydrogens()
+                obConversion.WriteFile(mol, os.path.join(path, filename+'.pdbqt'))
+                return receptor_name+'.pdbqt'
+
+
+            print('Vina is running...\n')
+            #def vina(receptors, ligands, path, family, size_x, size_y, size_z, exhaustiveness, energy_range, num_modes, ncpu):
+            docking_files=[]
+            for receptor in self._receptors:
+                receptor_name, receptor_ext = os.path.splitext(receptor)
+
+                receptor_file = pdb2pdbqt(receptor, receptor_name, self._output_path)
+
+                for ligand in self._ligands:
+                    ligand_name, ligand_ext = os.path.splitext(ligand)
+
+                    ligand_file = pdb2pdbqt(ligand, ligand_name,self._output_path, hyd=True)
+
+                    vina_command = vina_path+' --receptor '+os.path.join(self._output_path, receptor_file)+' --ligand '+os.path.join(self._output_path, receptor_file)+' --center_x '+str(self._boxcenter_x)+' --center_y '+str(self._boxcenter_y)+' --center_z '+str(self._boxcenter_z)+ ' --size_x '+str(self._boxsize_x)+ ' --size_y '+str(self._boxsize_y)+ ' --size_z '+str(self._boxsize_z)+ ' --exhaustiveness '+str(self._exhaustiveness)+ ' --energy_range '+str(self._energy_range)+ ' --num_modes '+str(self._num_modes)+ ' --cpu '+str(self._ncpu)+ ' --out '+os.path.join(self._output_path, receptor_name+'_'+ligand_name+'_vina_out.pdbqt')+' --log '+os.path.join(self._output_path,receptor_name+'_'+ligand_name+'_vina_out.log')
+                    print(vina_command)
+                    subprocess.call(vina_command, shell=True)
+                    docking_files.append(os.path.join(self._output_path, receptor_name+'_'+ligand_name+'_vina_out.pdbqt'))
+            
+            vina_dict={}
+            for dockfile in docking_files:
+                root, ext = os.path.splitext(dockfile)
+
+                head, tail = os.path.split(root)
+
+                with open(root+'.log') as vina_log:
+                    lines = vina_log.read()
+                    lines_splitted = lines.split('\n')
+                vina_log_data = []
+                for line in lines_splitted[24:-2]:
+                    mode = line.strip().split()
+                    vina_log.data.append(mode)
+                vina_log_df = pd.DataFrame(vina_log_data, collumns=['mode', 'affinity (kcal/mol)', 'rmsd l.b.','rmsd u.b.'])
+                vina_log_df['mode'] = pd.to_numeric(vina_log_df['mode'])
+
+                results = vina_log_df[vina_log_df['mode'] <= 10]
+                
+                import ast
+                vina_dict[tail] = ast.literal_eval(results.to_json(orient='records'))
+
+                def vina_best_result(pdbqt_result_filename, pdbqt_best_result_filename):
+
+                    #extract the first results from vina pdbqt result file
+                    with open(pdbqt_result_filename, "r") as file:
+                        lines = []
+                        for line in file:
+                            lines.append(line)
+                            columns=line.split()
+                            if columns[0] == 'ENDMDL': break
+
+                    with open(pdbqt_best_result_filename, "w") as out:
+                        out.writelines(lines)
+
+                    return pdbqt_best_result_filename
+                
+                vina_best_result(dockfile, root+'_best.pdbqt')
+
+            
+            print('\nDone!')
+            return
