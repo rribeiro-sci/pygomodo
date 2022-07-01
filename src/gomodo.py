@@ -35,7 +35,14 @@ except:
     print('Warning: HH-suite unknown')
 processedPDB=os.path.join(homedirectory,'databases/ProcessedPdbs_wo_isoforms')
 GPCR_Ref = os.path.join(homedirectory,'databases/GPCR_Ref.sqlite3')
-vina_path = os.path.join(homedirectory,'opt/vina1.1.2/bin/vina')
+
+import platform
+if platform.system() == 'linux':
+    vina_path = os.path.join(homedirectory,'opt/vina1.1.2/bin/vina')
+elif platform.system() == 'Darwin':
+    vina_path = os.path.join(homedirectory,'opt/vina1.1.2_mac/bin/vina')
+else: pass
+
 
 class sharedFunctions:
     def charPerLine(t,n):
@@ -830,18 +837,23 @@ class docking:
                 raise ValueError('Vina box undefined. Please introduce box coordinates or run grid() for automatic detection.')            
             
             #convert pdb into pdbqt with openbabel
-            def pdb2pdbqt(file, filename, path, hyd=False):
+            def pdb2pdbqt2(file, filename, path, hyd=False):
                 from openbabel import openbabel
                 obConversion = openbabel.OBConversion()
                 obConversion.SetInAndOutFormats('pdb', 'pdbqt')
                 mol = openbabel.OBMol()
                 obConversion.ReadFile(mol,file)
                 if hyd==True:
-                    mol.AddHydrogens()
+                    mol.AddPolarHydrogens()
                 else:
                     mol.DeleteHydrogens()
                 obConversion.WriteFile(mol, os.path.join(path, filename+'.pdbqt'))
-                return receptor_name+'.pdbqt'
+                return filename+'.pdbqt'
+
+            def pdb2pdbqt(file, filename, path):
+                command = 'obabel '+os.path.join(path,file)+' -xr -O '+os.path.join(path,filename)+'.pdbqt -h'
+                subprocess.call(command, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+                return filename+'.pdbqt'
 
 
             print('Vina is running...\n')
@@ -855,11 +867,11 @@ class docking:
                 for ligand in self._ligands:
                     ligand_name, ligand_ext = os.path.splitext(ligand)
 
-                    ligand_file = pdb2pdbqt(ligand, ligand_name,self._output_path, hyd=True)
+                    ligand_file = pdb2pdbqt2(ligand, ligand_name,self._output_path, hyd=False)
 
-                    vina_command = vina_path+' --receptor '+os.path.join(self._output_path, receptor_file)+' --ligand '+os.path.join(self._output_path, receptor_file)+' --center_x '+str(self._boxcenter_x)+' --center_y '+str(self._boxcenter_y)+' --center_z '+str(self._boxcenter_z)+ ' --size_x '+str(self._boxsize_x)+ ' --size_y '+str(self._boxsize_y)+ ' --size_z '+str(self._boxsize_z)+ ' --exhaustiveness '+str(self._exhaustiveness)+ ' --energy_range '+str(self._energy_range)+ ' --num_modes '+str(self._num_modes)+ ' --cpu '+str(self._ncpu)+ ' --out '+os.path.join(self._output_path, receptor_name+'_'+ligand_name+'_vina_out.pdbqt')+' --log '+os.path.join(self._output_path,receptor_name+'_'+ligand_name+'_vina_out.log')
-                    print(vina_command)
-                    subprocess.call(vina_command, shell=True)
+                    vina_command = vina_path+' --receptor '+os.path.join(self._output_path, receptor_file)+' --ligand '+os.path.join(self._output_path, ligand_file)+' --center_x '+str(self._boxcenter_x)+' --center_y '+str(self._boxcenter_y)+' --center_z '+str(self._boxcenter_z)+ ' --size_x '+str(self._boxsize_x)+ ' --size_y '+str(self._boxsize_y)+ ' --size_z '+str(self._boxsize_z)+ ' --exhaustiveness '+str(self._exhaustiveness)+ ' --energy_range '+str(self._energy_range)+ ' --num_modes '+str(self._num_modes)+ ' --cpu '+str(self._ncpu)+ ' --out '+os.path.join(self._output_path, receptor_name+'_'+ligand_name+'_vina_out.pdbqt')+' --log '+os.path.join(self._output_path,receptor_name+'_'+ligand_name+'_vina_out.log')
+                    print('\tDocking', ligand_name,'\n')
+                    subprocess.call(vina_command, shell=True,stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
                     docking_files.append(os.path.join(self._output_path, receptor_name+'_'+ligand_name+'_vina_out.pdbqt'))
             
             vina_dict={}
@@ -868,20 +880,20 @@ class docking:
 
                 head, tail = os.path.split(root)
 
-                with open(root+'.log') as vina_log:
+                with open(root+'.log', 'r') as vina_log:
                     lines = vina_log.read()
                     lines_splitted = lines.split('\n')
                 vina_log_data = []
                 for line in lines_splitted[24:-2]:
                     mode = line.strip().split()
-                    vina_log.data.append(mode)
-                vina_log_df = pd.DataFrame(vina_log_data, collumns=['mode', 'affinity (kcal/mol)', 'rmsd l.b.','rmsd u.b.'])
+                    vina_log_data.append(mode)
+                vina_log_df = pd.DataFrame(vina_log_data, columns=['mode', 'affinity (kcal/mol)', 'rmsd l.b.','rmsd u.b.'])
                 vina_log_df['mode'] = pd.to_numeric(vina_log_df['mode'])
 
-                results = vina_log_df[vina_log_df['mode'] <= 10]
+                self._results = vina_log_df[vina_log_df['mode'] <= 10]
                 
                 import ast
-                vina_dict[tail] = ast.literal_eval(results.to_json(orient='records'))
+                vina_dict[tail] = ast.literal_eval(self._results.to_json(orient='records'))
 
                 def vina_best_result(pdbqt_result_filename, pdbqt_best_result_filename):
 
@@ -902,4 +914,4 @@ class docking:
 
             
             print('\nDone!')
-            return
+            return vina_dict
