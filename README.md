@@ -13,3 +13,7 @@
 <br><br>
 
 1. [Modelling in Google Colab](https://colab.research.google.com/github/rribeiro-sci/pygomodo/blob/main/Modelling_GOOGLE_COLAB.ipynb) 
+
+1. [Vina Docking in Google Colab](https://colab.research.google.com/github/rribeiro-sci/pygomodo/blob/main/Docking_VINA_GOOGLE_COLAB.ipynb)
+
+
