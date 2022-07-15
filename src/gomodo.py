@@ -37,7 +37,7 @@ from IPython.display import clear_output
 import ipywidgets
 homedirectory=os.path.dirname(__file__)
 
-from src.utils import utils
+from pygomodo.src.utils import utils
 
 import platform
 if platform.system() == 'Linux':
