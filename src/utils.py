@@ -30,7 +30,7 @@ mypython='python'
 
 class utils:
     def pdbqt2pdb(fi, outpath):
-        from openbabel import openbabel
+        import openbabel
         obConversion = openbabel.OBConversion()
         obConversion.SetInAndOutFormats('pdbqt', 'pdb')
         mol = openbabel.OBMol()
