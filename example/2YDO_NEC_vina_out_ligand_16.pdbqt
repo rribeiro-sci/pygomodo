@@ -1,0 +1,56 @@
+REMARK VINA RESULT:      -5.9      6.490      8.992
+REMARK  Name = NEC.pdb
+REMARK  7 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C5'_1  and  C4'_6
+REMARK    2  A    between atoms: N5'_3  and  C51_4
+REMARK    3  A    between atoms: C51_4  and  C52_5
+REMARK    4  A    between atoms: C3'_8  and  O3'_9
+REMARK    5  A    between atoms: C2'_10  and  O2'_11
+REMARK    6  A    between atoms: C1'_12  and  N9_13
+REMARK    7  A    between atoms: C6_17  and  N6_18
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C4' NEC     0      -4.291   4.233 -14.087  0.00  0.00    +0.000 C 
+ATOM      2  O4' NEC     0      -5.365   4.170 -15.049  0.00  0.00    +0.000 OA
+ATOM      3  C3' NEC     0      -4.236   5.732 -13.698  0.00  0.00    +0.000 C 
+ATOM      4  C2' NEC     0      -4.551   6.427 -15.047  0.00  0.00    +0.000 C 
+ATOM      5  C1' NEC     0      -5.253   5.337 -15.879  0.00  0.00    +0.000 C 
+ENDROOT
+BRANCH   5   6
+ATOM      6  N9  NEC     0      -6.585   5.794 -16.279  0.00  0.00    +0.000 N 
+ATOM      7  C8  NEC     0      -7.774   5.293 -15.842  0.00  0.00    +0.000 A 
+ATOM      8  N7  NEC     0      -8.760   5.932 -16.402  0.00  0.00    +0.000 NA
+ATOM      9  C5  NEC     0      -8.267   6.882 -17.233  0.00  0.00    +0.000 A 
+ATOM     10  C6  NEC     0      -8.838   7.848 -18.078  0.00  0.00    +0.000 C 
+ATOM     11  N1  NEC     0      -8.028   8.642 -18.770  0.00  0.00    +0.000 NA
+ATOM     12  C2  NEC     0      -6.717   8.532 -18.673  0.00  0.00    +0.000 C 
+ATOM     13  N3  NEC     0      -6.138   7.641 -17.895  0.00  0.00    +0.000 N 
+ATOM     14  C4  NEC     0      -6.867   6.808 -17.159  0.00  0.00    +0.000 A 
+ATOM     15  H   NEC     0      -5.155   7.592 -17.856  0.00  0.00    +0.000 HD
+BRANCH  10  16
+ATOM     16  N6  NEC     0     -10.212   7.972 -18.186  0.00  0.00    +0.000 NA
+ATOM     17 HN61 NEC     0     -10.759   7.187 -18.341  0.00  0.00    +0.000 HD
+ATOM     18 HN62 NEC     0     -10.628   8.845 -18.104  0.00  0.00    +0.000 HD
+ENDBRANCH  10  16
+ENDBRANCH   5   6
+BRANCH   1  19
+ATOM     19  C5' NEC     0      -4.606   3.384 -12.883  0.00  0.00    +0.000 C 
+ATOM     20  O5' NEC     0      -5.684   2.834 -12.795  0.00  0.00    +0.000 OA
+ATOM     21  N5' NEC     0      -3.691   3.234 -11.905  0.00  0.00    +0.000 N 
+ATOM     22  HN5 NEC     0      -2.830   3.673 -11.976  0.00  0.00    +0.000 HD
+BRANCH  21  23
+ATOM     23  C51 NEC     0      -3.998   2.407 -10.735  0.00  0.00    +0.000 C 
+ATOM     24  C52 NEC     0      -2.934   2.631  -9.660  0.00  0.00    +0.000 C 
+ENDBRANCH  21  23
+ENDBRANCH   1  19
+BRANCH   3  25
+ATOM     25  O3' NEC     0      -2.937   6.096 -13.227  0.00  0.00    +0.000 OA
+ATOM     26 HO3' NEC     0      -2.408   6.314 -14.007  0.00  0.00    +0.000 HD
+ENDBRANCH   3  25
+BRANCH   4  27
+ATOM     27  O2' NEC     0      -3.343   6.846 -15.687  0.00  0.00    +0.000 OA
+ATOM     28 HO2' NEC     0      -3.591   7.173 -16.563  0.00  0.00    +0.000 HD
+ENDBRANCH   4  27
+TORSDOF 6

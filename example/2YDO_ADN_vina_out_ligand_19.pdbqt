@@ -1,0 +1,52 @@
+REMARK VINA RESULT:      -6.0      5.961      8.727
+REMARK  Name = ADN.pdb
+REMARK  6 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: O5'_1  and  C5'_2
+REMARK    2  A    between atoms: C5'_2  and  C4'_3
+REMARK    3  A    between atoms: C3'_5  and  O3'_6
+REMARK    4  A    between atoms: C2'_7  and  O2'_8
+REMARK    5  A    between atoms: C1'_9  and  N9_10
+REMARK    6  A    between atoms: C6_14  and  N6_15
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N9  ADN     0      -4.444   4.067 -13.744  0.00  0.00    +0.000 N 
+ATOM      2  C8  ADN     0      -5.002   3.086 -12.980  0.00  0.00    +0.000 A 
+ATOM      3  N7  ADN     0      -4.288   2.895 -11.909  0.00  0.00    +0.000 NA
+ATOM      4  C5  ADN     0      -3.226   3.737 -11.919  0.00  0.00    +0.000 A 
+ATOM      5  C6  ADN     0      -2.152   3.983 -11.047  0.00  0.00    +0.000 C 
+ATOM      6  N1  ADN     0      -1.269   4.918 -11.379  0.00  0.00    +0.000 NA
+ATOM      7  C2  ADN     0      -1.393   5.609 -12.497  0.00  0.00    +0.000 C 
+ATOM      8  N3  ADN     0      -2.386   5.418 -13.341  0.00  0.00    +0.000 N 
+ATOM      9  C4  ADN     0      -3.317   4.503 -13.093  0.00  0.00    +0.000 A 
+ATOM     10  H   ADN     0      -2.438   5.957 -14.162  0.00  0.00    +0.000 HD
+ENDROOT
+BRANCH   1  15
+ATOM     11  C4' ADN     0      -4.906   6.342 -16.475  0.00  0.00    +0.000 C 
+ATOM     12  O4' ADN     0      -4.094   5.605 -15.536  0.00  0.00    +0.000 OA
+ATOM     13  C3' ADN     0      -6.291   6.446 -15.801  0.00  0.00    +0.000 C 
+ATOM     14  C2' ADN     0      -6.325   5.248 -14.823  0.00  0.00    +0.000 C 
+ATOM     15  C1' ADN     0      -4.954   4.566 -15.021  0.00  0.00    +0.000 C 
+BRANCH  13  16
+ATOM     16  O3' ADN     0      -7.332   6.329 -16.773  0.00  0.00    +0.000 OA
+ATOM     17 HO3' ADN     0      -6.961   6.624 -17.616  0.00  0.00    +0.000 HD
+ENDBRANCH  13  16
+BRANCH  14  18
+ATOM     18  O2' ADN     0      -7.389   4.356 -15.161  0.00  0.00    +0.000 OA
+ATOM     19 HO2' ADN     0      -7.471   4.370 -16.124  0.00  0.00    +0.000 HD
+ENDBRANCH  14  18
+BRANCH  11  20
+ATOM     20  C5' ADN     0      -4.319   7.735 -16.709  0.00  0.00    +0.000 C 
+BRANCH  20  21
+ATOM     21  O5' ADN     0      -3.801   8.247 -15.479  0.00  0.00    +0.000 OA
+ATOM     22 HO5' ADN     0      -4.119   7.661 -14.778  0.00  0.00    +0.000 HD
+ENDBRANCH  20  21
+ENDBRANCH  11  20
+ENDBRANCH   1  15
+BRANCH   5  23
+ATOM     23  N6  ADN     0      -2.013   3.264  -9.874  0.00  0.00    +0.000 NA
+ATOM     24 HN61 ADN     0      -1.845   3.726  -9.038  0.00  0.00    +0.000 HD
+ATOM     25 HN62 ADN     0      -2.089   2.296  -9.885  0.00  0.00    +0.000 HD
+ENDBRANCH   5  23
+TORSDOF 6

@@ -258,7 +258,7 @@ def auto_grids(receptor_filename, family, reference_files_dir):
             print("calculated rmsd :",rms_opt,                                     )
             print("calculated score alignment :",score_opt,                        )
             print("grid center coordinates : ",targ_grid_coor,                     )
-            print("                                                               ")
+            print("tran",tran                                                               )
             print("###############################################################")
             print("                                                               ")
 

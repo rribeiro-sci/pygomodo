@@ -1,0 +1,11 @@
+exampleBK/
+bipythom_3Dalign.ipynb
+obabel_converter.ipynb
+prolif.ipynb
+rui.pdb
+test_DR/
+src/databases/costum_db/
+src/databases/pyGOMODO_db/
+src/databases/ProcessedPdbs_wo_isoforms/
+src/bk_code.py
+tree.txt

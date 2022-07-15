@@ -1,0 +1,1710 @@
+MODEL 1
+REMARK VINA RESULT:      -9.7      0.000      0.000
+REMARK  Name = NGI.pdb
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: N1_2  and  C2_4
+REMARK    3  A    between atoms: N2_5  and  C5_13
+REMARK    4  A    between atoms: C3_7  and  C4_10
+REMARK    5  A    between atoms: O3_9  and  C6_16
+REMARK    6  A    between atoms: N4_11  and  C10_23
+REMARK    7  A    between atoms: O4_12  and  C7_19
+REMARK    8  A    between atoms: O5_15  and  C20_33
+REMARK    9  A    between atoms: N6_17  and  C12_25
+REMARK   10  A    between atoms: C12_25  and  C13_26
+REMARK   11  A    between atoms: C13_26  and  C14_27
+REMARK   12  A    between atoms: C17_30  and  C18_31
+REMARK   13  A    between atoms: C18_31  and  C19_32
+REMARK   14  A    between atoms: C19_32  and  C20_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N2  NGI     0      -4.150   4.882 -15.105  0.00  0.00    +0.000 N 
+ATOM      2  N3  NGI     0      -2.373   5.868 -14.309  0.00  0.00    +0.000 NA
+ATOM      3  N5  NGI     0      -2.983   3.692 -11.411  0.00  0.00    +0.000 NA
+ATOM      4  N6  NGI     0      -4.714   2.141 -11.180  0.00  0.00    +0.000 N 
+ATOM      5  N7  NGI     0      -4.525   3.417 -13.122  0.00  0.00    +0.000 N 
+ATOM      6  C8  NGI     0      -3.177   5.812 -15.330  0.00  0.00    +0.000 A 
+ATOM      7  C9  NGI     0      -2.783   4.987 -13.364  0.00  0.00    +0.000 A 
+ATOM      8  C10 NGI     0      -2.318   4.622 -12.087  0.00  0.00    +0.000 C 
+ATOM      9  C11 NGI     0      -4.055   3.105 -11.926  0.00  0.00    +0.000 C 
+ATOM     10  C23 NGI     0      -3.925   4.342 -13.865  0.00  0.00    +0.000 A 
+ATOM     11  HN6 NGI     0      -5.498   1.701 -11.540  0.00  0.00    +0.000 HD
+ATOM     12  H   NGI     0      -5.327   2.960 -13.466  0.00  0.00    +0.000 HD
+ENDROOT
+BRANCH   1  15
+ATOM     13  O2  NGI     0      -4.999   5.092 -17.329  0.00  0.00    +0.000 OA
+ATOM     14  C4  NGI     0      -6.291   5.124 -17.972  0.00  0.00    +0.000 C 
+ATOM     15  C5  NGI     0      -5.239   4.530 -16.020  0.00  0.00    +0.000 C 
+ATOM     16  C6  NGI     0      -6.564   5.172 -15.551  0.00  0.00    +0.000 C 
+ATOM     17  C7  NGI     0      -7.272   5.572 -16.865  0.00  0.00    +0.000 C 
+BRANCH  14  20
+ATOM     18  N1  NGI     0      -5.281   6.122 -19.998  0.00  0.00    +0.000 N 
+ATOM     19  O1  NGI     0      -7.197   6.917 -19.211  0.00  0.00    +0.000 OA
+ATOM     20  C3  NGI     0      -6.290   6.119 -19.104  0.00  0.00    +0.000 C 
+ATOM     21  HN1 NGI     0      -4.556   5.484 -19.912  0.00  0.00    +0.000 HD
+BRANCH  18  23
+ATOM     22  C1  NGI     0      -4.239   8.175 -20.822  0.00  0.00    +0.000 C 
+ATOM     23  C2  NGI     0      -5.281   7.089 -21.098  0.00  0.00    +0.000 C 
+ENDBRANCH  18  23
+ENDBRANCH  14  20
+BRANCH  16  24
+ATOM     24  O3  NGI     0      -7.351   4.225 -14.827  0.00  0.00    +0.000 OA
+ATOM     25  HO3 NGI     0      -7.374   4.380 -13.873  0.00  0.00    +0.000 HD
+ENDBRANCH  16  24
+BRANCH  17  26
+ATOM     26  O4  NGI     0      -8.518   4.884 -16.992  0.00  0.00    +0.000 OA
+ATOM     27  HO4 NGI     0      -8.481   3.953 -16.734  0.00  0.00    +0.000 HD
+ENDBRANCH  17  26
+ENDBRANCH   1  15
+BRANCH   8  28
+ATOM     28  N4  NGI     0      -1.192   5.218 -11.549  0.00  0.00    +0.000 NA
+ATOM     29  HN4 NGI     0      -0.816   4.884 -10.719  0.00  0.00    +0.000 HD
+ATOM     30 HN4A NGI     0      -0.779   5.971 -12.000  0.00  0.00    +0.000 HD
+ENDBRANCH   8  28
+BRANCH   4  31
+ATOM     31  C12 NGI     0      -4.223   1.786  -9.846  0.00  0.00    +0.000 C 
+BRANCH  31  32
+ATOM     32  C13 NGI     0      -4.790   0.424  -9.439  0.00  0.00    +0.000 C 
+BRANCH  32  33
+ATOM     33  C14 NGI     0      -3.963  -0.150  -8.318  0.00  0.00    +0.000 A 
+ATOM     34  C15 NGI     0      -4.570  -0.893  -7.323  0.00  0.00    +0.000 A 
+ATOM     35  C16 NGI     0      -3.811  -1.420  -6.294  0.00  0.00    +0.000 A 
+ATOM     36  C17 NGI     0      -2.446  -1.202  -6.260  0.00  0.00    +0.000 A 
+ATOM     37  C21 NGI     0      -1.840  -0.459  -7.255  0.00  0.00    +0.000 A 
+ATOM     38  C22 NGI     0      -2.597   0.062  -8.287  0.00  0.00    +0.000 A 
+BRANCH  36  39
+ATOM     39  C18 NGI     0      -1.620  -1.777  -5.138  0.00  0.00    +0.000 C 
+BRANCH  39  40
+ATOM     40  C19 NGI     0      -2.311  -3.023  -4.582  0.00  0.00    +0.000 C 
+BRANCH  40  42
+ATOM     41  O6  NGI     0      -1.000  -3.974  -2.871  0.00  0.00    +0.000 OA
+ATOM     42  C20 NGI     0      -1.274  -3.976  -4.048  0.00  0.00    +0.000 C 
+BRANCH  42  43
+ATOM     43  O5  NGI     0      -0.655  -4.829  -4.880  0.00  0.00    +0.000 OA
+ATOM     44  HO5 NGI     0      -1.213  -5.332  -5.488  0.00  0.00    +0.000 HD
+ENDBRANCH  42  43
+ENDBRANCH  40  42
+ENDBRANCH  39  40
+ENDBRANCH  36  39
+ENDBRANCH  32  33
+ENDBRANCH  31  32
+ENDBRANCH   4  31
+TORSDOF 13
+ENDMDL
+MODEL 2
+REMARK VINA RESULT:      -9.6      2.704     12.087
+REMARK  Name = NGI.pdb
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: N1_2  and  C2_4
+REMARK    3  A    between atoms: N2_5  and  C5_13
+REMARK    4  A    between atoms: C3_7  and  C4_10
+REMARK    5  A    between atoms: O3_9  and  C6_16
+REMARK    6  A    between atoms: N4_11  and  C10_23
+REMARK    7  A    between atoms: O4_12  and  C7_19
+REMARK    8  A    between atoms: O5_15  and  C20_33
+REMARK    9  A    between atoms: N6_17  and  C12_25
+REMARK   10  A    between atoms: C12_25  and  C13_26
+REMARK   11  A    between atoms: C13_26  and  C14_27
+REMARK   12  A    between atoms: C17_30  and  C18_31
+REMARK   13  A    between atoms: C18_31  and  C19_32
+REMARK   14  A    between atoms: C19_32  and  C20_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N2  NGI     0      -3.627   0.856  -9.279  0.00  0.00    +0.000 N 
+ATOM      2  N3  NGI     0      -5.497   0.738 -10.400  0.00  0.00    +0.000 NA
+ATOM      3  N5  NGI     0      -4.117   3.638 -12.186  0.00  0.00    +0.000 NA
+ATOM      4  N6  NGI     0      -2.056   4.661 -11.787  0.00  0.00    +0.000 N 
+ATOM      5  N7  NGI     0      -2.723   2.821 -10.521  0.00  0.00    +0.000 N 
+ATOM      6  C8  NGI     0      -4.811   0.195  -9.437  0.00  0.00    +0.000 A 
+ATOM      7  C9  NGI     0      -4.804   1.783 -10.914  0.00  0.00    +0.000 A 
+ATOM      8  C10 NGI     0      -5.041   2.716 -11.940  0.00  0.00    +0.000 C 
+ATOM      9  C11 NGI     0      -2.987   3.678 -11.492  0.00  0.00    +0.000 C 
+ATOM     10  C23 NGI     0      -3.595   1.869 -10.203  0.00  0.00    +0.000 A 
+ATOM     11  HN6 NGI     0      -1.224   4.706 -11.292  0.00  0.00    +0.000 HD
+ATOM     12  H   NGI     0      -1.874   2.888 -10.027  0.00  0.00    +0.000 HD
+ENDROOT
+BRANCH   1  15
+ATOM     13  O2  NGI     0      -2.810  -0.762  -7.723  0.00  0.00    +0.000 OA
+ATOM     14  C4  NGI     0      -2.078  -0.761  -6.479  0.00  0.00    +0.000 C 
+ATOM     15  C5  NGI     0      -2.585   0.544  -8.298  0.00  0.00    +0.000 C 
+ATOM     16  C6  NGI     0      -2.661   1.520  -7.104  0.00  0.00    +0.000 C 
+ATOM     17  C7  NGI     0      -2.319   0.642  -5.879  0.00  0.00    +0.000 C 
+BRANCH  14  20
+ATOM     18  N1  NGI     0      -1.766  -2.518  -4.765  0.00  0.00    +0.000 N 
+ATOM     19  O1  NGI     0      -3.801  -2.059  -5.521  0.00  0.00    +0.000 OA
+ATOM     20  C3  NGI     0      -2.611  -1.825  -5.554  0.00  0.00    +0.000 C 
+ATOM     21  HN1 NGI     0      -0.814  -2.331  -4.791  0.00  0.00    +0.000 HD
+BRANCH  18  23
+ATOM     22  C1  NGI     0      -1.146  -4.096  -3.003  0.00  0.00    +0.000 C 
+ATOM     23  C2  NGI     0      -2.285  -3.552  -3.867  0.00  0.00    +0.000 C 
+ENDBRANCH  18  23
+ENDBRANCH  14  20
+BRANCH  16  24
+ATOM     24  O3  NGI     0      -1.700   2.568  -7.252  0.00  0.00    +0.000 OA
+ATOM     25  HO3 NGI     0      -0.857   2.278  -7.625  0.00  0.00    +0.000 HD
+ENDBRANCH  16  24
+BRANCH  17  26
+ATOM     26  O4  NGI     0      -1.137   1.121  -5.234  0.00  0.00    +0.000 OA
+ATOM     27  HO4 NGI     0      -0.450   0.449  -5.122  0.00  0.00    +0.000 HD
+ENDBRANCH  17  26
+ENDBRANCH   1  15
+BRANCH   8  28
+ATOM     28  N4  NGI     0      -6.210   2.672 -12.677  0.00  0.00    +0.000 NA
+ATOM     29  HN4 NGI     0      -6.682   1.831 -12.786  0.00  0.00    +0.000 HD
+ATOM     30 HN4A NGI     0      -6.558   3.479 -13.086  0.00  0.00    +0.000 HD
+ENDBRANCH   8  28
+BRANCH   4  31
+ATOM     31  C12 NGI     0      -2.328   5.633 -12.849  0.00  0.00    +0.000 C 
+BRANCH  31  32
+ATOM     32  C13 NGI     0      -1.986   5.014 -14.207  0.00  0.00    +0.000 C 
+BRANCH  32  33
+ATOM     33  C14 NGI     0      -3.087   5.319 -15.190  0.00  0.00    +0.000 A 
+ATOM     34  C15 NGI     0      -3.683   4.294 -15.899  0.00  0.00    +0.000 A 
+ATOM     35  C16 NGI     0      -4.693   4.574 -16.801  0.00  0.00    +0.000 A 
+ATOM     36  C17 NGI     0      -5.105   5.880 -16.994  0.00  0.00    +0.000 A 
+ATOM     37  C21 NGI     0      -4.509   6.904 -16.285  0.00  0.00    +0.000 A 
+ATOM     38  C22 NGI     0      -3.504   6.624 -15.378  0.00  0.00    +0.000 A 
+BRANCH  36  39
+ATOM     39  C18 NGI     0      -6.206   6.184 -17.978  0.00  0.00    +0.000 C 
+BRANCH  39  40
+ATOM     40  C19 NGI     0      -7.478   6.561 -17.218  0.00  0.00    +0.000 C 
+BRANCH  40  42
+ATOM     41  O6  NGI     0      -8.184   4.959 -15.640  0.00  0.00    +0.000 OA
+ATOM     42  C20 NGI     0      -8.202   5.308 -16.797  0.00  0.00    +0.000 C 
+BRANCH  42  43
+ATOM     43  O5  NGI     0      -8.868   4.580 -17.708  0.00  0.00    +0.000 OA
+ATOM     44  HO5 NGI     0      -8.977   4.970 -18.586  0.00  0.00    +0.000 HD
+ENDBRANCH  42  43
+ENDBRANCH  40  42
+ENDBRANCH  39  40
+ENDBRANCH  36  39
+ENDBRANCH  32  33
+ENDBRANCH  31  32
+ENDBRANCH   4  31
+TORSDOF 13
+ENDMDL
+MODEL 3
+REMARK VINA RESULT:      -9.4      2.340      3.653
+REMARK  Name = NGI.pdb
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: N1_2  and  C2_4
+REMARK    3  A    between atoms: N2_5  and  C5_13
+REMARK    4  A    between atoms: C3_7  and  C4_10
+REMARK    5  A    between atoms: O3_9  and  C6_16
+REMARK    6  A    between atoms: N4_11  and  C10_23
+REMARK    7  A    between atoms: O4_12  and  C7_19
+REMARK    8  A    between atoms: O5_15  and  C20_33
+REMARK    9  A    between atoms: N6_17  and  C12_25
+REMARK   10  A    between atoms: C12_25  and  C13_26
+REMARK   11  A    between atoms: C13_26  and  C14_27
+REMARK   12  A    between atoms: C17_30  and  C18_31
+REMARK   13  A    between atoms: C18_31  and  C19_32
+REMARK   14  A    between atoms: C19_32  and  C20_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N2  NGI     0      -6.400   6.490 -16.867  0.00  0.00    +0.000 N 
+ATOM      2  N3  NGI     0      -4.315   7.122 -16.738  0.00  0.00    +0.000 NA
+ATOM      3  N5  NGI     0      -4.171   4.642 -14.030  0.00  0.00    +0.000 NA
+ATOM      4  N6  NGI     0      -5.930   3.300 -13.283  0.00  0.00    +0.000 N 
+ATOM      5  N7  NGI     0      -6.259   4.810 -15.028  0.00  0.00    +0.000 N 
+ATOM      6  C8  NGI     0      -5.437   7.314 -17.369  0.00  0.00    +0.000 A 
+ATOM      7  C9  NGI     0      -4.490   6.171 -15.788  0.00  0.00    +0.000 A 
+ATOM      8  C10 NGI     0      -3.655   5.570 -14.828  0.00  0.00    +0.000 C 
+ATOM      9  C11 NGI     0      -5.441   4.273 -14.139  0.00  0.00    +0.000 C 
+ATOM     10  C23 NGI     0      -5.828   5.752 -15.862  0.00  0.00    +0.000 A 
+ATOM     11  HN6 NGI     0      -6.854   3.017 -13.347  0.00  0.00    +0.000 HD
+ATOM     12  H   NGI     0      -7.196   4.511 -15.073  0.00  0.00    +0.000 HD
+ENDROOT
+BRANCH   1  15
+ATOM     13  O2  NGI     0      -8.091   5.083 -17.800  0.00  0.00    +0.000 OA
+ATOM     14  C4  NGI     0      -9.254   5.238 -18.642  0.00  0.00    +0.000 C 
+ATOM     15  C5  NGI     0      -7.793   6.411 -17.315  0.00  0.00    +0.000 C 
+ATOM     16  C6  NGI     0      -8.020   7.336 -18.531  0.00  0.00    +0.000 C 
+ATOM     17  C7  NGI     0      -9.003   6.547 -19.424  0.00  0.00    +0.000 C 
+BRANCH  14  20
+ATOM     18  N1  NGI     0      -8.497   3.053 -19.521  0.00  0.00    +0.000 N 
+ATOM     19  O1  NGI     0     -10.258   4.058 -20.422  0.00  0.00    +0.000 OA
+ATOM     20  C3  NGI     0      -9.373   4.074 -19.592  0.00  0.00    +0.000 C 
+ATOM     21  HN1 NGI     0      -7.789   3.066 -18.858  0.00  0.00    +0.000 HD
+BRANCH  18  23
+ATOM     22  C1  NGI     0      -7.379   1.030 -20.317  0.00  0.00    +0.000 C 
+ATOM     23  C2  NGI     0      -8.614   1.923 -20.445  0.00  0.00    +0.000 C 
+ENDBRANCH  18  23
+ENDBRANCH  14  20
+BRANCH  16  24
+ATOM     24  O3  NGI     0      -8.602   8.573 -18.117  0.00  0.00    +0.000 OA
+ATOM     25  HO3 NGI     0      -8.557   9.272 -18.785  0.00  0.00    +0.000 HD
+ENDBRANCH  16  24
+BRANCH  17  26
+ATOM     26  O4  NGI     0     -10.222   7.273 -19.590  0.00  0.00    +0.000 OA
+ATOM     27  HO4 NGI     0     -10.122   8.232 -19.518  0.00  0.00    +0.000 HD
+ENDBRANCH  17  26
+ENDBRANCH   1  15
+BRANCH   8  28
+ATOM     28  N4  NGI     0      -2.327   5.939 -14.718  0.00  0.00    +0.000 NA
+ATOM     29  HN4 NGI     0      -2.058   6.588 -14.050  0.00  0.00    +0.000 HD
+ATOM     30 HN4A NGI     0      -1.664   5.549 -15.309  0.00  0.00    +0.000 HD
+ENDBRANCH   8  28
+BRANCH   4  31
+ATOM     31  C12 NGI     0      -5.048   2.697 -12.279  0.00  0.00    +0.000 C 
+BRANCH  31  32
+ATOM     32  C13 NGI     0      -5.875   1.823 -11.333  0.00  0.00    +0.000 C 
+BRANCH  32  33
+ATOM     33  C14 NGI     0      -4.972   1.222 -10.287  0.00  0.00    +0.000 A 
+ATOM     34  C15 NGI     0      -3.754   1.811 -10.005  0.00  0.00    +0.000 A 
+ATOM     35  C16 NGI     0      -2.925   1.259  -9.045  0.00  0.00    +0.000 A 
+ATOM     36  C17 NGI     0      -3.315   0.117  -8.369  0.00  0.00    +0.000 A 
+ATOM     37  C21 NGI     0      -4.533  -0.472  -8.652  0.00  0.00    +0.000 A 
+ATOM     38  C22 NGI     0      -5.364   0.083  -9.607  0.00  0.00    +0.000 A 
+BRANCH  36  39
+ATOM     39  C18 NGI     0      -2.412  -0.484  -7.324  0.00  0.00    +0.000 C 
+BRANCH  39  40
+ATOM     40  C19 NGI     0      -3.202  -1.486  -6.481  0.00  0.00    +0.000 C 
+BRANCH  40  42
+ATOM     41  O6  NGI     0      -1.088  -1.929  -5.537  0.00  0.00    +0.000 OA
+ATOM     42  C20 NGI     0      -2.267  -2.196  -5.536  0.00  0.00    +0.000 C 
+BRANCH  42  43
+ATOM     43  O5  NGI     0      -2.744  -3.124  -4.692  0.00  0.00    +0.000 OA
+ATOM     44  HO5 NGI     0      -3.670  -3.042  -4.427  0.00  0.00    +0.000 HD
+ENDBRANCH  42  43
+ENDBRANCH  40  42
+ENDBRANCH  39  40
+ENDBRANCH  36  39
+ENDBRANCH  32  33
+ENDBRANCH  31  32
+ENDBRANCH   4  31
+TORSDOF 13
+ENDMDL
+MODEL 4
+REMARK VINA RESULT:      -9.1      2.790     12.618
+REMARK  Name = NGI.pdb
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: N1_2  and  C2_4
+REMARK    3  A    between atoms: N2_5  and  C5_13
+REMARK    4  A    between atoms: C3_7  and  C4_10
+REMARK    5  A    between atoms: O3_9  and  C6_16
+REMARK    6  A    between atoms: N4_11  and  C10_23
+REMARK    7  A    between atoms: O4_12  and  C7_19
+REMARK    8  A    between atoms: O5_15  and  C20_33
+REMARK    9  A    between atoms: N6_17  and  C12_25
+REMARK   10  A    between atoms: C12_25  and  C13_26
+REMARK   11  A    between atoms: C13_26  and  C14_27
+REMARK   12  A    between atoms: C17_30  and  C18_31
+REMARK   13  A    between atoms: C18_31  and  C19_32
+REMARK   14  A    between atoms: C19_32  and  C20_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N2  NGI     0      -3.546   0.901  -9.236  0.00  0.00    +0.000 N 
+ATOM      2  N3  NGI     0      -5.422   0.741 -10.341  0.00  0.00    +0.000 NA
+ATOM      3  N5  NGI     0      -4.083   3.616 -12.198  0.00  0.00    +0.000 NA
+ATOM      4  N6  NGI     0      -2.029   4.666 -11.836  0.00  0.00    +0.000 N 
+ATOM      5  N7  NGI     0      -2.670   2.847 -10.526  0.00  0.00    +0.000 N 
+ATOM      6  C8  NGI     0      -4.724   0.226  -9.372  0.00  0.00    +0.000 A 
+ATOM      7  C9  NGI     0      -4.743   1.782 -10.882  0.00  0.00    +0.000 A 
+ATOM      8  C10 NGI     0      -4.996   2.690 -11.926  0.00  0.00    +0.000 C 
+ATOM      9  C11 NGI     0      -2.948   3.681 -11.514  0.00  0.00    +0.000 C 
+ATOM     10  C23 NGI     0      -3.530   1.894 -10.182  0.00  0.00    +0.000 A 
+ATOM     11  HN6 NGI     0      -1.194   4.729 -11.348  0.00  0.00    +0.000 HD
+ATOM     12  H   NGI     0      -1.817   2.933 -10.041  0.00  0.00    +0.000 HD
+ENDROOT
+BRANCH   1  15
+ATOM     13  O2  NGI     0      -2.588  -0.746  -7.795  0.00  0.00    +0.000 OA
+ATOM     14  C4  NGI     0      -1.882  -0.772  -6.536  0.00  0.00    +0.000 C 
+ATOM     15  C5  NGI     0      -2.494   0.619  -8.257  0.00  0.00    +0.000 C 
+ATOM     16  C6  NGI     0      -2.695   1.480  -6.990  0.00  0.00    +0.000 C 
+ATOM     17  C7  NGI     0      -2.284   0.543  -5.831  0.00  0.00    +0.000 C 
+BRANCH  14  20
+ATOM     18  N1  NGI     0      -1.718  -2.217  -4.535  0.00  0.00    +0.000 N 
+ATOM     19  O1  NGI     0      -3.200  -2.684  -6.118  0.00  0.00    +0.000 OA
+ATOM     20  C3  NGI     0      -2.315  -1.959  -5.715  0.00  0.00    +0.000 C 
+ATOM     21  HN1 NGI     0      -1.009  -1.637  -4.213  0.00  0.00    +0.000 HD
+BRANCH  18  23
+ATOM     22  C1  NGI     0      -1.043  -4.439  -3.770  0.00  0.00    +0.000 C 
+ATOM     23  C2  NGI     0      -2.138  -3.371  -3.738  0.00  0.00    +0.000 C 
+ENDBRANCH  18  23
+ENDBRANCH  14  20
+BRANCH  16  24
+ATOM     24  O3  NGI     0      -1.851   2.631  -7.027  0.00  0.00    +0.000 OA
+ATOM     25  HO3 NGI     0      -0.992   2.503  -6.600  0.00  0.00    +0.000 HD
+ENDBRANCH  16  24
+BRANCH  17  26
+ATOM     26  O4  NGI     0      -1.172   1.089  -5.118  0.00  0.00    +0.000 OA
+ATOM     27  HO4 NGI     0      -0.923   0.584  -4.331  0.00  0.00    +0.000 HD
+ENDBRANCH  17  26
+ENDBRANCH   1  15
+BRANCH   8  28
+ATOM     28  N4  NGI     0      -6.169   2.619 -12.654  0.00  0.00    +0.000 NA
+ATOM     29  HN4 NGI     0      -6.304   1.896 -13.287  0.00  0.00    +0.000 HD
+ATOM     30 HN4A NGI     0      -6.858   3.291 -12.533  0.00  0.00    +0.000 HD
+ENDBRANCH   8  28
+BRANCH   4  31
+ATOM     31  C12 NGI     0      -2.318   5.612 -12.917  0.00  0.00    +0.000 C 
+BRANCH  31  32
+ATOM     32  C13 NGI     0      -2.115   4.922 -14.268  0.00  0.00    +0.000 C 
+BRANCH  32  33
+ATOM     33  C14 NGI     0      -3.140   5.428 -15.250  0.00  0.00    +0.000 A 
+ATOM     34  C15 NGI     0      -3.808   4.538 -16.071  0.00  0.00    +0.000 A 
+ATOM     35  C16 NGI     0      -4.748   5.003 -16.972  0.00  0.00    +0.000 A 
+ATOM     36  C17 NGI     0      -5.019   6.356 -17.052  0.00  0.00    +0.000 A 
+ATOM     37  C21 NGI     0      -4.352   7.245 -16.232  0.00  0.00    +0.000 A 
+ATOM     38  C22 NGI     0      -3.416   6.780 -15.326  0.00  0.00    +0.000 A 
+BRANCH  36  39
+ATOM     39  C18 NGI     0      -6.044   6.861 -18.035  0.00  0.00    +0.000 C 
+BRANCH  39  40
+ATOM     40  C19 NGI     0      -5.478   6.774 -19.453  0.00  0.00    +0.000 C 
+BRANCH  40  42
+ATOM     41  O6  NGI     0      -3.939   8.109 -20.638  0.00  0.00    +0.000 OA
+ATOM     42  C20 NGI     0      -4.821   8.082 -19.812  0.00  0.00    +0.000 C 
+BRANCH  42  43
+ATOM     43  O5  NGI     0      -5.217   9.218 -19.215  0.00  0.00    +0.000 OA
+ATOM     44  HO5 NGI     0      -6.010   9.170 -18.664  0.00  0.00    +0.000 HD
+ENDBRANCH  42  43
+ENDBRANCH  40  42
+ENDBRANCH  39  40
+ENDBRANCH  36  39
+ENDBRANCH  32  33
+ENDBRANCH  31  32
+ENDBRANCH   4  31
+TORSDOF 13
+ENDMDL
+MODEL 5
+REMARK VINA RESULT:      -9.1      3.251     12.924
+REMARK  Name = NGI.pdb
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: N1_2  and  C2_4
+REMARK    3  A    between atoms: N2_5  and  C5_13
+REMARK    4  A    between atoms: C3_7  and  C4_10
+REMARK    5  A    between atoms: O3_9  and  C6_16
+REMARK    6  A    between atoms: N4_11  and  C10_23
+REMARK    7  A    between atoms: O4_12  and  C7_19
+REMARK    8  A    between atoms: O5_15  and  C20_33
+REMARK    9  A    between atoms: N6_17  and  C12_25
+REMARK   10  A    between atoms: C12_25  and  C13_26
+REMARK   11  A    between atoms: C13_26  and  C14_27
+REMARK   12  A    between atoms: C17_30  and  C18_31
+REMARK   13  A    between atoms: C18_31  and  C19_32
+REMARK   14  A    between atoms: C19_32  and  C20_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N2  NGI     0      -3.865   0.700  -9.147  0.00  0.00    +0.000 N 
+ATOM      2  N3  NGI     0      -5.754  -0.173  -9.806  0.00  0.00    +0.000 NA
+ATOM      3  N5  NGI     0      -5.607   2.480 -12.345  0.00  0.00    +0.000 NA
+ATOM      4  N6  NGI     0      -3.921   4.079 -12.585  0.00  0.00    +0.000 N 
+ATOM      5  N7  NGI     0      -3.799   2.482 -10.891  0.00  0.00    +0.000 N 
+ATOM      6  C8  NGI     0      -4.800  -0.269  -8.927  0.00  0.00    +0.000 A 
+ATOM      7  C9  NGI     0      -5.497   0.866 -10.638  0.00  0.00    +0.000 A 
+ATOM      8  C10 NGI     0      -6.157   1.431 -11.745  0.00  0.00    +0.000 C 
+ATOM      9  C11 NGI     0      -4.452   2.983 -11.925  0.00  0.00    +0.000 C 
+ATOM     10  C23 NGI     0      -4.281   1.436 -10.227  0.00  0.00    +0.000 A 
+ATOM     11  HN6 NGI     0      -3.079   4.459 -12.294  0.00  0.00    +0.000 HD
+ATOM     12  H   NGI     0      -2.947   2.888 -10.609  0.00  0.00    +0.000 HD
+ENDROOT
+BRANCH   1  15
+ATOM     13  O2  NGI     0      -2.061  -0.346  -7.981  0.00  0.00    +0.000 OA
+ATOM     14  C4  NGI     0      -1.209  -0.043  -6.856  0.00  0.00    +0.000 C 
+ATOM     15  C5  NGI     0      -2.644   0.918  -8.368  0.00  0.00    +0.000 C 
+ATOM     16  C6  NGI     0      -2.975   1.626  -7.035  0.00  0.00    +0.000 C 
+ATOM     17  C7  NGI     0      -2.009   0.978  -6.017  0.00  0.00    +0.000 C 
+BRANCH  14  20
+ATOM     18  N1  NGI     0      -1.925  -1.839  -5.313  0.00  0.00    +0.000 N 
+ATOM     19  O1  NGI     0       0.163  -1.793  -6.063  0.00  0.00    +0.000 OA
+ATOM     20  C3  NGI     0      -0.941  -1.288  -6.049  0.00  0.00    +0.000 C 
+ATOM     21  HN1 NGI     0      -2.807  -1.435  -5.302  0.00  0.00    +0.000 HD
+BRANCH  18  23
+ATOM     22  C1  NGI     0      -2.890  -3.379  -3.677  0.00  0.00    +0.000 C 
+ATOM     23  C2  NGI     0      -1.663  -3.049  -4.529  0.00  0.00    +0.000 C 
+ENDBRANCH  18  23
+ENDBRANCH  14  20
+BRANCH  16  24
+ATOM     24  O3  NGI     0      -2.727   3.029  -7.137  0.00  0.00    +0.000 OA
+ATOM     25  HO3 NGI     0      -3.101   3.548  -6.412  0.00  0.00    +0.000 HD
+ENDBRANCH  16  24
+BRANCH  17  26
+ATOM     26  O4  NGI     0      -1.136   1.963  -5.460  0.00  0.00    +0.000 OA
+ATOM     27  HO4 NGI     0      -1.443   2.873  -5.577  0.00  0.00    +0.000 HD
+ENDBRANCH  17  26
+ENDBRANCH   1  15
+BRANCH   8  28
+ATOM     28  N4  NGI     0      -7.353   0.904 -12.197  0.00  0.00    +0.000 NA
+ATOM     29  HN4 NGI     0      -7.965   0.485 -11.572  0.00  0.00    +0.000 HD
+ATOM     30 HN4A NGI     0      -7.580   0.952 -13.139  0.00  0.00    +0.000 HD
+ENDBRANCH   8  28
+BRANCH   4  31
+ATOM     31  C12 NGI     0      -4.632   4.662 -13.726  0.00  0.00    +0.000 C 
+BRANCH  31  32
+ATOM     32  C13 NGI     0      -3.782   4.509 -14.989  0.00  0.00    +0.000 C 
+BRANCH  32  33
+ATOM     33  C14 NGI     0      -4.192   5.548 -16.001  0.00  0.00    +0.000 A 
+ATOM     34  C15 NGI     0      -3.901   6.881 -15.779  0.00  0.00    +0.000 A 
+ATOM     35  C16 NGI     0      -4.279   7.834 -16.707  0.00  0.00    +0.000 A 
+ATOM     36  C17 NGI     0      -4.948   7.454 -17.856  0.00  0.00    +0.000 A 
+ATOM     37  C21 NGI     0      -5.239   6.121 -18.077  0.00  0.00    +0.000 A 
+ATOM     38  C22 NGI     0      -4.856   5.167 -17.152  0.00  0.00    +0.000 A 
+BRANCH  36  39
+ATOM     39  C18 NGI     0      -5.359   8.493 -18.866  0.00  0.00    +0.000 C 
+BRANCH  39  40
+ATOM     40  C19 NGI     0      -4.289   8.597 -19.955  0.00  0.00    +0.000 C 
+BRANCH  40  42
+ATOM     41  O6  NGI     0      -4.040  10.940 -19.896  0.00  0.00    +0.000 OA
+ATOM     42  C20 NGI     0      -3.500   9.867 -19.764  0.00  0.00    +0.000 C 
+BRANCH  42  43
+ATOM     43  O5  NGI     0      -2.197   9.805 -19.445  0.00  0.00    +0.000 OA
+ATOM     44  HO5 NGI     0      -1.571  10.165 -20.088  0.00  0.00    +0.000 HD
+ENDBRANCH  42  43
+ENDBRANCH  40  42
+ENDBRANCH  39  40
+ENDBRANCH  36  39
+ENDBRANCH  32  33
+ENDBRANCH  31  32
+ENDBRANCH   4  31
+TORSDOF 13
+ENDMDL
+MODEL 6
+REMARK VINA RESULT:      -9.1      3.235     12.444
+REMARK  Name = NGI.pdb
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: N1_2  and  C2_4
+REMARK    3  A    between atoms: N2_5  and  C5_13
+REMARK    4  A    between atoms: C3_7  and  C4_10
+REMARK    5  A    between atoms: O3_9  and  C6_16
+REMARK    6  A    between atoms: N4_11  and  C10_23
+REMARK    7  A    between atoms: O4_12  and  C7_19
+REMARK    8  A    between atoms: O5_15  and  C20_33
+REMARK    9  A    between atoms: N6_17  and  C12_25
+REMARK   10  A    between atoms: C12_25  and  C13_26
+REMARK   11  A    between atoms: C13_26  and  C14_27
+REMARK   12  A    between atoms: C17_30  and  C18_31
+REMARK   13  A    between atoms: C18_31  and  C19_32
+REMARK   14  A    between atoms: C19_32  and  C20_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N2  NGI     0      -2.298   2.628  -8.700  0.00  0.00    +0.000 N 
+ATOM      2  N3  NGI     0      -0.647   3.946  -9.250  0.00  0.00    +0.000 NA
+ATOM      3  N5  NGI     0      -2.579   4.375 -12.347  0.00  0.00    +0.000 NA
+ATOM      4  N6  NGI     0      -4.627   3.374 -12.854  0.00  0.00    +0.000 N 
+ATOM      5  N7  NGI     0      -3.582   2.952 -10.813  0.00  0.00    +0.000 N 
+ATOM      6  C8  NGI     0      -1.104   3.164  -8.316  0.00  0.00    +0.000 A 
+ATOM      7  C9  NGI     0      -1.514   3.956 -10.293  0.00  0.00    +0.000 A 
+ATOM      8  C10 NGI     0      -1.546   4.599 -11.544  0.00  0.00    +0.000 C 
+ATOM      9  C11 NGI     0      -3.572   3.575 -11.980  0.00  0.00    +0.000 C 
+ATOM     10  C23 NGI     0      -2.584   3.113  -9.951  0.00  0.00    +0.000 A 
+ATOM     11  HN6 NGI     0      -5.361   2.793 -12.604  0.00  0.00    +0.000 HD
+ATOM     12  H   NGI     0      -4.337   2.363 -10.582  0.00  0.00    +0.000 HD
+ENDROOT
+BRANCH   1  15
+ATOM     13  O2  NGI     0      -2.340   1.098  -6.865  0.00  0.00    +0.000 OA
+ATOM     14  C4  NGI     0      -3.052  -0.105  -6.504  0.00  0.00    +0.000 C 
+ATOM     15  C5  NGI     0      -3.122   1.700  -7.921  0.00  0.00    +0.000 C 
+ATOM     16  C6  NGI     0      -3.576   0.515  -8.801  0.00  0.00    +0.000 C 
+ATOM     17  C7  NGI     0      -3.529  -0.700  -7.848  0.00  0.00    +0.000 C 
+BRANCH  14  20
+ATOM     18  N1  NGI     0      -2.593  -2.269  -5.397  0.00  0.00    +0.000 N 
+ATOM     19  O1  NGI     0      -0.975  -0.765  -5.600  0.00  0.00    +0.000 OA
+ATOM     20  C3  NGI     0      -2.131  -1.069  -5.801  0.00  0.00    +0.000 C 
+ATOM     21  HN1 NGI     0      -3.518  -2.512  -5.558  0.00  0.00    +0.000 HD
+BRANCH  18  23
+ATOM     22  C1  NGI     0      -2.276  -3.555  -3.341  0.00  0.00    +0.000 C 
+ATOM     23  C2  NGI     0      -1.697  -3.205  -4.713  0.00  0.00    +0.000 C 
+ENDBRANCH  18  23
+ENDBRANCH  14  20
+BRANCH  16  24
+ATOM     24  O3  NGI     0      -4.906   0.726  -9.278  0.00  0.00    +0.000 OA
+ATOM     25  HO3 NGI     0      -5.451  -0.073  -9.291  0.00  0.00    +0.000 HD
+ENDBRANCH  16  24
+BRANCH  17  26
+ATOM     26  O4  NGI     0      -4.829  -1.276  -7.707  0.00  0.00    +0.000 OA
+ATOM     27  HO4 NGI     0      -5.134  -1.757  -8.489  0.00  0.00    +0.000 HD
+ENDBRANCH  17  26
+ENDBRANCH   1  15
+BRANCH   8  28
+ATOM     28  N4  NGI     0      -0.522   5.446 -11.927  0.00  0.00    +0.000 NA
+ATOM     29  HN4 NGI     0      -0.630   6.407 -11.842  0.00  0.00    +0.000 HD
+ATOM     30 HN4A NGI     0       0.303   5.082 -12.282  0.00  0.00    +0.000 HD
+ENDBRANCH   8  28
+BRANCH   4  31
+ATOM     31  C12 NGI     0      -4.634   4.041 -14.159  0.00  0.00    +0.000 C 
+BRANCH  31  32
+ATOM     32  C13 NGI     0      -5.775   5.060 -14.205  0.00  0.00    +0.000 C 
+BRANCH  32  33
+ATOM     33  C14 NGI     0      -5.389   6.206 -15.104  0.00  0.00    +0.000 A 
+ATOM     34  C15 NGI     0      -5.926   6.300 -16.374  0.00  0.00    +0.000 A 
+ATOM     35  C16 NGI     0      -5.571   7.351 -17.199  0.00  0.00    +0.000 A 
+ATOM     36  C17 NGI     0      -4.678   8.308 -16.753  0.00  0.00    +0.000 A 
+ATOM     37  C21 NGI     0      -4.141   8.214 -15.484  0.00  0.00    +0.000 A 
+ATOM     38  C22 NGI     0      -4.500   7.167 -14.657  0.00  0.00    +0.000 A 
+BRANCH  36  39
+ATOM     39  C18 NGI     0      -4.292   9.454 -17.653  0.00  0.00    +0.000 C 
+BRANCH  39  40
+ATOM     40  C19 NGI     0      -4.119   8.943 -19.084  0.00  0.00    +0.000 C 
+BRANCH  40  42
+ATOM     41  O6  NGI     0      -2.420   9.117 -20.709  0.00  0.00    +0.000 OA
+ATOM     42  C20 NGI     0      -2.898   9.577 -19.699  0.00  0.00    +0.000 C 
+BRANCH  42  43
+ATOM     43  O5  NGI     0      -2.341  10.655 -19.124  0.00  0.00    +0.000 OA
+ATOM     44  HO5 NGI     0      -2.870  11.464 -19.103  0.00  0.00    +0.000 HD
+ENDBRANCH  42  43
+ENDBRANCH  40  42
+ENDBRANCH  39  40
+ENDBRANCH  36  39
+ENDBRANCH  32  33
+ENDBRANCH  31  32
+ENDBRANCH   4  31
+TORSDOF 13
+ENDMDL
+MODEL 7
+REMARK VINA RESULT:      -8.9      2.221      2.782
+REMARK  Name = NGI.pdb
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: N1_2  and  C2_4
+REMARK    3  A    between atoms: N2_5  and  C5_13
+REMARK    4  A    between atoms: C3_7  and  C4_10
+REMARK    5  A    between atoms: O3_9  and  C6_16
+REMARK    6  A    between atoms: N4_11  and  C10_23
+REMARK    7  A    between atoms: O4_12  and  C7_19
+REMARK    8  A    between atoms: O5_15  and  C20_33
+REMARK    9  A    between atoms: N6_17  and  C12_25
+REMARK   10  A    between atoms: C12_25  and  C13_26
+REMARK   11  A    between atoms: C13_26  and  C14_27
+REMARK   12  A    between atoms: C17_30  and  C18_31
+REMARK   13  A    between atoms: C18_31  and  C19_32
+REMARK   14  A    between atoms: C19_32  and  C20_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N2  NGI     0      -5.464   6.149 -16.354  0.00  0.00    +0.000 N 
+ATOM      2  N3  NGI     0      -3.483   6.936 -15.886  0.00  0.00    +0.000 NA
+ATOM      3  N5  NGI     0      -3.633   4.510 -13.130  0.00  0.00    +0.000 NA
+ATOM      4  N6  NGI     0      -5.396   3.052 -12.660  0.00  0.00    +0.000 N 
+ATOM      5  N7  NGI     0      -5.524   4.510 -14.475  0.00  0.00    +0.000 N 
+ATOM      6  C8  NGI     0      -4.489   7.036 -16.705  0.00  0.00    +0.000 A 
+ATOM      7  C9  NGI     0      -3.751   5.988 -14.956  0.00  0.00    +0.000 A 
+ATOM      8  C10 NGI     0      -3.055   5.464 -13.851  0.00  0.00    +0.000 C 
+ATOM      9  C11 NGI     0      -4.836   4.046 -13.445  0.00  0.00    +0.000 C 
+ATOM     10  C23 NGI     0      -5.023   5.469 -15.247  0.00  0.00    +0.000 A 
+ATOM     11  HN6 NGI     0      -6.273   2.700 -12.875  0.00  0.00    +0.000 HD
+ATOM     12  H   NGI     0      -6.416   4.141 -14.672  0.00  0.00    +0.000 HD
+ENDROOT
+BRANCH   1  15
+ATOM     13  O2  NGI     0      -6.885   6.900 -18.122  0.00  0.00    +0.000 OA
+ATOM     14  C4  NGI     0      -8.303   6.977 -18.382  0.00  0.00    +0.000 C 
+ATOM     15  C5  NGI     0      -6.748   5.961 -17.032  0.00  0.00    +0.000 C 
+ATOM     16  C6  NGI     0      -7.916   6.293 -16.076  0.00  0.00    +0.000 C 
+ATOM     17  C7  NGI     0      -8.962   6.977 -16.984  0.00  0.00    +0.000 C 
+BRANCH  14  20
+ATOM     18  N1  NGI     0      -9.893   8.729 -19.104  0.00  0.00    +0.000 N 
+ATOM     19  O1  NGI     0      -7.765   8.844 -19.722  0.00  0.00    +0.000 OA
+ATOM     20  C3  NGI     0      -8.634   8.250 -19.117  0.00  0.00    +0.000 C 
+ATOM     21  HN1 NGI     0     -10.588   8.254 -18.620  0.00  0.00    +0.000 HD
+BRANCH  18  23
+ATOM     22  C1  NGI     0     -10.549  11.066 -18.810  0.00  0.00    +0.000 C 
+ATOM     23  C2  NGI     0     -10.213   9.967 -19.819  0.00  0.00    +0.000 C 
+ENDBRANCH  18  23
+ENDBRANCH  14  20
+BRANCH  16  24
+ATOM     24  O3  NGI     0      -8.452   5.097 -15.507  0.00  0.00    +0.000 OA
+ATOM     25  HO3 NGI     0      -8.460   5.091 -14.540  0.00  0.00    +0.000 HD
+ENDBRANCH  16  24
+BRANCH  17  26
+ATOM     26  O4  NGI     0     -10.177   6.225 -17.003  0.00  0.00    +0.000 OA
+ATOM     27  HO4 NGI     0     -10.919   6.665 -16.567  0.00  0.00    +0.000 HD
+ENDBRANCH  17  26
+ENDBRANCH   1  15
+BRANCH   8  28
+ATOM     28  N4  NGI     0      -1.795   5.931 -13.525  0.00  0.00    +0.000 NA
+ATOM     29  HN4 NGI     0      -1.410   6.672 -14.020  0.00  0.00    +0.000 HD
+ATOM     30 HN4A NGI     0      -1.296   5.520 -12.803  0.00  0.00    +0.000 HD
+ENDBRANCH   8  28
+BRANCH   4  31
+ATOM     31  C12 NGI     0      -4.661   2.530 -11.505  0.00  0.00    +0.000 C 
+BRANCH  31  32
+ATOM     32  C13 NGI     0      -5.416   1.337 -10.916  0.00  0.00    +0.000 C 
+BRANCH  32  33
+ATOM     33  C14 NGI     0      -4.640   0.774  -9.754  0.00  0.00    +0.000 A 
+ATOM     34  C15 NGI     0      -3.396   1.288  -9.440  0.00  0.00    +0.000 A 
+ATOM     35  C16 NGI     0      -2.683   0.772  -8.374  0.00  0.00    +0.000 A 
+ATOM     36  C17 NGI     0      -3.215  -0.260  -7.622  0.00  0.00    +0.000 A 
+ATOM     37  C21 NGI     0      -4.458  -0.774  -7.936  0.00  0.00    +0.000 A 
+ATOM     38  C22 NGI     0      -5.174  -0.254  -8.998  0.00  0.00    +0.000 A 
+BRANCH  36  39
+ATOM     39  C18 NGI     0      -2.437  -0.822  -6.460  0.00  0.00    +0.000 C 
+BRANCH  39  40
+ATOM     40  C19 NGI     0      -2.957  -2.221  -6.127  0.00  0.00    +0.000 C 
+BRANCH  40  42
+ATOM     41  O6  NGI     0      -1.896  -2.409  -4.031  0.00  0.00    +0.000 OA
+ATOM     42  C20 NGI     0      -2.031  -2.879  -5.137  0.00  0.00    +0.000 C 
+BRANCH  42  43
+ATOM     43  O5  NGI     0      -1.358  -3.988  -5.482  0.00  0.00    +0.000 OA
+ATOM     44  HO5 NGI     0      -0.713  -4.325  -4.846  0.00  0.00    +0.000 HD
+ENDBRANCH  42  43
+ENDBRANCH  40  42
+ENDBRANCH  39  40
+ENDBRANCH  36  39
+ENDBRANCH  32  33
+ENDBRANCH  31  32
+ENDBRANCH   4  31
+TORSDOF 13
+ENDMDL
+MODEL 8
+REMARK VINA RESULT:      -8.5      3.031     12.204
+REMARK  Name = NGI.pdb
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: N1_2  and  C2_4
+REMARK    3  A    between atoms: N2_5  and  C5_13
+REMARK    4  A    between atoms: C3_7  and  C4_10
+REMARK    5  A    between atoms: O3_9  and  C6_16
+REMARK    6  A    between atoms: N4_11  and  C10_23
+REMARK    7  A    between atoms: O4_12  and  C7_19
+REMARK    8  A    between atoms: O5_15  and  C20_33
+REMARK    9  A    between atoms: N6_17  and  C12_25
+REMARK   10  A    between atoms: C12_25  and  C13_26
+REMARK   11  A    between atoms: C13_26  and  C14_27
+REMARK   12  A    between atoms: C17_30  and  C18_31
+REMARK   13  A    between atoms: C18_31  and  C19_32
+REMARK   14  A    between atoms: C19_32  and  C20_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N2  NGI     0      -2.222   2.356  -8.567  0.00  0.00    +0.000 N 
+ATOM      2  N3  NGI     0      -0.503   3.589  -9.106  0.00  0.00    +0.000 NA
+ATOM      3  N5  NGI     0      -2.461   4.244 -12.146  0.00  0.00    +0.000 NA
+ATOM      4  N6  NGI     0      -4.576   3.388 -12.646  0.00  0.00    +0.000 N 
+ATOM      5  N7  NGI     0      -3.522   2.832 -10.642  0.00  0.00    +0.000 N 
+ATOM      6  C8  NGI     0      -0.990   2.804  -8.190  0.00  0.00    +0.000 A 
+ATOM      7  C9  NGI     0      -1.386   3.688 -10.130  0.00  0.00    +0.000 A 
+ATOM      8  C10 NGI     0      -1.401   4.375 -11.357  0.00  0.00    +0.000 C 
+ATOM      9  C11 NGI     0      -3.494   3.493 -11.786  0.00  0.00    +0.000 C 
+ATOM     10  C23 NGI     0      -2.500   2.901  -9.795  0.00  0.00    +0.000 A 
+ATOM     11  HN6 NGI     0      -5.340   2.846 -12.400  0.00  0.00    +0.000 HD
+ATOM     12  H   NGI     0      -4.307   2.282 -10.415  0.00  0.00    +0.000 HD
+ENDROOT
+BRANCH   1  15
+ATOM     13  O2  NGI     0      -2.343   0.826  -6.736  0.00  0.00    +0.000 OA
+ATOM     14  C4  NGI     0      -3.098  -0.354  -6.389  0.00  0.00    +0.000 C 
+ATOM     15  C5  NGI     0      -3.087   1.454  -7.803  0.00  0.00    +0.000 C 
+ATOM     16  C6  NGI     0      -3.564   0.284  -8.693  0.00  0.00    +0.000 C 
+ATOM     17  C7  NGI     0      -3.571  -0.933  -7.741  0.00  0.00    +0.000 C 
+BRANCH  14  20
+ATOM     18  N1  NGI     0      -2.707  -2.557  -5.333  0.00  0.00    +0.000 N 
+ATOM     19  O1  NGI     0      -1.073  -1.058  -5.400  0.00  0.00    +0.000 OA
+ATOM     20  C3  NGI     0      -2.220  -1.348  -5.672  0.00  0.00    +0.000 C 
+ATOM     21  HN1 NGI     0      -3.624  -2.789  -5.550  0.00  0.00    +0.000 HD
+BRANCH  18  23
+ATOM     22  C1  NGI     0      -2.324  -3.667  -3.188  0.00  0.00    +0.000 C 
+ATOM     23  C2  NGI     0      -1.853  -3.522  -4.636  0.00  0.00    +0.000 C 
+ENDBRANCH  18  23
+ENDBRANCH  14  20
+BRANCH  16  24
+ATOM     24  O3  NGI     0      -4.878   0.538  -9.191  0.00  0.00    +0.000 OA
+ATOM     25  HO3 NGI     0      -5.069   0.105 -10.035  0.00  0.00    +0.000 HD
+ENDBRANCH  16  24
+BRANCH  17  26
+ATOM     26  O4  NGI     0      -4.890  -1.468  -7.622  0.00  0.00    +0.000 OA
+ATOM     27  HO4 NGI     0      -5.327  -1.258  -6.785  0.00  0.00    +0.000 HD
+ENDBRANCH  17  26
+ENDBRANCH   1  15
+BRANCH   8  28
+ATOM     28  N4  NGI     0      -0.334   5.171 -11.733  0.00  0.00    +0.000 NA
+ATOM     29  HN4 NGI     0      -0.218   5.419 -12.663  0.00  0.00    +0.000 HD
+ATOM     30 HN4A NGI     0       0.299   5.482 -11.067  0.00  0.00    +0.000 HD
+ENDBRANCH   8  28
+BRANCH   4  31
+ATOM     31  C12 NGI     0      -4.565   4.100 -13.927  0.00  0.00    +0.000 C 
+BRANCH  31  32
+ATOM     32  C13 NGI     0      -5.994   4.502 -14.299  0.00  0.00    +0.000 C 
+BRANCH  32  33
+ATOM     33  C14 NGI     0      -6.108   4.623 -15.796  0.00  0.00    +0.000 A 
+ATOM     34  C15 NGI     0      -5.073   4.193 -16.605  0.00  0.00    +0.000 A 
+ATOM     35  C16 NGI     0      -5.178   4.304 -17.979  0.00  0.00    +0.000 A 
+ATOM     36  C17 NGI     0      -6.317   4.848 -18.544  0.00  0.00    +0.000 A 
+ATOM     37  C21 NGI     0      -7.351   5.278 -17.735  0.00  0.00    +0.000 A 
+ATOM     38  C22 NGI     0      -7.250   5.161 -16.362  0.00  0.00    +0.000 A 
+BRANCH  36  39
+ATOM     39  C18 NGI     0      -6.430   4.968 -20.042  0.00  0.00    +0.000 C 
+BRANCH  39  40
+ATOM     40  C19 NGI     0      -7.710   4.277 -20.514  0.00  0.00    +0.000 C 
+BRANCH  40  42
+ATOM     41  O6  NGI     0      -8.308   2.000 -20.609  0.00  0.00    +0.000 OA
+ATOM     42  C20 NGI     0      -7.431   2.817 -20.761  0.00  0.00    +0.000 C 
+BRANCH  42  43
+ATOM     43  O5  NGI     0      -6.208   2.425 -21.150  0.00  0.00    +0.000 OA
+ATOM     44  HO5 NGI     0      -5.971   2.578 -22.075  0.00  0.00    +0.000 HD
+ENDBRANCH  42  43
+ENDBRANCH  40  42
+ENDBRANCH  39  40
+ENDBRANCH  36  39
+ENDBRANCH  32  33
+ENDBRANCH  31  32
+ENDBRANCH   4  31
+TORSDOF 13
+ENDMDL
+MODEL 9
+REMARK VINA RESULT:      -8.3      3.015     12.364
+REMARK  Name = NGI.pdb
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: N1_2  and  C2_4
+REMARK    3  A    between atoms: N2_5  and  C5_13
+REMARK    4  A    between atoms: C3_7  and  C4_10
+REMARK    5  A    between atoms: O3_9  and  C6_16
+REMARK    6  A    between atoms: N4_11  and  C10_23
+REMARK    7  A    between atoms: O4_12  and  C7_19
+REMARK    8  A    between atoms: O5_15  and  C20_33
+REMARK    9  A    between atoms: N6_17  and  C12_25
+REMARK   10  A    between atoms: C12_25  and  C13_26
+REMARK   11  A    between atoms: C13_26  and  C14_27
+REMARK   12  A    between atoms: C17_30  and  C18_31
+REMARK   13  A    between atoms: C18_31  and  C19_32
+REMARK   14  A    between atoms: C19_32  and  C20_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N2  NGI     0      -2.267   2.678  -8.824  0.00  0.00    +0.000 N 
+ATOM      2  N3  NGI     0      -0.604   3.961  -9.416  0.00  0.00    +0.000 NA
+ATOM      3  N5  NGI     0      -2.640   4.491 -12.430  0.00  0.00    +0.000 NA
+ATOM      4  N6  NGI     0      -4.731   3.552 -12.874  0.00  0.00    +0.000 N 
+ATOM      5  N7  NGI     0      -3.621   3.069 -10.881  0.00  0.00    +0.000 N 
+ATOM      6  C8  NGI     0      -1.045   3.176  -8.478  0.00  0.00    +0.000 A 
+ATOM      7  C9  NGI     0      -1.508   4.011 -10.425  0.00  0.00    +0.000 A 
+ATOM      8  C10 NGI     0      -1.571   4.675 -11.664  0.00  0.00    +0.000 C 
+ATOM      9  C11 NGI     0      -3.639   3.711 -12.037  0.00  0.00    +0.000 C 
+ATOM     10  C23 NGI     0      -2.587   3.191 -10.055  0.00  0.00    +0.000 A 
+ATOM     11  HN6 NGI     0      -5.471   2.986 -12.604  0.00  0.00    +0.000 HD
+ATOM     12  H   NGI     0      -4.382   2.496 -10.630  0.00  0.00    +0.000 HD
+ENDROOT
+BRANCH   1  15
+ATOM     13  O2  NGI     0      -2.291   1.155  -6.983  0.00  0.00    +0.000 OA
+ATOM     14  C4  NGI     0      -3.006  -0.041  -6.606  0.00  0.00    +0.000 C 
+ATOM     15  C5  NGI     0      -3.085   1.759  -8.028  0.00  0.00    +0.000 C 
+ATOM     16  C6  NGI     0      -3.563   0.574  -8.897  0.00  0.00    +0.000 C 
+ATOM     17  C7  NGI     0      -3.509  -0.638  -7.940  0.00  0.00    +0.000 C 
+BRANCH  14  20
+ATOM     18  N1  NGI     0      -2.544  -2.206  -5.501  0.00  0.00    +0.000 N 
+ATOM     19  O1  NGI     0      -0.920  -0.712  -5.730  0.00  0.00    +0.000 OA
+ATOM     20  C3  NGI     0      -2.081  -1.010  -5.915  0.00  0.00    +0.000 C 
+ATOM     21  HN1 NGI     0      -3.473  -2.444  -5.649  0.00  0.00    +0.000 HD
+BRANCH  18  23
+ATOM     22  C1  NGI     0      -2.230  -3.527  -3.468  0.00  0.00    +0.000 C 
+ATOM     23  C2  NGI     0      -1.645  -3.147  -4.829  0.00  0.00    +0.000 C 
+ENDBRANCH  18  23
+ENDBRANCH  14  20
+BRANCH  16  24
+ATOM     24  O3  NGI     0      -4.899   0.794  -9.352  0.00  0.00    +0.000 OA
+ATOM     25  HO3 NGI     0      -5.202   1.707  -9.255  0.00  0.00    +0.000 HD
+ENDBRANCH  16  24
+BRANCH  17  26
+ATOM     26  O4  NGI     0      -4.811  -1.203  -7.775  0.00  0.00    +0.000 OA
+ATOM     27  HO4 NGI     0      -4.807  -2.148  -7.565  0.00  0.00    +0.000 HD
+ENDBRANCH  17  26
+ENDBRANCH   1  15
+BRANCH   8  28
+ATOM     28  N4  NGI     0      -0.540   5.501 -12.073  0.00  0.00    +0.000 NA
+ATOM     29  HN4 NGI     0       0.355   5.370 -11.723  0.00  0.00    +0.000 HD
+ATOM     30 HN4A NGI     0      -0.712   6.213 -12.709  0.00  0.00    +0.000 HD
+ENDBRANCH   8  28
+BRANCH   4  31
+ATOM     31  C12 NGI     0      -4.770   4.240 -14.167  0.00  0.00    +0.000 C 
+BRANCH  31  32
+ATOM     32  C13 NGI     0      -5.589   5.526 -14.037  0.00  0.00    +0.000 C 
+BRANCH  32  33
+ATOM     33  C14 NGI     0      -6.390   5.741 -15.295  0.00  0.00    +0.000 A 
+ATOM     34  C15 NGI     0      -7.610   5.110 -15.453  0.00  0.00    +0.000 A 
+ATOM     35  C16 NGI     0      -8.345   5.308 -16.607  0.00  0.00    +0.000 A 
+ATOM     36  C17 NGI     0      -7.860   6.135 -17.603  0.00  0.00    +0.000 A 
+ATOM     37  C21 NGI     0      -6.640   6.765 -17.445  0.00  0.00    +0.000 A 
+ATOM     38  C22 NGI     0      -5.908   6.573 -16.288  0.00  0.00    +0.000 A 
+BRANCH  36  39
+ATOM     39  C18 NGI     0      -8.662   6.349 -18.861  0.00  0.00    +0.000 C 
+BRANCH  39  40
+ATOM     40  C19 NGI     0     -10.142   6.491 -18.504  0.00  0.00    +0.000 C 
+BRANCH  40  42
+ATOM     41  O6  NGI     0     -11.082   8.013 -16.969  0.00  0.00    +0.000 OA
+ATOM     42  C20 NGI     0     -10.396   7.871 -17.954  0.00  0.00    +0.000 C 
+BRANCH  42  43
+ATOM     43  O5  NGI     0      -9.859   8.943 -18.559  0.00  0.00    +0.000 OA
+ATOM     44  HO5 NGI     0      -9.505   9.638 -17.987  0.00  0.00    +0.000 HD
+ENDBRANCH  42  43
+ENDBRANCH  40  42
+ENDBRANCH  39  40
+ENDBRANCH  36  39
+ENDBRANCH  32  33
+ENDBRANCH  31  32
+ENDBRANCH   4  31
+TORSDOF 13
+ENDMDL
+MODEL 10
+REMARK VINA RESULT:      -7.8      3.535     11.971
+REMARK  Name = NGI.pdb
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: N1_2  and  C2_4
+REMARK    3  A    between atoms: N2_5  and  C5_13
+REMARK    4  A    between atoms: C3_7  and  C4_10
+REMARK    5  A    between atoms: O3_9  and  C6_16
+REMARK    6  A    between atoms: N4_11  and  C10_23
+REMARK    7  A    between atoms: O4_12  and  C7_19
+REMARK    8  A    between atoms: O5_15  and  C20_33
+REMARK    9  A    between atoms: N6_17  and  C12_25
+REMARK   10  A    between atoms: C12_25  and  C13_26
+REMARK   11  A    between atoms: C13_26  and  C14_27
+REMARK   12  A    between atoms: C17_30  and  C18_31
+REMARK   13  A    between atoms: C18_31  and  C19_32
+REMARK   14  A    between atoms: C19_32  and  C20_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N2  NGI     0      -4.396   0.960  -9.062  0.00  0.00    +0.000 N 
+ATOM      2  N3  NGI     0      -5.605  -0.637  -9.931  0.00  0.00    +0.000 NA
+ATOM      3  N5  NGI     0      -6.043   1.766 -12.677  0.00  0.00    +0.000 NA
+ATOM      4  N6  NGI     0      -5.131   3.913 -12.801  0.00  0.00    +0.000 N 
+ATOM      5  N7  NGI     0      -4.712   2.559 -10.949  0.00  0.00    +0.000 N 
+ATOM      6  C8  NGI     0      -4.885  -0.303  -8.899  0.00  0.00    +0.000 A 
+ATOM      7  C9  NGI     0      -5.630   0.391 -10.814  0.00  0.00    +0.000 A 
+ATOM      8  C10 NGI     0      -6.231   0.600 -12.069  0.00  0.00    +0.000 C 
+ATOM      9  C11 NGI     0      -5.295   2.714 -12.126  0.00  0.00    +0.000 C 
+ATOM     10  C23 NGI     0      -4.853   1.426 -10.268  0.00  0.00    +0.000 A 
+ATOM     11  HN6 NGI     0      -4.588   4.616 -12.415  0.00  0.00    +0.000 HD
+ATOM     12  H   NGI     0      -4.168   3.289 -10.574  0.00  0.00    +0.000 HD
+ENDROOT
+BRANCH   1  15
+ATOM     13  O2  NGI     0      -2.545   2.451  -8.827  0.00  0.00    +0.000 OA
+ATOM     14  C4  NGI     0      -1.502   2.702  -7.860  0.00  0.00    +0.000 C 
+ATOM     15  C5  NGI     0      -3.545   1.686  -8.117  0.00  0.00    +0.000 C 
+ATOM     16  C6  NGI     0      -2.740   0.696  -7.246  0.00  0.00    +0.000 C 
+ATOM     17  C7  NGI     0      -1.365   1.380  -7.073  0.00  0.00    +0.000 C 
+BRANCH  14  20
+ATOM     18  N1  NGI     0      -0.085   2.829  -9.884  0.00  0.00    +0.000 N 
+ATOM     19  O1  NGI     0       0.725   3.482  -7.924  0.00  0.00    +0.000 OA
+ATOM     20  C3  NGI     0      -0.208   3.033  -8.558  0.00  0.00    +0.000 C 
+ATOM     21  HN1 NGI     0      -0.830   2.469 -10.390  0.00  0.00    +0.000 HD
+BRANCH  18  23
+ATOM     22  C1  NGI     0       1.835   1.858 -11.046  0.00  0.00    +0.000 C 
+ATOM     23  C2  NGI     0       1.174   3.150 -10.561  0.00  0.00    +0.000 C 
+ENDBRANCH  18  23
+ENDBRANCH  14  20
+BRANCH  16  24
+ATOM     24  O3  NGI     0      -3.373   0.517  -5.978  0.00  0.00    +0.000 OA
+ATOM     25  HO3 NGI     0      -3.259  -0.367  -5.603  0.00  0.00    +0.000 HD
+ENDBRANCH  16  24
+BRANCH  17  26
+ATOM     26  O4  NGI     0      -1.107   1.643  -5.692  0.00  0.00    +0.000 OA
+ATOM     27  HO4 NGI     0      -1.627   2.373  -5.327  0.00  0.00    +0.000 HD
+ENDBRANCH  17  26
+ENDBRANCH   1  15
+BRANCH   8  28
+ATOM     28  N4  NGI     0      -6.999  -0.388 -12.656  0.00  0.00    +0.000 NA
+ATOM     29  HN4 NGI     0      -6.850  -0.631 -13.583  0.00  0.00    +0.000 HD
+ATOM     30 HN4A NGI     0      -7.688  -0.838 -12.143  0.00  0.00    +0.000 HD
+ENDBRANCH   8  28
+BRANCH   4  31
+ATOM     31  C12 NGI     0      -5.777   4.116 -14.100  0.00  0.00    +0.000 C 
+BRANCH  31  32
+ATOM     32  C13 NGI     0      -5.009   5.177 -14.891  0.00  0.00    +0.000 C 
+BRANCH  32  33
+ATOM     33  C14 NGI     0      -5.958   5.905 -15.808  0.00  0.00    +0.000 A 
+ATOM     34  C15 NGI     0      -5.463   6.730 -16.800  0.00  0.00    +0.000 A 
+ATOM     35  C16 NGI     0      -6.334   7.399 -17.641  0.00  0.00    +0.000 A 
+ATOM     36  C17 NGI     0      -7.700   7.243 -17.488  0.00  0.00    +0.000 A 
+ATOM     37  C21 NGI     0      -8.194   6.419 -16.495  0.00  0.00    +0.000 A 
+ATOM     38  C22 NGI     0      -7.323   5.745 -15.659  0.00  0.00    +0.000 A 
+BRANCH  36  39
+ATOM     39  C18 NGI     0      -8.648   7.972 -18.404  0.00  0.00    +0.000 C 
+BRANCH  39  40
+ATOM     40  C19 NGI     0     -10.015   8.096 -17.730  0.00  0.00    +0.000 C 
+BRANCH  40  42
+ATOM     41  O6  NGI     0     -12.213   7.441 -18.272  0.00  0.00    +0.000 OA
+ATOM     42  C20 NGI     0     -11.036   7.316 -18.518  0.00  0.00    +0.000 C 
+BRANCH  42  43
+ATOM     43  O5  NGI     0     -10.638   6.484 -19.493  0.00  0.00    +0.000 OA
+ATOM     44  HO5 NGI     0     -10.452   6.877 -20.357  0.00  0.00    +0.000 HD
+ENDBRANCH  42  43
+ENDBRANCH  40  42
+ENDBRANCH  39  40
+ENDBRANCH  36  39
+ENDBRANCH  32  33
+ENDBRANCH  31  32
+ENDBRANCH   4  31
+TORSDOF 13
+ENDMDL
+MODEL 11
+REMARK VINA RESULT:      -7.7      3.276     12.086
+REMARK  Name = NGI.pdb
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: N1_2  and  C2_4
+REMARK    3  A    between atoms: N2_5  and  C5_13
+REMARK    4  A    between atoms: C3_7  and  C4_10
+REMARK    5  A    between atoms: O3_9  and  C6_16
+REMARK    6  A    between atoms: N4_11  and  C10_23
+REMARK    7  A    between atoms: O4_12  and  C7_19
+REMARK    8  A    between atoms: O5_15  and  C20_33
+REMARK    9  A    between atoms: N6_17  and  C12_25
+REMARK   10  A    between atoms: C12_25  and  C13_26
+REMARK   11  A    between atoms: C13_26  and  C14_27
+REMARK   12  A    between atoms: C17_30  and  C18_31
+REMARK   13  A    between atoms: C18_31  and  C19_32
+REMARK   14  A    between atoms: C19_32  and  C20_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N2  NGI     0      -3.637   2.560 -10.890  0.00  0.00    +0.000 N 
+ATOM      2  N3  NGI     0      -5.742   2.482 -11.461  0.00  0.00    +0.000 NA
+ATOM      3  N5  NGI     0      -4.622   4.587 -14.259  0.00  0.00    +0.000 NA
+ATOM      4  N6  NGI     0      -2.441   5.320 -14.657  0.00  0.00    +0.000 N 
+ATOM      5  N7  NGI     0      -2.916   3.983 -12.807  0.00  0.00    +0.000 N 
+ATOM      6  C8  NGI     0      -4.877   2.086 -10.574  0.00  0.00    +0.000 A 
+ATOM      7  C9  NGI     0      -5.116   3.240 -12.395  0.00  0.00    +0.000 A 
+ATOM      8  C10 NGI     0      -5.530   3.919 -13.556  0.00  0.00    +0.000 C 
+ATOM      9  C11 NGI     0      -3.348   4.607 -13.889  0.00  0.00    +0.000 C 
+ATOM     10  C23 NGI     0      -3.758   3.296 -12.041  0.00  0.00    +0.000 A 
+ATOM     11  HN6 NGI     0      -1.506   5.346 -14.403  0.00  0.00    +0.000 HD
+ATOM     12  H   NGI     0      -1.962   4.027 -12.566  0.00  0.00    +0.000 HD
+ENDROOT
+BRANCH   1  15
+ATOM     13  O2  NGI     0      -2.553   1.186  -9.263  0.00  0.00    +0.000 OA
+ATOM     14  C4  NGI     0      -1.536   1.343  -8.250  0.00  0.00    +0.000 C 
+ATOM     15  C5  NGI     0      -2.404   2.329 -10.134  0.00  0.00    +0.000 C 
+ATOM     16  C6  NGI     0      -2.125   3.515  -9.184  0.00  0.00    +0.000 C 
+ATOM     17  C7  NGI     0      -1.541   2.852  -7.917  0.00  0.00    +0.000 C 
+BRANCH  14  20
+ATOM     18  N1  NGI     0      -3.015  -0.195  -6.999  0.00  0.00    +0.000 N 
+ATOM     19  O1  NGI     0      -1.143   0.543  -6.065  0.00  0.00    +0.000 OA
+ATOM     20  C3  NGI     0      -1.883   0.535  -7.027  0.00  0.00    +0.000 C 
+ATOM     21  HN1 NGI     0      -3.607  -0.201  -7.768  0.00  0.00    +0.000 HD
+BRANCH  18  23
+ATOM     22  C1  NGI     0      -2.921  -2.433  -6.018  0.00  0.00    +0.000 C 
+ATOM     23  C2  NGI     0      -3.351  -0.980  -5.809  0.00  0.00    +0.000 C 
+ENDBRANCH  18  23
+ENDBRANCH  14  20
+BRANCH  16  24
+ATOM     24  O3  NGI     0      -1.173   4.408  -9.765  0.00  0.00    +0.000 OA
+ATOM     25  HO3 NGI     0      -1.288   5.332  -9.501  0.00  0.00    +0.000 HD
+ENDBRANCH  16  24
+BRANCH  17  26
+ATOM     26  O4  NGI     0      -0.211   3.316  -7.676  0.00  0.00    +0.000 OA
+ATOM     27  HO4 NGI     0       0.354   2.675  -7.222  0.00  0.00    +0.000 HD
+ENDBRANCH  17  26
+ENDBRANCH   1  15
+BRANCH   8  28
+ATOM     28  N4  NGI     0      -6.853   3.889 -13.955  0.00  0.00    +0.000 NA
+ATOM     29  HN4 NGI     0      -7.511   3.416 -13.421  0.00  0.00    +0.000 HD
+ATOM     30 HN4A NGI     0      -7.125   4.341 -14.769  0.00  0.00    +0.000 HD
+ENDBRANCH   8  28
+BRANCH   4  31
+ATOM     31  C12 NGI     0      -2.895   6.033 -15.854  0.00  0.00    +0.000 C 
+BRANCH  31  32
+ATOM     32  C13 NGI     0      -3.708   7.261 -15.439  0.00  0.00    +0.000 C 
+BRANCH  32  33
+ATOM     33  C14 NGI     0      -4.921   7.383 -16.324  0.00  0.00    +0.000 A 
+ATOM     34  C15 NGI     0      -5.950   6.466 -16.217  0.00  0.00    +0.000 A 
+ATOM     35  C16 NGI     0      -7.063   6.579 -17.030  0.00  0.00    +0.000 A 
+ATOM     36  C17 NGI     0      -7.146   7.607 -17.951  0.00  0.00    +0.000 A 
+ATOM     37  C21 NGI     0      -6.117   8.523 -18.058  0.00  0.00    +0.000 A 
+ATOM     38  C22 NGI     0      -5.007   8.415 -17.241  0.00  0.00    +0.000 A 
+BRANCH  36  39
+ATOM     39  C18 NGI     0      -8.359   7.728 -18.836  0.00  0.00    +0.000 C 
+BRANCH  39  40
+ATOM     40  C19 NGI     0      -9.521   8.313 -18.031  0.00  0.00    +0.000 C 
+BRANCH  40  42
+ATOM     41  O6  NGI     0     -10.607   6.229 -18.220  0.00  0.00    +0.000 OA
+ATOM     42  C20 NGI     0     -10.393   7.193 -17.523  0.00  0.00    +0.000 C 
+BRANCH  42  43
+ATOM     43  O5  NGI     0     -10.931   7.267 -16.295  0.00  0.00    +0.000 OA
+ATOM     44  HO5 NGI     0     -10.478   7.829 -15.651  0.00  0.00    +0.000 HD
+ENDBRANCH  42  43
+ENDBRANCH  40  42
+ENDBRANCH  39  40
+ENDBRANCH  36  39
+ENDBRANCH  32  33
+ENDBRANCH  31  32
+ENDBRANCH   4  31
+TORSDOF 13
+ENDMDL
+MODEL 12
+REMARK VINA RESULT:      -7.5      2.348      2.784
+REMARK  Name = NGI.pdb
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: N1_2  and  C2_4
+REMARK    3  A    between atoms: N2_5  and  C5_13
+REMARK    4  A    between atoms: C3_7  and  C4_10
+REMARK    5  A    between atoms: O3_9  and  C6_16
+REMARK    6  A    between atoms: N4_11  and  C10_23
+REMARK    7  A    between atoms: O4_12  and  C7_19
+REMARK    8  A    between atoms: O5_15  and  C20_33
+REMARK    9  A    between atoms: N6_17  and  C12_25
+REMARK   10  A    between atoms: C12_25  and  C13_26
+REMARK   11  A    between atoms: C13_26  and  C14_27
+REMARK   12  A    between atoms: C17_30  and  C18_31
+REMARK   13  A    between atoms: C18_31  and  C19_32
+REMARK   14  A    between atoms: C19_32  and  C20_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N2  NGI     0      -3.448   4.721 -13.825  0.00  0.00    +0.000 N 
+ATOM      2  N3  NGI     0      -1.871   4.824 -12.320  0.00  0.00    +0.000 NA
+ATOM      3  N5  NGI     0      -4.044   2.489 -10.495  0.00  0.00    +0.000 NA
+ATOM      4  N6  NGI     0      -6.100   1.652 -11.220  0.00  0.00    +0.000 N 
+ATOM      5  N7  NGI     0      -4.891   3.130 -12.558  0.00  0.00    +0.000 N 
+ATOM      6  C8  NGI     0      -2.243   5.263 -13.487  0.00  0.00    +0.000 A 
+ATOM      7  C9  NGI     0      -2.815   3.982 -11.833  0.00  0.00    +0.000 A 
+ATOM      8  C10 NGI     0      -2.953   3.231 -10.652  0.00  0.00    +0.000 C 
+ATOM      9  C11 NGI     0      -4.981   2.441 -11.433  0.00  0.00    +0.000 C 
+ATOM     10  C23 NGI     0      -3.836   3.904 -12.794  0.00  0.00    +0.000 A 
+ATOM     11  HN6 NGI     0      -6.795   1.604 -11.894  0.00  0.00    +0.000 HD
+ATOM     12  H   NGI     0      -5.611   3.069 -13.226  0.00  0.00    +0.000 HD
+ENDROOT
+BRANCH   1  15
+ATOM     13  O2  NGI     0      -3.613   6.079 -15.785  0.00  0.00    +0.000 OA
+ATOM     14  C4  NGI     0      -4.656   6.548 -16.665  0.00  0.00    +0.000 C 
+ATOM     15  C5  NGI     0      -4.194   4.972 -15.061  0.00  0.00    +0.000 C 
+ATOM     16  C6  NGI     0      -5.635   5.424 -14.737  0.00  0.00    +0.000 C 
+ATOM     17  C7  NGI     0      -5.946   6.485 -15.817  0.00  0.00    +0.000 C 
+BRANCH  14  20
+ATOM     18  N1  NGI     0      -4.440   8.296 -18.402  0.00  0.00    +0.000 N 
+ATOM     19  O1  NGI     0      -4.108   8.809 -16.269  0.00  0.00    +0.000 OA
+ATOM     20  C3  NGI     0      -4.382   7.965 -17.097  0.00  0.00    +0.000 C 
+ATOM     21  HN1 NGI     0      -4.659   7.622 -19.064  0.00  0.00    +0.000 HD
+BRANCH  18  23
+ATOM     22  C1  NGI     0      -2.880   9.717 -19.637  0.00  0.00    +0.000 C 
+ATOM     23  C2  NGI     0      -4.173   9.674 -18.820  0.00  0.00    +0.000 C 
+ENDBRANCH  18  23
+ENDBRANCH  14  20
+BRANCH  16  24
+ATOM     24  O3  NGI     0      -6.540   4.324 -14.841  0.00  0.00    +0.000 OA
+ATOM     25  HO3 NGI     0      -6.488   3.849 -15.683  0.00  0.00    +0.000 HD
+ENDBRANCH  16  24
+BRANCH  17  26
+ATOM     26  O4  NGI     0      -7.054   6.072 -16.620  0.00  0.00    +0.000 OA
+ATOM     27  HO4 NGI     0      -7.649   6.793 -16.870  0.00  0.00    +0.000 HD
+ENDBRANCH  17  26
+ENDBRANCH   1  15
+BRANCH   8  28
+ATOM     28  N4  NGI     0      -1.974   3.264  -9.676  0.00  0.00    +0.000 NA
+ATOM     29  HN4 NGI     0      -1.877   4.048  -9.113  0.00  0.00    +0.000 HD
+ATOM     30 HN4A NGI     0      -1.383   2.505  -9.554  0.00  0.00    +0.000 HD
+ENDBRANCH   8  28
+BRANCH   4  31
+ATOM     31  C12 NGI     0      -6.232   0.889  -9.976  0.00  0.00    +0.000 C 
+BRANCH  31  32
+ATOM     32  C13 NGI     0      -5.400  -0.391 -10.071  0.00  0.00    +0.000 C 
+BRANCH  32  33
+ATOM     33  C14 NGI     0      -4.486  -0.487  -8.877  0.00  0.00    +0.000 A 
+ATOM     34  C15 NGI     0      -4.982  -0.919  -7.661  0.00  0.00    +0.000 A 
+ATOM     35  C16 NGI     0      -4.143  -1.007  -6.565  0.00  0.00    +0.000 A 
+ATOM     36  C17 NGI     0      -2.810  -0.661  -6.686  0.00  0.00    +0.000 A 
+ATOM     37  C21 NGI     0      -2.315  -0.229  -7.901  0.00  0.00    +0.000 A 
+ATOM     38  C22 NGI     0      -3.151  -0.147  -8.999  0.00  0.00    +0.000 A 
+BRANCH  36  39
+ATOM     39  C18 NGI     0      -1.897  -0.757  -5.491  0.00  0.00    +0.000 C 
+BRANCH  39  40
+ATOM     40  C19 NGI     0      -0.898   0.402  -5.517  0.00  0.00    +0.000 C 
+BRANCH  40  42
+ATOM     41  O6  NGI     0      -2.166   2.340  -5.951  0.00  0.00    +0.000 OA
+ATOM     42  C20 NGI     0      -1.597   1.676  -5.117  0.00  0.00    +0.000 C 
+BRANCH  42  43
+ATOM     43  O5  NGI     0      -1.587   2.072  -3.835  0.00  0.00    +0.000 OA
+ATOM     44  HO5 NGI     0      -0.754   1.979  -3.353  0.00  0.00    +0.000 HD
+ENDBRANCH  42  43
+ENDBRANCH  40  42
+ENDBRANCH  39  40
+ENDBRANCH  36  39
+ENDBRANCH  32  33
+ENDBRANCH  31  32
+ENDBRANCH   4  31
+TORSDOF 13
+ENDMDL
+MODEL 13
+REMARK VINA RESULT:      -7.2      3.061     12.764
+REMARK  Name = NGI.pdb
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: N1_2  and  C2_4
+REMARK    3  A    between atoms: N2_5  and  C5_13
+REMARK    4  A    between atoms: C3_7  and  C4_10
+REMARK    5  A    between atoms: O3_9  and  C6_16
+REMARK    6  A    between atoms: N4_11  and  C10_23
+REMARK    7  A    between atoms: O4_12  and  C7_19
+REMARK    8  A    between atoms: O5_15  and  C20_33
+REMARK    9  A    between atoms: N6_17  and  C12_25
+REMARK   10  A    between atoms: C12_25  and  C13_26
+REMARK   11  A    between atoms: C13_26  and  C14_27
+REMARK   12  A    between atoms: C17_30  and  C18_31
+REMARK   13  A    between atoms: C18_31  and  C19_32
+REMARK   14  A    between atoms: C19_32  and  C20_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N2  NGI     0      -3.930   0.688  -9.468  0.00  0.00    +0.000 N 
+ATOM      2  N3  NGI     0      -5.898  -0.134  -9.930  0.00  0.00    +0.000 NA
+ATOM      3  N5  NGI     0      -5.927   2.495 -12.497  0.00  0.00    +0.000 NA
+ATOM      4  N6  NGI     0      -4.229   4.042 -12.918  0.00  0.00    +0.000 N 
+ATOM      5  N7  NGI     0      -3.985   2.455 -11.227  0.00  0.00    +0.000 N 
+ATOM      6  C8  NGI     0      -4.865  -0.252  -9.148  0.00  0.00    +0.000 A 
+ATOM      7  C9  NGI     0      -5.695   0.891 -10.793  0.00  0.00    +0.000 A 
+ATOM      8  C10 NGI     0      -6.445   1.466 -11.835  0.00  0.00    +0.000 C 
+ATOM      9  C11 NGI     0      -4.723   2.967 -12.198  0.00  0.00    +0.000 C 
+ATOM     10  C23 NGI     0      -4.429   1.428 -10.509  0.00  0.00    +0.000 A 
+ATOM     11  HN6 NGI     0      -3.352   4.400 -12.714  0.00  0.00    +0.000 HD
+ATOM     12  H   NGI     0      -3.099   2.838 -11.035  0.00  0.00    +0.000 HD
+ENDROOT
+BRANCH   1  15
+ATOM     13  O2  NGI     0      -2.355  -0.223  -7.919  0.00  0.00    +0.000 OA
+ATOM     14  C4  NGI     0      -1.363   0.277  -6.998  0.00  0.00    +0.000 C 
+ATOM     15  C5  NGI     0      -2.632   0.876  -8.814  0.00  0.00    +0.000 C 
+ATOM     16  C6  NGI     0      -2.663   2.126  -7.907  0.00  0.00    +0.000 C 
+ATOM     17  C7  NGI     0      -1.808   1.723  -6.684  0.00  0.00    +0.000 C 
+BRANCH  14  20
+ATOM     18  N1  NGI     0      -1.826  -1.811  -5.756  0.00  0.00    +0.000 N 
+ATOM     19  O1  NGI     0      -0.908  -0.083  -4.710  0.00  0.00    +0.000 OA
+ATOM     20  C3  NGI     0      -1.349  -0.551  -5.739  0.00  0.00    +0.000 C 
+ATOM     21  HN1 NGI     0      -2.179  -2.185  -6.578  0.00  0.00    +0.000 HD
+BRANCH  18  23
+ATOM     22  C1  NGI     0      -3.187  -3.258  -4.329  0.00  0.00    +0.000 C 
+ATOM     23  C2  NGI     0      -1.813  -2.615  -4.531  0.00  0.00    +0.000 C 
+ENDBRANCH  18  23
+ENDBRANCH  14  20
+BRANCH  16  24
+ATOM     24  O3  NGI     0      -2.081   3.246  -8.577  0.00  0.00    +0.000 OA
+ATOM     25  HO3 NGI     0      -2.047   3.154  -9.539  0.00  0.00    +0.000 HD
+ENDBRANCH  16  24
+BRANCH  17  26
+ATOM     26  O4  NGI     0      -0.673   2.582  -6.562  0.00  0.00    +0.000 OA
+ATOM     27  HO4 NGI     0       0.038   2.220  -6.015  0.00  0.00    +0.000 HD
+ENDBRANCH  17  26
+ENDBRANCH   1  15
+BRANCH   8  28
+ATOM     28  N4  NGI     0      -7.694   0.971 -12.163  0.00  0.00    +0.000 NA
+ATOM     29  HN4 NGI     0      -7.772   0.116 -12.615  0.00  0.00    +0.000 HD
+ATOM     30 HN4A NGI     0      -8.491   1.477 -11.943  0.00  0.00    +0.000 HD
+ENDBRANCH   8  28
+BRANCH   4  31
+ATOM     31  C12 NGI     0      -5.031   4.637 -13.990  0.00  0.00    +0.000 C 
+BRANCH  31  32
+ATOM     32  C13 NGI     0      -4.174   5.628 -14.779  0.00  0.00    +0.000 C 
+BRANCH  32  33
+ATOM     33  C14 NGI     0      -5.024   6.313 -15.818  0.00  0.00    +0.000 A 
+ATOM     34  C15 NGI     0      -6.382   6.058 -15.876  0.00  0.00    +0.000 A 
+ATOM     35  C16 NGI     0      -7.162   6.686 -16.830  0.00  0.00    +0.000 A 
+ATOM     36  C17 NGI     0      -6.584   7.567 -17.725  0.00  0.00    +0.000 A 
+ATOM     37  C21 NGI     0      -5.227   7.821 -17.666  0.00  0.00    +0.000 A 
+ATOM     38  C22 NGI     0      -4.448   7.199 -16.709  0.00  0.00    +0.000 A 
+BRANCH  36  39
+ATOM     39  C18 NGI     0      -7.435   8.251 -18.764  0.00  0.00    +0.000 C 
+BRANCH  39  40
+ATOM     40  C19 NGI     0      -7.199   7.599 -20.127  0.00  0.00    +0.000 C 
+BRANCH  40  42
+ATOM     41  O6  NGI     0      -8.032   5.646 -21.149  0.00  0.00    +0.000 OA
+ATOM     42  C20 NGI     0      -8.244   6.539 -20.364  0.00  0.00    +0.000 C 
+BRANCH  42  43
+ATOM     43  O5  NGI     0      -9.411   6.587 -19.700  0.00  0.00    +0.000 OA
+ATOM     44  HO5 NGI     0      -9.951   7.380 -19.820  0.00  0.00    +0.000 HD
+ENDBRANCH  42  43
+ENDBRANCH  40  42
+ENDBRANCH  39  40
+ENDBRANCH  36  39
+ENDBRANCH  32  33
+ENDBRANCH  31  32
+ENDBRANCH   4  31
+TORSDOF 13
+ENDMDL
+MODEL 14
+REMARK VINA RESULT:      -6.9      3.693     11.560
+REMARK  Name = NGI.pdb
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: N1_2  and  C2_4
+REMARK    3  A    between atoms: N2_5  and  C5_13
+REMARK    4  A    between atoms: C3_7  and  C4_10
+REMARK    5  A    between atoms: O3_9  and  C6_16
+REMARK    6  A    between atoms: N4_11  and  C10_23
+REMARK    7  A    between atoms: O4_12  and  C7_19
+REMARK    8  A    between atoms: O5_15  and  C20_33
+REMARK    9  A    between atoms: N6_17  and  C12_25
+REMARK   10  A    between atoms: C12_25  and  C13_26
+REMARK   11  A    between atoms: C13_26  and  C14_27
+REMARK   12  A    between atoms: C17_30  and  C18_31
+REMARK   13  A    between atoms: C18_31  and  C19_32
+REMARK   14  A    between atoms: C19_32  and  C20_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N2  NGI     0      -4.382   0.973  -9.219  0.00  0.00    +0.000 N 
+ATOM      2  N3  NGI     0      -5.739  -0.559  -9.978  0.00  0.00    +0.000 NA
+ATOM      3  N5  NGI     0      -6.033   1.721 -12.845  0.00  0.00    +0.000 NA
+ATOM      4  N6  NGI     0      -4.947   3.773 -13.103  0.00  0.00    +0.000 N 
+ATOM      5  N7  NGI     0      -4.603   2.490 -11.187  0.00  0.00    +0.000 N 
+ATOM      6  C8  NGI     0      -4.972  -0.233  -8.979  0.00  0.00    +0.000 A 
+ATOM      7  C9  NGI     0      -5.697   0.419 -10.916  0.00  0.00    +0.000 A 
+ATOM      8  C10 NGI     0      -6.305   0.610 -12.171  0.00  0.00    +0.000 C 
+ATOM      9  C11 NGI     0      -5.196   2.630 -12.360  0.00  0.00    +0.000 C 
+ATOM     10  C23 NGI     0      -4.824   1.411 -10.442  0.00  0.00    +0.000 A 
+ATOM     11  HN6 NGI     0      -4.338   4.447 -12.766  0.00  0.00    +0.000 HD
+ATOM     12  H   NGI     0      -3.992   3.190 -10.862  0.00  0.00    +0.000 HD
+ENDROOT
+BRANCH   1  15
+ATOM     13  O2  NGI     0      -3.028   2.920  -8.928  0.00  0.00    +0.000 OA
+ATOM     14  C4  NGI     0      -1.799   3.265  -8.255  0.00  0.00    +0.000 C 
+ATOM     15  C5  NGI     0      -3.452   1.674  -8.331  0.00  0.00    +0.000 C 
+ATOM     16  C6  NGI     0      -2.153   0.857  -8.158  0.00  0.00    +0.000 C 
+ATOM     17  C7  NGI     0      -1.040   1.927  -8.107  0.00  0.00    +0.000 C 
+BRANCH  14  20
+ATOM     18  N1  NGI     0      -1.070   4.186 -10.433  0.00  0.00    +0.000 N 
+ATOM     19  O1  NGI     0      -0.286   5.053  -8.547  0.00  0.00    +0.000 OA
+ATOM     20  C3  NGI     0      -0.997   4.232  -9.088  0.00  0.00    +0.000 C 
+ATOM     21  HN1 NGI     0      -1.638   3.529 -10.865  0.00  0.00    +0.000 HD
+BRANCH  18  23
+ATOM     22  C1  NGI     0      -1.227   5.892 -12.177  0.00  0.00    +0.000 C 
+ATOM     23  C2  NGI     0      -0.290   5.126 -11.241  0.00  0.00    +0.000 C 
+ENDBRANCH  18  23
+ENDBRANCH  14  20
+BRANCH  16  24
+ATOM     24  O3  NGI     0      -2.188   0.113  -6.939  0.00  0.00    +0.000 OA
+ATOM     25  HO3 NGI     0      -2.439  -0.815  -7.051  0.00  0.00    +0.000 HD
+ENDBRANCH  16  24
+BRANCH  17  26
+ATOM     26  O4  NGI     0      -0.354   1.877  -6.855  0.00  0.00    +0.000 OA
+ATOM     27  HO4 NGI     0      -0.095   0.985  -6.584  0.00  0.00    +0.000 HD
+ENDBRANCH  17  26
+ENDBRANCH   1  15
+BRANCH   8  28
+ATOM     28  N4  NGI     0      -7.166  -0.339 -12.690  0.00  0.00    +0.000 NA
+ATOM     29  HN4 NGI     0      -7.976  -0.061 -13.146  0.00  0.00    +0.000 HD
+ATOM     30 HN4A NGI     0      -6.962  -1.283 -12.597  0.00  0.00    +0.000 HD
+ENDBRANCH   8  28
+BRANCH   4  31
+ATOM     31  C12 NGI     0      -5.601   3.961 -14.401  0.00  0.00    +0.000 C 
+BRANCH  31  32
+ATOM     32  C13 NGI     0      -4.545   3.987 -15.507  0.00  0.00    +0.000 C 
+BRANCH  32  33
+ATOM     33  C14 NGI     0      -4.598   5.312 -16.221  0.00  0.00    +0.000 A 
+ATOM     34  C15 NGI     0      -5.197   5.404 -17.464  0.00  0.00    +0.000 A 
+ATOM     35  C16 NGI     0      -5.245   6.620 -18.120  0.00  0.00    +0.000 A 
+ATOM     36  C17 NGI     0      -4.693   7.744 -17.533  0.00  0.00    +0.000 A 
+ATOM     37  C21 NGI     0      -4.094   7.652 -16.292  0.00  0.00    +0.000 A 
+ATOM     38  C22 NGI     0      -4.051   6.438 -15.632  0.00  0.00    +0.000 A 
+BRANCH  36  39
+ATOM     39  C18 NGI     0      -4.746   9.069 -18.249  0.00  0.00    +0.000 C 
+BRANCH  39  40
+ATOM     40  C19 NGI     0      -4.191   8.908 -19.664  0.00  0.00    +0.000 C 
+BRANCH  40  42
+ATOM     41  O6  NGI     0      -2.841  10.798 -19.270  0.00  0.00    +0.000 OA
+ATOM     42  C20 NGI     0      -2.928   9.718 -19.804  0.00  0.00    +0.000 C 
+BRANCH  42  43
+ATOM     43  O5  NGI     0      -1.899   9.239 -20.521  0.00  0.00    +0.000 OA
+ATOM     44  HO5 NGI     0      -2.101   8.900 -21.405  0.00  0.00    +0.000 HD
+ENDBRANCH  42  43
+ENDBRANCH  40  42
+ENDBRANCH  39  40
+ENDBRANCH  36  39
+ENDBRANCH  32  33
+ENDBRANCH  31  32
+ENDBRANCH   4  31
+TORSDOF 13
+ENDMDL
+MODEL 15
+REMARK VINA RESULT:      -6.7      3.171     11.450
+REMARK  Name = NGI.pdb
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: N1_2  and  C2_4
+REMARK    3  A    between atoms: N2_5  and  C5_13
+REMARK    4  A    between atoms: C3_7  and  C4_10
+REMARK    5  A    between atoms: O3_9  and  C6_16
+REMARK    6  A    between atoms: N4_11  and  C10_23
+REMARK    7  A    between atoms: O4_12  and  C7_19
+REMARK    8  A    between atoms: O5_15  and  C20_33
+REMARK    9  A    between atoms: N6_17  and  C12_25
+REMARK   10  A    between atoms: C12_25  and  C13_26
+REMARK   11  A    between atoms: C13_26  and  C14_27
+REMARK   12  A    between atoms: C17_30  and  C18_31
+REMARK   13  A    between atoms: C18_31  and  C19_32
+REMARK   14  A    between atoms: C19_32  and  C20_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N2  NGI     0      -0.587   2.427  -9.348  0.00  0.00    +0.000 N 
+ATOM      2  N3  NGI     0       0.291   3.990 -10.594  0.00  0.00    +0.000 NA
+ATOM      3  N5  NGI     0      -3.048   4.054 -12.128  0.00  0.00    +0.000 NA
+ATOM      4  N6  NGI     0      -4.874   2.724 -11.534  0.00  0.00    +0.000 N 
+ATOM      5  N7  NGI     0      -2.842   2.507 -10.411  0.00  0.00    +0.000 N 
+ATOM      6  C8  NGI     0       0.532   3.156  -9.625  0.00  0.00    +0.000 A 
+ATOM      7  C9  NGI     0      -0.992   3.843 -11.005  0.00  0.00    +0.000 A 
+ATOM      8  C10 NGI     0      -1.789   4.455 -11.990  0.00  0.00    +0.000 C 
+ATOM      9  C11 NGI     0      -3.555   3.107 -11.349  0.00  0.00    +0.000 C 
+ATOM     10  C23 NGI     0      -1.572   2.842 -10.209  0.00  0.00    +0.000 A 
+ATOM     11  HN6 NGI     0      -5.262   2.035 -10.975  0.00  0.00    +0.000 HD
+ATOM     12  H   NGI     0      -3.256   1.806  -9.858  0.00  0.00    +0.000 HD
+ENDROOT
+BRANCH   1  15
+ATOM     13  O2  NGI     0      -1.723   0.426  -8.703  0.00  0.00    +0.000 OA
+ATOM     14  C4  NGI     0      -2.110  -0.223  -7.473  0.00  0.00    +0.000 C 
+ATOM     15  C5  NGI     0      -0.713   1.388  -8.324  0.00  0.00    +0.000 C 
+ATOM     16  C6  NGI     0      -1.224   1.997  -7.000  0.00  0.00    +0.000 C 
+ATOM     17  C7  NGI     0      -2.165   0.913  -6.427  0.00  0.00    +0.000 C 
+BRANCH  14  20
+ATOM     18  N1  NGI     0      -4.388  -0.312  -8.436  0.00  0.00    +0.000 N 
+ATOM     19  O1  NGI     0      -3.728  -1.877  -7.008  0.00  0.00    +0.000 OA
+ATOM     20  C3  NGI     0      -3.466  -0.864  -7.622  0.00  0.00    +0.000 C 
+ATOM     21  HN1 NGI     0      -4.178   0.498  -8.926  0.00  0.00    +0.000 HD
+BRANCH  18  23
+ATOM     22  C1  NGI     0      -6.343  -1.103  -7.198  0.00  0.00    +0.000 C 
+ATOM     23  C2  NGI     0      -5.705  -0.936  -8.579  0.00  0.00    +0.000 C 
+ENDBRANCH  18  23
+ENDBRANCH  14  20
+BRANCH  16  24
+ATOM     24  O3  NGI     0      -0.136   2.238  -6.106  0.00  0.00    +0.000 OA
+ATOM     25  HO3 NGI     0      -0.404   2.587  -5.245  0.00  0.00    +0.000 HD
+ENDBRANCH  16  24
+BRANCH  17  26
+ATOM     26  O4  NGI     0      -1.686   0.452  -5.162  0.00  0.00    +0.000 OA
+ATOM     27  HO4 NGI     0      -0.889   0.906  -4.853  0.00  0.00    +0.000 HD
+ENDBRANCH  17  26
+ENDBRANCH   1  15
+BRANCH   8  28
+ATOM     28  N4  NGI     0      -1.273   5.453 -12.796  0.00  0.00    +0.000 NA
+ATOM     29  HN4 NGI     0      -1.393   5.411 -13.758  0.00  0.00    +0.000 HD
+ATOM     30 HN4A NGI     0      -0.789   6.195 -12.401  0.00  0.00    +0.000 HD
+ENDBRANCH   8  28
+BRANCH   4  31
+ATOM     31  C12 NGI     0      -5.683   3.363 -12.576  0.00  0.00    +0.000 C 
+BRANCH  31  32
+ATOM     32  C13 NGI     0      -5.065   3.081 -13.947  0.00  0.00    +0.000 C 
+BRANCH  32  33
+ATOM     33  C14 NGI     0      -5.355   4.232 -14.875  0.00  0.00    +0.000 A 
+ATOM     34  C15 NGI     0      -6.415   5.080 -14.615  0.00  0.00    +0.000 A 
+ATOM     35  C16 NGI     0      -6.681   6.136 -15.467  0.00  0.00    +0.000 A 
+ATOM     36  C17 NGI     0      -5.887   6.343 -16.580  0.00  0.00    +0.000 A 
+ATOM     37  C21 NGI     0      -4.827   5.495 -16.840  0.00  0.00    +0.000 A 
+ATOM     38  C22 NGI     0      -4.557   4.443 -15.985  0.00  0.00    +0.000 A 
+BRANCH  36  39
+ATOM     39  C18 NGI     0      -6.177   7.494 -17.507  0.00  0.00    +0.000 C 
+BRANCH  39  40
+ATOM     40  C19 NGI     0      -4.882   7.943 -18.186  0.00  0.00    +0.000 C 
+BRANCH  40  42
+ATOM     41  O6  NGI     0      -4.389  10.238 -18.394  0.00  0.00    +0.000 OA
+ATOM     42  C20 NGI     0      -4.474   9.291 -17.649  0.00  0.00    +0.000 C 
+BRANCH  42  43
+ATOM     43  O5  NGI     0      -4.207   9.439 -16.341  0.00  0.00    +0.000 OA
+ATOM     44  HO5 NGI     0      -3.460  10.006 -16.108  0.00  0.00    +0.000 HD
+ENDBRANCH  42  43
+ENDBRANCH  40  42
+ENDBRANCH  39  40
+ENDBRANCH  36  39
+ENDBRANCH  32  33
+ENDBRANCH  31  32
+ENDBRANCH   4  31
+TORSDOF 13
+ENDMDL
+MODEL 16
+REMARK VINA RESULT:      -6.3      2.840     11.298
+REMARK  Name = NGI.pdb
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: N1_2  and  C2_4
+REMARK    3  A    between atoms: N2_5  and  C5_13
+REMARK    4  A    between atoms: C3_7  and  C4_10
+REMARK    5  A    between atoms: O3_9  and  C6_16
+REMARK    6  A    between atoms: N4_11  and  C10_23
+REMARK    7  A    between atoms: O4_12  and  C7_19
+REMARK    8  A    between atoms: O5_15  and  C20_33
+REMARK    9  A    between atoms: N6_17  and  C12_25
+REMARK   10  A    between atoms: C12_25  and  C13_26
+REMARK   11  A    between atoms: C13_26  and  C14_27
+REMARK   12  A    between atoms: C17_30  and  C18_31
+REMARK   13  A    between atoms: C18_31  and  C19_32
+REMARK   14  A    between atoms: C19_32  and  C20_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N2  NGI     0      -0.785   2.438  -9.301  0.00  0.00    +0.000 N 
+ATOM      2  N3  NGI     0      -0.043   4.029 -10.598  0.00  0.00    +0.000 NA
+ATOM      3  N5  NGI     0      -3.351   3.715 -12.168  0.00  0.00    +0.000 NA
+ATOM      4  N6  NGI     0      -5.049   2.239 -11.542  0.00  0.00    +0.000 N 
+ATOM      5  N7  NGI     0      -3.022   2.261 -10.390  0.00  0.00    +0.000 N 
+ATOM      6  C8  NGI     0       0.263   3.260  -9.594  0.00  0.00    +0.000 A 
+ATOM      7  C9  NGI     0      -1.300   3.745 -11.017  0.00  0.00    +0.000 A 
+ATOM      8  C10 NGI     0      -2.138   4.240 -12.033  0.00  0.00    +0.000 C 
+ATOM      9  C11 NGI     0      -3.776   2.754 -11.358  0.00  0.00    +0.000 C 
+ATOM     10  C23 NGI     0      -1.792   2.723 -10.188  0.00  0.00    +0.000 A 
+ATOM     11  HN6 NGI     0      -5.378   1.537 -10.960  0.00  0.00    +0.000 HD
+ATOM     12  H   NGI     0      -3.375   1.544  -9.814  0.00  0.00    +0.000 HD
+ENDROOT
+BRANCH   1  15
+ATOM     13  O2  NGI     0      -1.813   0.420  -8.540  0.00  0.00    +0.000 OA
+ATOM     14  C4  NGI     0      -2.121  -0.200  -7.273  0.00  0.00    +0.000 C 
+ATOM     15  C5  NGI     0      -0.826   1.431  -8.239  0.00  0.00    +0.000 C 
+ATOM     16  C6  NGI     0      -1.302   2.066  -6.913  0.00  0.00    +0.000 C 
+ATOM     17  C7  NGI     0      -2.174   0.968  -6.263  0.00  0.00    +0.000 C 
+BRANCH  14  20
+ATOM     18  N1  NGI     0      -4.386  -0.489  -8.225  0.00  0.00    +0.000 N 
+ATOM     19  O1  NGI     0      -3.693  -1.824  -6.594  0.00  0.00    +0.000 OA
+ATOM     20  C3  NGI     0      -3.456  -0.896  -7.339  0.00  0.00    +0.000 C 
+ATOM     21  HN1 NGI     0      -4.196   0.253  -8.821  0.00  0.00    +0.000 HD
+BRANCH  18  23
+ATOM     22  C1  NGI     0      -6.370  -1.079  -6.924  0.00  0.00    +0.000 C 
+ATOM     23  C2  NGI     0      -5.683  -1.166  -8.288  0.00  0.00    +0.000 C 
+ENDBRANCH  18  23
+ENDBRANCH  14  20
+BRANCH  16  24
+ATOM     24  O3  NGI     0      -0.186   2.379  -6.078  0.00  0.00    +0.000 OA
+ATOM     25  HO3 NGI     0       0.089   3.305  -6.119  0.00  0.00    +0.000 HD
+ENDBRANCH  16  24
+BRANCH  17  26
+ATOM     26  O4  NGI     0      -1.623   0.570  -5.007  0.00  0.00    +0.000 OA
+ATOM     27  HO4 NGI     0      -0.801   1.025  -4.775  0.00  0.00    +0.000 HD
+ENDBRANCH  17  26
+ENDBRANCH   1  15
+BRANCH   8  28
+ATOM     28  N4  NGI     0      -1.708   5.252 -12.871  0.00  0.00    +0.000 NA
+ATOM     29  HN4 NGI     0      -0.858   5.171 -13.332  0.00  0.00    +0.000 HD
+ATOM     30 HN4A NGI     0      -2.254   6.042 -12.999  0.00  0.00    +0.000 HD
+ENDBRANCH   8  28
+BRANCH   4  31
+ATOM     31  C12 NGI     0      -5.901   2.758 -12.616  0.00  0.00    +0.000 C 
+BRANCH  31  32
+ATOM     32  C13 NGI     0      -5.550   4.222 -12.884  0.00  0.00    +0.000 C 
+BRANCH  32  33
+ATOM     33  C14 NGI     0      -5.535   4.472 -14.370  0.00  0.00    +0.000 A 
+ATOM     34  C15 NGI     0      -6.565   5.180 -14.961  0.00  0.00    +0.000 A 
+ATOM     35  C16 NGI     0      -6.552   5.409 -16.325  0.00  0.00    +0.000 A 
+ATOM     36  C17 NGI     0      -5.509   4.929 -17.096  0.00  0.00    +0.000 A 
+ATOM     37  C21 NGI     0      -4.481   4.221 -16.505  0.00  0.00    +0.000 A 
+ATOM     38  C22 NGI     0      -4.490   3.998 -15.141  0.00  0.00    +0.000 A 
+BRANCH  36  39
+ATOM     39  C18 NGI     0      -5.496   5.179 -18.582  0.00  0.00    +0.000 C 
+BRANCH  39  40
+ATOM     40  C19 NGI     0      -5.501   3.842 -19.325  0.00  0.00    +0.000 C 
+BRANCH  40  42
+ATOM     41  O6  NGI     0      -6.992   3.790 -21.150  0.00  0.00    +0.000 OA
+ATOM     42  C20 NGI     0      -6.851   3.626 -19.961  0.00  0.00    +0.000 C 
+BRANCH  42  43
+ATOM     43  O5  NGI     0      -7.896   3.251 -19.206  0.00  0.00    +0.000 OA
+ATOM     44  HO5 NGI     0      -8.180   2.330 -19.278  0.00  0.00    +0.000 HD
+ENDBRANCH  42  43
+ENDBRANCH  40  42
+ENDBRANCH  39  40
+ENDBRANCH  36  39
+ENDBRANCH  32  33
+ENDBRANCH  31  32
+ENDBRANCH   4  31
+TORSDOF 13
+ENDMDL
+MODEL 17
+REMARK VINA RESULT:      -6.2      3.221     11.657
+REMARK  Name = NGI.pdb
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: N1_2  and  C2_4
+REMARK    3  A    between atoms: N2_5  and  C5_13
+REMARK    4  A    between atoms: C3_7  and  C4_10
+REMARK    5  A    between atoms: O3_9  and  C6_16
+REMARK    6  A    between atoms: N4_11  and  C10_23
+REMARK    7  A    between atoms: O4_12  and  C7_19
+REMARK    8  A    between atoms: O5_15  and  C20_33
+REMARK    9  A    between atoms: N6_17  and  C12_25
+REMARK   10  A    between atoms: C12_25  and  C13_26
+REMARK   11  A    between atoms: C13_26  and  C14_27
+REMARK   12  A    between atoms: C17_30  and  C18_31
+REMARK   13  A    between atoms: C18_31  and  C19_32
+REMARK   14  A    between atoms: C19_32  and  C20_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N2  NGI     0      -0.517   2.555  -9.436  0.00  0.00    +0.000 N 
+ATOM      2  N3  NGI     0       0.544   4.084 -10.576  0.00  0.00    +0.000 NA
+ATOM      3  N5  NGI     0      -2.696   4.470 -12.267  0.00  0.00    +0.000 NA
+ATOM      4  N6  NGI     0      -4.648   3.271 -11.815  0.00  0.00    +0.000 N 
+ATOM      5  N7  NGI     0      -2.700   2.852 -10.604  0.00  0.00    +0.000 N 
+ATOM      6  C8  NGI     0       0.669   3.201  -9.629  0.00  0.00    +0.000 A 
+ATOM      7  C9  NGI     0      -0.724   4.056 -11.055  0.00  0.00    +0.000 A 
+ATOM      8  C10 NGI     0      -1.418   4.764 -12.052  0.00  0.00    +0.000 C 
+ATOM      9  C11 NGI     0      -3.315   3.540 -11.551  0.00  0.00    +0.000 C 
+ATOM     10  C23 NGI     0      -1.420   3.077 -10.327  0.00  0.00    +0.000 A 
+ATOM     11  HN6 NGI     0      -5.117   2.596 -11.302  0.00  0.00    +0.000 HD
+ATOM     12  H   NGI     0      -3.196   2.168 -10.098  0.00  0.00    +0.000 HD
+ENDROOT
+BRANCH   1  15
+ATOM     13  O2  NGI     0      -1.877   0.666  -8.896  0.00  0.00    +0.000 OA
+ATOM     14  C4  NGI     0      -2.358   0.013  -7.702  0.00  0.00    +0.000 C 
+ATOM     15  C5  NGI     0      -0.776   1.494  -8.460  0.00  0.00    +0.000 C 
+ATOM     16  C6  NGI     0      -1.244   2.100  -7.118  0.00  0.00    +0.000 C 
+ATOM     17  C7  NGI     0      -2.309   1.103  -6.608  0.00  0.00    +0.000 C 
+BRANCH  14  20
+ATOM     18  N1  NGI     0      -4.452  -0.127  -9.013  0.00  0.00    +0.000 N 
+ATOM     19  O1  NGI     0      -4.301  -1.161  -7.055  0.00  0.00    +0.000 OA
+ATOM     20  C3  NGI     0      -3.773  -0.468  -7.900  0.00  0.00    +0.000 C 
+ATOM     21  HN1 NGI     0      -4.030   0.428  -9.687  0.00  0.00    +0.000 HD
+BRANCH  18  23
+ATOM     22  C1  NGI     0      -6.461   0.153 -10.378  0.00  0.00    +0.000 C 
+ATOM     23  C2  NGI     0      -5.827  -0.594  -9.203  0.00  0.00    +0.000 C 
+ENDBRANCH  18  23
+ENDBRANCH  14  20
+BRANCH  16  24
+ATOM     24  O3  NGI     0      -0.154   2.182  -6.198  0.00  0.00    +0.000 OA
+ATOM     25  HO3 NGI     0      -0.153   2.986  -5.661  0.00  0.00    +0.000 HD
+ENDBRANCH  16  24
+BRANCH  17  26
+ATOM     26  O4  NGI     0      -1.909   0.540  -5.357  0.00  0.00    +0.000 OA
+ATOM     27  HO4 NGI     0      -1.706  -0.405  -5.398  0.00  0.00    +0.000 HD
+ENDBRANCH  17  26
+ENDBRANCH   1  15
+BRANCH   8  28
+ATOM     28  N4  NGI     0      -0.784   5.744 -12.793  0.00  0.00    +0.000 NA
+ATOM     29  HN4 NGI     0      -1.146   6.014 -13.651  0.00  0.00    +0.000 HD
+ATOM     30 HN4A NGI     0       0.023   6.163 -12.455  0.00  0.00    +0.000 HD
+ENDBRANCH   8  28
+BRANCH   4  31
+ATOM     31  C12 NGI     0      -5.350   4.008 -12.869  0.00  0.00    +0.000 C 
+BRANCH  31  32
+ATOM     32  C13 NGI     0      -4.848   3.544 -14.238  0.00  0.00    +0.000 C 
+BRANCH  32  33
+ATOM     33  C14 NGI     0      -5.321   4.504 -15.299  0.00  0.00    +0.000 A 
+ATOM     34  C15 NGI     0      -4.606   4.641 -16.474  0.00  0.00    +0.000 A 
+ATOM     35  C16 NGI     0      -5.040   5.522 -17.447  0.00  0.00    +0.000 A 
+ATOM     36  C17 NGI     0      -6.188   6.266 -17.244  0.00  0.00    +0.000 A 
+ATOM     37  C21 NGI     0      -6.902   6.128 -16.069  0.00  0.00    +0.000 A 
+ATOM     38  C22 NGI     0      -6.472   5.243 -15.098  0.00  0.00    +0.000 A 
+BRANCH  36  39
+ATOM     39  C18 NGI     0      -6.660   7.226 -18.306  0.00  0.00    +0.000 C 
+BRANCH  39  40
+ATOM     40  C19 NGI     0      -8.168   7.444 -18.163  0.00  0.00    +0.000 C 
+BRANCH  40  42
+ATOM     41  O6  NGI     0      -9.294   9.383 -18.886  0.00  0.00    +0.000 OA
+ATOM     42  C20 NGI     0      -8.635   8.423 -19.209  0.00  0.00    +0.000 C 
+BRANCH  42  43
+ATOM     43  O5  NGI     0      -8.317   8.229 -20.498  0.00  0.00    +0.000 OA
+ATOM     44  HO5 NGI     0      -9.002   8.423 -21.153  0.00  0.00    +0.000 HD
+ENDBRANCH  42  43
+ENDBRANCH  40  42
+ENDBRANCH  39  40
+ENDBRANCH  36  39
+ENDBRANCH  32  33
+ENDBRANCH  31  32
+ENDBRANCH   4  31
+TORSDOF 13
+ENDMDL
+MODEL 18
+REMARK VINA RESULT:      -5.9      3.503     11.504
+REMARK  Name = NGI.pdb
+REMARK  14 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C1_1  and  C2_4
+REMARK    2  A    between atoms: N1_2  and  C2_4
+REMARK    3  A    between atoms: N2_5  and  C5_13
+REMARK    4  A    between atoms: C3_7  and  C4_10
+REMARK    5  A    between atoms: O3_9  and  C6_16
+REMARK    6  A    between atoms: N4_11  and  C10_23
+REMARK    7  A    between atoms: O4_12  and  C7_19
+REMARK    8  A    between atoms: O5_15  and  C20_33
+REMARK    9  A    between atoms: N6_17  and  C12_25
+REMARK   10  A    between atoms: C12_25  and  C13_26
+REMARK   11  A    between atoms: C13_26  and  C14_27
+REMARK   12  A    between atoms: C17_30  and  C18_31
+REMARK   13  A    between atoms: C18_31  and  C19_32
+REMARK   14  A    between atoms: C19_32  and  C20_33
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N2  NGI     0      -3.967   1.228  -9.416  0.00  0.00    +0.000 N 
+ATOM      2  N3  NGI     0      -5.407  -0.350  -9.868  0.00  0.00    +0.000 NA
+ATOM      3  N5  NGI     0      -6.248   1.818 -12.714  0.00  0.00    +0.000 NA
+ATOM      4  N6  NGI     0      -5.265   3.873 -13.231  0.00  0.00    +0.000 N 
+ATOM      5  N7  NGI     0      -4.562   2.667 -11.364  0.00  0.00    +0.000 N 
+ATOM      6  C8  NGI     0      -4.481   0.023  -9.033  0.00  0.00    +0.000 A 
+ATOM      7  C9  NGI     0      -5.550   0.593 -10.832  0.00  0.00    +0.000 A 
+ATOM      8  C10 NGI     0      -6.374   0.730 -11.964  0.00  0.00    +0.000 C 
+ATOM      9  C11 NGI     0      -5.357   2.756 -12.417  0.00  0.00    +0.000 C 
+ATOM     10  C23 NGI     0      -4.627   1.614 -10.555  0.00  0.00    +0.000 A 
+ATOM     11  HN6 NGI     0      -4.620   4.567 -13.031  0.00  0.00    +0.000 HD
+ATOM     12  H   NGI     0      -3.917   3.387 -11.177  0.00  0.00    +0.000 HD
+ENDROOT
+BRANCH   1  15
+ATOM     13  O2  NGI     0      -2.878   3.343  -9.193  0.00  0.00    +0.000 OA
+ATOM     14  C4  NGI     0      -1.559   3.826  -8.864  0.00  0.00    +0.000 C 
+ATOM     15  C5  NGI     0      -2.908   1.974  -8.732  0.00  0.00    +0.000 C 
+ATOM     16  C6  NGI     0      -1.521   1.402  -9.102  0.00  0.00    +0.000 C 
+ATOM     17  C7  NGI     0      -0.613   2.649  -9.191  0.00  0.00    +0.000 C 
+BRANCH  14  20
+ATOM     18  N1  NGI     0      -1.444   5.006 -11.035  0.00  0.00    +0.000 N 
+ATOM     19  O1  NGI     0      -0.726   6.010  -9.192  0.00  0.00    +0.000 OA
+ATOM     20  C3  NGI     0      -1.213   5.026  -9.708  0.00  0.00    +0.000 C 
+ATOM     21  HN1 NGI     0      -1.833   4.219 -11.448  0.00  0.00    +0.000 HD
+BRANCH  18  23
+ATOM     22  C1  NGI     0      -2.188   6.378 -12.917  0.00  0.00    +0.000 C 
+ATOM     23  C2  NGI     0      -1.107   6.173 -11.855  0.00  0.00    +0.000 C 
+ENDBRANCH  18  23
+ENDBRANCH  14  20
+BRANCH  16  24
+ATOM     24  O3  NGI     0      -1.057   0.516  -8.083  0.00  0.00    +0.000 OA
+ATOM     25  HO3 NGI     0      -0.536  -0.228  -8.416  0.00  0.00    +0.000 HD
+ENDBRANCH  16  24
+BRANCH  17  26
+ATOM     26  O4  NGI     0       0.441   2.570  -8.229  0.00  0.00    +0.000 OA
+ATOM     27  HO4 NGI     0       1.262   2.194  -8.575  0.00  0.00    +0.000 HD
+ENDBRANCH  17  26
+ENDBRANCH   1  15
+BRANCH   8  28
+ATOM     28  N4  NGI     0      -7.295  -0.250 -12.288  0.00  0.00    +0.000 NA
+ATOM     29  HN4 NGI     0      -7.548  -0.390 -13.214  0.00  0.00    +0.000 HD
+ATOM     30 HN4A NGI     0      -7.690  -0.796 -11.591  0.00  0.00    +0.000 HD
+ENDBRANCH   8  28
+BRANCH   4  31
+ATOM     31  C12 NGI     0      -6.143   4.004 -14.397  0.00  0.00    +0.000 C 
+BRANCH  31  32
+ATOM     32  C13 NGI     0      -5.325   4.471 -15.603  0.00  0.00    +0.000 C 
+BRANCH  32  33
+ATOM     33  C14 NGI     0      -6.101   5.515 -16.363  0.00  0.00    +0.000 A 
+ATOM     34  C15 NGI     0      -7.475   5.409 -16.475  0.00  0.00    +0.000 A 
+ATOM     35  C16 NGI     0      -8.187   6.366 -17.173  0.00  0.00    +0.000 A 
+ATOM     36  C17 NGI     0      -7.525   7.429 -17.760  0.00  0.00    +0.000 A 
+ATOM     37  C21 NGI     0      -6.152   7.534 -17.648  0.00  0.00    +0.000 A 
+ATOM     38  C22 NGI     0      -5.440   6.581 -16.945  0.00  0.00    +0.000 A 
+BRANCH  36  39
+ATOM     39  C18 NGI     0      -8.302   8.472 -18.521  0.00  0.00    +0.000 C 
+BRANCH  39  40
+ATOM     40  C19 NGI     0      -8.948   7.832 -19.750  0.00  0.00    +0.000 C 
+BRANCH  40  42
+ATOM     41  O6  NGI     0      -7.056   7.991 -21.146  0.00  0.00    +0.000 OA
+ATOM     42  C20 NGI     0      -7.876   7.261 -20.641  0.00  0.00    +0.000 C 
+BRANCH  42  43
+ATOM     43  O5  NGI     0      -7.830   5.939 -20.873  0.00  0.00    +0.000 OA
+ATOM     44  HO5 NGI     0      -8.656   5.512 -21.139  0.00  0.00    +0.000 HD
+ENDBRANCH  42  43
+ENDBRANCH  40  42
+ENDBRANCH  39  40
+ENDBRANCH  36  39
+ENDBRANCH  32  33
+ENDBRANCH  31  32
+ENDBRANCH   4  31
+TORSDOF 13
+ENDMDL

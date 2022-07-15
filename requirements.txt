@@ -1,4 +1,4 @@
-###### Requirements without Version Specifiers ######`
+###### Requirements without Version Specifiers ######
 numpy
 #scipy
 #sympy
@@ -15,3 +15,5 @@ bioservices
 #kaleido
 #modeller
 py3dmol
+rdkit-pypi 
+prolif
