@@ -12,4 +12,4 @@
 ### GPCR Online Modeling and Docking
 <br><br>
 
-1. [Modelling in Google Colab](https://colab.research.google.com/github/rribeiro-sci/SSBtoolkit/blob/main/Modelling_GOOGLE_COLAB.ipynb) 
+1. [Modelling in Google Colab](https://colab.research.google.com/github/rribeiro-sci/pygomodo/blob/main/Modelling_GOOGLE_COLAB.ipynb) 
