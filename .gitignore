@@ -9,3 +9,4 @@ src/databases/pyGOMODO_db/
 src/databases/ProcessedPdbs_wo_isoforms/
 src/bk_code.py
 tree.txt
+.ipynb_checkpoints/
