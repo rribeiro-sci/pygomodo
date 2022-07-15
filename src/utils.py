@@ -39,7 +39,7 @@ class utils:
         return os.path.join(outpath, os.path.splitext(fi)[0]+'.pdb')
 
     def pdb2pdbqt(fi, outpath, hyd=False, receptor=False):
-        from openbabel import openbabel
+        import openbabel
         obConversion = openbabel.OBConversion()
         obConversion.SetInAndOutFormats('pdb', 'pdbqt')
         if receptor==True: 
