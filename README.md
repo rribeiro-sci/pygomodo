@@ -22,7 +22,7 @@ $ docker run
 ```
 <br>
 
-### Running production environment (reading and writing local diretories)
+### Running production environment (reading and writing local directories)
 Linux :
 ```bash
 $ docker run 
@@ -39,7 +39,7 @@ Windows : Not supported
 
 ## Documentation
 
-All documentation [here]().
+All documentation [here](https://pygomodo.readthedocs.io).
 
 <br>
 

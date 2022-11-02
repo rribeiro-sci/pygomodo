@@ -54,7 +54,11 @@ smina_path = os.path.join(homedirectory,'opt/smina/smina.static')
 
 class Vina:
     """Molecular docking with AutoDock Vina (https://vina.scripps.edu/)."""
-    def __init__(self, **kwargs):  
+    
+    def __init__(self, **kwargs):
+        """
+        Create a VINA instance
+        """  
         self._receptor_family ='GPCR' ## Review
         self._receptor_file=None
         self._receptor_name = None
@@ -453,7 +457,11 @@ class Vina:
 
 class Rdock:
     """Molecular docking with rDock (http://rdock.sourceforge.net/)."""
+    
     def __init__(self, **kwargs):
+        """
+        Create a rDock instance
+        """ 
 
         if 'title' in kwargs: self._TITLE = kwargs.pop('title')
         else: self._TITLE = 'TITLE' #resolve

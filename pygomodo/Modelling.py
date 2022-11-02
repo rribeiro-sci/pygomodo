@@ -46,7 +46,7 @@ class Modeller:
 
     def __init__(self, **kwargs):
         """
-        Create a GOMODO instance:
+        Create a Modeller instance:
 
         :parameter jobname:     optional (str): create a directory 
         :parameter ncpus:       optional (int): number of cpus (default: 1)
