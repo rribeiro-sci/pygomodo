@@ -9,6 +9,3 @@ API Documentation
 
 .. automodule:: Align
    :members:
-
-.. automodule:: Utils
-   :members:
