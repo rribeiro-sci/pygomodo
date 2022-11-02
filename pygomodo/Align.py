@@ -25,10 +25,6 @@ warnings.filterwarnings('ignore')
 
 ##### Libraries
 import os
-from openbabel import pybel
-
-from rdkit import Chem
-from rdkit.Chem import AllChem, rdFMCS
 
 homedirectory=os.path.dirname(__file__)
 import sys
@@ -44,9 +40,9 @@ class Tethering:
         targetMolID = kwargs.pop('target_name')
         targetMolSMI = kwargs.pop('target_smiles')
         
-        #£from openbabel import pybel
-        #£from rdkit import Chem
-        #£from rdkit.Chem import rdFMCS, AllChem 
+        from openbabel import pybel
+        from rdkit import Chem
+        from rdkit.Chem import rdFMCS, AllChem 
         from rdkit import RDLogger
         RDLogger.DisableLog('rdApp.*')
 

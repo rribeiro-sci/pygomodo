@@ -27,11 +27,8 @@ warnings.filterwarnings('ignore')
 ##### Libraries
 import os, re, subprocess
 import pandas as pd
-from openbabel import pybel
 from IPython.display import clear_output, display
 import ipywidgets, py3Dmol 
-from rdkit import Chem
-from rdkit.Chem import rdMolAlign
 
 homedirectory=os.path.dirname(__file__)
 
@@ -401,9 +398,10 @@ class Vina:
         return 
 
     def AnalyseInteractions(self):
+        
         """Protein-Ligand interaction analysis with ProLIF (https://prolif.readthedocs.io/en/latest/index.html)."""
 
-        #£from openbabel import pybel  
+        from openbabel import pybel  
 
         self._interactions_table={}
         receptor_file = self._receptor_name+'_grid.pdb'
@@ -424,7 +422,7 @@ class Vina:
         :parameter opacity: (default 0.65) opacity of protein cartoon (map3D must be True)
         """
         #£import ipywidgets
-        #£from openbabel import pybel
+        from openbabel import pybel
         
         if 'opacity' in kwargs: 
             opacity=kwargs.pop('opacity')
@@ -581,9 +579,9 @@ END_SECTION
         
         .. note:: For a detailed description of the tethered parameters please see rDock documentation http://rdock.sourceforge.net/.
         """
-        #£from openbabel import pybel
-        #£from rdkit import Chem
-        #£from rdkit.Chem import rdMolAlign
+        from openbabel import pybel
+        from rdkit import Chem
+        from rdkit.Chem import rdMolAlign
 
         if 'output_name' in kwargs: 
             output_name = kwargs.pop('output_name')
@@ -762,7 +760,7 @@ END_SECTION
         :parameter recerence_mol: Optional (str) Reference ligand
         """
         #£import py3Dmol
-        #£from openbabel import pybel
+        from openbabel import pybel
         #£import ipywidgets
 
         if 'reference' in kwargs: 
@@ -824,7 +822,7 @@ END_SECTION
 
     def AnalyseInteractions(self):
         """Protein-Ligand interaction analysis with ProLIF (https://prolif.readthedocs.io/en/latest/index.html)."""
-        #£from openbabel import pybel
+        from openbabel import pybel
 
         self._interactions_table = {}
         receptorMol = next(pybel.readfile(os.path.splitext(self._RECEPTOR_FILE)[1].strip('.'), self._RECEPTOR_FILE)).write('pdb')
@@ -844,7 +842,7 @@ END_SECTION
         :parameter opacity: (default 0.65) opacity of protein cartoon (map3D must be True)
         """
         #£import ipywidgets
-        #£from openbabel import pybel
+        from openbabel import pybel
 
         if 'opacity' in kwargs:
             opacity=kwargs.pop('opacity')
