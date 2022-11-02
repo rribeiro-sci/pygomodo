@@ -1,10 +1,9 @@
 API Documentation
 =================
-
-.. automodule:: Docking
+.. automodule:: ModeLling
    :members:
 
-.. automodule:: Modeling
+.. automodule:: Docking
    :members:
 
 .. automodule:: Align
