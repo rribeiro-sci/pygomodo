@@ -1,6 +1,6 @@
 API Documentation
 =================
-.. automodule:: ModeLling
+.. automodule:: Modelling
    :members:
 
 .. automodule:: Docking
