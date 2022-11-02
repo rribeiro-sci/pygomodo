@@ -10,4 +10,4 @@ src/
 vina_test/
 .ipynb_checkpoints/
 
-pygomodo/databases
+pygomodo/databases/
