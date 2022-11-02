@@ -17,3 +17,5 @@ bioservices
 py3dmol
 rdkit-pypi 
 prolif
+ipywidgets==7.6.5
+####????openbabel

@@ -23,7 +23,7 @@ __email__ = "rui.ribeiro@univr.it"
 
 import os, codecs, re, subprocess
 import pandas as pd
-from IPython.display import display
+from IPython.display import display, clear_output
 from ipywidgets import FileUpload
 homedirectory=os.path.dirname(__file__)
 mypython='python'
@@ -89,7 +89,6 @@ class utils:
         pdb_io.save(fout)
 
     def showMolecularStructures(mols):
-        import rdkit
         from rdkit import Chem
         
         from rdkit.Chem import Draw
@@ -176,7 +175,6 @@ class utils:
         mol_view.zoomTo({'model':1})  
         #mol_view.zoomTo()
         mol_view.show()
-
 
     def charPerLine(t,n):
         """adjust number of char per line
@@ -494,7 +492,7 @@ class utils:
         m.use_parallel_job(j)
         m.make()
         #modeller.info.time_mark()
-
+        clear_output()
         results = []
         for x in m.outputs:
             results.append((x['name'], x['molpdf'], x['DOPE score'], x['GA341 score'][1], x['Normalized DOPE score']))
@@ -599,7 +597,7 @@ class utils:
         a.use_parallel_job(j)
         a.make()
         #modeller.info.time_mark()
-
+        clear_output()
         results = []
         for x in a.outputs:
             results.append((x['name'], x['molpdf'], x['DOPE score'], x['GA341 score'][1], x['Normalized DOPE score']))
@@ -739,6 +737,7 @@ class get:
     
         return u.get_fasta(uniprotID)
     
+
 class Upload:
     from ipywidgets import FileUpload
     import codecs
@@ -746,40 +745,38 @@ class Upload:
         
         return
     
-    def receptor(self):
-        print('Receptor pdb file:')
-        upload = FileUpload(accept='.pdb', multiple=False)
-        display(upload)
-        self._ureceptor = upload
-        return 
-    
-    
-    def ligand(self):
-        print('Ligands pdb files:')
-        upload = FileUpload(accept='.pdb', multiple=True)
-        display(upload)
-        self._uligands = upload
+    def File(self):
+        print('Select file:')
+        uploadfile = FileUpload(accept='.pdb, .sd, .sdf, .mol2', multiple=False)
+        display(uploadfile)
+        self._file = uploadfile
         return
-    
-    
-    def PARSEreceptor(self):
-        if self._ureceptor:
-            for i in self._ureceptor.value.keys(): 
+
+    def Files(self):
+        print('Select file:')
+        upload = FileUpload(accept='.pdb, .sd, .sdf, .mol2', multiple=True)
+        display(upload)
+        self._files = upload
+        return
+
+    def FileParse(self):
+        if self._file:
+            for i in self._file.value.keys(): 
                     filename = i
-                    content = self._ureceptor.value[filename]['content']
+                    content = self._file.value[filename]['content']
                     with open(filename, 'w') as f:
                         f.write(codecs.decode(content))
-            print('Receptor: ', filename, '\nStatus: OK\n')
-        else: raise TypeError('Receptor not uploaded.')
+            print('File: ', filename, '\nStatus: OK\n')
+        else: raise TypeError('File not uploaded.')
         
         return filename
-     
-    def PARSEligands(self):  
+
+    def FilesParse(self):  
         ligands_list=[]
-        if self._uligands:
-            for i in self._uligands.value.keys(): 
+        if self._files:
+            for i in self._files.value.keys(): 
                 filename = i
-                content = self._uligands.value[filename]['content']
+                content = self._files.value[filename]['content']
                 with open(filename, 'w') as f:
                     f.write(codecs.decode(content))
                 
@@ -787,3 +784,180 @@ class Upload:
         else: raise TypeError('Ligands not uploaded.')
         print('Ligands: ', ligands_list, '\nStatus: OK\n')
         return ligands_list
+ 
+    
+class Interactions:
+
+    def __init__(self, **kwargs):
+        
+        return
+
+    def Prolif(receptorMol, ligandMol):
+        
+        import prolif as plf
+        from rdkit import Chem
+
+        mol = Chem.MolFromPDBBlock(receptorMol, removeHs=False)
+        prot = plf.Molecule(mol)
+        mol = Chem.MolFromPDBBlock(ligandMol, removeHs=False)
+        lig = plf.Molecule(mol)
+        fp = plf.Fingerprint()
+        fp.run_from_iterable([lig], prot, progress=False)
+        df = fp.to_dataframe(return_atoms=True)
+        return df
+
+    def Lignet(df, ligandMol):
+        from prolif.plotting.network import LigNetwork
+        from rdkit import Chem
+        import prolif as plf
+        mol = Chem.MolFromPDBBlock(ligandMol, removeHs=False)
+        lmol = plf.Molecule(mol)
+        net = LigNetwork.from_ifp(df, lmol,
+                        # replace with `kind="frame", frame=0` for the other depiction
+                        kind="aggregate", threshold=.3,
+                        rotation=270)
+        return net
+
+    def Vismol(fi1, fi2, df, **kwargs):
+        from rdkit import Chem, Geometry
+        import py3Dmol, ipywidgets
+        import prolif as plf
+        def get_ring_centroid(mol, index):
+            # find ring using the atom index
+            Chem.SanitizeMol(mol, Chem.SanitizeFlags.SANITIZE_SETAROMATICITY)
+            ri = mol.GetRingInfo()
+            for r in ri.AtomRings():
+                if index in r:
+                    break
+            else:
+                raise ValueError("No ring containing this atom index was found in the given molecule")
+            # get centroid
+            coords = mol.xyz[list(r)]
+            ctd = plf.utils.get_centroid(coords)
+            return Geometry.Point3D(*ctd)
+
+        
+        mol = Chem.MolFromPDBBlock(fi1, removeHs=False)
+        pmol = plf.Molecule(mol)
+        mol = Chem.MolFromPDBBlock(fi2, removeHs=False)
+        lmol = plf.Molecule(mol)
+        colors = {
+                "HBAcceptor": "cyan",
+                "HBDonor": "cyan",
+                "Cationic": "green",
+                "PiStacking": "purple",
+                "Hydrophobic":"lime",
+                "Anionic":"gray",
+                "CationPi":"gray",
+                "EdgeToFace":"gray",
+                "FaceToFace":"gray",
+                "Interaction":"gray",
+                "MetalAcceptor":"gray",
+                "MetalDonor":"gray",
+                "PiCation":"gray",
+                "VdWContact":"gray",
+                "XBAcceptor":"gray",
+                "XBDonor":"gray",
+                "_BaseCationPi":"gray",
+                "_BaseHBond":"gray",
+                "_BaseIonic":"gray",
+                "_BaseMetallic":"gray",
+                "_BaseXBond":"gray",
+                "_Distance":"gray"
+            }
+
+        # JavaScript functions
+        resid_hover = """function(atom,viewer) {{
+            if(!atom.label) {{
+                atom.label = viewer.addLabel('{0}:'+atom.atom+atom.serial,
+                    {{position: atom, backgroundColor: 'mintcream', fontColor:'black'}});
+            }}
+        }}"""
+        hover_func = """
+        function(atom,viewer) {
+            if(!atom.label) {
+                atom.label = viewer.addLabel(atom.interaction,
+                    {position: atom, backgroundColor: 'black', fontColor:'white'});
+            }
+        }"""
+        unhover_func = """
+        function(atom,viewer) {
+            if(atom.label) {
+                viewer.removeLabel(atom.label);
+                delete atom.label;
+            }
+        }"""
+
+        v = py3Dmol.view(width=500, height=600) #changeme
+        v.removeAllModels()
+
+        models = {}
+        mid = -1
+        for i, row in df.T.iterrows():
+            lresid, presid, interaction = i
+            lindex, pindex = row[0]
+            lres = lmol[0]
+            pres = pmol[presid]
+            # set model ids for reusing later
+            for resid, res, style in [(lresid, lres, {"colorscheme": "cyanCarbon"}),
+                                    (presid, pres, {})]:
+                if resid not in models.keys():
+                    mid += 1
+                    v.addModel(Chem.MolToMolBlock(res), "sdf")
+                    model = v.getModel()
+                    model.setStyle({}, {"stick": style})
+                    # add residue label
+                    model.setHoverable({}, True, resid_hover.format(resid), unhover_func)
+                    models[resid] = mid
+            # get coordinates for both points of the interaction
+            if interaction in ["PiStacking", "EdgeToFace", "FaceToFace", "PiCation"]:
+                p1 = get_ring_centroid(lres, lindex)
+            else:
+                p1 = lres.GetConformer().GetAtomPosition(lindex)
+            if interaction in ["PiStacking", "EdgeToFace", "FaceToFace", "CationPi"]:
+                p2 = get_ring_centroid(pres, pindex)
+            else:
+                p2 = pres.GetConformer().GetAtomPosition(pindex)
+            # add interaction line
+            v.addCylinder({"start": dict(x=p1.x, y=p1.y, z=p1.z),
+                        "end":   dict(x=p2.x, y=p2.y, z=p2.z),
+                        "color": colors[interaction],
+                        "radius": .1,
+                        "dashed": True,
+                        "fromCap": 1,
+                        "toCap": 1,
+                        })
+            # add label when hovering the middle of the dashed line by adding a dummy atom
+            c = Geometry.Point3D(*plf.utils.get_centroid([p1, p2]))
+            modelID = models[lresid]
+            model = v.getModel(modelID)
+            model.addAtoms([{"elem": 'Z',
+                            "x": c.x, "y": c.y, "z": c.z,
+                            "interaction": interaction}])
+            model.setStyle({"interaction": interaction}, {"clicksphere": {"radius": .5}})
+            model.setHoverable(
+                {"interaction": interaction}, True,
+                hover_func, unhover_func)
+
+        # show protein
+        if 'opacity' in kwargs: 
+            opacity=kwargs.pop('opacity')
+        else: opacity=0.65
+        mol = Chem.RemoveAllHs(pmol)
+        pdb = Chem.MolToPDBBlock(mol, flavor=0x20 | 0x10)
+        v.addModel(pdb, "pdb")
+        model = v.getModel()
+        model.setStyle({}, {"cartoon": {"style":"edged", "opacity":opacity}})
+        v.zoomTo({"model": list(models.values())})
+        
+        return v.show()
+
+
+def gdrive(**kwargs):
+    #Fix this function
+    if 'path' in kwargs:
+        path=kwargs.pop('path')
+        command='cp -r '+os.path.join(self._cwd,self._jobname)+' '+path
+        subprocess.call(command, shell=True)
+    else: raise ValueError('Destination path unknown.')
+    return

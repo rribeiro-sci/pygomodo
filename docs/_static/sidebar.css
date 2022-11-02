@@ -1,0 +1,21 @@
+
+.wy-side-nav-search, .wy-nav-top {
+    background: #EFEFEF;
+
+}
+/* Text inside search */
+.wy-side-nav-search input[type=text] {
+    color: #000000;
+}
+
+
+/* contents word color */
+div.wy-menu-vertical span.caption-text {
+    color: #5B874C;
+}
+
+/* Home button */
+.wy-side-nav-search > a {
+    color: #555753;
+    font-size: 25px;
+}

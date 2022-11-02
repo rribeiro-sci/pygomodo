@@ -21,26 +21,34 @@ This python wrap-up of the GOMoDO webserver
 __author__ = "Rui Ribeiro"
 __email__ = "rui.ribeiro@univr.it"
 
-from turtle import heading
+from ast import arg
+from importlib.machinery import SourcelessFileLoader
+from pydoc import Doc
+from time import sleep
 import warnings
+from webbrowser import Mozilla
+from xml.dom.expatbuilder import theDOMImplementation
+from xml.dom.minidom import Attr
+
 
 warnings.filterwarnings('ignore')
 
-from asyncio.constants import SENDFILE_FALLBACK_READBUFFER_SIZE
-import os, re, subprocess
-from sre_constants import SRE_FLAG_IGNORECASE
-from pydoc import doc
-from tkinter import E
-from xml.dom.xmlbuilder import DocumentLS
+##### Libraries
+import os, re, subprocess, datetime
 import pandas as pd
-from IPython.display import clear_output
-import ipywidgets
+from openbabel import pybel
+from IPython.display import clear_output, display
+import ipywidgets, py3Dmol 
+from rdkit import Chem
+from rdkit.Chem import rdMolAlign
+
 homedirectory=os.path.dirname(__file__)
 
 
 import sys
 sys.path.append(homedirectory)
-from utils import utils
+
+from utils import utils, Interactions
 
 import platform
 if platform.system() == 'Linux':
@@ -48,11 +56,12 @@ if platform.system() == 'Linux':
 elif platform.system() == 'Darwin':
     vina_path = os.path.join(homedirectory,'opt/vina1.1.2_mac/bin/vina')
 else:
-    raise TypeError('Platform unknown! The pygomodo was tested in Linux and Darwin (Mac) platforms.')
+    raise ValueError('Platform unknown! The pygomodo was tested in Linux and Darwin (Mac) platforms.')
 
 mypython='python'
+smina_path = os.path.join(homedirectory,'opt/smina/smina.static')
 
-
+#can we remove this fuction?
 class get:
     def seq_from_uniprot(uniprotID, **kwargs):
         """
@@ -68,315 +77,368 @@ class get:
     
         return u.get_fasta(uniprotID)
     
-class gomodo:
+class Modelling:
+    class Modeller:
+        """Hommology Modelling with Modeller (https://salilab.org/modeller/)."""
 
-    def __init__(self, **kwargs):
-        """
-        Create a GOMODO instance:
+        def __init__(self, **kwargs):
+            """
+            Create a GOMODO instance:
 
-        :parameter jobname:     optional (str): create a directory 
-        :parameter ncpus:       optional (int): number of cpus (default: 1)
+            :parameter jobname:     optional (str): create a directory 
+            :parameter ncpus:       optional (int): number of cpus (default: 1)
 
-        """  
-        #PREPARE ENVIRONMENT
-        try:
-            self._hhsuitePath=os.environ['HHSUITEPATH']
-            self._hhsuitescripts=os.environ['HHSUITESCRIPTS']
-        except:
-            print('Warning: HH-suite unknown')
-        
-        self._HHMdatabase=os.path.join(homedirectory,'databases/pyGOMODO_db/pyGOMODO')
-        self._TemplatesDatabase = os.path.join(homedirectory,'databases/costum_db/wo_isoforms/gpcr_db_wo_isoforms')
-        self._processedPDB=os.path.join(homedirectory,'databases/ProcessedPdbs_wo_isoforms')
-        self._GPCR_Ref = os.path.join(homedirectory,'databases/GPCR_Ref.sqlite3')
-
-        ##DEFINING JOBNAME
-        if 'jobname' in kwargs:
-            self._jobname = kwargs.pop('jobname')
-        else: 
-            import datetime
-            self._jobname = 'pyGOMODO_'+datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
-        self._jobdir = os.path.join(os.getcwd(), self._jobname)
-        
-        #create the job folder  if not exists
-        if not os.path.isdir(self._jobdir):
-            subprocess.call('mkdir ' + self._jobdir, shell=True)
-        
-        #create log file is not exists
-        self._filename='sequence.seq'
-        self._name = self._filename[:self._filename.find('.')]
-        
-        self._logfilePath = os.path.join(self._jobdir, 'output.log')
-        if not os.path.isfile(self._logfilePath):
-            subprocess.call('touch '+ self._logfilePath, shell=True)
-
-        #DEFINING SHARE VARIABLES
-        if 'ncpus' in kwargs:
-            self._ncpus = kwargs.pop('ncpus')
-        else: self._ncpus=1    
-        self._uniprotID=None
-        self._fasta=None
-        
-        self._cwd = os.getcwd()+"/"
-        self._humanDB = True
-        self._rounds=1
-        
-    def createHHMprofile(self, **kwargs):
-        """
-        Run hhblits
-
-        :parameter uniprot:     optional (str): Uniprot ID (required if sequence not given)
-        :parameter filename:    optional (str): filename or path+filename (default: "sequence.seq")
-        :parameter sequence:    optional (str): sequence of in FASTA format (required if UniprotID not given)
-        :parameter ncpus:       optional (int): number of cpus (default: 1)
-        :parameter rounds:      optional (int): number of HHBLITS runs (default: 1)
-        :parameter databse:     optional (str): dir path of the uniref30 database
-
-        Example:
-        """       
-        #DIFINING SHARED VARIABLES
-        if 'uniprotID' in kwargs:
-            self._uniprotID = kwargs.pop('uniprotID')
-        if 'sequence' in kwargs:
-            self._fasta = kwargs.pop('sequence')
-        if self._uniprotID.strip():
-            self._fasta =get.seq_from_uniprot(uniprotID=self._uniprotID)
-            with open(os.path.join(self._jobdir,'sequence.seq'), 'w') as f:
-                f.write(self._fasta)
-        elif not self._uniprotID.strip() and self._fasta:
-            with open(os.path.join(self._jobdir,'sequence.seq'), 'w') as f:
-                f.write(self._fasta)
-        else: raise TypeError('UniprotID or Sequence unknown.')
-
-        if 'ncpus' in kwargs: self._ncpus=kwargs.pop('ncpus')
-        if 'rounds' in kwargs:
-            self._rounds=kwargs.pop('rounds')
-        if 'database' in kwargs: 
-            self._HHMdatabase=kwargs.pop('database')
-        
-
-
-        #is sequence in fasta format? Save in .fas file
-        output_fas = os.path.join(self._jobdir, 'sequence.fas')
-        self._fasta80 = utils.searchFasta(self._fasta, output_fas)
-
-        #Run HHBLITS
-        print('Running...\n')
-        utils.hhblits(self._hhsuitePath, output_fas, os.path.join(self._jobdir, "query.a3m"), self._logfilePath, self._HHMdatabase, self._ncpus, self._rounds)
-       
-
-        def parsehhr():
-            import pandas as pd
-
-            filename = os.path.join(self._jobdir,'sequence.hhr')
-            col_names=utils.hhr_name_parser(filename)
-            df = pd.DataFrame(columns=col_names)
-            df = utils.hhr_summaryhit_parser(filename, df, col_names)
-            pd.set_option("display.max_rows", None, "display.max_columns", None)
-            #print(df.to_csv(r'results.txt', header=col_names, index=None, sep='	', mode='w'), '\nDone! See results.txt')
+            """  
+            #PREPARE ENVIRONMENT
+            try:
+                self._hhsuitePath=os.environ['HHSUITEPATH']
+                self._hhsuitescripts=os.environ['HHSUITESCRIPTS']
+            except:
+                print('Warning: HH-suite unknown')
             
+            self._HHMdatabase=os.path.join(homedirectory,'databases/pyGOMODO_db/pyGOMODO')
+            self._TemplatesDatabase = os.path.join(homedirectory,'databases/costum_db/wo_isoforms/gpcr_db_wo_isoforms')
+            self._processedPDB=os.path.join(homedirectory,'databases/ProcessedPdbs_wo_isoforms')
+            self._GPCR_Ref = os.path.join(homedirectory,'databases/GPCR_Ref.sqlite3')
+
+            ##DEFINING JOBNAME
+            if 'jobname' in kwargs:
+                self._jobname = kwargs.pop('jobname')
+            else: 
+                #£import datetime
+                self._jobname = 'pyGOMODO_'+datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
+            self._jobdir = os.path.join(os.getcwd(), self._jobname)
+            
+            #create the job folder  if not exists
+            if not os.path.isdir(self._jobdir):
+                subprocess.call('mkdir ' + self._jobdir, shell=True)
+            
+            #create log file is not exists
+            self._filename='sequence.seq'
+            self._name = self._filename[:self._filename.find('.')]
+            
+            self._logfilePath = os.path.join(self._jobdir, 'output.log')
+            if not os.path.isfile(self._logfilePath):
+                subprocess.call('touch '+ self._logfilePath, shell=True)
+
+            #DEFINING SHARE VARIABLES
+            if 'ncpus' in kwargs:
+                self._ncpus = kwargs.pop('ncpus')
+            else: self._ncpus=1    
+            self._uniprotID=None
+            self._fasta=None
+            
+            self._cwd = os.getcwd()+"/"
+            self._humanDB = True
+            self._rounds=1
+            
+        def CreateHHMProfile(self, **kwargs):
+            """
+            Creates HHM profiles with hhblits (https://github.com/soedinglab/hh-suite).
+
+            :parameter uniprot:     optional (str): Uniprot ID (required if sequence not given)
+            :parameter filename:    optional (str): filename or path+filename (default: "sequence.seq")
+            :parameter sequence:    optional (str): sequence of in FASTA format (required if UniprotID not given)
+            :parameter ncpus:       optional (int): number of cpus (default: 1)
+            :parameter rounds:      optional (int): number of HHBLITS runs (default: 1)
+            :parameter databse:     optional (str): dir path of the uniref30 database
+            """       
+            #DIFINING SHARED VARIABLES
+            if 'uniprotID' in kwargs:
+                self._uniprotID = kwargs.pop('uniprotID')
+            if 'sequence' in kwargs:
+                self._fasta = kwargs.pop('sequence')
+            if self._uniprotID.strip():
+                self._fasta =get.seq_from_uniprot(uniprotID=self._uniprotID)
+                with open(os.path.join(self._jobdir,'sequence.seq'), 'w') as f:
+                    f.write(self._fasta)
+            elif not self._uniprotID.strip() and self._fasta:
+                with open(os.path.join(self._jobdir,'sequence.seq'), 'w') as f:
+                    f.write(self._fasta)
+            else: raise ValueError('UniprotID or Sequence unknown.')
+
+            if 'ncpus' in kwargs: self._ncpus=kwargs.pop('ncpus')
+            if 'rounds' in kwargs:
+                self._rounds=kwargs.pop('rounds')
+            if 'database' in kwargs: 
+                self._HHMdatabase=kwargs.pop('database')
+            
+
+
+            #is sequence in fasta format? Save in .fas file
+            output_fas = os.path.join(self._jobdir, 'sequence.fas')
+            self._fasta80 = utils.searchFasta(self._fasta, output_fas)
+
+            #Run HHBLITS
+            print('Running...\n')
+            utils.hhblits(self._hhsuitePath, output_fas, os.path.join(self._jobdir, "query.a3m"), self._logfilePath, self._HHMdatabase, self._ncpus, self._rounds)
+        
+
+            def parsehhr():
+                #£import pandas as pd
+
+                filename = os.path.join(self._jobdir,'sequence.hhr')
+                col_names=utils.hhr_name_parser(filename)
+                df = pd.DataFrame(columns=col_names)
+                df = utils.hhr_summaryhit_parser(filename, df, col_names)
+                pd.set_option("display.max_rows", None, "display.max_columns", None)
+                #print(df.to_csv(r'results.txt', header=col_names, index=None, sep='	', mode='w'), '\nDone! See results.txt')
+                
+                return df
+            df = parsehhr()    
+            self._HHMprofiles=df
+            
+            clear_output(wait=True)
+
+            header = {'selector': 'th:not(.index_name)', 'props': [
+                    ('background-color', 'white'), ('font-size', '13px'),
+                    ('color', 'black'), ('border', '2px solid white')]}
+
+            poses = {'selector': 'th.col_heading.level0', 'props': [
+                    ('font-size', '13px'),('color', 'white'), 
+                    ('background-color', 'darkblue'),
+                    ("border", "2px solid white")]}
+
+            row = {'selector': '.l0', 'props': 'color:blue;'}
+            
+            df_display = df.head(20).style.set_table_styles([header, poses, row]).hide_index()
+            df_return = df.style.set_table_styles([header, poses, row]).hide_index()
+            display(df_display)
+            return df_return
+
+        def SearchTemplates(self, **kwargs):
+            """
+            Searches for homologous templates with hhblits (https://github.com/soedinglab/hh-suite).
+            :parameter hhmprofile: optional (str): user profile path+filename (.a3m file)
+            :parameter ncpus:       optional (int): number of cpus (default: 1)
+            :parameter rounds:      optional (int): number of HHBLITS runs (default: 1)
+            :parameter database     optional (str): dir path of the HHblists database
+            """       
+            if 'hhmprofile' in kwargs: 
+                self._hhmprofile = kwargs.pop('hhmprofile')
+            else: self._hhmprofile=None    
+            
+            if 'ncpus' in kwargs: self._ncpus=kwargs.pop('ncpus')
+            if 'rounds' in kwargs:
+                self._rounds=kwargs.pop('rounds')
+        
+            if 'database' in kwargs: 
+                self._TemplatesDatabase=kwargs.pop('database')
+        
+            #Run HHBLITS
+            if self._hhmprofile:
+                print('Running...\n')
+                utils.hhblits(self._hhsuitePath, self._hhmprofile, os.path.join(self._jobdir + "templates.hhr"), self._logfilePath, self._TemplatesDatabase, self._ncpus, self._rounds)
+            else:
+                print('Running...\n')
+                utils.hhblits(self._hhsuitePath,os.path.join(self._jobdir, "query.a3m"), os.path.join(self._jobdir, "templates.hhr"), self._logfilePath, self._TemplatesDatabase, self._ncpus, self._rounds)
+
+            df =  utils.getConformation(self._jobdir, self._GPCR_Ref)
+            self._templates=df
+            clear_output(wait=True)
+
+            header = {'selector': 'th:not(.index_name)', 'props': [
+                    ('background-color', 'white'), ('font-size', '13px'),
+                    ('color', 'black'), ('border', '2px solid white')]}
+
+            poses = {'selector': 'th.col_heading.level0', 'props': [
+                    ('font-size', '13px'),('color', 'white'), 
+                    ('background-color', 'darkblue'),
+                    ("border", "2px solid white")]}
+
+            row = {'selector': '.l0', 'props': 'color:blue;'}
+            
+            df_display = df.head(20).style.set_table_styles([header, poses, row]).hide_index()
+            display(df_display)
+
             return df
-        df = parsehhr()    
-        self._HHMprofiles=df
-        print('Done!\n')
-        return df
 
-    def searchTemplates(self, **kwargs):
-        """
-        Run hhblits
-        :parameter hhmprofile: optional (str): user profile path+filename (.a3m file)
-        :parameter ncpus:       optional (int): number of cpus (default: 1)
-        :parameter rounds:      optional (int): number of HHBLITS runs (default: 1)
-        :parameter database     optional (str): dir path of the HHblists database
+        def MakeModels(self, **kwargs):
+            """
+            Runs Modeller
 
-        Example:
-        """       
-        if 'hhmprofile' in kwargs: 
-            self._hhmprofile = kwargs.pop('hhmprofile')
-        else: self._hhmprofile=None    
+            :parameter hhmprofile: optional (str): user profile path+filename (.a3m file)
+            :parameter ncpus:       optional (int): number of cpus (default 1)
+            :parameter rounds:      optional (int): number of HHBLITS runs (default 1)
+            :parameter database     optional (str): dir path of the HHblists database
+            """ 
+            #DEFINING VARIABLES
+            self._loop = False      
+            if 'loop' in kwargs:
+                loop = kwargs.pop('loop')
+                if loop == 'Yes':
+                    self._loop=True
+                else: pass
+            else: self._loop=False
+            if 'trim' in kwargs:
+                self._trim=kwargs.pop('trim')
+            else: self._trim = False
+            if 'nloops' in kwargs:
+                self._nloops=kwargs.pop('nloops')
+            else:
+                self._nloops=2
+            if 'nmodels' in kwargs:
+                self._nmodels = kwargs.pop('nmodels')
+            else: self._nmodels = 100
+            if 'ncpus' in kwargs:
+                self._ncpus = kwargs.pop('ncpus')
         
-        if 'ncpus' in kwargs: self._ncpus=kwargs.pop('ncpus')
-        if 'rounds' in kwargs:
-            self._rounds=kwargs.pop('rounds')
-       
-        if 'database' in kwargs: 
-            self._TemplatesDatabase=kwargs.pop('database')
+            if 'humanDB' in kwargs:
+                self._humanDB = kwargs.pop('humanDB')
+            if 'hhsuitePath' in kwargs:
+                self._hhsuitePath = kwargs.pop('hhsuitePath')
+            if 'processedPDB' in kwargs:
+                self._processedPDB = kwargs.pop('processedPDB')
+
+            #create the folder "templates" if not exists
+            templates_dir = os.path.join(self._jobdir, 'templates')
+            if not os.path.isdir(templates_dir):
+                subprocess.call('mkdir ' + templates_dir, shell=True)
+
+            pir_name = os.path.join(templates_dir,  "mytemplate.pir")
         
+            #myseq = sharedFunctions.extract_seqname(os.path.join(self._jobdir , "templates.hhr"))
+            # write target sequence in pir format
+            utils.hhmakemodel(self._hhsuitescripts,self._logfilePath, os.path.join(self._jobdir, "templates.hhr"), self._jobdir, 'sequence', templates_dir)
 
-        #Run HHBLITS
-        if self._hhmprofile:
-            print('Running...\n')
-            utils.hhblits(self._hhsuitePath, self._hhmprofile, os.path.join(self._jobdir + "templates.hhr"), self._logfilePath, self._TemplatesDatabase, self._ncpus, self._rounds)
-        else:
-            print('Running...\n')
-            utils.hhblits(self._hhsuitePath,os.path.join(self._jobdir, "query.a3m"), os.path.join(self._jobdir, "templates.hhr"), self._logfilePath, self._TemplatesDatabase, self._ncpus, self._rounds)
 
-        df =  utils.getConformation(self._jobdir, self._GPCR_Ref)
-        self._templates=df
-        print('Done!\n')
-        return df
+            #templates choosen by the user
+            if 'templates' in kwargs:
+                self._templates = kwargs.pop('templates')
+            else: raise ValueError('Please select the templates')
+            
+        
+            #copy the pdb (if does not exists yet) in the "templates" folder
+            for i in range(0,len(self._templates)):
+                pdb, chain = utils.divide_code(self._templates[i])
+                if not os.path.isfile(os.path.join(templates_dir, pdb + ".pdb")):
+                    if self._humanDB:
+                        subprocess.call("cp "+os.path.join(self._processedPDB, pdb + "_proc.pdb ") + os.path.join(templates_dir, pdb + ".pdb"), shell=True)
+                        #print("cp "+os.path.join(self._processedPDB, pdb + "_proc.pdb ") + os.path.join(templates_dir, pdb + ".pdb"))
+                    else:
+                        utils.download_pdb(pdb, self._cwd + "templates")
 
-    def makeModels(self, **kwargs):
-        #DEFINING VARIABLES
-        self._loop = False      
-        if 'loop' in kwargs:
-            loop = kwargs.pop('loop')
-            if loop == 'Yes':
-                self._loop=True
-            else: pass
-        else: self._loop=False
-        if 'trim' in kwargs:
-            self._trim=kwargs.pop('trim')
-        else: self._trim = False
-        if 'nloops' in kwargs:
-            self._nloops=kwargs.pop('nloops')
-        else:
-            self._nloops=2
-        if 'nmodels' in kwargs:
-            self._nmodels = kwargs.pop('nmodels')
-        else: self._nmodels = 100
-        if 'ncpus' in kwargs:
-            self._ncpus = kwargs.pop('ncpus')
+            #modeling (MODELLER)
+            if self._loop:
+                #print('*'*100 + '\n loop')
+                models = utils.modellerLoop('sequence', self._templates, pir_name, self._cwd, templates_dir, self._ncpus, self._nmodels, self._nloops)
+            else:
+                #print('*'*100 + '\n automodel')
+                models = utils.modeller('sequence', self._templates, pir_name, self._jobdir, templates_dir, self._ncpus, self._nmodels)
+            self._models = models
+
+
+            header = {'selector': 'th:not(.index_name)', 'props': [
+                    ('background-color', 'white'), ('font-size', '13px'),
+                    ('color', 'black'), ('border', '2px solid white')]}
+
+            poses = {'selector': 'th.col_heading.level0', 'props': [
+                    ('font-size', '13px'),('color', 'white'), 
+                    ('background-color', 'darkblue'),
+                    ("border", "2px solid white")]}
+
+            row = {'selector': '.l0', 'props': 'color:blue;'}
+            
+            df_display = models.head(20).style.set_table_styles([header, poses, row]).hide_index()
+            display(df_display)
+
+            return models
+        
+        def ViewModels(self, **kwargs):
+            """3D visualization of the models with py3Dmol."""
+            #£import py3Dmol, ipywidgets
+            
+            
+            #difining visualization
+            def vismol(**kwargs):   
+                model = kwargs.pop('model')          
+                mol_view = py3Dmol.view()
+                #complxvis(mol_view,'Model.'+model+'.pdb')
+                mol_view.addModels(open('Model.'+model+'.pdb', 'r').read(),'pdb')
+                mol_view.setStyle({'cartoon':{'arrows':True, 'tubes':False, 'style':'oval', 'color':'white'}})
+                mol_view.setBackgroundColor('0xeeeeee')
+                mol_view.zoomTo({'model':0})  
+                mol_view.rotate(90, {'x':1,'y':0,'z':1},viewer=(0))
+                mol_view.show()
+
     
-        if 'humanDB' in kwargs:
-            self._humanDB = kwargs.pop('humanDB')
-        if 'hhsuitePath' in kwargs:
-            self._hhsuitePath = kwargs.pop('hhsuitePath')
-        if 'processedPDB' in kwargs:
-            self._processedPDB = kwargs.pop('processedPDB')
+            options=[x.split('.')[1] for x in list(self._models.name)]
+            
+            ipywidgets.interact(vismol, model=ipywidgets.Dropdown(options=options,value=options[0],description='Model:',disabled=False))  
 
-        #create the folder "templates" if not exists
-        templates_dir = os.path.join(self._jobdir, 'templates')
-        if not os.path.isdir(templates_dir):
-            subprocess.call('mkdir ' + templates_dir, shell=True)
-
-        pir_name = os.path.join(templates_dir,  "mytemplate.pir")
-     
-        #myseq = sharedFunctions.extract_seqname(os.path.join(self._jobdir , "templates.hhr"))
-        # write target sequence in pir format
-        utils.hhmakemodel(self._hhsuitescripts,self._logfilePath, os.path.join(self._jobdir, "templates.hhr"), self._jobdir, 'sequence', templates_dir)
-
-
-        #templates choosen by the user
-        if 'templates' in kwargs:
-            self._templates = kwargs.pop('templates')
-        else: raise TypeError('Please select the templates')
+            return
         
-    
-        #copy the pdb (if does not exists yet) in the "templates" folder
-        for i in range(0,len(self._templates)):
-            pdb, chain = utils.divide_code(self._templates[i])
-            if not os.path.isfile(os.path.join(templates_dir, pdb + ".pdb")):
-                if self._humanDB:
-                    subprocess.call("cp "+os.path.join(self._processedPDB, pdb + "_proc.pdb ") + os.path.join(templates_dir, pdb + ".pdb"), shell=True)
-                    #print("cp "+os.path.join(self._processedPDB, pdb + "_proc.pdb ") + os.path.join(templates_dir, pdb + ".pdb"))
-                else:
-                    utils.download_pdb(pdb, self._cwd + "templates")
+        def Qmeanbrane(self, **kwargs):
+            """Submits a job to the Qmean web-service (https://swissmodel.expasy.org/qmean/)
+            
+            :parameter models: required (list) list of models
+            :parameter email: required (str) An email adress is required by the swissmodel webserver.
+            
+            .. note:: The e-mail provided is not stored, used or shared with third-parties excepting with swissmodel.org. 
+            For details regarding how Sisswmodel uses personal data please visit the Swissmodel website: https://swissmodel.expasy.org"""
+            
+            import json
+            import requests
+            import time
+            qmean_url = "https://swissmodel.expasy.org/qmean/submit/"
 
-        #modeling (MODELLER)
-        if self._loop:
-            #print('*'*100 + '\n loop')
-            models = utils.modellerLoop('sequence', self._templates, pir_name, self._cwd, templates_dir, self._ncpus, self._nmodels, self._nloops)
-        else:
-            #print('*'*100 + '\n automodel')
-            models = utils.modeller('sequence', self._templates, pir_name, self._jobdir, templates_dir, self._ncpus, self._nmodels)
-        self._models = models
-        return models
-    
-    def vizModels(self, **kwargs):
-        import py3Dmol, ipywidgets
-        
-          
-        #difining visualization
-        def vismol(**kwargs):   
-            model = kwargs.pop('model')          
-            mol_view = py3Dmol.view()
-            #complxvis(mol_view,'Model.'+model+'.pdb')
-            mol_view.addModels(open('Model.'+model+'.pdb', 'r').read(),'pdb')
-            mol_view.setStyle({'cartoon':{'arrows':True, 'tubes':False, 'style':'oval', 'color':'white'}})
-            mol_view.setBackgroundColor('0xeeeeee')
-            mol_view.zoomTo({'model':0})  
-            mol_view.rotate(90, {'x':1,'y':0,'z':1},viewer=(0))
-            mol_view.show()
+            if 'email' in kwargs:
+                email = kwargs.pop('email')
+            else: raise ValueError('Email unknown. An email adress is required by the swissmodel webserver.')
 
- 
-        options=[x.split('.')[1] for x in list(self._models.name)]
-        
-        ipywidgets.interact(vismol, model=ipywidgets.Dropdown(options=options,value=options[0],description='Model:',disabled=False))  
-
-        return
-    
-    def qmeanbrane(self, **kwargs):
-        import json
-        import requests
-        import time
-        qmean_url = "https://swissmodel.expasy.org/qmean/submit/"
-
-        if 'email' in kwargs:
-            email = kwargs.pop('email')
-        else: raise ValueError('Email unknown. An email adress is required by the swissmodel webserver.')
-
-        if 'models' in kwargs:
-            models = kwargs.pop('models')
-            if isinstance(models, list):
-                if len(models) > 5: raise ValueError('Too many models. (Max. 5 models)')
-                else: 
-                    import tarfile
-                    tar = tarfile.open("models.tar.gz", "w:gz")
-                    for name in models:
-                        tar.add(name)
-                    tar.close()
+            if 'models' in kwargs:
+                models = kwargs.pop('models')
+                if isinstance(models, list):
+                    if len(models) > 5: raise ValueError('Too many models. (Max. 5 models)')
+                    else: 
+                        import tarfile
+                        tar = tarfile.open("models.tar.gz", "w:gz")
+                        for name in models:
+                            tar.add(name)
+                        tar.close()
+                else: raise ValueError('Please introduce a list of models.')
+                
             else: raise ValueError('Please introduce a list of models.')
+        
+            def getstatus(response):
+                current_status = requests.get(response.json()["results_json"])
+                status = current_status.json()['status']
+                return status
             
-        else: raise ValueError('Please introduce a list of models.')
-    
-        def getstatus(response):
-            current_status = requests.get(response.json()["results_json"])
-            status = current_status.json()['status']
-            return status
-        
-        def getresultspage(response):
-            current_status = requests.get(response.json()["results_json"])
-            page = current_status.json()['results_page']
-            return page
-        #############################################################
-        # To upload a local file found at /path/to/my_structure.pdb
-        # ('rb' is recommended to allow zip file upload)
-        response = requests.post(url=qmean_url, data={"email":email ,"method":"qmeanbrane"},files={"structure": open('models.tar.gz', 'rb')})
-        ##############################################################
-        
-        status = getstatus(response)
-        if status == 'QUEUEING':
-            print(status+"\n")
-        while status == 'QUEUEING':
-            #print(status+"\n")
-            time.sleep(5)
-            status=getstatus(response)
+            def getresultspage(response):
+                current_status = requests.get(response.json()["results_json"])
+                page = current_status.json()['results_page']
+                return page
+            #############################################################
+            # To upload a local file found at /path/to/my_structure.pdb
+            # ('rb' is recommended to allow zip file upload)
+            response = requests.post(url=qmean_url, data={"email":email ,"method":"qmeanbrane"},files={"structure": open('models.tar.gz', 'rb')})
+            ##############################################################
             
-        if status == 'RUNNING':
-            print(status+"\n")    
-        while status == 'RUNNING':
-            #print(status+"\n")
-            time.sleep(5)
-            status=getstatus(response)
-        
-        if status == 'COMPLETED':
-            print(status+"\n")
-            page = getresultspage(response)
-            print(page)
-        return
-        
-    def gdrive(self, **kwargs):
-        import subprocess
-        if 'path' in kwargs:
-            path=kwargs.pop('path')
-            command='cp -r '+os.path.join(self._cwd,self._jobname)+' '+path
-            subprocess.call(command, shell=True)
-        else: raise ValueError('Destination path unknown.')
-        return
-
-class docking:
-    class vina:
+            status = getstatus(response)
+            if status == 'QUEUEING':
+                print(status+"\n")
+            while status == 'QUEUEING':
+                #print(status+"\n")
+                time.sleep(5)
+                status=getstatus(response)
+                
+            if status == 'RUNNING':
+                print(status+"\n")    
+            while status == 'RUNNING':
+                #print(status+"\n")
+                time.sleep(5)
+                status=getstatus(response)
+            
+            if status == 'COMPLETED':
+                print(status+"\n")
+                page = getresultspage(response)
+                print(page)
+            return
+            
+class Docking:
+    class Vina:
+        """Molecular docking with AutoDock Vina (https://vina.scripps.edu/)."""
         def __init__(self, **kwargs):  
             self._receptor_family ='GPCR' ## Review
             self._receptor_file=None
@@ -392,7 +454,7 @@ class docking:
             self._energy_range=4
             self._num_modes=20
             self._ncpu=1
-            self._outpath=os.path.split(homedirectory)[0]
+            self._outpath=os.getcwd()
             self._results=None
             self._reference_files_dir = os.path.join(homedirectory,'autogrids/reference_files/') ###REVIEW##
             if 'receptor' in kwargs:
@@ -402,14 +464,28 @@ class docking:
                 self._ligands = kwargs.pop('ligands')
             if 'cpus' in kwargs:
                 self._ncpu = kwargs.pop('cpus')
-            if 'outpath' in kwargs:
-                self._outpath=kwargs.pop('outpath')
+            
+            # ##DEFINING JOBNAME
+            # if 'jobname' in kwargs:
+            #     self._jobname = kwargs.pop('jobname')
+            # else: 
+            #     import datetime
+            #     self._jobname = 'pyGOMODO_VINA_'+datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
+            # self._jobdir = os.path.join(os.getcwd(), self._jobname)
+            
+            # #create the job folder  if not exists
+            # if not os.path.isdir(self._jobdir):
+            #     subprocess.call('mkdir ' + self._jobdir, shell=True)
+            
+            self._interactions_table=None
             return
      
-        def box(self, **kwargs):
+        def Grid(self, **kwargs):
             """
-            perform an automatic detection of the binding pocket center coordinates, 
-               for specific proteins families (also works for heteromultimer)
+            Performs an automatic detection of the binding pocket center coordinates, 
+            for specific proteins families (also works for heteromultimer).
+
+            .. warning: This funtion works exclusively with GPCRs.
             """  
 
             from Bio.PDB.vectors import Vector
@@ -418,8 +494,6 @@ class docking:
                 self._receptor_file = kwargs.pop('receptor')
                 self._receptor_name = os.path.splitext(self._receptor_file)[0]
             
-            if 'outpath' in kwargs:
-                self._outpath=kwargs.pop('outpath')
             if self._receptor_file: pass
             else: raise ValueError('Unknown receptor. Please select a receptor file.')
   
@@ -545,7 +619,23 @@ class docking:
             
             return 
      
-        def run(self, **kwargs):
+        def Run(self, **kwargs):
+            """vina docking engine itself.
+            
+            :parameter num_modes: exhaustiveness of the global search (roughly proportional to time) (default 20)
+            :parameter size_x: size in the X dimension (Angstroms)
+            :parameter size_y: size in the Y dimension (Angstroms)
+            :parameter size_z: size in the Z dimension (Angstroms)
+            :parameter center_x: X coordinate of the center
+            :parameter center_Y: Y coordinate of the center
+            :parameter center_Z: Z coordinate of the center
+            :parameter exhaustiveness: exhaustiveness of the global search (roughly proportional to time) (default 8)
+            :parameter energy_range: exhaustiveness of the global search (roughly proportional to time) (default 4)
+            :parameter cpus: he number of CPUs to use (default 1)
+            
+            .. note:: Size and Center parameters can be automatica aquired by running Vina.Grid() funtion. 
+                      Those parameters will be passed automatically to the function.
+            """
             import subprocess  
       
             if self._center_box_vector:
@@ -573,7 +663,7 @@ class docking:
 
             #colocar sizes e center no self._box
             if not self._boxcenter_x or not self._boxcenter_z or not self._boxcenter_z:
-                raise ValueError('Vina box undefined. Please introduce box coordinates or run grid() for automatic detection.')            
+                raise ValueError('Vina box undefined. Please introduce box coordinates or run vina.Grid() function for automatic grid detection.')            
 
             print('Docking...\n')
             docking_files=[]
@@ -596,7 +686,6 @@ class docking:
                 subprocess.call(vina_command, shell=True,stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
                 docking_files.append(os.path.join(self._outpath, self._receptor_name+'_'+ligand_name+'_vina_out.pdbqt'))
             
-            print('\nAnalysing...')
             vina_dict={}
             self._modefiles={}
             for dockfile in docking_files:
@@ -634,27 +723,43 @@ class docking:
                         utils.pdbqt2pdb(tail+'_ligand_'+str(i+1)+'.pdbqt', self._outpath)
                 self._modefiles[tail.split('_')[1]]=mode_files
 
-                vinabestresult = utils.vina_extract_best_result(dockfile, root+'_best.pdbqt')
-                vinabestresultpdb = utils.pdbqt2pdb(vinabestresult, self._outpath)
+                #vinabestresult = utils.vina_extract_best_result(dockfile, root+'_best.pdbqt')
+                #vinabestresultpdb = utils.pdbqt2pdb(vinabestresult, self._outpath)
                 receptorpdb = utils.pdbqt2pdb(receptor4dock, self._outpath)
-                #utils.mergePDBs(os.path.basename(receptorpdb), os.path.basename(vinabestresultpdb), os.path.splitext(os.path.basename(vinabestresultpdb))[0]+'_complex.pdb')
 
             print('\nDone!')
             self._results=vina_dict
             return 
 
-        def results(self):
-            import ipywidgets
+        def View(self):
+            """3D visualization of the docking poses with py3Dmol."""
+            #£import ipywidgets
             
             def inception(ligand):
                 ligand=ligand
                 def scores(mode):
-                    def df(ligand):
-                        from IPython.core.display import display
-                        import pandas as pd
-                        data = self._results[self._receptor_name+'_'+ligand+'_vina_out']
-                        return display(pd.DataFrame.from_dict(data))
-                    df(ligand)
+                    #def df(ligand):
+                    #£from IPython.core.display import display
+                    #£import pandas as pd
+                        #data = self._results[self._receptor_name+'_'+ligand+'_vina_out']
+                        #return display(pd.DataFrame.from_dict(data))
+                    
+                    
+                    df_scores = pd.DataFrame.from_dict(self._results[self._receptor_name+'_'+ligand+'_vina_out'])
+
+                    header = {'selector': 'th:not(.index_name)', 'props': [
+                            ('background-color', 'white'), ('font-size', '13px'),
+                            ('color', 'black'), ('border', '2px solid white')]}
+
+                    poses = {'selector': 'th.col_heading.level0', 'props': [
+                            ('font-size', '13px'),('color', 'white'), 
+                            ('background-color', 'darkblue'),
+                            ("border", "2px solid white")]}
+
+                    row = {'selector': '.l0', 'props': 'color:blue;'}
+                    slice_ = df_scores.index[int(mode)-1]
+                    df_display = df_scores.style.set_table_styles([header, poses, row]).set_properties(**{'background-color': 'lightgreen', 'font-weight':'bold'}, subset=slice_).hide_index()
+                    display(df_display)
                     
                     utils.viz(height=300, 
                         rmol=self._receptor_name+'_grid.pdb',
@@ -675,314 +780,545 @@ class docking:
             
             ipywidgets.interact(inception, ligand=ipywidgets.Dropdown(options=options,value=options[0], description='Ligand:', disabled=False))
             return 
-        
-        def scores(self):
-            import pandas as pd
-            import ipywidgets
-            
-            def df(ligand):
-                data = self._results[self._receptor_name+'_'+ligand+'_vina_out']
-                return pd.DataFrame.from_dict(data)
-            options=[x.split('_')[1] for x in self._results]
-            ipywidgets.interact(df, 
-                    ligand=ipywidgets.Dropdown(
-                                        options=options,
-                                        value=options[0],
-                                        description='Ligand:',
-                                        disabled=False))
-            return
 
-        def viz(self):
-            import py3Dmol, ipywidgets
+        def AnalyseInteractions(self):
+            """Protein-Ligand interaction analysis with ProLIF (https://prolif.readthedocs.io/en/latest/index.html)."""
 
-            #defining box function
-            def visbox(objeto, bxi, byi, bzi, bxf, byf, bzf):
-                opacity=1.0
-                color='red'
-                linewidth=0.3
+            #£from openbabel import pybel  
 
-                tx1 = bxi-(bxf/2)
-                tx2 = bxi+(bxf/2)
-                ty1 = byi-(byf/2)
-                ty2 = byi+(byf/2)
-                tz1 = bzi-(bzf/2)
-                tz2 = bzi+(bzf/2)
-
-                r1 = (bxi, ty1, tz1)
-                r2 = (bxi, ty1, tz2)
-                r3 = (bxi, ty2, tz1)
-                r4 = (bxi, ty2, tz2)
-                r5 = (tx1, byi, tz1)
-                r6 = (tx1, byi, tz2)
-                r7 = (tx2, byi, tz1)
-                r8 = (tx2, byi, tz2)
-                r9 = (tx1, ty1, bzi)
-                r10 = (tx1, ty2, bzi)
-                r11 = (tx2, ty1, bzi)
-                r12 = (tx2, ty2, bzi)
-
-                objeto.addBox({'center':{'x':r1[0],'y':r1[1],'z':r1[2]},'dimensions': {'w':bxf,'h':linewidth,'d':linewidth},'opacity': opacity, 'color':color})
-                objeto.addBox({'center':{'x':r2[0],'y':r2[1],'z':r2[2]},'dimensions': {'w':bxf,'h':linewidth,'d':linewidth},'opacity': opacity, 'color':color})
-                objeto.addBox({'center':{'x':r3[0],'y':r3[1],'z':r3[2]},'dimensions': {'w':bxf,'h':linewidth,'d':linewidth},'opacity': opacity, 'color':color})
-                objeto.addBox({'center':{'x':r4[0],'y':r4[1],'z':r4[2]},'dimensions': {'w':bxf,'h':linewidth,'d':linewidth},'opacity': opacity, 'color':color})
-                objeto.addBox({'center':{'x':r5[0],'y':r5[1],'z':r5[2]},'dimensions': {'w':linewidth,'h':byf,'d':linewidth},'opacity': opacity, 'color':color})
-                objeto.addBox({'center':{'x':r6[0],'y':r6[1],'z':r6[2]},'dimensions': {'w':linewidth,'h':byf,'d':linewidth},'opacity': opacity, 'color':color})
-                objeto.addBox({'center':{'x':r7[0],'y':r7[1],'z':r7[2]},'dimensions': {'w':linewidth,'h':byf,'d':linewidth},'opacity':opacity , 'color':color})
-                objeto.addBox({'center':{'x':r8[0],'y':r8[1],'z':r8[2]},'dimensions': {'w':linewidth,'h':byf,'d':linewidth},'opacity': opacity, 'color':color})
-                objeto.addBox({'center':{'x':r9[0],'y':r9[1],'z':r9[2]},'dimensions': {'w':linewidth,'h':linewidth,'d':bzf},'opacity': opacity, 'color':color})
-                objeto.addBox({'center':{'x':r10[0],'y':r10[1],'z':r10[2]},'dimensions': {'w':linewidth,'h':linewidth,'d':bzf},'opacity': opacity, 'color':color})
-                objeto.addBox({'center':{'x':r11[0],'y':r11[1],'z':r11[2]},'dimensions': {'w':linewidth,'h':linewidth,'d':bzf},'opacity':opacity , 'color':color})
-                objeto.addBox({'center':{'x':r12[0],'y':r12[1],'z':r12[2]},'dimensions': {'w':linewidth,'h':linewidth,'d':bzf},'opacity': opacity, 'color':color})
-
-            #defining protein import and style
-            def complxvis(objeto, protein_name, ligand_file):
-                mol1 = open(protein_name,'r').read()
-                mol2 = open(ligand_file,'r').read()
-                objeto.addModel(mol1, 'pdb')
-                objeto.setStyle({'cartoon': {'color':'white'}})
-                objeto.addModel(mol2,'pdb')
-                objeto.setStyle({'model':1},{'stick':{'colorscheme':'cyanCarbon','radius':0.2}})
-
-
-            #difining visualization
-            def vismol(**kwargs): 
-                ligand=kwargs.pop('ligand')
-                
-                mol_view = py3Dmol.view(width=1080, height=500)
-                visbox(mol_view,self._boxcenter_x,self._boxcenter_y,self._boxcenter_z,self._boxsize_x,self._boxsize_y, self._boxsize_z)
-                ligand_file= self._receptor_name+'_'+ligand+'_vina_out_best.pdb'
-                complxvis(mol_view,self._receptor_name+'_grid.pdb', ligand_file)
-                mol_view.setBackgroundColor('0xeeeeee')
-                mol_view.zoomTo({'model':1})  
-                mol_view.show()
-
-            vector=self._center_box_vector
-
-            options=[x.split('_')[1] for x in self._results]
-            ipywidgets.interact(vismol, ligand=ipywidgets.Dropdown(options=options,value=options[0],description='Ligand:',disabled=False))
-
-        def analyse(self, all=True):
             self._interactions_table={}
             receptor_file = self._receptor_name+'_grid.pdb'
-            
-            if all:
-                for ligand in self._modefiles:
-                    for mode in self._modefiles[ligand]:
-                        ligand_file = mode.split('.')[0]+'.pdb'
-                        self._interactions_table[ligand+'_'+mode.split('_')[-1].split('.')[0]] = docking.interactions.prolif(receptor_file, ligand_file)
-                self.__best=True
-            else:
-                for ligand in self._modefiles:
-                    ligand_file = self._receptor_name+'_'+ligand+'_vina_out_ligand_01.pdb'
-                    self._interactions_table[ligand] = docking.interactions.prolif(receptor_file, ligand_file)
-                self.__best=False
+            receptorMol = next(pybel.readfile('pdb', receptor_file)).write('pdb') 
+          
+            for ligand in self._modefiles:
+                for mode in self._modefiles[ligand]:
+                    ligand_file = mode.split('.')[0]+'.pdb'
+                    poseMol = next(pybel.readfile('pdb', ligand_file)).write('pdb')
+                    self._interactions_table[ligand+'_'+mode.split('_')[-1].split('.')[0]] = Interactions.Prolif(receptorMol, poseMol)
             return
 
-        def interactionsMap(self, **kwargs):
-            import ipywidgets
+        def ViewInteractionsMap(self, map3D=True, map2D=True, **kwargs):
+            """Protein-Ligand interaction visualization.
+            
+            :parameter map3D: (True) If true 3D iteraction map is displayed
+            :parameter map2D: (True) If true 2D interaction map id displayed
+            :parameter opacity: (default 0.65) opacity of protein cartoon (map3D must be True)
+            """
+            #£import ipywidgets
+            #£from openbabel import pybel
             
             if 'opacity' in kwargs: 
                 opacity=kwargs.pop('opacity')
             else: opacity=0.65
 
-            if self.__best:
-                #print('Rui Ribeiro')
-
-                def inception(ligand):
-                    ligand=ligand
-                    def network_interations(mode):
-                        mode=mode
-                        mol3D = docking.interactions.vismol(self._receptor_name+'_grid.pdb',self._receptor_name+'_'+ligand+'_vina_out_ligand_'+mode+'.pdb',self._interactions_table[ligand+'_'+mode].copy(), opacity=opacity)
-                        mol2D = docking.interactions.lignet(self._interactions_table[ligand+'_'+mode],self._receptor_name+'_'+ligand+'_vina_out_ligand_'+mode+'.pdb' )
-                        return mol2D.display(width=600) #changeme
+            if not self._interactions_table:
+                Docking.Vina.AnalyseInteractions(self)
+            
+            def inception(ligand):
+                ligand=ligand
+                def network_interations(mode):
+                    lmol = next(pybel.readfile('pdb',self._receptor_name+'_'+ligand+'_vina_out_ligand_'+mode+'.pdb')).write('pdb')
+                    rmol = next(pybel.readfile('pdb', self._receptor_name+'_grid.pdb')).write('pdb')
                     
-                    options2=[x.split('_')[5].split('.')[0] for x in self._modefiles[ligand]] 
-                    ipywidgets.interact(network_interations, mode=ipywidgets.Dropdown(options=options2,value=options2[0], description='Mode:', disabled=False))
-                    return
-                
-                options=[x.split('_')[1] for x in self._results]
-                ipywidgets.interact(inception, ligand=ipywidgets.Dropdown(options=options,value=options[0],description='Ligand:',disabled=False))
-
+                    mode=mode
+                    if map3D is True:
+                        mol3D = Interactions.Vismol(rmol, lmol, self._interactions_table[ligand+'_'+mode].copy(), opacity=opacity)
+                    if map2D is True:
+                        mol2D = Interactions.Lignet(self._interactions_table[ligand+'_'+mode],lmol)
+                        return mol2D.display(width=600)
+                                  
+                options2=[x.split('_')[5].split('.')[0] for x in self._modefiles[ligand]] 
+                ipywidgets.interact(network_interations, mode=ipywidgets.Dropdown(options=options2,value=options2[0], description='Mode:', disabled=False))
+                return
             
+            options=[x.split('_')[1] for x in self._results]
+            ipywidgets.interact(inception, ligand=ipywidgets.Dropdown(options=options,value=options[0],description='Ligand:',disabled=False))
             
-            else:
-                def network_interations(**kwargs):
-                    ligand=kwargs.pop('ligand')
-                    mol3D = docking.interactions.vismol(self._receptor_name+'_grid.pdb',self._receptor_name+'_'+ligand+'_vina_out_ligand_01.pdb',self._interactions_table[ligand].copy(), opacity=opacity)
-                    mol2D = docking.interactions.lignet(self._interactions_table[ligand],self._receptor_name+'_'+ligand+'_vina_out_ligand_01.pdb' )
-                    return mol2D.display(width=600) #changeme
-                
-                options=[x.split('_')[1] for x in self._results]
-                ipywidgets.interact(network_interations, ligand=ipywidgets.Dropdown(options=options,value=options[0],description='Ligand:',disabled=False))
-
-    class interactions:
-
-        def __init__(self, **kwargs):
-         
             return
 
-        def prolif(fi1, fi2):
+    class Rdock:
+        """Molecular docking with rDock (http://rdock.sourceforge.net/)."""
+        def __init__(self, **kwargs):
+
+            if 'title' in kwargs: self._TITLE = kwargs.pop('title')
+            else: self._TITLE = 'TITLE' #resolve
+
+            if 'receptor_file' in kwargs: self._RECEPTOR_FILE = kwargs.pop('receptor_file')
+            else: raise ValueError('Receptor file unknown.')
+
+            if 'receptor_flex' in kwargs: self._RECEPTOR_FLEX = kwargs.pop('receptor_flex')
+            else: self._RECEPTOR_FLEX = '3.0'
+            self._interactions_table = None
+            return
+
+        def Cavity(self, **kwargs):
+            """
+            rbcavity – Cavity mapping and preparation of docking site 
+
+            :parameter recerence mol:    Required (kwargs str): reference molecule path
+            :parameter REF_MOL      :    Optional
+            :parameter SITE_MAPPER  :    Optional (str): default 'RbtLigandSiteMapper'
+            :parameter RADIUS       :    Optional (int): default '6.0' 
+            :parameter SMALL_SPHERE :    Optional (int): default '1.0'
+            :parameter MIN_VOLUME   :    Optional (int): default '100'
+            :parameter MAX_CAVITIES :    Optional (int): default '1'
+            :parameter VOL_INCR     :    Optional (int): default '0.0'
+            :parameter GRIDSTEP     :    Optional (int): default '0.5'
+            :parameter SCORING_FUNCTION : Optional (str): default 'RbtCavityGridSF'
+            :parameter WEIGHT       :    Optional (int): default '1.0'
             
-            import prolif as plf
-            from rdkit import Chem
+            .. note:: For a detailed description of the parameters please see rDock documentation http://rdock.sourceforge.net/.
+            
+            """
+            if 'reference_mol' in kwargs: self._REF_MOL = kwargs.pop('reference_mol')
+            if 'SITE_MAPPER' in kwargs: self._SITE_MAPPER = kwargs.pop('SITE_MAPPER')
+            else: self._SITE_MAPPER = 'RbtLigandSiteMapper'
+            if 'REF_MOL' in kwargs: self._REF_MOL = kwargs.pop('REF_MOL')
 
-            mol = Chem.MolFromPDBFile(fi1, removeHs=False)
-            prot = plf.Molecule(mol)
-            mol = Chem.MolFromPDBFile(fi2, removeHs=False)
-            lig = plf.Molecule(mol)
-            fp = plf.Fingerprint()
-            fp.run_from_iterable([lig], prot, progress=False)
-            df = fp.to_dataframe(return_atoms=True)
-            return df
+            if self._REF_MOL:pass
+            else: raise ValueError('reference_mol unknown')
 
-        def lignet(df, ligand):
-            from prolif.plotting.network import LigNetwork
-            from rdkit import Chem
-            import prolif as plf
-            mol = Chem.MolFromPDBFile(ligand, removeHs=False)
-            lmol = plf.Molecule(mol)
-            net = LigNetwork.from_ifp(df, lmol,
-                          # replace with `kind="frame", frame=0` for the other depiction
-                          kind="aggregate", threshold=.3,
-                          rotation=270)
-            return net
+            if 'RADIUS' in kwargs: self._RADIUS = kwargs.pop('RADIUS')
+            else: self._RADIUS = '6.0'
+            if 'SMALL_SPHERE' in kwargs: self._SMALL_SPHERE = kwargs.pop('SMALL_SPHERE')
+            else: self._SMALL_SPHERE = '1.0'
+            if 'MIN_VOLUME' in kwargs: self._MIN_VOLUME = kwargs.pop('MIN_VOLUME')
+            else: self._MIN_VOLUME = '100'
+            if 'MAX_CAVITIES' in kwargs: self._MAX_CAVITIES = kwargs.pop('MAX_CAVITIES')
+            else: self._MAX_CAVITIES = '1'
+            if 'VOL_INCR' in kwargs: self._VOL_INCR = kwargs.pop('VOL_INCR')
+            else: self._VOL_INCR = '0.0'
+            if 'GRIDSTEP' in kwargs: self._GRIDSTEP = kwargs.pop('GRIDSTEP')
+            else: self._GRIDSTEP = '0.5'
+            if 'SCORING_FUNCTION' in kwargs: self._SCORING_FUNCTION = kwargs.pop('SCORING_FUNCTION')
+            else: self._SCORING_FUNCTION = 'RbtCavityGridSF'
+            if 'WEIGHT' in kwargs: self._WEIGHT = kwargs.pop('WEIGHT')
+            else: self._WEIGHT = '1.0'
+            
 
-        def vismol(fi1, fi2, df, **kwargs):
-            from rdkit import Chem, Geometry
-            import py3Dmol, ipywidgets
-            import prolif as plf
-            def get_ring_centroid(mol, index):
-                # find ring using the atom index
-                Chem.SanitizeMol(mol, Chem.SanitizeFlags.SANITIZE_SETAROMATICITY)
-                ri = mol.GetRingInfo()
-                for r in ri.AtomRings():
-                    if index in r:
-                        break
-                else:
-                    raise ValueError("No ring containing this atom index was found in the given molecule")
-                # get centroid
-                coords = mol.xyz[list(r)]
-                ctd = plf.utils.get_centroid(coords)
-                return Geometry.Point3D(*ctd)
+            self.__prm = """RBT_PARAMETER_FILE_V1.00
+TITLE {}
 
-            #ligand=kwargs.pop('ligand')
-            #fi1 = self._receptor_name+'_grid.pdb'
-            #fi2 = self._receptor_name+'_'+ligand+'_vina_out_best.pdb'
-            mol = Chem.MolFromPDBFile(fi1, removeHs=False)
-            pmol = plf.Molecule(mol)
-            mol = Chem.MolFromPDBFile(fi2, removeHs=False)
-            lmol = plf.Molecule(mol)
-            #df = self._interactions_table[self._receptor_name+'_'+ligand+'_vina_out'].copy()
-            colors = {
-                    "HBAcceptor": "cyan",
-                    "HBDonor": "cyan",
-                    "Cationic": "green",
-                    "PiStacking": "purple",
-                    "Hydrophobic":"lime",
-                    "Anionic":"gray",
-                    "CationPi":"gray",
-                    "EdgeToFace":"gray",
-                    "FaceToFace":"gray",
-                    "Interaction":"gray",
-                    "MetalAcceptor":"gray",
-                    "MetalDonor":"gray",
-                    "PiCation":"gray",
-                    "VdWContact":"gray",
-                    "XBAcceptor":"gray",
-                    "XBDonor":"gray",
-                    "_BaseCationPi":"gray",
-                    "_BaseHBond":"gray",
-                    "_BaseIonic":"gray",
-                    "_BaseMetallic":"gray",
-                    "_BaseXBond":"gray",
-                    "_Distance":"gray"
-                }
+RECEPTOR_FILE {}
+RECEPTOR_FLEX {}
 
-            # JavaScript functions
-            resid_hover = """function(atom,viewer) {{
-                if(!atom.label) {{
-                    atom.label = viewer.addLabel('{0}:'+atom.atom+atom.serial,
-                        {{position: atom, backgroundColor: 'mintcream', fontColor:'black'}});
-                }}
-            }}"""
-            hover_func = """
-            function(atom,viewer) {
-                if(!atom.label) {
-                    atom.label = viewer.addLabel(atom.interaction,
-                        {position: atom, backgroundColor: 'black', fontColor:'white'});
-                }
-            }"""
-            unhover_func = """
-            function(atom,viewer) {
-                if(atom.label) {
-                    viewer.removeLabel(atom.label);
-                    delete atom.label;
-                }
-            }"""
+##################################################################
+### CAVITY DEFINITION: REFERENCE LIGAND METHOD
+##################################################################
+SECTION MAPPER
+    SITE_MAPPER {}
+    REF_MOL {}
+    RADIUS {}
+    SMALL_SPHERE {}
+    MIN_VOLUME {}
+    MAX_CAVITIES {}
+    VOL_INCR {}
+   GRIDSTEP {}
+END_SECTION
 
-            #v = py3Dmol.view(650, 600)
-            v = py3Dmol.view(width=500, height=600) #changeme
-            v.removeAllModels()
+#################################
+#CAVITY RESTRAINT PENALTY
+#################################
+SECTION CAVITY
+    SCORING_FUNCTION {}
+    WEIGHT {}
+END_SECTION
+              
+            """.format(self._TITLE, self._RECEPTOR_FILE, self._RECEPTOR_FLEX, self._SITE_MAPPER,
+            self._REF_MOL, self._RADIUS, self._SMALL_SPHERE, self._MIN_VOLUME, self._MAX_CAVITIES, 
+            self._VOL_INCR, self._GRIDSTEP, self._SCORING_FUNCTION, self._WEIGHT)
+            
+            #print(prm)
+            with open('docking.prm', 'w') as f:
+                f.write(self.__prm)
 
-            models = {}
-            mid = -1
-            for i, row in df.T.iterrows():
-                lresid, presid, interaction = i
-                lindex, pindex = row[0]
-                lres = lmol[0]
-                pres = pmol[presid]
-                # set model ids for reusing later
-                for resid, res, style in [(lresid, lres, {"colorscheme": "cyanCarbon"}),
-                                        (presid, pres, {})]:
-                    if resid not in models.keys():
-                        mid += 1
-                        v.addModel(Chem.MolToMolBlock(res), "sdf")
-                        model = v.getModel()
-                        model.setStyle({}, {"stick": style})
-                        # add residue label
-                        model.setHoverable({}, True, resid_hover.format(resid), unhover_func)
-                        models[resid] = mid
-                # get coordinates for both points of the interaction
-                if interaction in ["PiStacking", "EdgeToFace", "FaceToFace", "PiCation"]:
-                    p1 = get_ring_centroid(lres, lindex)
-                else:
-                    p1 = lres.GetConformer().GetAtomPosition(lindex)
-                if interaction in ["PiStacking", "EdgeToFace", "FaceToFace", "CationPi"]:
-                    p2 = get_ring_centroid(pres, pindex)
-                else:
-                    p2 = pres.GetConformer().GetAtomPosition(pindex)
-                # add interaction line
-                v.addCylinder({"start": dict(x=p1.x, y=p1.y, z=p1.z),
-                            "end":   dict(x=p2.x, y=p2.y, z=p2.z),
-                            "color": colors[interaction],
-                            "radius": .1,
-                            "dashed": True,
-                            "fromCap": 1,
-                            "toCap": 1,
-                            })
-                # add label when hovering the middle of the dashed line by adding a dummy atom
-                c = Geometry.Point3D(*plf.utils.get_centroid([p1, p2]))
-                modelID = models[lresid]
-                model = v.getModel(modelID)
-                model.addAtoms([{"elem": 'Z',
-                                "x": c.x, "y": c.y, "z": c.z,
-                                "interaction": interaction}])
-                model.setStyle({"interaction": interaction}, {"clicksphere": {"radius": .5}})
-                model.setHoverable(
-                    {"interaction": interaction}, True,
-                    hover_func, unhover_func)
+            rbcavity = 'rbcavity -was -d -r docking.prm > rbcavity.log'
+            subprocess.call(rbcavity, shell=True)
+            
+            #show output
+            with open('rbcavity.log', 'r') as flog:
+                for line in flog.readlines()[-5:]:
+                    print(line)
+            return
+        
+        def Run(self, tethered=False,  smina_minimize=False, smina_score_only=False, **kwargs):
+            """rbdock – the rDock docking engine itself.
+            
+            :parameter target_mol: Required (list or str): path of target molecule
+            :parameter nruns     : Optional (int): number of docking poses (default 10)
+            :parameter output_name: Optional (str): name of the docking files (default 'docking_poses')
+            :parameter tethered:    (False) If true it will run the tethered docking
+            :parameter smina_minimize: (False) If true the docking solutions will be minimized with smina (https://sourceforge.net/projects/smina/)
+            :parameter smina_score_only: (False) If true the docking solutions will be rescored with smina (https://sourceforge.net/projects/smina/)
+            :parameters tethered_parameters: {'TRANS_MODE':'TETHERED',
+                                              'ROT_MODE:'TETHERED',
+                                              'DIHEDRAL_MODE='FREE ',
+                                              'MAX_TRANS':1.0
+                                              'MAX_ROT':30.0}
+            
+            .. note:: For a detailed description of the tethered parameters please see rDock documentation http://rdock.sourceforge.net/.
+            """
+            #£from openbabel import pybel
+            #£from rdkit import Chem
+            #£from rdkit.Chem import rdMolAlign
 
-            # show protein
-            if 'opacity' in kwargs: 
+            if 'output_name' in kwargs: 
+                output_name = kwargs.pop('output_name')
+            else: output_name = 'docking_poses'
+            
+            if 'target_mol' in kwargs: 
+                target_mol = kwargs.pop('target_mol')
+                if isinstance(target_mol, list): pass
+                else: target_mol=[target_mol]
+            else: raise ValueError('molecules to dock unknown.') 
+
+            if 'nruns' in kwargs: nruns = kwargs.pop('nruns')
+            else: nruns = 10
+
+            #TETHERED
+            TRANS_MODE='TETHERED'
+            ROT_MODE='TETHERED'
+            DIHEDRAL_MODE='FREE'
+            MAX_TRANS=1.0
+            MAX_ROT=30.0 
+            if 'tethered_parameters' in kwargs:
+                tethered_parameters = kwargs.pop('tethered_parameters')
+                if isinstance(tethered_parameters, dict):
+                    if 'TRANS_MODE' in tethered_parameters.keys(): TRANS_MODE=tethered_parameters.pop('TRANS_MODE')
+                    if 'ROT_MODE' in tethered_parameters.keys(): ROT_MODE=tethered_parameters.pop('ROT_MODE')
+                    if 'DIHEDRAL_MODE' in tethered_parameters.keys(): DIHEDRAL_MODE=tethered_parameters.pop('DIHEDRAL_MODE')
+                    if 'MAX_TRANS' in tethered_parameters.keys(): MAX_TRANS=tethered_parameters.pop('MAX_TRANS')
+                    if 'MAX_ROT' in tethered_parameters.keys(): MAX_ROT=tethered_parameters.pop('MAX_ROT')
+                else: raise AttributeError('"tethered_parameters is not a dict"')
+        
+            if tethered is True:
+                params='''TETHERED PARAMETERS:
+
+TRANS_MODE {}
+ROT_MODE {}
+DIHEDRAL_MODE {}
+MAX_TRANS {}
+MAX_ROT {}'''.format(TRANS_MODE,ROT_MODE, DIHEDRAL_MODE, MAX_TRANS,MAX_ROT)
+                print(params)
+                tethered_prm_text=params="""
+################################
+# TETHERED SCAFFOLF
+################################
+SECTION LIGAND
+   TRANS_MODE {}
+   ROT_MODE {}
+   DIHEDRAL_MODE {}
+   MAX_TRANS {}
+   MAX_ROT {}
+END_SECTION
+""".format(TRANS_MODE,ROT_MODE, DIHEDRAL_MODE, MAX_TRANS,MAX_ROT)
+               
+                with open('docking.prm', 'w') as prm_tethered_file:
+                    prm_tethered_file.write(self.__prm)
+                    prm_tethered_file.write(tethered_prm_text)
+
+
+            self._dockposes = {}
+            self._scores = {}
+            for target in target_mol:
+                target_name, target_ext = os.path.splitext(target)
+                self._output_name = target_name+'_'+output_name
+                self._output_name_sorted = '{}_sorted.sd'.format(self._output_name)
+                #RUN rbDock
+                rbdock_cmd = 'rbdock -i {} -o {} -r docking.prm -p dock.prm -n {}'.format(target, self._output_name, nruns)
+                subprocess.call(rbdock_cmd, shell=True)
+
+
+                ### ANALYSIS
+                if smina_minimize is False:
+                    #sort values
+                    if 'by' in kwargs: by=kwargs.pop('by')
+                    else: by='SCORE'
+                    sdsort_cmd = 'sdsort -n -f{} {}.sd > {}'.format(by,self._output_name, self._output_name_sorted)
+                    subprocess.call(sdsort_cmd, shell=True)
+
+                    #Split de .sd file
+                    #create a dict with pose id and sd string
+                    mols = list(pybel.readfile(target_ext.strip('.'), self._output_name_sorted))
+                    self._dockposes[target_name] = dict(zip(range(1,len(mols)+1),list(mols[idx].write('sd') for idx in range(len(mols)))))
+               
+                    #create a dict with scores
+                    self._scores[target_name] = dict(zip(range(1,len(mols)+1), [dict() for i in range(len(mols))]))
+                
+                    
+                    for i in range(len(mols)):
+                        self._scores[target_name][i+1]['RDOCK Score']=mols[i].data['SCORE']
+
+                    #RMSD conformations
+                    with open(self._output_name_sorted, 'r') as f:
+                        contents = f.read()
+                    contents = contents.replace(re.findall('\slibRbt.so/\S*\s\S*', contents)[0],'')
+                    conformations = contents.split("$$$$")[:-1]
+                    conf0 = Chem.MolFromMolBlock(conformations[0].replace('\n  rDOCK(R)','\n\n  rDOCK(R)'))
+
+                    rmsd=[]
+                    rmsd.append(0.00)
+                    for conf in range(1,len(conformations)):
+                        rmsd.append(rdMolAlign.CalcRMS(Chem.MolFromMolBlock(conformations[conf]), conf0))
+                    for i in range(len(mols)):
+                        self._scores[target_name][i+1]['RMSD']=rmsd[i]
+
+                if smina_minimize is True:
+                    smina_command = '{} --receptor {} --ligand {}.sd --out {}_minimized.sd --minimize'.format(smina_path, self._RECEPTOR_FILE,self._output_name, self._output_name )
+                    smina_log = subprocess.check_output(smina_command, shell=True)
+                    smina_log = smina_log.decode('utf-8').splitlines()
+                    #Sort
+                    sdsort_cmd = 'sdsort -n -f{} {}_minimized.sd > {}_minimized_sorted.sd'.format('minimizedAffinity',self._output_name, self._output_name)
+                    subprocess.call(sdsort_cmd, shell=True)
+
+                    #Split de .sd file
+                    #create a dict with pose id and sd string
+                    mols = list(pybel.readfile(target_ext.strip('.'), '{}_minimized_sorted.sd'.format(self._output_name)))
+                    self._dockposes[target_name] = dict(zip(range(1,len(mols)+1),list(mols[idx].write('sd') for idx in range(len(mols)))))
+               
+                    #create a dict with scores
+                    self._scores[target_name] = dict(zip(range(1,len(mols)+1), [dict() for i in range(len(mols))]))
+                
+                    smina_score_command = '{} --receptor {} --ligand {}_minimized_sorted.sd --score_only'.format(smina_path, self._RECEPTOR_FILE,self._output_name)
+                    smina_score_log = subprocess.check_output(smina_score_command, shell=True)
+                    smina_score_log = smina_score_log.decode('utf-8').splitlines()
+                    affinity_values=[]
+                    intramolecular_values = []
+                    for line in smina_score_log:
+                        try:
+                            affinity = re.findall('^Affinity:\s*(\S*)\s*', line)[0]
+                            affinity_values.append(affinity)
+                        except: pass
+                        try: 
+                            intramolecular = re.findall('^Intramolecular energy:\s*(\S*)', line)[0]
+                            intramolecular_values.append(intramolecular)
+                        except:pass
+                    for i in range(len(mols)):
+                        self._scores[target_name][i+1]['Affinity (Kcal/mol)']=affinity_values[i]
+                        self._scores[target_name][i+1]['Intramolecular Energy (Kcal/mol)']=intramolecular_values[i]
+                        self._scores[target_name][i+1]['RMSD minimized']=mols[i].data['minimizedRMSD']
+
+                    #RMSD conformations
+                    with open('{}_minimized_sorted.sd'.format(self._output_name), 'r') as f:
+                        contents = f.read()
+                    conformations = contents.split("$$$$")[:-1]
+                    conf0 = Chem.MolFromMolBlock(conformations[0])
+
+                    rmsd=[]
+                    rmsd.append(0.00)
+                    for conf in range(1,len(conformations)):
+                        rmsd.append(Chem.rdMolAlign.CalcRMS(Chem.MolFromMolBlock(conformations[conf].replace('\n\n\n\n','\n\n\n')), conf0))
+                    for i in range(len(mols)):
+                        self._scores[target_name][i+1]['RMSD']=rmsd[i]
+                    
+                
+                if smina_minimize is False and smina_score_only is True:
+                    smina_command = '{} --receptor {} --ligand {}_sorted.sd --score_only'.format(smina_path, self._RECEPTOR_FILE,self._output_name)
+                    smina_score_log = subprocess.check_output(smina_command, shell=True)
+                    smina_score_log = smina_score_log.decode('utf-8').splitlines()
+                    affinity_values=[]
+                    intramolecular_values = []
+                    for line in smina_score_log:
+                        try:
+                            affinity = re.findall('^Affinity:\s*(\S*)\s*', line)[0]
+                            affinity_values.append(affinity)
+                        except: pass
+                        try: 
+                            intramolecular = re.findall('^Intramolecular energy:\s*(\S*)', line)[0]
+                            intramolecular_values.append(intramolecular)
+                        except:pass
+                    
+                    for i in range(len(mols)):
+                        self._scores[target_name][i+1]['Affinity (Kcal/mol)']=affinity_values[i]
+                        self._scores[target_name][i+1]['Intramolecular Energy (Kcal/mol)']=intramolecular_values[i]
+            return
+
+        def View(self, **kwargs):
+            """3D visualization of the docking poses with py3Dmol.
+            
+            :parameter recerence_mol: Optional (str) Reference ligand
+            """
+            #£import py3Dmol
+            #£from openbabel import pybel
+            #£import ipywidgets
+ 
+            if 'reference' in kwargs: 
+                refmol = kwargs.pop('reference') 
+                reference =True
+            else: reference=False
+            def inception(molname):
+                
+                #£from IPython.core.display import display
+                #£import pandas as pd
+                       
+            
+                def vismol(pose):
+                    df_scores = pd.DataFrame.from_dict(self._scores[molname], orient='index')
+
+                    header = {'selector': 'th:not(.index_name)', 'props': [
+                            ('background-color', 'white'), ('font-size', '13px'),
+                            ('color', 'black'), ('border', '2px solid white')]}
+
+                    poses = {'selector': 'th.col_heading.level0', 'props': [
+                            ('font-size', '13px'),('color', 'white'), 
+                            ('background-color', 'darkblue'),
+                            ("border", "2px solid white")]}
+
+                    row = {'selector': '.l0', 'props': 'color:blue;'}
+                    slice_ = df_scores.index[pose-1]
+                    df_display = df_scores.style.set_table_styles([header, poses, row]).set_properties(**{'background-color': 'lightgreen', 'font-weight':'bold'}, subset=slice_).hide_index()
+
+                    display(df_display)
+
+                    pose=pose
+                    molview=py3Dmol.view(height=500)
+                    mol1=next(pybel.readfile(os.path.splitext(self._RECEPTOR_FILE)[1].strip('.'), self._RECEPTOR_FILE)).write('pdb')
+                    mol2=self._dockposes[molname][pose]
+                    molview.addModel(mol1, 'pdb')
+                    molview.setStyle({'cartoon': {'color':'white'}})
+                    molview.addModel(mol2, 'sd')
+                    molview.setStyle({'model':1},{'stick':{'colorscheme':'cyanCarbon','radius':0.2}})
+
+                    if reference is True:
+                        molview.addModel(next(pybel.readfile(os.path.splitext(refmol)[1].strip('.'),refmol)).write('pdb'), 'pdb')
+                        molview.setStyle({'model':2},{'stick':{'colorscheme':'whiteCarbon','radius':0.2}})
+                    molview.setBackgroundColor('0xeeeeee')
+                    molview.zoomTo({'model':1})
+                    molview.show()
+                    return
+
+                molname=molname
+                options2=[x for x in self._dockposes[molname].keys()]
+                ipywidgets.interact(vismol, pose=ipywidgets.Dropdown(options=options2, value=options2[0], description='Pose:', disable=False))
+
+                return
+            
+    
+            options1=[x for x in self._scores.keys()]
+            ipywidgets.interact(inception, molname=ipywidgets.Dropdown(options=options1, value=options1[0], description='Ligand:', disable=False))
+
+            return
+
+        def AnalyseInteractions(self):
+            """Protein-Ligand interaction analysis with ProLIF (https://prolif.readthedocs.io/en/latest/index.html)."""
+            #£from openbabel import pybel
+
+            self._interactions_table = {}
+            receptorMol = next(pybel.readfile(os.path.splitext(self._RECEPTOR_FILE)[1].strip('.'), self._RECEPTOR_FILE)).write('pdb')
+            
+            for lig in self._dockposes.keys():
+                self._interactions_table[lig]={}
+                for pose in self._dockposes[lig]:
+                    poseMol = pybel.readstring('sd', self._dockposes[lig][pose]).write('pdb')
+                    self._interactions_table[lig][pose] = Interactions.Prolif(receptorMol, poseMol)            
+            return
+
+        def ViewInteractionsMap(self,map3D=True, map2D=True, **kwargs):
+            """Protein-Ligand interaction visualization.
+            
+            :parameter map3D: (True) If true 3D iteraction map is displayed
+            :parameter map2D: (True) If true 2D interaction map id displayed
+            :parameter opacity: (default 0.65) opacity of protein cartoon (map3D must be True)
+            """
+            #£import ipywidgets
+            #£from openbabel import pybel
+
+            if 'opacity' in kwargs:
                 opacity=kwargs.pop('opacity')
             else: opacity=0.65
-            mol = Chem.RemoveAllHs(pmol)
-            pdb = Chem.MolToPDBBlock(mol, flavor=0x20 | 0x10)
-            v.addModel(pdb, "pdb")
-            model = v.getModel()
-            model.setStyle({}, {"cartoon": {"style":"edged", "opacity":opacity}})
-            v.zoomTo({"model": list(models.values())})
             
-            return v.show()
+            if not self._interactions_table:
+                Docking.Rdock.AnalyseInteractions(self)
 
+            if self._interactions_table:
+                def inception(molname):
+                    def network_interactions(pose):
+                        lmol = pybel.readstring('sd',self._dockposes[molname][pose]).write('pdb')
+                        rmol = next(pybel.readfile(os.path.splitext(self._RECEPTOR_FILE)[1].strip('.'), self._RECEPTOR_FILE)).write('pdb')
+                        if map3D is True:
+                            mol3D = Interactions.Vismol(rmol, lmol, self._interactions_table[molname][pose].copy(), opacity=opacity)
+                        if map2D is True:
+                            mol2D = Interactions.Lignet(self._interactions_table[molname][pose], lmol)
+                            return mol2D.display(width=600)
+                    options2=[x for x in self._dockposes[molname].keys()]
+                    ipywidgets.interact(network_interactions, pose=ipywidgets.Dropdown(options=options2, value=options2[0], description='Pose: ', disabled=False))
+                    return
+                options=[x for x in self._scores.keys()]
+                ipywidgets.interact(inception, molname=ipywidgets.Dropdown(options=options, value=options[0], description='Ligand: ', disabled=False))
+    
+            return
         
+class Align:
+    class Tethering:
+        """Tethered minimization on the MCS of ligands and a reference 3D molecular structure"""
+        def MolAlignment(**kwargs):
+            """:parameter reference: (str) reference 3D molecule
+               :parameter target_name: (str) name of ligand
+               :parameter target_smile: (str) smiles string of ligand"""
+            refFile = kwargs.pop('ref')
+            targetMolID = kwargs.pop('target_name')
+            targetMolSMI = kwargs.pop('target_smiles')
+            
+            #£from openbabel import pybel
+            #£from rdkit import Chem
+            #£from rdkit.Chem import rdFMCS, AllChem 
+            from rdkit import RDLogger
+            RDLogger.DisableLog('rdApp.*')
+
+            refmol_str = next(pybel.readfile(os.path.splitext(refFile)[1].strip('.'), refFile)).write('pdb')
+            refmol = Chem.MolFromPDBBlock(refmol_str, removeHs=True)
+            if 'ratioThreshold' in kwargs: ratioThreshold = kwargs.pop('ratioThreshold')
+            else: ratioThreshold=0.20
+
+            targetmol = Chem.MolFromSmiles(targetMolSMI)
+            targetmolHs = Chem.AddHs(targetmol, addCoords=True)
+            mcs = rdFMCS.FindMCS([refmol, targetmolHs], threshold=0.9, completeRingsOnly=True)
+
+            if mcs.smartsString and len(mcs.smartsString)>0:
+                patt = Chem.MolFromSmarts(mcs.smartsString, mergeHs=True)
+            else: raise ValueError('MCS not fund!')
+        
+            refmolcore = Chem.AllChem.ReplaceSidechains(refmol,patt)
+    
+            if refmolcore:
+                core=Chem.AllChem.DeleteSubstructs(refmolcore, Chem.MolFromSmiles('*'))
+                core.UpdatePropertyCache()
+            else: raise AttributeError('Reference mcs core not found.')
+            
+    
+            GetFF=lambda x,confId=-1:Chem.AllChem.MMFFGetMoleculeForceField(x,Chem.AllChem.MMFFGetMoleculeProperties(x),confId=confId)
+            AllChem.ConstrainedEmbed(targetmolHs,core, getForceField=GetFF, useTethers=True)
+            matchratio = float(core.GetNumAtoms())/float(refmolcore.GetNumAtoms())
+            tethered_atom_ids=targetmolHs.GetSubstructMatches(patt)[0]
+
+            if tethered_atom_ids and matchratio>ratioThreshold:
+                atoms = map(lambda x:x+1, list(tethered_atom_ids))
+                atoms_string = ','.join(str(el) for el in atoms)
+            else: raise AttributeError('ratioThreshold error.')
+
+            targetmolHs.SetProp('TETHERED ATOMS',atoms_string)
+            print('Ligand: {}; Tethered atoms: {}'.format(targetMolID, atoms_string))
+            
+            w=Chem.SDWriter('{}_tethered.sd'.format(targetMolID))
+            w.write(targetmolHs)
+            w.flush()
+            print('Output:', '{}_tethered.sd'.format(targetMolID), '\n')
+            return '{}_tethered.sd'.format(targetMolID)
+
+        def MolsAlignment(**kwargs):
+            """:parameter reference: (str) reference 3D molecule
+               :parameter target_name: (list of str) liad of names of ligands
+               :parameter target_smile: (list of str) list of smiles strings of ligands"""
+            refFile = kwargs.pop('reference')
+            targetMolID = kwargs.pop('targets_names')
+            targetMolSMI = kwargs.pop('targets_smiles')
+            
+            if isinstance(targetMolID, list) and isinstance(targetMolSMI, list): 
+                if len(targetMolID) == len(targetMolSMI):pass
+                else: raise AttributeError('"target_name" and "target_smiles" have different leghts.')
+            else: raise AttributeError('"target_name" and "target_smiles" must be a list')
+
+            tetheredFiles = [Align.Tethering.MolAlignment(ref=refFile, target_name=targetMolID[idx],target_smiles=targetMolSMI[idx]) for idx in range(len(targetMolID))]
+            return tetheredFiles
+
+#code-break
