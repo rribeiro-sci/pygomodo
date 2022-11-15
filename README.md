@@ -7,34 +7,29 @@ pyGOMoDo is a Python library to perform homology modeling and docking specifical
 <br><br>
 
 # Quickstart
-We recomend to use pyGOMoDo with Docker. The container deploys the pyGOMoDo jupyter environment.
+We recomend to use pyGOMoDo with Docker([here](https://hub.docker.com/r/rpribeiro/pygomodo)). The container deploys the pyGOMoDo jupyter environment.
 
 ### Running the tutorials
 
 Linux :
 ```bash
-$ docker run 
+$ docker run -d -t -p 8886:8885 --name pygomodo_tutorials pygomodo
 ```
-MacOS :
-Linux :
-```bash
-$ docker run 
+Then open the the following link on the browser:
+```
+localhost:8886
 ```
 <br>
 
 ### Running production environment (reading and writing local directories)
 Linux :
 ```bash
-$ docker run 
+$ docker run -d -t -p 8886:8885 -v $PWD:$PWD:Z -w $PWD --name pygomodo_production pygomodo
 ```
-MacOS :
-Linux :
-```bash
-$ docker run 
+Then open the the following link on the browser:
 ```
-
-Windows : Not supported
-
+localhost:8886
+```
 <br>
 
 ## Documentation
@@ -45,8 +40,10 @@ All documentation [here](https://pygomodo.readthedocs.io).
 
 # Developed by
 <div style="padding-bottom:50px">
- <img src="https://res.cloudinary.com/djz27k5hg/image/upload/v1657885120/logos/univr_logo_rspn8o.jpg"  width="200" align='left' style="margin-top:10px"/>
-<img src="https://res.cloudinary.com/djz27k5hg/image/upload/v1637335206/logos/Logo_des_Forschungszentrums_J_C3_BClich_seit_2018_hcliq4.svg"  width="200" align='left' style="margin-top:10px; margin-left:80px"/>
+<img src="https://res.cloudinary.com/djz27k5hg/image/upload/v1637335206/logos/Logo_des_Forschungszentrums_J_C3_BClich_seit_2018_hcliq4.svg"  width="200" align='left' style="margin-top:10px"/>
+<img src="https://res.cloudinary.com/djz27k5hg/image/upload/v1667384566/logos/empty_sxac7h.png"  width="50" align='left' style="margin-top:10px"/>
+<img src="https://res.cloudinary.com/djz27k5hg/image/upload/v1657885120/logos/univr_logo_rspn8o.jpg"  width="200" style="margin-top:10px; margin-left:5000px"/>
+
 
 <br><br><br><br><br>
 

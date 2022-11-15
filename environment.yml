@@ -1,0 +1,15 @@
+name: pygomodo-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - openbabel 
+  - biopython 
+  - py3dmol 
+  - rdkit 
+  - ipywidgets=7.6.5 
+  - pandas 
+  - bioservices
+  - jupyter
+  - prolif
+

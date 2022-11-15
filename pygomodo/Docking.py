@@ -49,7 +49,7 @@ else:
 
 smina_path = os.path.join(homedirectory,'opt/smina/smina.static')
 
-class Vina:
+class VINA:
     """Molecular docking with AutoDock Vina (https://vina.scripps.edu/)."""
     
     def __init__(self, **kwargs):
@@ -73,13 +73,13 @@ class Vina:
         self._outpath=os.getcwd()
         self._results=None
         self._reference_files_dir = os.path.join(homedirectory,'autogrids/reference_files/') ###REVIEW##
-        if 'receptor' in kwargs:
-            self._receptor_file = kwargs.pop('receptor')
+        if 'receptor_file' in kwargs:
+            self._receptor_file = kwargs.pop('receptor_file')
             self._receptor_name = os.path.splitext(self._receptor_file)[0]
-        if 'ligands' in kwargs:
-            self._ligands = kwargs.pop('ligands')
-        if 'cpus' in kwargs:
-            self._ncpu = kwargs.pop('cpus')
+        if 'ligand_files' in kwargs:
+            self._ligands = kwargs.pop('ligand_files')
+        if 'ncpus' in kwargs:
+            self._ncpu = kwargs.pop('ncpus')
         
         # ##DEFINING JOBNAME
         # if 'jobname' in kwargs:
@@ -252,6 +252,8 @@ class Vina:
         .. note:: Size and Center parameters can be automatica aquired by running Vina.Grid() funtion. 
                     Those parameters will be passed automatically to the function.
         """
+        import openbabel
+        openbabel.obErrorLog.StopLogging()
         import subprocess  
     
         if self._center_box_vector:
@@ -320,7 +322,6 @@ class Vina:
             vina_log_df['mode'] = pd.to_numeric(vina_log_df['mode'])
 
             vina_log = vina_log_df[vina_log_df['mode'] <= 10]
-            self._rui = vina_log
             #import ast
             #vina_dict[tail] = ast.literal_eval(self._resultsframe.to_json(orient='records'))
             vina_dict[tail] = vina_log.to_dict(orient='records')
@@ -337,7 +338,7 @@ class Vina:
                 else: 
                     mode_files.append(tail+'_ligand_'+str(i+1)+'.pdbqt')
                     utils.pdbqt2pdb(tail+'_ligand_'+str(i+1)+'.pdbqt', self._outpath)
-            self._modefiles[tail.split('_')[1]]=mode_files
+            self._modefiles[tail.split('_')[-3]]=mode_files
 
             #vinabestresult = utils.vina_extract_best_result(dockfile, root+'_best.pdbqt')
             #vinabestresultpdb = utils.pdbqt2pdb(vinabestresult, self._outpath)
@@ -347,7 +348,7 @@ class Vina:
         self._results=vina_dict
         return 
 
-    def View(self):
+    def ViewPoses(self,surface=False, fancy=False):
         """3D visualization of the docking poses with py3Dmol."""
         #£import ipywidgets
         
@@ -362,14 +363,13 @@ class Vina:
                 
                 
                 df_scores = pd.DataFrame.from_dict(self._results[self._receptor_name+'_'+ligand+'_vina_out'])
-
                 header = {'selector': 'th:not(.index_name)', 'props': [
                         ('background-color', 'white'), ('font-size', '13px'),
                         ('color', 'black'), ('border', '2px solid white')]}
 
                 poses = {'selector': 'th.col_heading.level0', 'props': [
                         ('font-size', '13px'),('color', 'white'), 
-                        ('background-color', 'darkblue'),
+                        ('background-color', '#5D884E'),
                         ("border", "2px solid white")]}
 
                 row = {'selector': '.l0', 'props': 'color:blue;'}
@@ -388,12 +388,12 @@ class Vina:
                     bzf=self._boxsize_z)
                 return
             
-            options2=[x.split('_')[5].split('.')[0] for x in self._modefiles[ligand]]                    
+            options2=[x.split('_')[-1].split('.')[0] for x in self._modefiles[ligand]]                    
             ipywidgets.interact(scores, mode=ipywidgets.Dropdown(options=options2,value=options2[0], description='Mode:', disabled=False))
             return 
             
-        options=[x.split('_')[1] for x in self._results]
-        
+        options=[x for x in self._modefiles.keys()]
+
         ipywidgets.interact(inception, ligand=ipywidgets.Dropdown(options=options,value=options[0], description='Ligand:', disabled=False))
         return 
 
@@ -414,12 +414,15 @@ class Vina:
                 self._interactions_table[ligand+'_'+mode.split('_')[-1].split('.')[0]] = Interactions.Prolif(receptorMol, poseMol)
         return
 
-    def ViewInteractionsMap(self, map3D=True, map2D=True, **kwargs):
+    def ViewInteractionsMap(self, map3D=True, map2D=True,surface=False, fancy=False, **kwargs):
         """Protein-Ligand interaction visualization.
         
         :parameter map3D: (True) If true 3D iteraction map is displayed
         :parameter map2D: (True) If true 2D interaction map id displayed
         :parameter opacity: (default 0.65) opacity of protein cartoon (map3D must be True)
+        :parameter surface: (default False) add protein surface (map3D must be True)
+        :parameter surface_opacity: (default 0.50) opacity of protein surface (map3D and surface must be True)
+        :parameter fancy: (default Flase) outline color black (map3D must be True)
         """
         #£import ipywidgets
         from openbabel import pybel
@@ -427,9 +430,12 @@ class Vina:
         if 'opacity' in kwargs: 
             opacity=kwargs.pop('opacity')
         else: opacity=0.65
+        if 'surface_opacity' in kwargs:
+            surface_opacity=kwargs.pop('surface_opacity')
+        else: surface_opacity=0.50
 
         if not self._interactions_table:
-            Vina.AnalyseInteractions(self)
+            VINA.AnalyseInteractions(self)
         
         def inception(ligand):
             ligand=ligand
@@ -439,32 +445,36 @@ class Vina:
                 
                 mode=mode
                 if map3D is True:
-                    mol3D = Interactions.Vismol(rmol, lmol, self._interactions_table[ligand+'_'+mode].copy(), opacity=opacity)
+                    mol3D = Interactions.Vismol(rmol, lmol, self._interactions_table[ligand+'_'+mode].copy(), 
+                                                opacity=opacity,fancy=fancy, surface=surface, surface_opacity=surface_opacity)
                 if map2D is True:
                     mol2D = Interactions.Lignet(self._interactions_table[ligand+'_'+mode],lmol)
                     return mol2D.display(width=600)
                                 
-            options2=[x.split('_')[5].split('.')[0] for x in self._modefiles[ligand]] 
+            options2=[x.split('_')[-1].split('.')[0] for x in self._modefiles[ligand]] 
             ipywidgets.interact(network_interations, mode=ipywidgets.Dropdown(options=options2,value=options2[0], description='Mode:', disabled=False))
             return
         
-        options=[x.split('_')[1] for x in self._results]
+        #options=[x.split('_')[1] for x in self._results]
+        options=[x for x in self._modefiles.keys()]
+
         ipywidgets.interact(inception, ligand=ipywidgets.Dropdown(options=options,value=options[0],description='Ligand:',disabled=False))
         
         return
 
-class Rdock:
+class RDOCK:
     """Molecular docking with rDock (http://rdock.sourceforge.net/)."""
     
     def __init__(self, **kwargs):
         """
         Create a rDock instance
         """ 
-
+        self._outpath=os.getcwd()
         if 'title' in kwargs: self._TITLE = kwargs.pop('title')
         else: self._TITLE = 'TITLE' #resolve
 
-        if 'receptor_file' in kwargs: self._RECEPTOR_FILE = kwargs.pop('receptor_file')
+        if 'receptor_file' in kwargs: 
+            self._RECEPTOR_FILE = utils.MolConvert(kwargs.pop('receptor_file'), self._outpath, 'mol2', hyd=True, receptor=True)
         else: raise ValueError('Receptor file unknown.')
 
         if 'receptor_flex' in kwargs: self._RECEPTOR_FLEX = kwargs.pop('receptor_flex')
@@ -491,10 +501,11 @@ class Rdock:
         .. note:: For a detailed description of the parameters please see rDock documentation http://rdock.sourceforge.net/.
         
         """
-        if 'reference_mol' in kwargs: self._REF_MOL = kwargs.pop('reference_mol')
+        if 'reference_mol' in kwargs: self._REF_MOL = utils.MolConvert(kwargs.pop('reference_mol'), self._outpath, 'sdf', hyd=True, receptor=True)
+
         if 'SITE_MAPPER' in kwargs: self._SITE_MAPPER = kwargs.pop('SITE_MAPPER')
         else: self._SITE_MAPPER = 'RbtLigandSiteMapper'
-        if 'REF_MOL' in kwargs: self._REF_MOL = kwargs.pop('REF_MOL')
+        if 'REF_MOL' in kwargs: self._REF_MOL = utils.MolConvert(kwargs.pop('REF_MOL'), self._outpath, 'sdf', hyd=True, receptor=True)
 
         if self._REF_MOL:pass
         else: raise ValueError('reference_mol unknown')
@@ -552,6 +563,7 @@ END_SECTION
         #print(prm)
         with open('docking.prm', 'w') as f:
             f.write(self.__prm)
+
 
         rbcavity = 'rbcavity -was -d -r docking.prm > rbcavity.log'
         subprocess.call(rbcavity, shell=True)
@@ -641,14 +653,21 @@ END_SECTION
 
         self._dockposes = {}
         self._scores = {}
+        print('Running...\n')
         for target in target_mol:
+
+            #Convert ligand
+            target=os.path.basename(utils.MolConvert(target, self._outpath, 'sdf', hyd=True, receptor=True))
             target_name, target_ext = os.path.splitext(target)
             self._output_name = target_name+'_'+output_name
             self._output_name_sorted = '{}_sorted.sd'.format(self._output_name)
+          
             #RUN rbDock
-            rbdock_cmd = 'rbdock -i {} -o {} -r docking.prm -p dock.prm -n {}'.format(target, self._output_name, nruns)
-            subprocess.call(rbdock_cmd, shell=True)
+            print('\tdocking', os.path.basename(target_name),'\n')
 
+            rbdock_cmd = 'rbdock -i {} -o {} -r docking.prm -p dock.prm -n {}'.format(target, self._output_name, nruns)
+            subprocess.call(rbdock_cmd, shell=True,stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+            
 
             ### ANALYSIS
             if smina_minimize is False:
@@ -752,21 +771,19 @@ END_SECTION
                 for i in range(len(mols)):
                     self._scores[target_name][i+1]['Affinity (Kcal/mol)']=affinity_values[i]
                     self._scores[target_name][i+1]['Intramolecular Energy (Kcal/mol)']=intramolecular_values[i]
+        
+        print('\nDONE!')
         return
 
-    def View(self, **kwargs):
+    def ViewPoses(self, ref_mol=False,surface=False, fancy=False, surface_opacity=0.65, **kwargs):
         """3D visualization of the docking poses with py3Dmol.
         
-        :parameter recerence_mol: Optional (str) Reference ligand
+        :parameter ref_mol: Optional (str) Reference ligand
         """
         #£import py3Dmol
         from openbabel import pybel
         #£import ipywidgets
-
-        if 'reference' in kwargs: 
-            refmol = kwargs.pop('reference') 
-            reference =True
-        else: reference=False
+        
         def inception(molname):
             
             #£from IPython.core.display import display
@@ -782,7 +799,7 @@ END_SECTION
 
                 poses = {'selector': 'th.col_heading.level0', 'props': [
                         ('font-size', '13px'),('color', 'white'), 
-                        ('background-color', 'darkblue'),
+                        ('background-color', '#5D884E'),
                         ("border", "2px solid white")]}
 
                 row = {'selector': '.l0', 'props': 'color:blue;'}
@@ -793,15 +810,18 @@ END_SECTION
 
                 pose=pose
                 molview=py3Dmol.view(height=500)
+                if fancy is True: molview.setViewStyle({'style':'outline','color':'black','width':0.1})
                 mol1=next(pybel.readfile(os.path.splitext(self._RECEPTOR_FILE)[1].strip('.'), self._RECEPTOR_FILE)).write('pdb')
                 mol2=self._dockposes[molname][pose]
                 molview.addModel(mol1, 'pdb')
                 molview.setStyle({'cartoon': {'color':'white'}})
+                
+                if surface is True: molview.addSurface(py3Dmol.VDW,{'opacity':surface_opacity,'color':'white'})
                 molview.addModel(mol2, 'sd')
                 molview.setStyle({'model':1},{'stick':{'colorscheme':'cyanCarbon','radius':0.2}})
 
-                if reference is True:
-                    molview.addModel(next(pybel.readfile(os.path.splitext(refmol)[1].strip('.'),refmol)).write('pdb'), 'pdb')
+                if ref_mol is True:
+                    molview.addModel(next(pybel.readfile(os.path.splitext(self._REF_MOL)[1].strip('.'),self._REF_MOL)).write('pdb'), 'pdb')
                     molview.setStyle({'model':2},{'stick':{'colorscheme':'whiteCarbon','radius':0.2}})
                 molview.setBackgroundColor('0xeeeeee')
                 molview.zoomTo({'model':1})
@@ -834,12 +854,15 @@ END_SECTION
                 self._interactions_table[lig][pose] = Interactions.Prolif(receptorMol, poseMol)            
         return
 
-    def ViewInteractionsMap(self,map3D=True, map2D=True, **kwargs):
+    def ViewInteractionsMap(self,map3D=True, map2D=True,surface=False, fancy=False, **kwargs):
         """Protein-Ligand interaction visualization.
         
         :parameter map3D: (True) If true 3D iteraction map is displayed
         :parameter map2D: (True) If true 2D interaction map id displayed
         :parameter opacity: (default 0.65) opacity of protein cartoon (map3D must be True)
+        :parameter surface: (default False) add protein surface (map3D must be True)
+        :parameter surface_opacity: (default 0.50) opacity of protein surface (map3D and surface must be True)
+        :parameter fancy: (default Flase) outline color black (map3D must be True)
         """
         #£import ipywidgets
         from openbabel import pybel
@@ -847,9 +870,12 @@ END_SECTION
         if 'opacity' in kwargs:
             opacity=kwargs.pop('opacity')
         else: opacity=0.65
+        if 'surface_opacity' in kwargs:
+            surface_opacity=kwargs.pop('surface_opacity')
+        else: surface_opacity=0.50
         
         if not self._interactions_table:
-            Rdock.AnalyseInteractions(self)
+            RDOCK.AnalyseInteractions(self)
 
         if self._interactions_table:
             def inception(molname):
@@ -857,7 +883,8 @@ END_SECTION
                     lmol = pybel.readstring('sd',self._dockposes[molname][pose]).write('pdb')
                     rmol = next(pybel.readfile(os.path.splitext(self._RECEPTOR_FILE)[1].strip('.'), self._RECEPTOR_FILE)).write('pdb')
                     if map3D is True:
-                        mol3D = Interactions.Vismol(rmol, lmol, self._interactions_table[molname][pose].copy(), opacity=opacity)
+                        mol3D = Interactions.Vismol(rmol, lmol, self._interactions_table[molname][pose].copy(), 
+                                                    opacity=opacity, fancy=fancy, surface=surface, surface_opacity=surface_opacity)
                     if map2D is True:
                         mol2D = Interactions.Lignet(self._interactions_table[molname][pose], lmol)
                         return mol2D.display(width=600)

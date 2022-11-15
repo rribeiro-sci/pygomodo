@@ -1,0 +1,6 @@
+
+HHBLITS: /opt/hh-suite3/bin/hhblits -cpu 4 -i /home/rribeiro/Projects/pygomodo/tutorial1_data/DRD5_human/sequence.fas -d /home/rribeiro/Projects/pygomodo/pygomodo/databases/pyGOMODO_db/pyGOMODO -oa3m /home/rribeiro/Projects/pygomodo/tutorial1_data/DRD5_human/query.a3m -n 2
+
+HHBLITS: /opt/hh-suite3/bin/hhblits -cpu 4 -i /home/rribeiro/Projects/pygomodo/tutorial1_data/DRD5_human/sequence.fas -d /home/rribeiro/Projects/pygomodo/pygomodo/databases/pyGOMODO_db/pyGOMODO -oa3m /home/rribeiro/Projects/pygomodo/tutorial1_data/DRD5_human/query.a3m -n 2
+
+HHBLITS: /usr/local/opt/hh-suite3/bin/hhblits -cpu 4 -i /home/rribeiro/Projects/pygomodo/tutorial1_data/DRD5_human/sequence.fas -d /home/rribeiro/Projects/pygomodo/pygomodo/databases/pyGOMODO_db/pyGOMODO -oa3m /home/rribeiro/Projects/pygomodo/tutorial1_data/DRD5_human/query.a3m -n 2

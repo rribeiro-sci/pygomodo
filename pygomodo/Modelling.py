@@ -39,6 +39,12 @@ homedirectory=os.path.dirname(__file__)
 import sys
 sys.path.append(homedirectory)
 
+if 'HHSUITEPATH'  in os.environ.keys(): pass
+else: os.environ['HHSUITEPATH']= '/opt/hh-suite/bin/' 
+if 'HHSUITESCRIPTS' in os.environ.keys(): pass
+else: os.environ['HHSUITESCRIPTS']='/opt/hh-suite/scripts/'
+
+
 from Utils import utils, get
 
 class Modeller:
@@ -59,8 +65,8 @@ class Modeller:
         except:
             print('Warning: HH-suite unknown')
         
-        self._HHMdatabase=os.path.join(homedirectory,'databases/pyGOMODO_db/pyGOMODO')
-        self._TemplatesDatabase = os.path.join(homedirectory,'databases/GPCRref/hhm_profiles/GPCRref')
+        self._HMMdatabase=os.path.join(homedirectory,'databases/pyGOMODO_db/pyGOMODO')
+        self._TemplatesDatabase = os.path.join(homedirectory,'databases/GPCRref/hmm_profiles/GPCRref')
         self._processedPDB=os.path.join(homedirectory,'databases/GPCRref/pdb_clean_structures')
         #self._TemplatesDatabase = os.path.join(homedirectory,'databases/costum_db/wo_isoforms/gpcr_db_wo_isoforms')
         #self._processedPDB=os.path.join(homedirectory,'databases/ProcessedPdbs_wo_isoforms')
@@ -98,9 +104,9 @@ class Modeller:
         self._humanDB = True
         self._rounds=1
         
-    def CreateHHMProfile(self, **kwargs):
+    def CreateHMMProfile(self, **kwargs):
         """
-        Creates HHM profiles with hhblits (https://github.com/soedinglab/hh-suite).
+        Creates HMM profiles with hhblits (https://github.com/soedinglab/hh-suite).
 
         :parameter uniprot:     optional (str): Uniprot ID (required if sequence not given)
         :parameter filename:    optional (str): filename or path+filename (default: "sequence.seq")
@@ -127,7 +133,7 @@ class Modeller:
         if 'rounds' in kwargs:
             self._rounds=kwargs.pop('rounds')
         if 'database' in kwargs: 
-            self._HHMdatabase=kwargs.pop('database')
+            self._HMMdatabase=kwargs.pop('database')
         
 
 
@@ -137,7 +143,7 @@ class Modeller:
 
         #Run HHBLITS
         print('Running...\n')
-        utils.hhblits(self._hhsuitePath, output_fas, os.path.join(self._jobdir, "query.a3m"), self._logfilePath, self._HHMdatabase, self._ncpus, self._rounds)
+        utils.hhblits(self._hhsuitePath, output_fas, os.path.join(self._jobdir, "query.a3m"), self._logfilePath, self._HMMdatabase, self._ncpus, self._rounds)
     
 
         def parsehhr():
@@ -152,8 +158,7 @@ class Modeller:
             
             return df
         df = parsehhr()    
-        self._HHMprofiles=df
-        
+        self._HMMprofiles=df
         clear_output(wait=True)
 
         header = {'selector': 'th:not(.index_name)', 'props': [
@@ -162,7 +167,7 @@ class Modeller:
 
         poses = {'selector': 'th.col_heading.level0', 'props': [
                 ('font-size', '13px'),('color', 'white'), 
-                ('background-color', 'darkblue'),
+                ('background-color', '#5D884E'),
                 ("border", "2px solid white")]}
 
         row = {'selector': '.l0', 'props': 'color:blue;'}
@@ -175,14 +180,14 @@ class Modeller:
     def SearchTemplates(self, **kwargs):
         """
         Searches for homologous templates with hhblits (https://github.com/soedinglab/hh-suite).
-        :parameter hhmprofile: optional (str): user profile path+filename (.a3m file)
+        :parameter hmmprofile: optional (str): user profile path+filename (.a3m file)
         :parameter ncpus:       optional (int): number of cpus (default: 1)
         :parameter rounds:      optional (int): number of HHBLITS runs (default: 1)
         :parameter database     optional (str): dir path of the HHblists database
         """       
-        if 'hhmprofile' in kwargs: 
-            self._hhmprofile = kwargs.pop('hhmprofile')
-        else: self._hhmprofile=None    
+        if 'hmmprofile' in kwargs: 
+            self._hmmprofile = kwargs.pop('hmmprofile')
+        else: self._hmmprofile=None    
         
         if 'ncpus' in kwargs: self._ncpus=kwargs.pop('ncpus')
         if 'rounds' in kwargs:
@@ -192,15 +197,17 @@ class Modeller:
             self._TemplatesDatabase=kwargs.pop('database')
     
         #Run HHBLITS
-        if self._hhmprofile:
+        if self._hmmprofile:
             print('Running...\n')
-            utils.hhblits(self._hhsuitePath, self._hhmprofile, os.path.join(self._jobdir + "templates.hhr"), self._logfilePath, self._TemplatesDatabase, self._ncpus, self._rounds)
+            utils.hhblits(self._hhsuitePath, self._hmmprofile, os.path.join(self._jobdir + "templates.hhr"), self._logfilePath, self._TemplatesDatabase, self._ncpus, self._rounds)
         else:
             print('Running...\n')
             utils.hhblits(self._hhsuitePath,os.path.join(self._jobdir, "query.a3m"), os.path.join(self._jobdir, "templates.hhr"), self._logfilePath, self._TemplatesDatabase, self._ncpus, self._rounds)
 
         df =  utils.getConformation(self._jobdir, self._GPCR_Ref)
-        self._templates=df
+        self._templates=df.sort_values(by=['Sequence identity %', 'E-value', 'Coverage %'], ascending=[False, False, False]).reset_index().drop(columns=['index'])
+        self._templates['Template']=self._templates.index
+        self._templates=self._templates[['Template','No','Hit','Prob','E-value','P-value','Cols','Query HMM','Template HMM','Sequence identity %','Coverage %','State']]
         clear_output(wait=True)
 
         header = {'selector': 'th:not(.index_name)', 'props': [
@@ -209,35 +216,38 @@ class Modeller:
 
         poses = {'selector': 'th.col_heading.level0', 'props': [
                 ('font-size', '13px'),('color', 'white'), 
-                ('background-color', 'darkblue'),
+                ('background-color', '#5D884E'),
                 ("border", "2px solid white")]}
 
-        row = {'selector': '.l0', 'props': 'color:blue;'}
+        row = {'selector': '.l0', 'props': 'color:green;'}
         
-        df_display = df.sort_values(by='Sequence identity %', ascending=False).head(20).style.set_table_styles([header, poses, row]).hide_index()
+        df_display = self._templates.head(20).style.set_table_styles([header, poses, row]).hide_index()
         display(df_display)
 
-        return df
+        return self._templates
 
     def MakeModels(self, **kwargs):
         """
         Runs Modeller
-
-        :parameter hhmprofile: optional (str): user profile path+filename (.a3m file)
-        :parameter ncpus:       optional (int): number of cpus (default 1)
-        :parameter rounds:      optional (int): number of HHBLITS runs (default 1)
-        :parameter database     optional (str): dir path of the HHblists database
+        
+        :parameter templates: list of templates
+        :parameter nmodels: (int) number of models
+        :parameter loop: (boolean) loop refinement (default False)
+        :parameter nloop: (int)  number of loop models computed (Default 2)
+        :parameter ncpus: (int) number of cpus (default 1)
+        
         """ 
         #DEFINING VARIABLES
         self._loop = False      
         if 'loop' in kwargs:
             loop = kwargs.pop('loop')
-            if loop == 'Yes':
+            if loop == True:
                 self._loop=True
-            else: pass
-        else: self._loop=False
+            else:pass
         if 'trim' in kwargs:
-            self._trim=kwargs.pop('trim')
+            trim=kwargs.pop('trim')
+            if trim == True:
+                self._trim=True
         else: self._trim = False
         if 'nloops' in kwargs:
             self._nloops=kwargs.pop('nloops')
@@ -255,42 +265,47 @@ class Modeller:
             self._hhsuitePath = kwargs.pop('hhsuitePath')
         if 'processedPDB' in kwargs:
             self._processedPDB = kwargs.pop('processedPDB')
+        
+        #templates choosen by the user
+        if 'templates' in kwargs:
+            self._selected_templates = kwargs.pop('templates')
+            ntemplates=list(self._templates[self._templates.Hit == x].No.values[0] for x in self._selected_templates)
+            selected_templates = list(x.replace(":", "_") for x in self._selected_templates)
+        else: raise ValueError('Please select the templates')
 
         #create the folder "templates" if not exists
         templates_dir = os.path.join(self._jobdir, 'templates')
         if not os.path.isdir(templates_dir):
             subprocess.call('mkdir ' + templates_dir, shell=True)
-
+        
+        #copy the pdb (if does not exists yet) in the "templates" folder
+        for i in range(0,len(self._selected_templates)):
+            #pdb_hello, chain = utils.divide_code(self._selected_templates[i])
+            
+            pdb = selected_templates[i].split('_')[1]
+            
+            template = selected_templates[i]
+            if not os.path.isfile(os.path.join(templates_dir, pdb)):
+                if self._humanDB:
+                    subprocess.call("cp "+os.path.join(self._processedPDB, template+'.pdb') +' '+ os.path.join(templates_dir, template+'.pdb'), shell=True,stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+                    #print("cp "+os.path.join(self._processedPDB, template+'.pdb') +' '+ os.path.join(templates_dir, template+'.pdb'))
+                else:
+                    utils.download_pdb(pdb, self._cwd + "templates")
+        
         pir_name = os.path.join(templates_dir,  "mytemplate.pir")
     
         #myseq = sharedFunctions.extract_seqname(os.path.join(self._jobdir , "templates.hhr"))
-        # write target sequence in pir format
-        utils.hhmakemodel(self._hhsuitescripts,self._logfilePath, os.path.join(self._jobdir, "templates.hhr"), self._jobdir, 'sequence', templates_dir)
+        # write target sequence in pir format        
+        utils.hhmakemodel(self._hhsuitescripts,self._logfilePath, os.path.join(self._jobdir, "templates.hhr"), self._jobdir, 'sequence', templates_dir, ntemplates)
 
-
-        #templates choosen by the user
-        if 'templates' in kwargs:
-            self._templates = kwargs.pop('templates')
-        else: raise ValueError('Please select the templates')
-        
-    
-        #copy the pdb (if does not exists yet) in the "templates" folder
-        for i in range(0,len(self._templates)):
-            pdb, chain = utils.divide_code(self._templates[i])
-            if not os.path.isfile(os.path.join(templates_dir, pdb + ".pdb")):
-                if self._humanDB:
-                    subprocess.call("cp "+os.path.join(self._processedPDB, pdb + "_proc.pdb ") + os.path.join(templates_dir, pdb + ".pdb"), shell=True)
-                    #print("cp "+os.path.join(self._processedPDB, pdb + "_proc.pdb ") + os.path.join(templates_dir, pdb + ".pdb"))
-                else:
-                    utils.download_pdb(pdb, self._cwd + "templates")
 
         #modeling (MODELLER)
-        if self._loop:
+        if self._loop == True:
             #print('*'*100 + '\n loop')
-            models = utils.modellerLoop('sequence', self._templates, pir_name, self._cwd, templates_dir, self._ncpus, self._nmodels, self._nloops)
+            models = utils.modellerLoop('sequence', self._selected_templates, pir_name, self._cwd, templates_dir, self._ncpus, self._nmodels, self._nloops)
         else:
             #print('*'*100 + '\n automodel')
-            models = utils.modeller('sequence', self._templates, pir_name, self._jobdir, templates_dir, self._ncpus, self._nmodels)
+            models = utils.modeller('sequence', self._selected_templates, pir_name, self._jobdir, templates_dir, self._ncpus, self._nmodels)
         self._models = models
 
 
@@ -300,7 +315,7 @@ class Modeller:
 
         poses = {'selector': 'th.col_heading.level0', 'props': [
                 ('font-size', '13px'),('color', 'white'), 
-                ('background-color', 'darkblue'),
+                ('background-color', '#5D884E'),
                 ("border", "2px solid white")]}
 
         row = {'selector': '.l0', 'props': 'color:blue;'}

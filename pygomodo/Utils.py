@@ -24,10 +24,11 @@ import warnings
 warnings.filterwarnings('ignore')
 
 
-import os, codecs, re, subprocess
+import os, codecs, re, subprocess, sys
 import pandas as pd
 from IPython.display import display, clear_output
 from ipywidgets import FileUpload
+import ipywidgets
 homedirectory=os.path.dirname(__file__)
 mypython='python'
 
@@ -36,6 +37,52 @@ RDLogger.DisableLog('rdApp.*')
 
 
 class utils:
+    def GenerateMolecularConformation(smiles, out, **kwargs):
+        from openbabel import pybel
+
+        if 'fout' in kwargs:
+            fout = kwargs.pop('fout')
+        else: fout='sdf'
+
+        mol = pybel.readstring('smi', smiles)
+
+        pybel._builder.Build(mol.OBMol)
+        mol.addh()
+        ff = pybel._forcefields["mmff94"]
+        success = ff.Setup(mol.OBMol)
+        if not success:
+            ff = pybel._forcefields["uff"]
+            success = ff.Setup(mol.OBMol)
+            if not success:
+                sys.exit("Cannot set up forcefield")
+
+        ff.ConjugateGradients(100, 1.0e-3) # optimize geometry
+        ff.WeightedRotorSearch(100, 25) # generate conformers
+
+        ff.GetCoordinates(mol.OBMol)
+        mol.write(fout, out+'.'+fout, overwrite=True)
+        return out+'.'+fout
+
+    def MolConvert(fi,outpath,fotype, hyd=False, receptor=False):
+        import openbabel
+        openbabel.obErrorLog.StopLogging()
+
+        fitype=fi.split('.')[1].strip('.')
+        molecule = next(openbabel.pybel.readfile(fitype, fi)).write('pdb')
+        obConversion = openbabel.OBConversion()
+        obConversion.SetInAndOutFormats('pdb', fotype)
+        if receptor==True: 
+            obConversion.SetOptions('x', openbabel.OBConversion.OUTOPTIONS)
+            obConversion.SetOptions('r', openbabel.OBConversion.OUTOPTIONS)
+        mol = openbabel.OBMol()
+        obConversion.ReadString(mol,molecule)
+        if hyd==True:
+            mol.AddPolarHydrogens()
+        else:
+            mol.DeleteHydrogens()
+        obConversion.WriteFile(mol, os.path.join(outpath, os.path.splitext(fi)[0]+'.'+fotype))
+        return os.path.join(outpath, os.path.splitext(fi)[0]+'.'+fotype)
+    
     def pdbqt2pdb(fi, outpath):
         import openbabel
         obConversion = openbabel.OBConversion()
@@ -47,13 +94,15 @@ class utils:
 
     def pdb2pdbqt(fi, outpath, hyd=False, receptor=False):
         import openbabel
+        
+        molecule = next(openbabel.pybel.readfile(fi.split('.')[1].strip('.'), fi)).write('pdb')
         obConversion = openbabel.OBConversion()
         obConversion.SetInAndOutFormats('pdb', 'pdbqt')
         if receptor==True: 
             obConversion.SetOptions('x', openbabel.OBConversion.OUTOPTIONS)
             obConversion.SetOptions('r', openbabel.OBConversion.OUTOPTIONS)
         mol = openbabel.OBMol()
-        obConversion.ReadFile(mol,fi)
+        obConversion.ReadString(mol,molecule)
         if hyd==True:
             mol.AddPolarHydrogens()
         else:
@@ -95,18 +144,42 @@ class utils:
         pdb_io.set_structure(sfi1)
         pdb_io.save(fout)
 
-    def showMolecularStructures(mols):
+    def showMolecularStructure(mols):
+        from openbabel import pybel, obErrorLog
         from rdkit import Chem
-        
         from rdkit.Chem import Draw
         from rdkit.Chem.Draw import IPythonConsole
+        obErrorLog.StopLogging()
+
+        if isinstance(mols,str):
+            mols=[mols]
+        
         molecules=[]
         for m in mols:
-            mol=Chem.MolFromPDBFile(m, removeHs=True)
+            molblock = next(pybel.readfile(m.split('.')[1].strip('.'), m)).write('pdb')
+            mol=Chem.MolFromPDBBlock(molblock, removeHs=True)
             mol.RemoveAllConformers()
             molecules.append(mol)
                
-        return Draw.MolsToGridImage(molecules, molsPerRow=4, subImgSize=(300, 300),legends=[x.split('.')[0] for x in mols])
+        return Draw.MolsToGridImage(molecules,molsPerRow=3,useSVG=True, subImgSize=(300, 300),legends=[x.split('.')[0] for x in mols])
+    
+    def showMolecules(mols):
+        import py3Dmol
+        from openbabel import pybel
+        def viz(molecule):
+            mol = next(pybel.readfile(molecule.split('.')[1].strip('.'),molecule))
+            mol.OBMol.AddHydrogens()
+            molpdb= mol.write('pdb')
+            molview=py3Dmol.view(height=250)
+            molview.addModel(molpdb, 'pdb')
+            molview.setStyle({'stick':{'colorscheme':'lightgreyCarbon'}})
+            molview.zoomTo()
+            molview.setBackgroundColor('0xeeeeee')
+            molview.show()
+            return
+        options = [(x.split('.')[0],x) for x in mols]
+        ipywidgets.interact(viz, molecule=ipywidgets.Dropdown(options=options, description='Molecule:', disable=False))
+        return 
 
     def viz(**kwargs):
         import py3Dmol
@@ -172,11 +245,9 @@ class utils:
             objeto.setStyle({'model':1},{'stick':{'colorscheme':'cyanCarbon','radius':0.2}})
 
 
-        #difining visualization
-        #ligand=kwargs.pop('ligand')
+        #defining visualization
         mol_view = py3Dmol.view(height=height)
         visbox(mol_view,bxi, byi, bzi, bxf, byf, bzf)
-        #ligand_file= self._receptor_name+'_'+ligand+'_vina_out_best.pdb'
         complxvis(mol_view,rmol, lmol)
         mol_view.setBackgroundColor('0xeeeeee')
         mol_view.zoomTo({'model':1})  
@@ -233,7 +304,7 @@ class utils:
             ext = " -o "
         f = open(output, "w+")
         command = hhsuitePath+"hhblits -cpu " + str(ncpus) + " -i " + seqfile + " -d "+ hhblitsDbsPath  + ext + output  + " -n " + str(rounds)
-        subprocess.call(command, shell=True)
+        subprocess.call(command, shell=True,stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
         f.close()
         utils.update_logfile(logfilePath, command, "hhblits")
         return
@@ -350,11 +421,10 @@ class utils:
         seqname = line.replace("|", "_")
         return seqname.strip()
 
-    def hhmakemodel(hhsuitescriptspath, logfilePath, input_file, mydir, seqname, templates_dir, nmodel = 1):
+    def hhmakemodel(hhsuitescriptspath, logfilePath, input_file, mydir, seqname, templates_dir, selected_templates):
         """create a .ali file (pir format - necessary as Modeller input)"""
-        command = mypython+" "+os.path.join(hhsuitescriptspath, "hhmakemodel.py ")+input_file+" "+templates_dir+" "+os.path.join(mydir,seqname + ".ali")+" ./ -m "+str(nmodel)
-        
-        subprocess.call(command, shell=True)
+        command = mypython+" "+os.path.join(hhsuitescriptspath, "hhmakemodel.py ")+input_file+" "+templates_dir+" "+os.path.join(mydir,seqname + ".ali")+" ./ -m {}".format(' '.join(selected_templates))
+        subprocess.call(command, shell=True,stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
         utils.update_logfile(logfilePath, command, "hhmakemodel")
 
         return
@@ -393,7 +463,6 @@ class utils:
         """call Modeller to:
            1. align the target to the template sequence (using pir file format)
            2. create the models - 5 by default - with loop refinement (results in .pdb files)"""
-
         import modeller
         import modeller.parallel
         import modeller.automodel 
@@ -410,8 +479,9 @@ class utils:
         aln = modeller.alignment(env)
         for i in range(0,len(pdb_codes)):
             code, chain = utils.divide_code(pdb_codes[i])
-            mdl = modeller.model(env, file = code, model_segment = ("FIRST:" + chain, "LAST:" + chain))
-            aln.append_model(mdl, atom_files = code, align_codes = code + chain)
+            file = pdb_codes[i].split('.')[0].replace(':','_')
+            mdl = modeller.model(env, file = file, model_segment = ("FIRST:" + chain, "LAST:" + chain))
+            aln.append_model(mdl, atom_files = file, align_codes = file)
 
         for (weights, write_fit, whole) in (((1., 0., 0., 0., 1., 0.), False, True),
                                             ((1., 0.5, 1., 1., 1., 0.), False, True),
@@ -460,14 +530,7 @@ class utils:
 
         aln.write(file = pir_name, alignment_format = "PIR")
 
-        codes = []
-
-        for i in range(0,len(pdb_codes)):
-            if len(pdb_codes[i])>6:
-                codes.append(pdb_codes[i].replace(":", ""))
-            else:
-                codes.append(pdb_codes[i].replace("_", ""))
-
+        codes = list(x.replace(':','_') for x in pdb_codes)
 
         m = modeller.automodel.loopmodel(env, alnfile= pir_name,
                     knowns=codes,
@@ -522,8 +585,9 @@ class utils:
         aln = modeller.alignment(env)
         for i in range(0,len(pdb_codes)):
             code, chain = utils.divide_code(pdb_codes[i])
-            mdl = modeller.model(env, file = code, model_segment = ("FIRST:" + chain, "LAST:" + chain))
-            aln.append_model(mdl, atom_files = code, align_codes = code + chain)
+            file = pdb_codes[i].split('.')[0].replace(':','_')
+            mdl = modeller.model(env, file = file, model_segment = ("FIRST:" + chain, "LAST:" + chain))
+            aln.append_model(mdl, atom_files = file, align_codes = file)
 
         for (weights, write_fit, whole) in (((1., 0., 0., 0., 1., 0.), False, True),
                                             ((1., 0.5, 1., 1., 1., 0.), False, True),
@@ -572,13 +636,13 @@ class utils:
 
         aln.write(file = pir_name, alignment_format = "PIR")
 
-        codes = []
+        codes = list(x.replace(':','_') for x in pdb_codes)
 
-        for i in range(0,len(pdb_codes)):
-            if len(pdb_codes[i])>6:
-                codes.append(pdb_codes[i].replace(":", ""))
-            else:
-                codes.append(pdb_codes[i].replace("_", ""))
+        #for i in range(0,len(pdb_codes)):
+            #if len(pdb_codes[i])>6:
+            #    codes.append(pdb_codes[i].replace(":", ""))
+            #else:
+            #    codes.append(pdb_codes[i].replace("_", ""))
 
         a = modeller.automodel.automodel(env, alnfile = pir_name,
                     knowns = codes, 
@@ -799,14 +863,14 @@ class RepOdor:
         self._version = 'RepOdor_v1.2'
         return
 
-    def search(uniprotID, show2D=False):
+    def search(self, uniprotID, show2D=False):
         """
         Queries the RepOdor database, and returns a list of molecules.
 
         :parameter uniprotID:     required (str): Uniprot ID
         :parameter show2D:        optionnal (boolean): Shows 2D structure of molecules (Default False)
 
-        Example: RepOdor.search('Q8NGJ7', show2D=True)
+        Example: RepOdor().search('Q8NGJ7', show2D=True)
         """     
         from IPython.display import display            
         from rdkit.Chem import PandasTools
@@ -820,7 +884,7 @@ class RepOdor:
         repodor_df = pd.read_csv(repodor_db, delimiter=';', header=None)
         repodor_df.rename(columns={0:'Name', 1:'Smiles', 2:'receptor', 3:'UniprotID'}, inplace=True)
         
-        df_selection = repodor_df[repodor_df.UniprotID == uniprotID]
+        df_selection = repodor_df[repodor_df.UniprotID == uniprotID].copy()
         if df_selection.empty: print('Unknown odorants for this recepor!')
         else: 
         
@@ -863,8 +927,30 @@ class RepOdor:
             
                 ipywidgets.interact(vismol, molecule=ipywidgets.Dropdown(options=df_selection.Name.to_list(),value=df_selection.Name.to_list()[0],description='Odorant:',disabled=False))
             else:display(df_display)
+        self._odorants = df_selection
+        return  
 
-        return df_selection.Name.to_list()     
+    def GenereateConformations(self, **kwargs):
+        """
+        Generates 3D ligand conformations.
+
+        :parameter mols:     optional (list): list of odorant names (case and space sensitive)
+
+        """     
+        molecules=[]
+        if 'mols' in kwargs:
+            mols = kwargs.pop('mols')
+            for mol in mols:
+                smiles = self._odorants[self._odorants.Name == mol].Smiles.values[0]
+                outname = mol.replace(' ','_').lower()
+                mol3d = utils.GenerateMolecularConformation(smiles, outname)
+                molecules.append(mol3d)    
+        else:
+            for k, v in self._odorants.iterrows():
+                name = v.Name.replace(' ','_').lower()
+                mol3d = utils.GenerateMolecularConformation(v.Smiles, name)
+                molecules.append(mol3d) 
+        return  molecules 
 
 
 class Interactions:
@@ -878,7 +964,7 @@ class Interactions:
         import prolif as plf
         from rdkit import Chem
 
-        mol = Chem.MolFromPDBBlock(receptorMol, removeHs=False)
+        mol = Chem.MolFromPDBBlock(receptorMol, removeHs=False, sanitize=False)
         prot = plf.Molecule(mol)
         mol = Chem.MolFromPDBBlock(ligandMol, removeHs=False)
         lig = plf.Molecule(mol)
@@ -899,7 +985,7 @@ class Interactions:
                         rotation=270)
         return net
 
-    def Vismol(fi1, fi2, df, **kwargs):
+    def Vismol(fi1, fi2, df, surface=False, surface_opacity=0.6, fancy=False, **kwargs):
         from rdkit import Chem, Geometry
         import py3Dmol, ipywidgets
         import prolif as plf
@@ -918,7 +1004,7 @@ class Interactions:
             return Geometry.Point3D(*ctd)
 
         
-        mol = Chem.MolFromPDBBlock(fi1, removeHs=False)
+        mol = Chem.MolFromPDBBlock(fi1, removeHs=False, sanitize=False)
         pmol = plf.Molecule(mol)
         mol = Chem.MolFromPDBBlock(fi2, removeHs=False)
         lmol = plf.Molecule(mol)
@@ -969,8 +1055,9 @@ class Interactions:
             }
         }"""
 
-        v = py3Dmol.view(width=500, height=600) #changeme
-        v.removeAllModels()
+        molview = py3Dmol.view(width=500, height=600) #changeme
+        if fancy is True: molview.setViewStyle({'style':'outline','color':'black','width':0.1})
+        molview.removeAllModels()
 
         models = {}
         mid = -1
@@ -984,8 +1071,8 @@ class Interactions:
                                     (presid, pres, {})]:
                 if resid not in models.keys():
                     mid += 1
-                    v.addModel(Chem.MolToMolBlock(res), "sdf")
-                    model = v.getModel()
+                    molview.addModel(Chem.MolToMolBlock(res), "sdf")
+                    model = molview.getModel()
                     model.setStyle({}, {"stick": style})
                     # add residue label
                     model.setHoverable({}, True, resid_hover.format(resid), unhover_func)
@@ -1000,7 +1087,7 @@ class Interactions:
             else:
                 p2 = pres.GetConformer().GetAtomPosition(pindex)
             # add interaction line
-            v.addCylinder({"start": dict(x=p1.x, y=p1.y, z=p1.z),
+            molview.addCylinder({"start": dict(x=p1.x, y=p1.y, z=p1.z),
                         "end":   dict(x=p2.x, y=p2.y, z=p2.z),
                         "color": colors[interaction],
                         "radius": .1,
@@ -1011,7 +1098,7 @@ class Interactions:
             # add label when hovering the middle of the dashed line by adding a dummy atom
             c = Geometry.Point3D(*plf.utils.get_centroid([p1, p2]))
             modelID = models[lresid]
-            model = v.getModel(modelID)
+            model = molview.getModel(modelID)
             model.addAtoms([{"elem": 'Z',
                             "x": c.x, "y": c.y, "z": c.z,
                             "interaction": interaction}])
@@ -1024,11 +1111,15 @@ class Interactions:
         if 'opacity' in kwargs: 
             opacity=kwargs.pop('opacity')
         else: opacity=0.65
-        mol = Chem.RemoveAllHs(pmol)
-        pdb = Chem.MolToPDBBlock(mol, flavor=0x20 | 0x10)
-        v.addModel(pdb, "pdb")
-        model = v.getModel()
-        model.setStyle({}, {"cartoon": {"style":"edged", "opacity":opacity}})
-        v.zoomTo({"model": list(models.values())})
+        #mol = Chem.RemoveAllHs(pmol)
+        pdb = Chem.MolToPDBBlock(pmol, flavor=0x20 | 0x10)
+        molview.addModel(pdb, "pdb")
         
-        return v.show()
+        model = molview.getModel()
+        if surface is True: molview.addSurface(py3Dmol.VDW,{'opacity':surface_opacity,'color':'white'})
+
+        model.setStyle({}, {"cartoon": {"style":"edged", "opacity":opacity}})
+
+        molview.zoomTo({"model": list(models.values())})
+        
+        return molview.show()

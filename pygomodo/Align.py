@@ -88,7 +88,7 @@ class Tethering:
 
     def MolsAlignment(**kwargs):
         """:parameter reference: (str) reference 3D molecule
-            :parameter target_name: (list of str) liad of names of ligands
+            :parameter target_name: (list of str) list of names of ligands
             :parameter target_smile: (list of str) list of smiles strings of ligands"""
         refFile = kwargs.pop('reference')
         targetMolID = kwargs.pop('targets_names')
