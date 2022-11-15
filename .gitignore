@@ -1,13 +1,11 @@
 archive/
 docs/_build
-example/
-exampleBK/
-modelling_test/
-*.ipynb
-rdock_test/
-rdock_tethered_test/
-src/
-vina_test/
-.ipynb_checkpoints/
 
-pygomodo/databases/
+.ipynb_checkpoints/
+pygomodo/databases/costum_db/
+pygomodo/databases/GPCRref/
+pygomodo/databases/pyGOMODO_db/
+pygomodo/databases/costum_db.tar.xz
+pygomodo/databases/GPCRred.tar.xz
+pygomodo/databases/ProcessedPdbs_wo_isoforms.tar.xz
+
