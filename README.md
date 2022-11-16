@@ -13,7 +13,7 @@ We recomend to use pyGOMoDo with Docker([here](https://hub.docker.com/r/rpribeir
 
 Linux :
 ```bash
-$ docker run -d -t -p 8886:8885 --name pygomodo_tutorials rpribeiro/pygomodo
+docker run -d -t -p 8886:8885 --name pygomodo_tutorials rpribeiro/pygomodo
 ```
 Then open the the following link on the browser:
 ```
@@ -24,7 +24,7 @@ localhost:8886
 ### Running production environment (reading and writing local directories)
 Linux :
 ```bash
-$ docker run -d -t -p 8886:8885 -v $PWD:$PWD:Z -w $PWD --name pygomodo_production rpribeiro/pygomodo
+docker run -d -t -p 8886:8885 -v $PWD:$PWD:Z -w $PWD --name pygomodo_production rpribeiro/pygomodo
 ```
 Then open the the following link on the browser:
 ```
