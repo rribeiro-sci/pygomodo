@@ -21,22 +21,13 @@ This python wrap-up of the GOMoDO webserver
 __author__ = "Rui Ribeiro"
 __email__ = "rui.ribeiro@univr.it"
 
+import os, subprocess, datetime, sys, warnings
 
-import warnings
 warnings.filterwarnings('ignore')
 
-##### Libraries
-import os, subprocess, datetime
-
-from IPython.display import clear_output, display
-import ipywidgets, py3Dmol 
-
-
 homedirectory=os.path.dirname(__file__)
-
-
-import sys
 sys.path.append(homedirectory)
+
 
 if 'HHSUITEPATH'  in os.environ.keys(): pass
 else: os.environ['HHSUITEPATH']= '/opt/hh-suite/bin/' 
@@ -113,6 +104,9 @@ class Modeller:
         :parameter rounds:      optional (int): number of HHBLITS runs (default: 1)
         :parameter databse:     optional (str): dir path of the uniref30 database
         """       
+        
+        from IPython.display import clear_output, display
+
         #DIFINING SHARED VARIABLES
         if 'uniprotID' in kwargs:
             self._uniprotID = kwargs.pop('uniprotID')
@@ -145,9 +139,9 @@ class Modeller:
         print('Running...\n')
         utils.hhblits(self._hhsuitePath, output_fas, os.path.join(self._jobdir, "query.a3m"), self._logfilePath, self._HMMdatabase, self._ncpus, self._rounds)
     
-
         def parsehhr():
             import pandas as pd
+            
 
             filename = os.path.join(self._jobdir,'sequence.hhr')
             col_names=utils.hhr_name_parser(filename)
@@ -184,7 +178,9 @@ class Modeller:
         :parameter ncpus:       optional (int): number of cpus (default: 1)
         :parameter rounds:      optional (int): number of HHBLITS runs (default: 1)
         :parameter database     optional (str): dir path of the HHblists database
-        """       
+        """   
+        from IPython.display import clear_output, display
+    
         if 'hmmprofile' in kwargs: 
             self._hmmprofile = kwargs.pop('hmmprofile')
         else: self._hmmprofile=None    
@@ -236,7 +232,9 @@ class Modeller:
         :parameter nloop: (int)  number of loop models computed (Default 2)
         :parameter ncpus: (int) number of cpus (default 1)
         
-        """ 
+        """
+        from IPython.display import display
+ 
         #DEFINING VARIABLES
         self._loop = False      
         if 'loop' in kwargs:
@@ -327,7 +325,7 @@ class Modeller:
     
     def ViewModels(self, **kwargs):
         """3D visualization of the models with py3Dmol."""
-        #£import py3Dmol, ipywidgets
+        import py3Dmol, ipywidgets
         
         
         #difining visualization

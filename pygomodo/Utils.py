@@ -20,19 +20,12 @@ This python wrap-up of the GOMoDO webserver
 """
 __author__ = "Rui Ribeiro"
 __email__ = "rui.ribeiro@univr.it"
-import warnings
+import warnings, os, codecs, re, subprocess, sys
 warnings.filterwarnings('ignore')
 
-
-import os, codecs, re, subprocess, sys
-from IPython.display import display, clear_output, HTML
-from ipywidgets import FileUpload
-import ipywidgets
 homedirectory=os.path.dirname(__file__)
 mypython='python'
 
-from rdkit import RDLogger
-RDLogger.DisableLog('rdApp.*')
 
 def GenerateMolecularConformation(smiles, out, **kwargs):
     from openbabel import pybel
@@ -67,6 +60,9 @@ def showMolecularStructure(mols):
     from rdkit.Chem.Draw import IPythonConsole
     obErrorLog.StopLogging()
 
+    from rdkit import RDLogger
+    RDLogger.DisableLog('rdApp.*')
+
     if isinstance(mols,str):
         mols=[mols]
     
@@ -80,7 +76,7 @@ def showMolecularStructure(mols):
     return Draw.MolsToGridImage(molecules,molsPerRow=3,useSVG=True, subImgSize=(300, 300),legends=[x.split('.')[0] for x in mols])
 
 def showMolecules(mols):
-    import py3Dmol
+    import py3Dmol, ipywidgets
     from openbabel import pybel
     def viz(molecule):
         mol = next(pybel.readfile(molecule.split('.')[1].strip('.'),molecule))
@@ -468,6 +464,8 @@ class utils:
         import modeller.parallel
         import modeller.automodel 
         import pandas as pd
+        from IPython.display import clear_output
+
         os.chdir(mydir)
 
         j = modeller.parallel.job()
@@ -573,6 +571,8 @@ class utils:
         import modeller.parallel
         import modeller.automodel
         import pandas as pd
+        from IPython.display import clear_output
+
         os.chdir(mydir)
 
         j = modeller.parallel.Job()
@@ -814,7 +814,10 @@ class Upload:
         """Display Upload widget. It allows to upload one single file. Supports: .pdb, .sd, .sdf, .mol2
         
         .. note:: To complete the upload process it is necessary to run the `FileParser()` function."""
-        
+        from IPython.display import display
+        from ipywidgets import FileUpload
+
+
         
         print('Select file:')
         uploadfile = FileUpload(accept='.pdb, .sd, .sdf, .mol2', multiple=False)
@@ -826,6 +829,8 @@ class Upload:
         """Display Upload widget. It allows to upload multiple. Supports: .pdb, .sd, .sdf, .mol2
         
         .. note:: To complete the upload process it is necessary to run the `FileParser()` function."""
+        from IPython.display import display
+        from ipywidgets import FileUpload
 
         print('Select file:')
         upload = FileUpload(accept='.pdb, .sd, .sdf, .mol2', multiple=True)
@@ -877,13 +882,16 @@ class RepOdor:
 
         Example: RepOdor().search('Q8NGJ7', show2D=True)
         """     
-        from IPython.display import display            
+        from IPython.display import display, HTML            
         from rdkit.Chem import PandasTools
         import ipywidgets, py3Dmol 
         from rdkit import Chem
         from rdkit.Chem import AllChem
         import pandas as pd
 
+
+        from rdkit import RDLogger
+        RDLogger.DisableLog('rdApp.*')
 
         repodor_db = os.path.join(homedirectory,'databases/RepOdor_v1.2xGoMoDo.csv')
         repodor_df = pd.read_csv(repodor_db, delimiter=';', header=None)
@@ -962,6 +970,8 @@ class Interactions:
         
         import prolif as plf
         from rdkit import Chem
+        from rdkit import RDLogger
+        RDLogger.DisableLog('rdApp.*')
 
         mol = Chem.MolFromPDBBlock(receptorMol, removeHs=False, sanitize=False)
         prot = plf.Molecule(mol)
@@ -975,6 +985,8 @@ class Interactions:
     def Lignet(df, ligandMol):
         from prolif.plotting.network import LigNetwork
         from rdkit import Chem
+        from rdkit import RDLogger
+        RDLogger.DisableLog('rdApp.*')
         import prolif as plf
         mol = Chem.MolFromPDBBlock(ligandMol, removeHs=False)
         lmol = plf.Molecule(mol)
@@ -986,7 +998,9 @@ class Interactions:
 
     def Vismol(fi1, fi2, df, surface=False, surface_opacity=0.6, fancy=False, **kwargs):
         from rdkit import Chem, Geometry
-        import py3Dmol, ipywidgets
+        from rdkit import RDLogger
+        RDLogger.DisableLog('rdApp.*')
+        import py3Dmol
         import prolif as plf
         def get_ring_centroid(mol, index):
             # find ring using the atom index

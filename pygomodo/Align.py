@@ -20,14 +20,9 @@ This python wrap-up of the GOMoDO webserver
 """
 __author__ = "Rui Ribeiro"
 __email__ = "rui.ribeiro@univr.it"
-import warnings
+import warnings, os , sys
 warnings.filterwarnings('ignore')
-
-##### Libraries
-import os
-
 homedirectory=os.path.dirname(__file__)
-import sys
 sys.path.append(homedirectory)
 
 class Tethering:

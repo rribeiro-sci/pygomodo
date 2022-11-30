@@ -21,13 +21,8 @@ This python wrap-up of the GOMoDO webserver
 __author__ = "Rui Ribeiro"
 __email__ = "rui.ribeiro@univr.it"
 
-import warnings
+import warnings, os, re, subprocess
 warnings.filterwarnings('ignore')
-
-##### Libraries
-import os, re, subprocess
-from IPython.display import clear_output, display
-import ipywidgets, py3Dmol 
 
 homedirectory=os.path.dirname(__file__)
 
@@ -38,7 +33,6 @@ else: os.environ['RBT_ROOT']='/opt/rDock/'
 if 'PATH'  in os.environ.keys(): pass
 else: os.environ['PATH']='/opt/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/rDock/bin:/opt/hh-suite/bin:/opt/hh-suite/scripts'
 
-import sys
 sys.path.append(homedirectory)
 
 from Utils import utils, Interactions
@@ -161,8 +155,8 @@ class VINA:
         self._center_box_vector=targ_grid_coor
         
         ### PART II
-        import py3Dmol
-        
+        import py3Dmol, ipywidgets
+        from IPython.display import clear_output
         #defining box function
         def visbox(objeto, bxi, byi, bzi, bxf, byf, bzf):
             opacity=1.0
@@ -355,14 +349,14 @@ class VINA:
 
     def ViewPoses(self,surface=False, fancy=False):
         """3D visualization of the docking poses with py3Dmol."""
-        #£import ipywidgets
+        import ipywidgets
         import pandas as pd
         
         def inception(ligand):
             ligand=ligand
             def scores(mode):
                 #def df(ligand):
-                #£from IPython.core.display import display
+                from IPython.core.display import display
                 #£import pandas as pd
                     #data = self._results[self._receptor_name+'_'+ligand+'_vina_out']
                     #return display(pd.DataFrame.from_dict(data))
@@ -430,7 +424,7 @@ class VINA:
         :parameter surface_opacity: (default 0.50) opacity of protein surface (map3D and surface must be True)
         :parameter fancy: (default Flase) outline color black (map3D must be True)
         """
-        #£import ipywidgets
+        import ipywidgets
         from openbabel import pybel
         
         if 'opacity' in kwargs: 
@@ -786,15 +780,15 @@ END_SECTION
         
         :parameter ref_mol: Optional (str) Reference ligand
         """
-        #£import py3Dmol
+        import py3Dmol
         from openbabel import pybel
-        #£import ipywidgets
+        import ipywidgets
         if 'opacity' in kwargs:
             opacity=kwargs.pop('opacity')
         else: opacity=0.65
         def inception(molname):
             
-            #£from IPython.core.display import display
+            from IPython.core.display import display
             import pandas as pd
                     
         
@@ -872,7 +866,7 @@ END_SECTION
         :parameter surface_opacity: (default 0.50) opacity of protein surface (map3D and surface must be True)
         :parameter fancy: (default Flase) outline color black (map3D must be True)
         """
-        #£import ipywidgets
+        import ipywidgets
         from openbabel import pybel
 
         if 'opacity' in kwargs:
