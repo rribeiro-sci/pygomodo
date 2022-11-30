@@ -21,7 +21,7 @@ This python wrap-up of the GOMoDO webserver
 __author__ = "Rui Ribeiro"
 __email__ = "rui.ribeiro@univr.it"
 
-import warnings, os, re, subprocess
+import warnings, os, re, subprocess, sys
 warnings.filterwarnings('ignore')
 
 homedirectory=os.path.dirname(__file__)
