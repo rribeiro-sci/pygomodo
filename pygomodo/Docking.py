@@ -32,6 +32,12 @@ import ipywidgets, py3Dmol
 
 homedirectory=os.path.dirname(__file__)
 
+if 'LD_LIBRARY_PATH'  in os.environ.keys(): pass
+else: os.environ['LD_LIBRARY_PATH']='/opt/rDock/lib'
+if 'RBT_ROOT'  in os.environ.keys(): pass
+else: os.environ['RBT_ROOT']='/opt/rDock/'
+if 'PATH'  in os.environ.keys(): pass
+else: os.environ['PATH']='/opt/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/rDock/bin:/opt/hh-suite/bin:/opt/hh-suite/scripts'
 
 import sys
 sys.path.append(homedirectory)
@@ -565,7 +571,7 @@ END_SECTION
             f.write(self.__prm)
 
 
-        rbcavity = 'rbcavity -was -d -r docking.prm > rbcavity.log'
+        rbcavity = '/opt/rDock/bin/rbcavity -was -d -r docking.prm > rbcavity.log'
         subprocess.call(rbcavity, shell=True)
         
         #show output
@@ -665,7 +671,7 @@ END_SECTION
             #RUN rbDock
             print('\tdocking', os.path.basename(target_name),'\n')
 
-            rbdock_cmd = 'rbdock -i {} -o {} -r docking.prm -p dock.prm -n {}'.format(target, self._output_name, nruns)
+            rbdock_cmd = '/opt/rDock/bin/rbdock -i {} -o {} -r docking.prm -p dock.prm -n {}'.format(target, self._output_name, nruns)
             subprocess.call(rbdock_cmd, shell=True,stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
             
 
@@ -674,7 +680,7 @@ END_SECTION
                 #sort values
                 if 'by' in kwargs: by=kwargs.pop('by')
                 else: by='SCORE'
-                sdsort_cmd = 'sdsort -n -f{} {}.sd > {}'.format(by,self._output_name, self._output_name_sorted)
+                sdsort_cmd = '/opt/rDock/bin/sdsort -n -f{} {}.sd > {}'.format(by,self._output_name, self._output_name_sorted)
                 subprocess.call(sdsort_cmd, shell=True)
 
                 #Split de .sd file
@@ -708,7 +714,7 @@ END_SECTION
                 smina_log = subprocess.check_output(smina_command, shell=True)
                 smina_log = smina_log.decode('utf-8').splitlines()
                 #Sort
-                sdsort_cmd = 'sdsort -n -f{} {}_minimized.sd > {}_minimized_sorted.sd'.format('minimizedAffinity',self._output_name, self._output_name)
+                sdsort_cmd = '/opt/rDock/bin/sdsort -n -f{} {}_minimized.sd > {}_minimized_sorted.sd'.format('minimizedAffinity',self._output_name, self._output_name)
                 subprocess.call(sdsort_cmd, shell=True)
 
                 #Split de .sd file
@@ -783,7 +789,9 @@ END_SECTION
         #£import py3Dmol
         from openbabel import pybel
         #£import ipywidgets
-        
+        if 'opacity' in kwargs:
+            opacity=kwargs.pop('opacity')
+        else: opacity=0.65
         def inception(molname):
             
             #£from IPython.core.display import display
@@ -822,7 +830,7 @@ END_SECTION
 
                 if ref_mol is True:
                     molview.addModel(next(pybel.readfile(os.path.splitext(self._REF_MOL)[1].strip('.'),self._REF_MOL)).write('pdb'), 'pdb')
-                    molview.setStyle({'model':2},{'stick':{'colorscheme':'whiteCarbon','radius':0.2}})
+                    molview.setStyle({'model':2},{'stick':{'colorscheme':'whiteCarbon','radius':0.2, 'opacity':opacity}})
                 molview.setBackgroundColor('0xeeeeee')
                 molview.zoomTo({'model':1})
                 molview.show()

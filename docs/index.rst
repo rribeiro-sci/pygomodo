@@ -40,18 +40,18 @@ the Apache 2.0 license. Tutorial notebooks containing minimal working examples c
 
 \ 
 
-Developed by
-============
-.. image:: _static/univr_logo.jpg
+Developed in behalf of
+======================
+.. image:: _static/FZJ_logo.svg
   :width: 200
 
 
 .. image:: https://res.cloudinary.com/djz27k5hg/image/upload/v1667384566/logos/empty_sxac7h.png
   :width: 50
 
-
-.. image:: _static/FZJ_logo.svg
+.. image:: _static/univr_logo.jpg
   :width: 200
+
 
 
 
@@ -61,9 +61,19 @@ Developed by
 
 Funded by
 =========
+EU Human Brain Project (SGA1 and SGA2): This open source software was developed in part in the Human Brain Project 
+funded from the European Union's Horizon 2020 Framework Programme for Research and Innovation under Specific Grant 
+Agreements No 720270 and No. 78907 (Human Brain Project SGA1 and SGA2).
+
 .. image:: https://res.cloudinary.com/djz27k5hg/image/upload/v1637657234/logos/HBP_horizontal_logo_qtcyzn.png
-  :width: 200
+  :width: 300
   :alt: Alternative text
+
+.. image:: https://res.cloudinary.com/djz27k5hg/image/upload/v1642677502/logos/COFUNDED_EU_j2ktlp.jpg
+  :width: 300
+  :alt: Alternative text
+
+
   
 Citation |DOI for Citing pyGOMoDo|
 ==================================

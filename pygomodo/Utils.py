@@ -26,7 +26,7 @@ warnings.filterwarnings('ignore')
 
 import os, codecs, re, subprocess, sys
 import pandas as pd
-from IPython.display import display, clear_output
+from IPython.display import display, clear_output, HTML
 from ipywidgets import FileUpload
 import ipywidgets
 homedirectory=os.path.dirname(__file__)
@@ -35,34 +35,71 @@ mypython='python'
 from rdkit import RDLogger
 RDLogger.DisableLog('rdApp.*')
 
+def GenerateMolecularConformation(smiles, out, **kwargs):
+    from openbabel import pybel
 
-class utils:
-    def GenerateMolecularConformation(smiles, out, **kwargs):
-        from openbabel import pybel
+    if 'fout' in kwargs:
+        fout = kwargs.pop('fout')
+    else: fout='sdf'
 
-        if 'fout' in kwargs:
-            fout = kwargs.pop('fout')
-        else: fout='sdf'
+    mol = pybel.readstring('smi', smiles)
 
-        mol = pybel.readstring('smi', smiles)
-
-        pybel._builder.Build(mol.OBMol)
-        mol.addh()
-        ff = pybel._forcefields["mmff94"]
+    pybel._builder.Build(mol.OBMol)
+    mol.addh()
+    ff = pybel._forcefields["mmff94"]
+    success = ff.Setup(mol.OBMol)
+    if not success:
+        ff = pybel._forcefields["uff"]
         success = ff.Setup(mol.OBMol)
         if not success:
-            ff = pybel._forcefields["uff"]
-            success = ff.Setup(mol.OBMol)
-            if not success:
-                sys.exit("Cannot set up forcefield")
+            sys.exit("Cannot set up forcefield")
 
-        ff.ConjugateGradients(100, 1.0e-3) # optimize geometry
-        ff.WeightedRotorSearch(100, 25) # generate conformers
+    ff.ConjugateGradients(100, 1.0e-3) # optimize geometry
+    ff.WeightedRotorSearch(100, 25) # generate conformers
 
-        ff.GetCoordinates(mol.OBMol)
-        mol.write(fout, out+'.'+fout, overwrite=True)
-        return out+'.'+fout
+    ff.GetCoordinates(mol.OBMol)
+    mol.write(fout, out+'.'+fout, overwrite=True)
+    return out+'.'+fout
 
+def showMolecularStructure(mols):
+    from openbabel import pybel, obErrorLog
+    from rdkit import Chem
+    from rdkit.Chem import Draw
+    from rdkit.Chem.Draw import IPythonConsole
+    obErrorLog.StopLogging()
+
+    if isinstance(mols,str):
+        mols=[mols]
+    
+    molecules=[]
+    for m in mols:
+        molblock = next(pybel.readfile(m.split('.')[1].strip('.'), m)).write('pdb')
+        mol=Chem.MolFromPDBBlock(molblock, removeHs=True)
+        mol.RemoveAllConformers()
+        molecules.append(mol)
+            
+    return Draw.MolsToGridImage(molecules,molsPerRow=3,useSVG=True, subImgSize=(300, 300),legends=[x.split('.')[0] for x in mols])
+
+def showMolecules(mols):
+    import py3Dmol
+    from openbabel import pybel
+    def viz(molecule):
+        mol = next(pybel.readfile(molecule.split('.')[1].strip('.'),molecule))
+        mol.OBMol.AddHydrogens()
+        molpdb= mol.write('pdb')
+        molview=py3Dmol.view(height=250)
+        molview.addModel(molpdb, 'pdb')
+        molview.setStyle({'stick':{'colorscheme':'lightgreyCarbon'}})
+        molview.zoomTo()
+        molview.setBackgroundColor('0xeeeeee')
+        molview.show()
+        return
+    options = [(x.split('.')[0],x) for x in mols]
+    ipywidgets.interact(viz, molecule=ipywidgets.Dropdown(options=options, description='Molecule:', disable=False))
+    return 
+    
+class utils:
+   
     def MolConvert(fi,outpath,fotype, hyd=False, receptor=False):
         import openbabel
         openbabel.obErrorLog.StopLogging()
@@ -143,43 +180,6 @@ class utils:
         pdb_io = PDB.PDBIO()
         pdb_io.set_structure(sfi1)
         pdb_io.save(fout)
-
-    def showMolecularStructure(mols):
-        from openbabel import pybel, obErrorLog
-        from rdkit import Chem
-        from rdkit.Chem import Draw
-        from rdkit.Chem.Draw import IPythonConsole
-        obErrorLog.StopLogging()
-
-        if isinstance(mols,str):
-            mols=[mols]
-        
-        molecules=[]
-        for m in mols:
-            molblock = next(pybel.readfile(m.split('.')[1].strip('.'), m)).write('pdb')
-            mol=Chem.MolFromPDBBlock(molblock, removeHs=True)
-            mol.RemoveAllConformers()
-            molecules.append(mol)
-               
-        return Draw.MolsToGridImage(molecules,molsPerRow=3,useSVG=True, subImgSize=(300, 300),legends=[x.split('.')[0] for x in mols])
-    
-    def showMolecules(mols):
-        import py3Dmol
-        from openbabel import pybel
-        def viz(molecule):
-            mol = next(pybel.readfile(molecule.split('.')[1].strip('.'),molecule))
-            mol.OBMol.AddHydrogens()
-            molpdb= mol.write('pdb')
-            molview=py3Dmol.view(height=250)
-            molview.addModel(molpdb, 'pdb')
-            molview.setStyle({'stick':{'colorscheme':'lightgreyCarbon'}})
-            molview.zoomTo()
-            molview.setBackgroundColor('0xeeeeee')
-            molview.show()
-            return
-        options = [(x.split('.')[0],x) for x in mols]
-        ipywidgets.interact(viz, molecule=ipywidgets.Dropdown(options=options, description='Molecule:', disable=False))
-        return 
 
     def viz(**kwargs):
         import py3Dmol
@@ -795,10 +795,13 @@ class get:
         """     
 
         from bioservices import UniProt
-        u = UniProt(verbose=False)
+        try:
+            u = UniProt(verbose=False)
     
-        return u.get_fasta(uniprotID)
-    
+            return u.get_fasta(uniprotID)
+        except:
+            raise ValueError('Unable to connect to Uniprot.')
+                
 class Upload:
     """Upload Files"""
     def __init__(self, **kwargs):
@@ -863,7 +866,7 @@ class RepOdor:
         self._version = 'RepOdor_v1.2'
         return
 
-    def search(self, uniprotID, show2D=False):
+    def search(self, uniprotID, show3D=False):
         """
         Queries the RepOdor database, and returns a list of molecules.
 
@@ -892,19 +895,14 @@ class RepOdor:
                 ('background-color', 'white'), ('font-size', '13px'),
                 ('color', 'black'), ('border', '2px solid white')]}
 
-            poses = {'selector': 'th.col_heading.level0', 'props': [
-                ('font-size', '13px'),('color', 'white'), 
-                ('background-color', 'darkblue'),
-                ("border", "2px solid white")]}
-
-            row = {'selector': '.l0', 'props': 'color:blue;'}
+            
             
             PandasTools.AddMoleculeColumnToFrame(df_selection, smilesCol='Smiles')
             
-            df_display = df_selection.drop(columns=['Smiles','receptor','UniprotID']).style.set_table_styles([header, poses, row]).hide_index()
+            df_display = df_selection.drop(columns=['Smiles','receptor','UniprotID'])
             
         
-            if show2D == True:
+            if show3D == True:
                 def smi2conf(smiles):
                     mol = Chem.MolFromSmiles(smiles)
                     if mol is not None:
@@ -926,9 +924,9 @@ class RepOdor:
                     MolTo3DView(mol).show()
             
                 ipywidgets.interact(vismol, molecule=ipywidgets.Dropdown(options=df_selection.Name.to_list(),value=df_selection.Name.to_list()[0],description='Odorant:',disabled=False))
-            else:display(df_display)
+            else: display(HTML(df_selection.to_html(index=False)))
         self._odorants = df_selection
-        return  
+        return 
 
     def GenereateConformations(self, **kwargs):
         """
@@ -943,15 +941,14 @@ class RepOdor:
             for mol in mols:
                 smiles = self._odorants[self._odorants.Name == mol].Smiles.values[0]
                 outname = mol.replace(' ','_').lower()
-                mol3d = utils.GenerateMolecularConformation(smiles, outname)
+                mol3d = GenerateMolecularConformation(smiles, outname)
                 molecules.append(mol3d)    
         else:
             for k, v in self._odorants.iterrows():
                 name = v.Name.replace(' ','_').lower()
-                mol3d = utils.GenerateMolecularConformation(v.Smiles, name)
+                mol3d = GenerateMolecularConformation(v.Smiles, name)
                 molecules.append(mol3d) 
         return  molecules 
-
 
 class Interactions:
 

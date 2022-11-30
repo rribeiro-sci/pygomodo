@@ -1,0 +1,1131 @@
+uniprot;pdb;chain;coverage;ligand;action;type;state;experiment;resolution
+P08908;7E2X;R;66.0;;;;Full active;EM;3.0
+P08908;7E2Y;R;65.0;SRO;Full agonist;Agonist;Full active;EM;3.0
+P08908;7E2Z;R;66.0;9SC;Partial agonist;Agonist;Full active;EM;3.1
+P28222;4IAQ;A;70.0;2GM;Full agonist;Agonist;Active;X-ray;2.8
+P28222;4IAR;A;70.0;;;;UNK;X-ray;2.7
+P28222;5V54;A;71.0;;;;UNK;X-ray;3.9
+P28222;5V54;B;72.0;;;;UNK;X-ray;3.9
+P28222;6G79;S;67.0;;;;Full active;EM;3.78
+P28222;7C61;A;76.0;;;;UNK;X-ray;3.0
+P28221;7E32;R;76.0;SRO;Full agonist;Agonist;Full active;EM;2.9
+P28566;7E33;R;70.0;HVU;Full agonist;Agonist;Full active;EM;2.9
+P30939;7EXD;R;74.0;05X;Full agonist;Agonist;Full active;EM;3.4
+P28223;6A93;A;60.0;8NU;Inverse agonist;Antagonist;Inactive;X-ray;3.0
+P28223;6A93;B;59.0;8NU;Inverse agonist;Antagonist;Inactive;X-ray;3.0
+P28223;6A94;A;60.0;ZOT;Antagonist;Antagonist;Inactive;X-ray;2.9
+P28223;6A94;B;59.0;ZOT;Antagonist;Antagonist;Inactive;X-ray;2.9
+P28223;6WGT;A;59.0;7LD;Full agonist;Agonist;Active;X-ray;3.4
+P28223;6WGT;B;59.0;7LD;Full agonist;Agonist;Active;X-ray;3.4
+P28223;6WGT;C;60.0;7LD;Full agonist;Agonist;Active;X-ray;3.4
+P28223;6WH4;A;60.0;;;;UNK;X-ray;3.4
+P28223;6WH4;B;59.0;;;;UNK;X-ray;3.4
+P28223;6WH4;C;59.0;;;;UNK;X-ray;3.4
+P28223;6WHA;A;52.0;;;;Full active;EM;3.36
+P28223;7VOD;A;58.0;;;;UNK;X-ray;3.3
+P28223;7VOE;A;58.0;9SC;Partial agonist;Agonist;Active;X-ray;2.9
+P28223;7WC4;A;61.0;SRO;Full agonist;Agonist;Active;X-ray;3.2
+P28223;7WC5;A;60.0;91Q;Agonist;Agonist;Active;X-ray;3.2
+P28223;7WC6;A;58.0;7LD;Full agonist;Agonist;Active;X-ray;2.6
+P28223;7WC7;A;59.0;H8G;Partial agonist;Agonist;Active;X-ray;2.6
+P28223;7WC8;A;59.0;;;;UNK;X-ray;2.45
+P28223;7WC9;A;59.0;;;;UNK;X-ray;2.5
+P41595;4IB4;A;59.0;ERM;Partial agonist;Agonist;Active;X-ray;2.7
+P41595;4NC3;A;60.0;ERM;Partial agonist;Agonist;Active;X-ray;2.8
+P41595;5TUD;A;58.0;ERM;Partial agonist;Agonist;Active;X-ray;3.0
+P41595;5TUD;D;58.0;ERM;Partial agonist;Agonist;Active;X-ray;3.0
+P41595;5TVN;A;61.0;7LD;Biased agonist;Agonist;Active;X-ray;2.9
+P41595;6DRX;A;59.0;H8G;Antagonist;Antagonist;Inactive;X-ray;3.1
+P41595;6DRY;A;60.0;H8D;Partial agonist;Agonist;Active;X-ray;2.918
+P41595;6DRZ;A;61.0;H8J;Partial agonist;Agonist;Active;X-ray;3.102
+P41595;6DS0;A;59.0;;;;UNK;X-ray;3.188
+P28335;6BQG;A;62.0;ERM;Partial agonist;Agonist;Active;X-ray;3.0
+P28335;6BQH;A;63.0;E2J;Antagonist;Antagonist;Inactive;X-ray;2.7
+P11229;5CXV;A;62.0;;;;UNK;X-ray;2.7
+P11229;6OIJ;R;64.0;IXO;Agonist;Agonist;Full active;EM;3.3
+P11229;6WJC;A;62.0;;;;UNK;X-ray;2.55
+P11229;6ZFZ;A;60.0;;;;UNK;X-ray;2.17
+P11229;6ZG4;A;60.0;;;;UNK;X-ray;2.33
+P11229;6ZG9;A;60.0;;;;UNK;X-ray;2.5
+P08172;3UON;A;60.0;;;;UNK;X-ray;3.0
+P08172;4MQS;A;59.0;IXO;Full agonist;Agonist;Active;X-ray;3.5
+P08172;4MQT;A;59.0;IXO;Full agonist;Agonist;Active;X-ray;3.7
+P08172;5YC8;A;60.0;;;;UNK;X-ray;2.5
+P08172;5ZK3;A;59.0;;;;UNK;X-ray;2.6
+P08172;5ZK8;A;59.0;;;;UNK;X-ray;3.0
+P08172;5ZKB;A;60.0;;;;UNK;X-ray;2.95
+P08172;5ZKC;A;60.0;;;;UNK;X-ray;2.3
+P08172;6OIK;R;60.0;IXO;Full agonist;Agonist;Full active;EM;3.6
+P08172;6U1N;R;60.0;;;;UNK;EM;4.0
+P14416;5AER;B;3.0;;;;UNK;X-ray;2.19
+P14416;5AER;C;3.0;;;;UNK;X-ray;2.19
+P14416;6CM4;A;59.0;8NU;Antagonist;Antagonist;Inactive;X-ray;2.867
+P14416;6LUQ;A;59.0;GMJ;Antagonist;Antagonist;Inactive;X-ray;3.1
+P14416;6VMS;R;63.0;08Y;Full agonist;Agonist;Full active;EM;3.8
+P14416;7DFP;A;57.0;;;;UNK;X-ray;3.1
+P14416;7JVR;R;61.0;08Y;Full agonist;Agonist;Full active;EM;2.8
+P20309;2CSA;A;3.0;;;;UNK;NMR;UNK
+P08173;5DSG;A;58.0;;;;UNK;X-ray;2.6
+P08173;5DSG;B;60.0;;;;UNK;X-ray;2.6
+P08173;6KP6;A;59.0;;;;UNK;X-ray;3.0
+P08912;6OL9;A;53.0;;;;UNK;X-ray;2.541
+P08913;1HLL;A;7.0;;;;UNK;NMR;UNK
+P08913;1HO9;A;7.0;;;;UNK;NMR;UNK
+P08913;1HOD;A;7.0;;;;UNK;NMR;UNK
+P08913;1HOF;A;7.0;;;;UNK;NMR;UNK
+P08913;7EJ0;R;56.0;;;;Full active;EM;3.2
+P08913;7EJ8;R;57.0;J59;Full agonist;Agonist;Full active;EM;3.0
+P08913;7EJA;R;58.0;CZX;Partial agonist;Agonist;Full active;EM;3.6
+P08913;7EJK;R;55.0;J5C;Partial agonist;Agonist;Full active;EM;3.4
+P18089;6K41;R;54.0;CZX;Full agonist;Agonist;Full active;EM;2.9
+P18089;6K42;R;60.0;CZX;Full agonist;Agonist;Full active;EM;4.1
+P08588;2LSQ;A;5.0;;;;UNK;NMR;UNK
+P07550;1GQ4;A;1.0;;;;UNK;X-ray;1.9
+P07550;2R4R;A;52.0;;;;UNK;X-ray;3.4
+P07550;2R4S;A;52.0;;;;UNK;X-ray;3.4
+P07550;2RH1;A;68.0;;;;UNK;X-ray;2.4
+P07550;3D4S;A;68.0;TIM;Antagonist;Antagonist;Inactive;X-ray;2.8
+P07550;3KJ6;A;54.0;;;;UNK;X-ray;3.4
+P07550;3NY8;A;68.0;;;;UNK;X-ray;2.84
+P07550;3NY9;A;68.0;;;;UNK;X-ray;2.84
+P07550;3NYA;A;68.0;;;;UNK;X-ray;3.16
+P07550;3P0G;A;69.0;;;;UNK;X-ray;3.5
+P07550;3PDS;A;68.0;;;;UNK;X-ray;3.5
+P07550;3SN6;R;69.0;;;;Full active;X-ray;3.2
+P07550;4GBR;A;69.0;;;;UNK;X-ray;3.993
+P07550;4LDE;A;69.0;;;;UNK;X-ray;2.79
+P07550;4LDL;A;69.0;;;;UNK;X-ray;3.1
+P07550;4LDO;A;69.0;ALE;Full agonist;Agonist;Active;X-ray;3.2
+P07550;4QKX;A;69.0;;;;UNK;X-ray;3.3
+P07550;5D5A;A;68.0;;;;UNK;X-ray;2.4826
+P07550;5D5B;A;68.0;;;;UNK;X-ray;3.8
+P07550;5D6L;A;66.0;;;;UNK;X-ray;3.2
+P07550;5JQH;A;69.0;;;;UNK;X-ray;3.2
+P07550;5JQH;B;69.0;;;;UNK;X-ray;3.2
+P07550;5X7D;A;68.0;;;;UNK;X-ray;2.703
+P07550;6E67;A;68.0;;;;UNK;X-ray;3.7
+P07550;6E67;B;72.0;;;;UNK;X-ray;3.7
+P07550;6MXT;A;69.0;;;;UNK;X-ray;2.95934213525
+P21728;7CKW;R;61.0;G3C;Partial agonist;Agonist;Full active;EM;3.22
+P21728;7CKX;R;61.0;;;;Full active;EM;3.54
+P21728;7CKY;R;62.0;;;;Full active;EM;3.2
+P21728;7CKZ;R;62.0;LDP;Full agonist;Agonist;Full active;EM;3.1
+P21728;7CRH;R;61.0;;;;Full active;EM;3.3
+P21728;7JOZ;R;64.0;;;;Full active;X-ray;3.8
+P21728;7JV5;R;63.0;;;;Full active;EM;3.0
+P21728;7JVP;R;63.0;;;;Full active;EM;2.9
+P21728;7JVQ;R;64.0;OR9;Full agonist;Agonist;Full active;EM;3.0
+P21728;7LJC;R;63.0;;;;Full active;EM;3.0
+P21728;7LJD;R;64.0;LDP;Full agonist;Agonist;Full active;EM;3.2
+P35462;3PBL;A;68.0;ETQ;Antagonist;Antagonist;Inactive;X-ray;2.89
+P35462;3PBL;B;66.0;ETQ;Antagonist;Antagonist;Inactive;X-ray;2.89
+P35462;7CMU;R;68.0;G6L;Full agonist;Agonist;Full active;EM;3.0
+P35462;7CMV;R;68.0;;;;Full active;EM;2.7
+P21917;5WIU;A;64.0;;;;UNK;X-ray;1.962
+P21917;5WIV;A;65.0;;;;UNK;X-ray;2.143
+P35367;3RZE;A;55.0;5EH;Antagonist;Antagonist;Inactive;X-ray;3.1
+P35367;7DFL;R;56.0;;;;Full active;EM;3.3
+P30556;4YAY;A;80.0;;;;UNK;X-ray;2.9
+P30556;4ZUD;A;75.0;;;;UNK;X-ray;2.8
+P30556;6DO1;A;83.0;;;;UNK;X-ray;2.901
+P30556;6DO1;B;83.0;;;;UNK;X-ray;2.901
+P30556;6OS0;A;85.0;;;;UNK;X-ray;2.9
+P30556;6OS1;A;85.0;;;;UNK;X-ray;2.794
+P30556;6OS2;A;85.0;;;;UNK;X-ray;2.7
+P50052;5UNF;A;79.0;8ES;Antagonist;Antagonist;Inactive;X-ray;2.8
+P50052;5UNF;B;80.0;8ES;Antagonist;Antagonist;Inactive;X-ray;2.8
+P50052;5UNG;B;83.0;8ES;Antagonist;Antagonist;Inactive;X-ray;2.8
+P50052;5UNH;A;77.0;8EM;Antagonist;Antagonist;Inactive;X-ray;2.9
+P50052;5UNH;B;75.0;8EM;Antagonist;Antagonist;Inactive;X-ray;2.9
+P50052;5XJM;A;78.0;;;;UNK;X-ray;3.2
+P50052;6JOD;A;84.0;;;;UNK;X-ray;3.2
+P50052;7C6A;A;77.0;;;;UNK;X-ray;3.4
+P50052;7JNI;A;82.0;VFD;Antagonist;Antagonist;Inactive;X-ray;3.0
+P50052;7JNI;B;61.0;VFD;Antagonist;Antagonist;Inactive;X-ray;3.0
+P35414;2LOT;A;14.0;;;;UNK;NMR;UNK
+P35414;2LOU;A;14.0;;;;UNK;NMR;UNK
+P35414;2LOV;A;14.0;;;;UNK;NMR;UNK
+P35414;2LOW;A;14.0;;;;UNK;NMR;UNK
+P35414;5VBL;B;79.0;;;;UNK;X-ray;2.6
+P35414;6KNM;B;78.0;;;;UNK;X-ray;3.2
+P46663;7EIB;A;84.0;;;;Full active;EM;3.0
+P30411;7F2O;R;73.0;;;;Full active;EM;2.9
+P32238;1D6G;A;11.0;;;;UNK;NMR;UNK
+P32238;1HZN;A;7.0;;;;UNK;NMR;UNK
+P32238;7EZH;D;69.0;;;;Full active;EM;3.2
+P32238;7EZK;D;69.0;;;;Full active;EM;3.1
+P32238;7EZM;D;71.0;;;;Full active;EM;2.9
+P32238;7F8U;A;65.0;1OE;Antagonist;Antagonist;Inactive;X-ray;2.8
+P32238;7F8X;A;66.0;;;;UNK;X-ray;3.0
+P32238;7F8Y;A;65.0;;;;UNK;X-ray;2.5
+P32238;7MBX;R;68.0;;;;Full active;EM;1.95
+P32238;7MBY;R;66.0;;;;Full active;EM;2.44
+P32239;1L4T;A;6.0;;;;UNK;NMR;UNK
+P32239;7F8V;R;62.0;;;;Full active;EM;3.3
+P32239;7F8W;R;62.0;;;;Full active;EM;3.1
+P21730;5O9H;A;84.0;9P2;Inverse agonist;Agonist;Inactive;X-ray;2.7
+P21730;5O9H;B;84.0;9P2;Inverse agonist;Agonist;Inactive;X-ray;2.7
+P21730;6C1Q;B;81.0;9P2;Inverse agonist;Agonist;Inactive;X-ray;2.9
+P21730;6C1R;B;83.0;EFD;Antagonist;Antagonist;Inactive;X-ray;2.2
+P24530;5X93;A;71.0;K87;Antagonist;Antagonist;Inactive;X-ray;2.2
+P24530;5XPR;A;69.0;K86;Antagonist;Antagonist;Inactive;X-ray;3.6
+P24530;6IGK;A;70.0;;;;UNK;X-ray;2.0
+P24530;6IGL;A;70.0;;;;UNK;X-ray;2.7
+P24530;6LRY;A;70.0;;;;UNK;X-ray;3.0
+P21462;7T6T;R;85.0;;;;Full active;EM;3.2
+P21462;7WVU;R;85.0;;;;Full active;EM;3.3
+P25090;6LW5;A;91.0;;;;UNK;X-ray;2.8
+P25090;6OMM;R;85.0;;;;Full active;EM;3.17
+P25090;7T6S;R;85.0;FUI;Full agonist;Agonist;Full active;EM;3.0
+P25090;7T6U;R;85.0;;;;Full active;EM;2.9
+P25090;7T6V;R;85.0;;;;Full active;EM;3.1
+P25090;7WVV;R;85.0;;;;Full active;EM;2.9
+P25090;7WVW;R;85.0;;;;Full active;EM;3.1
+P25090;7WVX;R;85.0;;;;Full active;EM;2.8
+P25090;7WVY;R;85.0;;;;Full active;EM;3.0
+Q92847;6KO5;A;61.0;;;;UNK;X-ray;3.3
+Q92847;7NA7;R;80.0;;;;Full active;EM;2.7
+Q92847;7NA8;R;78.0;1KD;Full agonist;Agonist;Full active;EM;2.7
+Q92847;7W2Z;R;82.0;;;;Full active;EM;2.8
+P30968;7BR3;A;84.0;F5O;Antagonist;Antagonist;Inactive;X-ray;2.79
+P32245;6W25;A;79.0;;;;UNK;X-ray;2.75
+P32245;7AUE;R;79.0;;;;Full active;EM;2.97
+P32245;7F53;R;82.0;;;;Full active;EM;3.0
+P32245;7F54;R;82.0;;;;Full active;EM;3.0
+P32245;7F55;R;82.0;;;;Full active;EM;3.1
+P32245;7F58;R;82.0;1I8;Full agonist;Agonist;Full active;EM;3.1
+P32245;7PIU;R;78.0;;;;Full active;EM;2.58
+P32245;7PIV;R;78.0;;;;Full active;EM;2.86
+P25929;5ZBQ;A;80.0;;;;UNK;X-ray;2.7
+P25929;7VGX;R;73.0;;;;Full active;EM;3.2
+P25024;1ILP;C;5.0;;;;UNK;NMR;UNK
+P25024;1ILQ;C;5.0;;;;UNK;NMR;UNK
+P25024;2LNL;A;85.0;;;;UNK;NMR;UNK
+P25024;6XMN;B;8.0;;;;UNK;NMR;UNK
+P30989;2LYW;A;6.0;;;;UNK;NMR;UNK
+P30989;6OS9;R;73.0;;;;Full active;EM;3.0
+P30989;6OSA;R;77.0;;;;Full active;EM;3.0
+P30989;6PWC;R;77.0;;;;UNK;EM;4.9
+P30989;6UP7;R;77.0;;;;UNK;EM;4.2
+P41143;4N6H;A;81.0;;;;UNK;X-ray;1.8
+P41145;4DJH;A;76.0;JDC;Antagonist;Antagonist;Inactive;X-ray;2.9
+P41145;4DJH;B;76.0;JDC;Antagonist;Antagonist;Inactive;X-ray;2.9
+P41145;6B73;A;73.0;;;;UNK;X-ray;3.1
+P41145;6B73;B;71.0;;;;UNK;X-ray;3.1
+P41145;6VI4;A;74.0;JDC;Antagonist;Antagonist;Inactive;X-ray;3.3
+P41145;6VI4;B;73.0;JDC;Antagonist;Antagonist;Inactive;X-ray;3.3
+P41145;7T10;R;76.0;;;;Full active;EM;2.5
+P41145;7T11;R;75.0;;;;Full active;EM;2.7
+P41146;4EA3;A;75.0;0NN;Antagonist;Antagonist;Inactive;X-ray;3.013
+P41146;4EA3;B;74.0;0NN;Antagonist;Antagonist;Inactive;X-ray;3.013
+P41146;5DHG;A;76.0;;;;UNK;X-ray;3.0
+P41146;5DHG;B;74.0;;;;UNK;X-ray;3.0
+P41146;5DHH;A;76.0;DGW;Antagonist;Antagonist;Inactive;X-ray;3.004
+P41146;5DHH;B;76.0;DGW;Antagonist;Antagonist;Inactive;X-ray;3.004
+O43613;4ZJ8;A;72.0;SUV;Antagonist;Antagonist;Inactive;X-ray;2.751
+O43613;4ZJC;A;72.0;4OT;Antagonist;Antagonist;Inactive;X-ray;2.832
+O43613;6TO7;A;71.0;SUV;Antagonist;Antagonist;Inactive;X-ray;2.26
+O43613;6TO7;B;72.0;SUV;Antagonist;Antagonist;Inactive;X-ray;2.26
+O43613;6TOD;A;71.0;;;;UNK;X-ray;2.11
+O43613;6TOD;B;72.0;;;;UNK;X-ray;2.11
+O43613;6TOS;A;71.0;;;;UNK;X-ray;2.13
+O43613;6TOS;B;72.0;;;;UNK;X-ray;2.13
+O43613;6TOT;A;70.0;NRK;Antagonist;Antagonist;Inactive;X-ray;2.22
+O43613;6TOT;B;71.0;NRK;Antagonist;Antagonist;Inactive;X-ray;2.22
+O43613;6TP3;A;74.0;NS2;Antagonist;Antagonist;Inactive;X-ray;3.04
+O43613;6TP3;B;72.0;NS2;Antagonist;Antagonist;Inactive;X-ray;3.04
+O43613;6TP4;A;70.0;NRZ;Antagonist;Antagonist;Inactive;X-ray;3.011
+O43613;6TP4;B;71.0;NRZ;Antagonist;Antagonist;Inactive;X-ray;3.011
+O43613;6TP6;A;71.0;NT5;Antagonist;Antagonist;Inactive;X-ray;2.338
+O43613;6TP6;B;71.0;NT5;Antagonist;Antagonist;Inactive;X-ray;2.338
+O43613;6TQ4;A;69.0;;;;UNK;X-ray;2.299
+O43613;6TQ4;B;70.0;;;;UNK;X-ray;2.299
+O43613;6TQ6;A;69.0;;;;UNK;X-ray;2.546
+O43613;6TQ6;B;71.0;;;;UNK;X-ray;2.546
+O43613;6TQ7;A;71.0;NVK;Antagonist;Antagonist;Inactive;X-ray;2.6636
+O43613;6TQ7;B;72.0;NVK;Antagonist;Antagonist;Inactive;X-ray;2.6636
+O43613;6TQ9;A;71.0;NVN;Antagonist;Antagonist;Inactive;X-ray;2.655
+O43613;6TQ9;B;71.0;NVN;Antagonist;Antagonist;Inactive;X-ray;2.655
+O43613;6V9S;A;72.0;JHC;Antagonist;Antagonist;Inactive;X-ray;3.5
+O43614;4S0V;A;64.0;SUV;Antagonist;Antagonist;Inactive;X-ray;2.5
+O43614;5WQC;A;68.0;7MA;Antagonist;Antagonist;Inactive;X-ray;1.96
+O43614;5WS3;A;70.0;7MA;Antagonist;Antagonist;Inactive;X-ray;2.3
+O43614;6TPG;A;48.0;7MA;Antagonist;Antagonist;Inactive;X-ray;2.741
+O43614;6TPJ;A;47.0;SUV;Antagonist;Antagonist;Inactive;X-ray;2.74
+O43614;6TPJ;B;47.0;SUV;Antagonist;Antagonist;Inactive;X-ray;2.74
+O43614;6TPN;A;71.0;NU8;Antagonist;Antagonist;Inactive;X-ray;2.608
+P25116;1NRN;R;4.0;;;;UNK;X-ray;3.1
+P25116;1NRO;R;2.0;;;;UNK;X-ray;3.1
+P25116;1NRP;R;2.0;;;;UNK;X-ray;3.0
+P25116;1NRQ;R;2.0;;;;UNK;X-ray;3.5
+P25116;1NRR;R;1.0;;;;UNK;X-ray;2.4
+P25116;3BEF;C;2.0;;;;UNK;X-ray;2.2
+P25116;3BEF;F;2.0;;;;UNK;X-ray;2.2
+P25116;3HKI;C;4.0;;;;UNK;X-ray;2.2
+P25116;3HKI;F;2.0;;;;UNK;X-ray;2.2
+P25116;3HKJ;C;2.0;;;;UNK;X-ray;2.6
+P25116;3HKJ;F;2.0;;;;UNK;X-ray;2.6
+P25116;3LU9;C;6.0;;;;UNK;X-ray;1.8
+P25116;3LU9;F;6.0;;;;UNK;X-ray;1.8
+P25116;3VW7;A;66.0;VPX;Antagonist;Antagonist;Inactive;X-ray;2.2
+P55085;5NDD;A;74.0;8TZ;Antagonist;Antagonist;Inactive;X-ray;2.801
+P55085;5NDZ;A;74.0;;;;UNK;X-ray;3.6
+P55085;5NJ6;A;74.0;;;;UNK;X-ray;4.0
+Q96RI0;2ZPK;P;2.0;;;;UNK;X-ray;1.8
+Q96RI0;2ZPK;Q;2.0;;;;UNK;X-ray;1.8
+Q96RI0;3QDZ;E;2.0;;;;UNK;X-ray;2.8
+Q96RI0;3QDZ;F;1.0;;;;UNK;X-ray;2.8
+Q9HBX9;2JM4;A;5.0;;;;UNK;NMR;UNK
+Q9HBX9;2M7P;A;2.0;;;;UNK;NMR;UNK
+Q8WXD0;2M96;A;6.0;;;;UNK;NMR;UNK
+P30874;7T10;R;78.0;;;;UNK;EM;2.5
+P30874;7T11;R;77.0;;;;UNK;EM;2.7
+P25103;2KS9;A;89.0;;;;UNK;NMR;UNK
+P25103;2KSA;A;89.0;;;;UNK;NMR;UNK
+P25103;2KSB;A;89.0;;;;UNK;NMR;UNK
+P25103;6E59;A;70.0;L76;Antagonist;Antagonist;Inactive;X-ray;3.4
+P25103;6HLL;A;68.0;GBK;Antagonist;Antagonist;Inactive;X-ray;3.27
+P25103;6HLO;A;70.0;GBQ;Antagonist;Antagonist;Inactive;X-ray;2.4
+P25103;6HLP;A;71.0;GAW;Antagonist;Antagonist;Inactive;X-ray;2.2
+P25103;7P00;R;71.0;;;;Full active;EM;2.71
+P25103;7P02;R;71.0;;;;Full active;EM;2.87
+P25103;7RMG;R;71.0;;;;Full active;EM;3.0
+P25103;7RMH;R;70.0;;;;Full active;EM;3.1
+P25103;7RMI;R;70.0;;;;Full active;EM;3.2
+P25025;4Q3H;A;1.0;;;;UNK;X-ray;1.443
+P25025;4Q3H;B;1.0;;;;UNK;X-ray;1.443
+P25025;5TYT;A;1.0;;;;UNK;X-ray;2.398
+P25025;5TYT;B;1.0;;;;UNK;X-ray;2.398
+P25025;5TYT;C;1.0;;;;UNK;X-ray;2.398
+P25025;5TYT;D;1.0;;;;UNK;X-ray;2.398
+P25025;6KVA;B;2.0;;;;UNK;X-ray;2.2
+P25025;6KVA;b;2.0;;;;UNK;X-ray;2.2
+P25025;6KVF;b;2.0;;;;UNK;X-ray;2.79
+P25025;6KVF;B;1.0;;;;UNK;X-ray;2.79
+P25025;6LFM;R;85.0;;;;Full active;EM;3.5
+P25025;6LFO;R;85.0;;;;Full active;EM;3.4
+Q9UKP6;6HVK;A;4.0;;;;UNK;NMR;UNK
+P37288;1YTV;M;1.0;;;;UNK;X-ray;1.8
+P37288;1YTV;N;1.0;;;;UNK;X-ray;1.8
+P30518;4JQI;V;6.0;;;;UNK;X-ray;2.6
+P30518;6NI2;V;4.0;;;;UNK;EM;4.0
+P30518;6U1N;R;75.0;;;;UNK;EM;4.0
+P30518;7BB6;A;73.0;;;;Full active;EM;4.2
+P30518;7BB7;A;72.0;;;;Full active;EM;4.4
+P30518;7DW9;R;75.0;;;;Full active;EM;2.6
+P30518;7KH0;R;74.0;;;;Full active;EM;2.8
+P30559;6TPK;A;72.0;NU2;Antagonist;Antagonist;Inactive;X-ray;3.2
+P30559;7RYC;O;73.0;;;;Full active;EM;2.9
+P32246;7VL8;R;80.0;;;;Full active;EM;2.9
+P32246;7VL9;R;85.0;;;;Full active;EM;2.6
+P32246;7VLA;R;85.0;;;;Full active;EM;2.7
+P41597;5T1A;A;76.0;73R;Antagonist;Antagonist;Inactive;X-ray;2.806
+P41597;7P8X;M;1.0;;;;UNK;X-ray;1.4
+P51681;2L87;A;5.0;;;;UNK;NMR;UNK
+P51681;2MZX;A;3.0;;;;UNK;NMR;UNK
+P51681;2RLL;A;3.0;;;;UNK;NMR;UNK
+P51681;2RRS;A;5.0;;;;UNK;NMR;UNK
+P51681;4MBS;A;83.0;;;;UNK;X-ray;2.71
+P51681;4MBS;B;83.0;;;;UNK;X-ray;2.71
+P51681;5UIW;A;85.0;;;;UNK;X-ray;2.204
+P51681;5YY4;B;2.0;;;;UNK;X-ray;1.59
+P51681;6FGP;A;8.0;;;;UNK;NMR;UNK
+P51681;6MEO;B;89.0;;;;UNK;EM;3.9
+P51681;6MET;B;89.0;;;;UNK;EM;4.5
+P51681;7F1Q;R;85.0;;;;Full active;EM;2.9
+P51681;7F1R;R;79.0;;;;Full active;EM;3.0
+P51681;7F1S;R;78.0;;;;Full active;EM;2.8
+P51681;7NJZ;C;2.0;;;;UNK;X-ray;3.2
+P51681;7NW3;A;2.0;;;;UNK;X-ray;3.20001097294
+P51681;7O7F;C;85.0;;;;Full active;EM;3.15
+P51684;6WWZ;R;83.0;;;;Full active;EM;3.34
+P32248;6QZH;A;70.0;;;;UNK;X-ray;2.1
+P51686;5LWE;A;73.0;;;;UNK;X-ray;2.8
+P51686;5LWE;B;76.0;;;;UNK;X-ray;2.8
+P61073;2K03;B;11.0;;;;UNK;NMR;UNK
+P61073;2K03;D;11.0;;;;UNK;NMR;UNK
+P61073;2K04;B;11.0;;;;UNK;NMR;UNK
+P61073;2K04;D;11.0;;;;UNK;NMR;UNK
+P61073;2K05;B;11.0;;;;UNK;NMR;UNK
+P61073;2K05;D;11.0;;;;UNK;NMR;UNK
+P61073;2N55;B;11.0;;;;UNK;NMR;UNK
+P61073;3ODU;A;83.0;ITD;Antagonist;Antagonist;Inactive;X-ray;2.5
+P61073;3ODU;B;83.0;ITD;Antagonist;Antagonist;Inactive;X-ray;2.5
+P61073;3OE0;A;78.0;;;;UNK;X-ray;2.9
+P61073;3OE6;A;77.0;ITD;Antagonist;Antagonist;Inactive;X-ray;3.2
+P61073;3OE8;A;77.0;ITD;Antagonist;Antagonist;Inactive;X-ray;3.1
+P61073;3OE8;B;75.0;ITD;Antagonist;Antagonist;Inactive;X-ray;3.1
+P61073;3OE8;C;76.0;ITD;Antagonist;Antagonist;Inactive;X-ray;3.1
+P61073;3OE9;A;75.0;ITD;Antagonist;Antagonist;Inactive;X-ray;3.1
+P61073;3OE9;B;73.0;ITD;Antagonist;Antagonist;Inactive;X-ray;3.1
+P61073;4RWS;A;78.0;;;;UNK;X-ray;3.1
+Q16570;4NUU;C;4.0;;;;UNK;X-ray;1.95
+Q16570;4NUV;C;4.0;;;;UNK;X-ray;2.6
+Q16570;4NUV;D;4.0;;;;UNK;X-ray;2.6
+Q16570;7P93;B;2.0;;;;UNK;X-ray;1.55
+Q16570;7P93;M;3.0;;;;UNK;X-ray;1.55
+P25106;6K3F;U;4.0;;;;UNK;X-ray;2.3
+P25106;6K3F;V;3.0;;;;UNK;X-ray;2.3
+P25106;6K3F;W;2.0;;;;UNK;X-ray;2.3
+P25106;6K3F;X;3.0;;;;UNK;X-ray;2.3
+P25106;6K3F;Y;3.0;;;;UNK;X-ray;2.3
+P25106;6K3F;Z;2.0;;;;UNK;X-ray;2.3
+P23945;1XWD;C;35.0;;;;UNK;X-ray;2.92
+P23945;1XWD;F;34.0;;;;UNK;X-ray;2.92
+P23945;4AY9;X;44.0;;;;UNK;X-ray;2.5
+P23945;4AY9;Y;44.0;;;;UNK;X-ray;2.5
+P23945;4AY9;Z;44.0;;;;UNK;X-ray;2.5
+P23945;4MQW;X;42.0;;;;UNK;X-ray;2.9
+P23945;4MQW;Y;41.0;;;;UNK;X-ray;2.9
+P23945;4MQW;Z;42.0;;;;UNK;X-ray;2.9
+P22888;7FIG;R;79.0;;;;Full active;EM;3.9
+P22888;7FIH;R;79.0;;;;Full active;EM;3.2
+P22888;7FII;R;82.0;;;;Full active;EM;4.3
+P22888;7FIJ;R;80.0;;;;UNK;EM;3.8
+P16473;2XWT;C;31.0;;;;UNK;X-ray;1.9
+P16473;3G04;C;30.0;;;;UNK;X-ray;2.55
+O14842;4PHU;A;90.0;2YB;Agonist;Agonist;Active;X-ray;2.332
+O14842;5KW2;A;82.0;;;;UNK;X-ray;2.76
+O14842;5TZR;A;91.0;;;;UNK;X-ray;2.2
+O14842;5TZY;A;91.0;;;;UNK;X-ray;3.22
+Q15722;7K15;A;85.0;;;;UNK;X-ray;2.88
+Q15722;7VKT;A;82.0;LTB;Full agonist;Agonist;Full active;EM;2.9
+Q9Y271;6RZ4;A;85.0;KNT;Antagonist;Antagonist;Inactive;X-ray;2.7
+Q9Y271;6RZ5;A;84.0;ZLK;Antagonist;Antagonist;Inactive;X-ray;2.53
+Q9Y271;6RZ5;B;84.0;ZLK;Antagonist;Antagonist;Inactive;X-ray;2.53
+Q92633;4Z34;A;80.0;ON7;Antagonist;Antagonist;Inactive;X-ray;3.0
+Q92633;4Z35;A;79.0;ON9;Antagonist;Antagonist;Inactive;X-ray;2.9
+Q92633;4Z36;A;79.0;ON3;Antagonist;Antagonist;Inactive;X-ray;2.9
+Q92633;7TD0;R;80.0;;;;Full active;EM;2.83
+Q92633;7TD1;R;80.0;;;;Full active;EM;3.08
+Q92633;7TD2;R;80.0;;;;Full active;EM;3.11
+Q9HBW0;4P0C;A;1.0;;;;UNK;X-ray;1.339
+P21453;3V2W;A;74.0;ML5;Antagonist;Antagonist;Inactive;X-ray;3.35
+P21453;3V2Y;A;76.0;ML5;Antagonist;Antagonist;Inactive;X-ray;2.8
+P21453;7EO2;A;73.0;;;;Full active;EM;2.89
+P21453;7EO4;A;74.0;J8C;Agonist;Agonist;Full active;EM;2.86
+P21453;7TD3;R;76.0;S1P;Agonist;Agonist;Full active;EM;3.0
+P21453;7TD4;R;76.0;J8C;Agonist;Agonist;Full active;EM;2.6
+P21453;7WF7;A;71.0;S1P;Agonist;Agonist;Full active;EM;3.4
+O95136;7T6B;R;75.0;S1P;Agonist;Agonist;Full active;EM;3.19
+Q99500;7C4S;A;75.0;S1P;Agonist;Agonist;Active;X-ray;3.2
+Q99500;7C4S;B;74.0;S1P;Agonist;Agonist;Active;X-ray;3.2
+Q99500;7EW2;R;77.0;J89;Agonist;Agonist;Full active;EM;3.1
+Q99500;7EW3;R;77.0;S1P;Agonist;Agonist;Full active;EM;3.1
+Q99500;7EW4;R;76.0;JF9;Agonist;Agonist;Full active;EM;3.2
+O95977;2DCO;A;4.0;;;;UNK;NMR;UNK
+Q9H228;7EW1;A;68.0;J8C;Agonist;Agonist;Full active;EM;3.4
+P21554;1LVQ;A;2.0;;;;UNK;NMR;UNK
+P21554;1LVR;A;2.0;;;;UNK;NMR;UNK
+P21554;2B0Y;A;4.0;;;;UNK;NMR;UNK
+P21554;2KOE;A;8.0;;;;UNK;NMR;UNK
+P21554;5TGZ;A;61.0;ZDG;Antagonist;Antagonist;Inactive;X-ray;2.8
+P21554;5U09;A;60.0;7DY;Inverse agonist;Antagonist;Inactive;X-ray;2.6
+P21554;5XR8;A;81.0;8D0;Agonist;Agonist;Active;X-ray;2.95
+P21554;5XRA;A;56.0;8D3;Agonist;Agonist;Active;X-ray;2.8
+P21554;6KPG;R;60.0;8D0;Agonist;Agonist;Full active;EM;3.0
+P21554;6KQI;A;60.0;9GF;Full agonist;Agonist;Active;X-ray;3.245
+P21554;6N4B;R;58.0;KCA;Agonist;Agonist;Full active;EM;3.0
+P21554;7V3Z;A;60.0;9GF;Full agonist;Agonist;Active;X-ray;3.29
+P34972;2KI9;A;9.0;;;;UNK;NMR;UNK
+P34972;5ZTY;A;80.0;;;;UNK;X-ray;2.8
+P34972;6KPC;A;79.0;;;;UNK;X-ray;3.2
+P34972;6KPF;R;81.0;;;;Full active;EM;2.9
+P34972;6PT0;R;83.0;WI5;Full agonist;Agonist;Full active;EM;3.2
+Q9Y5Y4;6D26;A;82.0;FSY;Antagonist;Antagonist;Inactive;X-ray;2.798
+Q9Y5Y4;6D27;A;81.0;;;;UNK;X-ray;2.738
+Q9Y5Y4;7M8W;A;83.0;YSS;Full agonist;Agonist;Active;X-ray;2.61
+P43116;7CX2;R;74.0;P2E;Full agonist;Agonist;Full active;EM;2.8
+P43116;7CX3;R;74.0;GNO;Full agonist;Agonist;Full active;EM;2.8
+P43116;7CX4;R;74.0;;;;Full active;EM;2.9
+P43115;6AK3;B;69.0;P2E;Full agonist;Agonist;Active;X-ray;2.9
+P43115;6AK3;A;68.0;P2E;Full agonist;Agonist;Active;X-ray;2.9
+P43115;6M9T;A;70.0;;;;UNK;X-ray;2.5
+P35408;5YHL;A;57.0;;;;UNK;X-ray;4.2
+P35408;5YWY;A;57.0;;;;UNK;X-ray;3.2
+P35408;7D7M;A;58.0;P2E;Full agonist;Agonist;Full active;EM;3.3
+P48039;6ME2;A;83.0;JEV;Full agonist;Agonist;Active;X-ray;2.8
+P48039;6ME3;A;82.0;;;;UNK;X-ray;2.9
+P48039;6ME4;A;83.0;ML2;Full agonist;Agonist;Active;X-ray;3.2
+P48039;6ME5;A;83.0;AWY;Full agonist;Agonist;Active;X-ray;3.2
+P48039;7DB6;D;79.0;JEV;Full agonist;Agonist;Full active;EM;3.3
+P48039;7VGY;A;80.0;ML2;Full agonist;Agonist;Full active;EM;3.1
+P48039;7VGZ;B;81.0;JEV;Full agonist;Agonist;Full active;EM;3.3
+P49286;6ME6;A;79.0;;;;UNK;X-ray;2.8
+P49286;6ME6;B;78.0;;;;UNK;X-ray;2.8
+P49286;6ME7;A;79.0;;;;UNK;X-ray;3.2
+P49286;6ME7;B;78.0;;;;UNK;X-ray;3.2
+P49286;6ME8;A;79.0;;;;UNK;X-ray;3.1
+P49286;6ME8;B;78.0;;;;UNK;X-ray;3.1
+P49286;6ME9;A;79.0;JEV;Full agonist;Agonist;Active;X-ray;3.3
+P49286;6ME9;B;79.0;JEV;Full agonist;Agonist;Active;X-ray;3.3
+P49286;7VH0;A;75.0;JEV;Full agonist;Agonist;Full active;EM;3.46
+P30542;5N2S;A;117.0;;;;UNK;X-ray;3.303
+P30542;5UEN;A;90.0;DU1;Antagonist;Antagonist;Inactive;X-ray;3.2
+P30542;5UEN;B;88.0;DU1;Antagonist;Antagonist;Inactive;X-ray;3.2
+P30542;6D9H;R;88.0;ADN;Agonist;Agonist;Full active;EM;3.6
+P30542;7LD3;R;88.0;ADN;Agonist;Agonist;Full active;EM;3.2
+P30542;7LD4;R;88.0;ADN;Agonist;Agonist;Full active;EM;3.3
+P29274;2YDO;A;73.0;ADN;Agonist;Agonist;Active;X-ray;3.0
+P29274;2YDV;A;75.0;NEC;Full agonist;Agonist;Active;X-ray;2.6
+P29274;3EML;A;70.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;2.6
+P29274;3PWH;A;71.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;3.296
+P29274;3QAK;A;69.0;UKA;Agonist;Agonist;Active;X-ray;2.71
+P29274;3REY;A;71.0;XAC;Antagonist;Antagonist;Inactive;X-ray;3.309
+P29274;3RFM;A;71.0;CFF;Antagonist;Antagonist;Inactive;X-ray;3.598
+P29274;3UZA;A;71.0;T4G;Agonist;Agonist;Active;X-ray;3.273
+P29274;3UZC;A;71.0;;;;UNK;X-ray;3.341
+P29274;3VG9;A;72.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;2.7
+P29274;3VGA;A;72.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;3.1
+P29274;4EIY;A;72.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;1.8
+P29274;4UG2;A;71.0;NGI;Full agonist;Agonist;Active;X-ray;2.6
+P29274;4UG2;B;67.0;NGI;Full agonist;Agonist;Active;X-ray;2.6
+P29274;4UHR;A;75.0;NGI;Full agonist;Agonist;Active;X-ray;2.6
+P29274;5G53;A;68.0;NEC;Full agonist;Agonist;Active;X-ray;3.4
+P29274;5G53;B;69.0;NEC;Full agonist;Agonist;Active;X-ray;3.4
+P29274;5IU4;A;71.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;1.72
+P29274;5IU7;A;72.0;;;;UNK;X-ray;1.9
+P29274;5IU8;A;71.0;;;;UNK;X-ray;2.002
+P29274;5IUA;A;72.0;;;;UNK;X-ray;2.2
+P29274;5IUB;A;71.0;;;;UNK;X-ray;2.1
+P29274;5JTB;A;72.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;2.8
+P29274;5K2A;A;72.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;2.5
+P29274;5K2B;A;72.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;2.5
+P29274;5K2C;A;72.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;1.9
+P29274;5K2D;A;72.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;1.9
+P47900;4XNV;A;78.0;;;;UNK;X-ray;2.2
+P47900;4XNW;A;78.0;2ID;Antagonist;Antagonist;Inactive;X-ray;2.7
+P47900;4XNW;C;79.0;2ID;Antagonist;Antagonist;Inactive;X-ray;2.7
+Q9H244;4NTJ;A;80.0;AZJ;Antagonist;Antagonist;Inactive;X-ray;2.62
+Q9H244;4PXZ;A;84.0;6AD;Full agonist;Agonist;Active;X-ray;2.5
+Q9H244;4PY0;A;83.0;;;;UNK;X-ray;3.1
+Q8TDU6;7BW0;R;85.0;;;;Full active;EM;3.9
+Q8TDU6;7CFM;R;83.0;;;;Full active;EM;3.0
+Q8TDU6;7CFN;R;83.0;;;;Full active;EM;3.0
+P08100;4ZWJ;A;94.0;;;;UNK;X-ray;3.302
+P08100;4ZWJ;B;94.0;;;;UNK;X-ray;3.302
+P08100;4ZWJ;C;94.0;;;;UNK;X-ray;3.302
+P08100;4ZWJ;D;94.0;;;;UNK;X-ray;3.302
+P08100;5DGY;A;94.0;;;;UNK;X-ray;7.7
+P08100;5DGY;B;94.0;;;;UNK;X-ray;7.7
+P08100;5DGY;C;94.0;;;;UNK;X-ray;7.7
+P08100;5DGY;D;94.0;;;;UNK;X-ray;7.7
+P08100;5W0P;A;97.0;;;;UNK;X-ray;3.013
+P08100;5W0P;B;97.0;;;;UNK;X-ray;3.013
+P08100;5W0P;C;97.0;;;;UNK;X-ray;3.013
+P08100;5W0P;D;97.0;;;;UNK;X-ray;3.013
+P08100;6CMO;R;92.0;;;;Full active;EM;4.5
+Q9Y2T5;6LI0;A;81.0;EN6;Agonist;Agonist;Active;X-ray;2.2
+Q9Y2T5;6LI1;A;80.0;;;;UNK;X-ray;2.9
+Q9Y2T5;6LI2;A;79.0;;;;UNK;X-ray;2.8
+Q9Y2T5;6LI3;R;79.0;;;;Full active;EM;3.32
+Q9GZN0;7EJX;R;60.0;J5F;Full agonist;Agonist;Full active;EM;2.4
+Q6DWJ6;7VUG;R;80.0;7ZQ;Agonist;Agonist;Full active;EM;3.2
+Q6DWJ6;7VUH;R;80.0;7ZQ;Agonist;Agonist;Full active;EM;3.22
+Q6DWJ6;7VUI;R;79.0;7ZQ;Agonist;Agonist;Full active;EM;3.3
+Q6DWJ6;7VUJ;R;79.0;7ZQ;Agonist;Agonist;Full active;EM;3.8
+P32249;7TUY;R;73.0;;;;UNK;EM;2.98
+P32249;7TUZ;R;79.0;KJX;Full agonist;Agonist;Full active;EM;3.12
+Q9BXB1;4KT1;A;48.0;;;;UNK;X-ray;2.497
+Q9BXB1;4QXE;A;39.0;;;;UNK;X-ray;2.2
+Q9BXB1;4QXF;A;24.0;;;;UNK;X-ray;2.25
+Q9BXB1;4QXF;B;24.0;;;;UNK;X-ray;2.25
+O75473;4BSR;A;53.0;;;;UNK;X-ray;3.2
+O75473;4BSR;B;53.0;;;;UNK;X-ray;3.2
+O75473;4BSS;A;51.0;;;;UNK;X-ray;3.2
+O75473;4BSS;B;52.0;;;;UNK;X-ray;3.2
+O75473;4BSS;E;52.0;;;;UNK;X-ray;3.2
+O75473;4BSS;F;51.0;;;;UNK;X-ray;3.2
+O75473;4BST;A;50.0;;;;UNK;X-ray;4.3
+O75473;4BST;B;50.0;;;;UNK;X-ray;4.3
+O75473;4BSU;A;52.0;;;;UNK;X-ray;3.2
+O75473;4BSU;B;52.0;;;;UNK;X-ray;3.2
+O75473;4BSU;E;51.0;;;;UNK;X-ray;3.2
+O75473;4BSU;F;51.0;;;;UNK;X-ray;3.2
+O75473;4KNG;A;51.0;;;;UNK;X-ray;2.5
+O75473;4KNG;B;51.0;;;;UNK;X-ray;2.5
+O75473;4UFR;A;51.0;;;;UNK;X-ray;2.2
+O75473;4UFR;C;50.0;;;;UNK;X-ray;2.2
+O75473;4UFS;A;51.0;;;;UNK;X-ray;4.8
+Q96LB1;7S8L;R;76.0;;;;Full active;EM;2.45
+Q96LB1;7S8M;R;77.0;;;;Full active;EM;2.54
+Q96LB1;7S8N;R;76.0;8IU;Agonist;Agonist;Full active;EM;2.9
+Q96LB1;7S8O;R;78.0;8IU;Agonist;Agonist;Full active;EM;2.58
+Q96LB1;7VDH;R;81.0;6IB;Agonist;Agonist;Full active;EM;2.9
+Q96LB1;7VDL;R;78.0;;;;Full active;EM;3.22
+Q96LB1;7VDM;R;77.0;;;;Full active;EM;2.98
+Q96LB1;7VUY;R;78.0;;;;Full active;EM;2.84
+Q96LB1;7VUZ;R;76.0;;;;Full active;EM;2.89
+Q96LB1;7VV0;R;80.0;;;;UNK;EM;3.5
+Q96LB1;7VV3;R;79.0;;;;Full active;EM;2.97
+Q96LB1;7VV4;R;80.0;;;;UNK;EM;2.97
+Q96LB1;7VV5;R;81.0;6IB;Agonist;Agonist;Full active;EM;2.76
+Q96LB1;7VV6;R;82.0;6IB;Agonist;Agonist;Active;EM;3.3
+Q96LA9;7S8P;R;77.0;;;;Full active;EM;2.6
+Q16602;3AQF;B;21.0;;;;UNK;X-ray;2.6
+Q16602;3N7P;A;22.0;;;;UNK;X-ray;2.8
+Q16602;3N7P;B;21.0;;;;UNK;X-ray;2.8
+Q16602;3N7P;C;15.0;;;;UNK;X-ray;2.8
+Q16602;3N7P;J;21.0;;;;UNK;X-ray;2.8
+Q16602;3N7R;A;20.0;;;;UNK;X-ray;2.9
+Q16602;3N7R;B;20.0;;;;UNK;X-ray;2.9
+Q16602;3N7S;A;20.0;;;;UNK;X-ray;2.1
+Q16602;3N7S;B;21.0;;;;UNK;X-ray;2.1
+Q16602;4RWF;A;18.0;;;;UNK;X-ray;1.76
+Q16602;4RWG;A;18.0;;;;UNK;X-ray;2.44
+Q16602;4RWG;B;18.0;;;;UNK;X-ray;2.44
+Q16602;4RWG;C;16.0;;;;UNK;X-ray;2.44
+Q16602;5V6Y;A;21.0;;;;UNK;X-ray;2.8
+Q16602;5V6Y;B;21.0;;;;UNK;X-ray;2.8
+Q16602;5V6Y;C;21.0;;;;UNK;X-ray;2.8
+Q16602;5V6Y;D;20.0;;;;UNK;X-ray;2.8
+Q16602;6D1U;A;21.0;;;;UNK;X-ray;2.05
+Q16602;6D1U;B;21.0;;;;UNK;X-ray;2.05
+Q16602;6D1U;C;24.0;;;;UNK;X-ray;2.05
+Q16602;6E3Y;R;75.0;;;;Full active;EM;3.3
+Q16602;6UMG;C;24.0;;;;UNK;X-ray;2.7
+Q16602;6UMG;c;24.0;;;;UNK;X-ray;2.7
+Q16602;6UUN;R;77.0;;;;Full active;EM;3.0
+Q16602;6UUS;R;74.0;;;;Full active;EM;2.4
+Q16602;6UVA;R;75.0;;;;Full active;EM;2.3
+Q16602;6V2E;A;21.0;;;;UNK;X-ray;1.83
+Q16602;6ZHO;A;24.0;;;;UNK;X-ray;1.6
+Q16602;6ZIS;A;24.0;;;;UNK;X-ray;1.73
+Q16602;7KNT;R;74.0;;;;UNK;EM;3.15
+Q16602;7KNU;R;74.0;;;;UNK;EM;3.49
+Q13324;6PB1;P;68.0;;;;Full active;EM;2.8
+Q02643;2XDG;A;21.0;;;;UNK;X-ray;1.95
+Q02643;2XDG;B;21.0;;;;UNK;X-ray;1.95
+Q02643;7CZ5;R;64.0;;;;Full active;EM;2.6
+P48546;2QKH;A;20.0;;;;UNK;X-ray;1.9
+P48546;4HJ0;A;20.0;;;;UNK;X-ray;3.0
+P48546;4HJ0;B;20.0;;;;UNK;X-ray;3.0
+P48546;6DKJ;C;22.0;;;;UNK;X-ray;1.95
+P48546;6DKJ;D;23.0;;;;UNK;X-ray;1.95
+P48546;7FIN;R;82.0;;;;Full active;EM;3.1
+P48546;7FIY;R;77.0;;;;Full active;EM;3.4
+P48546;7RA3;R;80.0;;;;Full active;EM;3.24
+P48546;7RBT;R;81.0;;;;Full active;EM;3.08
+P48546;7VAB;R;62.0;;;;Full active;EM;3.2
+P43220;3C59;A;22.0;;;;UNK;X-ray;2.3
+P43220;3C5T;A;22.0;;;;UNK;X-ray;2.1
+P43220;3IOL;A;22.0;;;;UNK;X-ray;2.1
+P43220;4ZGM;A;22.0;;;;UNK;X-ray;1.8
+P43220;5E94;G;24.0;;;;UNK;X-ray;2.0
+P43220;5E94;H;22.0;;;;UNK;X-ray;2.0
+P43220;5NX2;A;84.0;;;;UNK;X-ray;3.7
+P43220;5OTT;A;21.0;;;;UNK;X-ray;1.92
+P43220;5OTU;A;22.0;;;;UNK;X-ray;1.8
+P43220;5OTU;C;22.0;;;;UNK;X-ray;1.8
+P43220;5OTV;C;22.0;;;;UNK;X-ray;2.0
+P43220;5OTV;A;22.0;;;;UNK;X-ray;2.0
+P43220;5OTW;C;22.0;;;;UNK;X-ray;2.1
+P43220;5OTW;A;22.0;;;;UNK;X-ray;2.1
+P43220;5OTX;A;22.0;;;;UNK;X-ray;2.0
+P43220;5OTX;C;22.0;;;;UNK;X-ray;2.0
+P43220;5VEW;A;57.0;;;;UNK;X-ray;2.7
+P43220;5VEW;B;57.0;;;;UNK;X-ray;2.7
+P43220;5VEX;A;57.0;;;;UNK;X-ray;3.0
+P43220;5VEX;B;57.0;;;;UNK;X-ray;3.0
+P43220;6B3J;R;82.0;;;;Full active;EM;3.3
+P43220;6GB1;A;23.0;;;;UNK;X-ray;2.73
+P43220;6VCB;R;82.0;;;;Full active;EM;3.3
+P43220;6X18;R;83.0;;;;Full active;EM;2.1
+P43220;6X19;R;84.0;;;;Full active;EM;2.1
+P43220;6X1A;R;84.0;;;;Full active;EM;2.5
+P43220;6XOX;R;82.0;;;;Full active;EM;3.1
+P43220;7C2E;R;82.0;;;;Full active;EM;4.2
+P43220;7DUQ;R;83.0;;;;Full active;EM;2.5
+P43220;7DUR;R;80.0;;;;Full active;EM;3.3
+P43220;7E14;R;81.0;;;;Full active;EM;2.9
+P47871;3CZF;C;2.0;;;;UNK;X-ray;1.2
+P47871;4ERS;A;20.0;;;;UNK;X-ray;2.637
+P47871;4L6R;A;61.0;;;;UNK;X-ray;3.3
+P47871;4LF3;C;20.0;;;;UNK;X-ray;2.735
+P47871;4LF3;F;20.0;;;;UNK;X-ray;2.735
+P47871;5EE7;A;54.0;;;;UNK;X-ray;2.5
+P47871;5XEZ;A;82.0;;;;UNK;X-ray;3.0
+P47871;5XEZ;B;82.0;;;;UNK;X-ray;3.0
+P47871;6LMK;R;83.0;;;;Full active;EM;3.7
+P47871;6LML;R;83.0;;;;Full active;EM;3.9
+P47871;6WHC;R;78.0;;;;Full active;EM;3.4
+P47871;6WPW;R;83.0;;;;Full active;EM;3.1
+P47871;7V35;R;82.0;;;;Full active;EM;3.4
+P47872;6WI9;R;84.0;;;;Full active;EM;4.3
+P47872;6WZG;R;86.0;;;;Full active;EM;2.3
+P47872;7D3S;R;60.0;;;;Full active;EM;2.9
+Q03431;1BL1;A;5.0;;;;UNK;NMR;UNK
+Q03431;3C4M;A;16.0;;;;UNK;X-ray;1.95
+Q03431;3C4M;B;17.0;;;;UNK;X-ray;1.95
+Q03431;3H3G;A;17.0;;;;UNK;X-ray;1.94
+Q03431;3L2J;A;19.0;;;;UNK;X-ray;3.24
+Q03431;3L2J;B;19.0;;;;UNK;X-ray;3.24
+Q03431;6NBF;R;62.0;;;;Full active;EM;3.0
+Q03431;6NBH;R;64.0;;;;Full active;EM;3.5
+Q03431;6NBI;R;62.0;;;;Full active;EM;4.0
+P49190;7F16;R;68.0;;;;Full active;EM;2.8
+P41586;2JOD;A;22.0;;;;UNK;NMR;UNK
+P41586;6LPB;R;71.0;;;;Full active;EM;3.9
+P41586;6P9Y;R;55.0;;;;Full active;EM;3.01
+P41586;7JQD;A;18.0;;;;UNK;X-ray;2.7
+P32241;1OF2;C;2.0;;;;UNK;X-ray;2.2
+P32241;1OGT;C;2.0;;;;UNK;X-ray;1.47
+P32241;3B3I;C;2.0;;;;UNK;X-ray;1.86
+P32241;5IB1;C;2.0;;;;UNK;X-ray;1.91
+P32241;5IB2;C;2.0;;;;UNK;X-ray;1.44
+P32241;5IB3;C;2.0;;;;UNK;X-ray;1.91
+P32241;5IB4;C;2.0;;;;UNK;X-ray;1.95
+P32241;5IB5;C;2.0;;;;UNK;X-ray;2.49
+P32241;5IB5;F;2.0;;;;UNK;X-ray;2.49
+P32241;7ALO;C;2.0;;;;UNK;X-ray;1.8
+P32241;7ALO;F;2.0;;;;UNK;X-ray;1.8
+P41587;2X57;A;20.0;;;;UNK;X-ray;2.1
+P41587;2X57;B;20.0;;;;UNK;X-ray;2.1
+P41587;2X57;C;20.0;;;;UNK;X-ray;2.1
+Q9HAR2;5CMN;E;17.0;;;;UNK;X-ray;3.605
+Q9HAR2;5CMN;F;17.0;;;;UNK;X-ray;3.605
+Q9HAR2;5CMN;G;17.0;;;;UNK;X-ray;3.605
+Q9HAR2;5CMN;H;17.0;;;;UNK;X-ray;3.605
+Q9HAR2;6VHH;B;7.0;;;;UNK;EM;2.97
+Q9UHX3;2BO2;A;17.0;;;;UNK;X-ray;2.6
+Q9UHX3;2BO2;B;17.0;;;;UNK;X-ray;2.6
+Q9UHX3;2BOU;A;17.0;;;;UNK;X-ray;1.9
+Q9UHX3;2BOX;A;16.0;;;;UNK;X-ray;2.5
+P48960;7DO4;A;17.0;;;;UNK;X-ray;3.2
+O60242;4DLO;A;23.0;;;;UNK;X-ray;2.3
+O60242;4DLO;B;22.0;;;;UNK;X-ray;2.3
+P41180;5FBH;B;44.0;;;;UNK;X-ray;2.7
+P41180;5FBH;A;44.0;;;;UNK;X-ray;2.7
+P41180;5FBK;A;45.0;;;;UNK;X-ray;2.1
+P41180;5FBK;B;43.0;;;;UNK;X-ray;2.1
+P41180;5K5S;A;49.0;;;;UNK;X-ray;2.6
+P41180;5K5S;B;50.0;;;;UNK;X-ray;2.6
+P41180;5K5T;A;54.0;;;;UNK;X-ray;3.1
+P41180;7DTT;A;72.0;;;;UNK;EM;3.8
+P41180;7DTT;B;72.0;;;;UNK;EM;3.8
+P41180;7DTU;A;72.0;;;;UNK;EM;4.4
+P41180;7DTU;B;72.0;;;;UNK;EM;4.4
+P41180;7DTV;A;72.0;;;;UNK;EM;3.5
+P41180;7DTV;B;72.0;;;;UNK;EM;3.5
+P41180;7DTW;A;72.0;;;;UNK;EM;4.5
+P41180;7DTW;B;72.0;;;;UNK;EM;4.5
+P41180;7E6T;B;74.0;;;;UNK;EM;3.0
+P41180;7E6T;A;74.0;;;;UNK;EM;3.0
+P41180;7E6U;A;72.0;;;;UNK;EM;6.0
+P41180;7E6U;C;72.0;;;;UNK;EM;6.0
+P41180;7M3E;A;75.0;;;;UNK;EM;3.2
+P41180;7M3E;B;75.0;;;;UNK;EM;3.2
+P41180;7M3F;A;76.0;;;;UNK;EM;2.8
+P41180;7M3F;B;75.0;;;;UNK;EM;2.8
+P41180;7M3G;A;76.0;;;;UNK;EM;2.5
+P41180;7M3G;B;75.0;;;;UNK;EM;2.5
+P41180;7M3J;A;72.0;;;;UNK;EM;4.1
+P41180;7M3J;B;73.0;;;;UNK;EM;4.1
+Q9UBS5;4MQE;A;42.0;;;;UNK;X-ray;2.35
+Q9UBS5;4MQF;A;42.0;;;;UNK;X-ray;2.22
+Q9UBS5;4MR7;A;42.0;;;;UNK;X-ray;2.15
+Q9UBS5;4MR8;A;42.0;;;;UNK;X-ray;2.15
+Q9UBS5;4MR9;A;42.0;;;;UNK;X-ray;2.35
+Q9UBS5;4MRM;A;42.0;;;;UNK;X-ray;2.86
+Q9UBS5;4MS1;A;42.0;;;;UNK;X-ray;2.25
+Q9UBS5;4MS3;A;40.0;;;;UNK;X-ray;2.5
+Q9UBS5;4MS4;A;42.0;;;;UNK;X-ray;1.9
+Q9UBS5;4PAS;A;4.0;;;;UNK;X-ray;1.62
+Q9UBS5;6HKC;A;8.0;;;;UNK;NMR;UNK
+Q9UBS5;6UO8;A;72.0;;;;UNK;EM;3.63
+Q9UBS5;6UO9;A;70.0;;;;UNK;EM;4.8
+Q9UBS5;6UOA;A;68.0;;;;UNK;EM;6.3
+Q9UBS5;6VJM;A;71.0;;;;UNK;EM;3.97
+Q9UBS5;6W2X;A;70.0;;;;UNK;EM;3.6
+Q9UBS5;6W2Y;A;69.0;;;;UNK;EM;3.2
+Q9UBS5;6W2Y;B;69.0;;;;UNK;EM;3.2
+Q9UBS5;6WIV;A;71.0;;;;UNK;EM;3.3
+Q9UBS5;7C7Q;A;71.0;;;;UNK;EM;3.0
+Q9UBS5;7C7S;A;71.0;;;;UNK;EM;2.9
+Q9UBS5;7CA3;A;70.0;;;;UNK;EM;4.5
+Q9UBS5;7CA5;A;69.0;;;;UNK;EM;7.6
+Q9UBS5;7CUM;A;71.0;;;;UNK;EM;3.52
+Q9UBS5;7EB2;C;71.0;;;;Full active;EM;3.5
+O75899;4F11;A;43.0;;;;UNK;X-ray;2.38
+O75899;4F12;A;44.0;;;;UNK;X-ray;3.02
+O75899;4MQE;B;43.0;;;;UNK;X-ray;2.35
+O75899;4MQF;B;43.0;;;;UNK;X-ray;2.22
+O75899;4MR7;B;43.0;;;;UNK;X-ray;2.15
+O75899;4MR8;B;43.0;;;;UNK;X-ray;2.15
+O75899;4MR9;B;43.0;;;;UNK;X-ray;2.35
+O75899;4MRM;B;42.0;;;;UNK;X-ray;2.86
+O75899;4MS1;B;43.0;;;;UNK;X-ray;2.25
+O75899;4MS3;B;43.0;;;;UNK;X-ray;2.5
+O75899;4MS4;B;43.0;;;;UNK;X-ray;1.9
+O75899;4PAS;B;4.0;;;;UNK;X-ray;1.62
+O75899;6M8R;K;4.0;;;;UNK;X-ray;3.2
+O75899;6M8R;L;3.0;;;;UNK;X-ray;3.2
+O75899;6OCP;P;2.0;;;;UNK;X-ray;2.35
+O75899;6OCP;Q;1.0;;;;UNK;X-ray;2.35
+O75899;6OCP;R;1.0;;;;UNK;X-ray;2.35
+O75899;6UO8;B;74.0;;;;UNK;EM;3.63
+O75899;6UO9;B;73.0;;;;UNK;EM;4.8
+O75899;6UOA;B;71.0;;;;UNK;EM;6.3
+O75899;6VJM;B;73.0;;;;UNK;EM;3.97
+O75899;6W2X;B;71.0;;;;UNK;EM;3.6
+O75899;6WIV;B;71.0;;;;UNK;EM;3.3
+O75899;7C7Q;B;71.0;;;;UNK;EM;3.0
+O75899;7C7S;B;71.0;;;;UNK;EM;2.9
+O75899;7CA3;B;72.0;;;;UNK;EM;4.5
+O75899;7CA5;B;70.0;;;;UNK;EM;7.6
+O75899;7CUM;B;72.0;;;;UNK;EM;3.52
+Q13255;3KS9;A;37.0;Z99;Antagonist;Antagonist;Inactive;X-ray;1.9
+Q13255;3KS9;B;37.0;Z99;Antagonist;Antagonist;Inactive;X-ray;1.9
+Q13255;4OR2;A;21.0;;;;UNK;X-ray;2.8
+Q13255;4OR2;B;22.0;;;;UNK;X-ray;2.8
+Q13255;7DGD;A;66.0;;;;UNK;EM;3.96
+Q13255;7DGD;B;66.0;;;;UNK;EM;3.96
+Q13255;7DGE;A;66.0;;;;UNK;EM;3.65
+Q13255;7DGE;B;66.0;;;;UNK;EM;3.65
+Q14416;4XAQ;A;51.0;40F;Full agonist;Agonist;Active;X-ray;2.21
+Q14416;4XAQ;B;51.0;40F;Full agonist;Agonist;Active;X-ray;2.21
+Q14416;4XAS;A;50.0;;;;UNK;X-ray;2.35
+Q14416;4XAS;B;50.0;;;;UNK;X-ray;2.35
+Q14416;5CNI;A;50.0;GGL;Agonist;Agonist;Active;X-ray;2.69
+Q14416;5CNI;B;50.0;GGL;Agonist;Agonist;Active;X-ray;2.69
+Q14416;5CNJ;A;51.0;;;;UNK;X-ray;2.65
+Q14416;5CNJ;B;51.0;;;;UNK;X-ray;2.65
+Q14416;5KZN;A;58.0;;;;UNK;X-ray;2.8
+Q14416;5KZQ;A;58.0;;;;UNK;X-ray;2.8
+Q14416;7E9G;R;88.0;40F;Full agonist;Agonist;Active;EM;3.5
+Q14416;7E9G;S;87.0;40F;Full agonist;Agonist;Active;EM;3.5
+Q14416;7EPA;A;90.0;;;;UNK;EM;3.6
+Q14416;7EPA;B;90.0;;;;UNK;EM;3.6
+Q14416;7EPB;A;89.0;40F;Full agonist;Agonist;Active;EM;3.1
+Q14416;7EPB;B;89.0;40F;Full agonist;Agonist;Active;EM;3.1
+Q14416;7EPD;A;89.0;;;;UNK;EM;3.9
+Q14416;7MTQ;A;85.0;Z99;Antagonist;Antagonist;Inactive;EM;3.65
+Q14416;7MTQ;B;85.0;Z99;Antagonist;Antagonist;Inactive;EM;3.65
+Q14416;7MTR;B;87.0;GLU;Agonist;Agonist;Active;EM;3.3
+Q14416;7MTR;A;88.0;GLU;Agonist;Agonist;Active;EM;3.3
+Q14416;7MTS;A;90.0;GLU;Agonist;Agonist;Active;EM;3.2
+Q14416;7MTS;B;88.0;GLU;Agonist;Agonist;Active;EM;3.2
+Q14832;3SM9;A;50.0;Z99;Antagonist;Antagonist;Inactive;X-ray;2.26
+Q14832;4XAR;A;51.0;40F;Full agonist;Agonist;Active;X-ray;2.26
+Q14832;5CNK;A;51.0;GGL;Agonist;Agonist;Active;X-ray;3.15
+Q14832;5CNK;B;50.0;GGL;Agonist;Agonist;Active;X-ray;3.15
+Q14832;5CNK;C;51.0;GGL;Agonist;Agonist;Active;X-ray;3.15
+Q14832;5CNM;A;49.0;;;;UNK;X-ray;2.84
+Q14832;6B7H;A;50.0;;;;UNK;X-ray;2.82
+Q14832;7WI6;A;82.0;Z99;Antagonist;Antagonist;Inactive;EM;3.71
+Q14832;7WI6;B;82.0;Z99;Antagonist;Antagonist;Inactive;EM;3.71
+Q14832;7WI8;A;82.0;Z99;Antagonist;Antagonist;Inactive;EM;4.17
+Q14832;7WI8;B;82.0;Z99;Antagonist;Antagonist;Inactive;EM;4.17
+Q14832;7WIH;A;84.0;;;;UNK;EM;3.68
+Q14832;7WIH;B;84.0;;;;UNK;EM;3.68
+Q14833;7E9H;R;84.0;SEP;Agonist;Agonist;Active;EM;4.0
+Q14833;7E9H;S;83.0;SEP;Agonist;Agonist;Active;EM;4.0
+P41594;3LMK;A;36.0;GLU;Agonist;Agonist;Active;X-ray;2.44
+P41594;3LMK;B;36.0;GLU;Agonist;Agonist;Active;X-ray;2.44
+P41594;4OO9;A;20.0;;;;UNK;X-ray;2.6
+P41594;5CGC;A;20.0;;;;UNK;X-ray;3.101
+P41594;5CGD;A;20.0;;;;UNK;X-ray;2.603
+P41594;6N4X;A;42.0;;;;UNK;X-ray;4.0
+P41594;6N4X;B;40.0;;;;UNK;X-ray;4.0
+P41594;6N4Y;A;42.0;;;;UNK;X-ray;3.262
+P41594;6N4Y;B;43.0;;;;UNK;X-ray;3.262
+P41594;6N4Y;C;40.0;;;;UNK;X-ray;3.262
+P41594;6N4Y;D;42.0;;;;UNK;X-ray;3.262
+P41594;6N50;A;43.0;;;;UNK;X-ray;3.751
+P41594;6N50;B;37.0;;;;UNK;X-ray;3.751
+P41594;6N50;C;42.0;;;;UNK;X-ray;3.751
+P41594;6N51;B;65.0;;;;UNK;EM;4.0
+P41594;6N51;A;65.0;;;;UNK;EM;4.0
+P41594;6N52;A;64.0;;;;UNK;EM;4.0
+P41594;6N52;B;64.0;;;;UNK;EM;4.0
+P41594;7FD8;A;63.0;;;;UNK;EM;3.8
+P41594;7FD8;B;63.0;;;;UNK;EM;3.8
+P41594;7FD9;A;63.0;Z99;Antagonist;Antagonist;Inactive;EM;4.0
+P41594;7FD9;B;63.0;Z99;Antagonist;Antagonist;Inactive;EM;4.0
+Q14831;3MQ4;A;42.0;Z99;Antagonist;Antagonist;Inactive;X-ray;2.8
+Q14831;5C5C;A;47.0;;;;UNK;X-ray;1.862
+O00222;6BSZ;A;49.0;GGL;Agonist;Agonist;Active;X-ray;2.65
+O00222;6BSZ;B;48.0;GGL;Agonist;Agonist;Active;X-ray;2.65
+O00222;6BT5;A;49.0;E7P;Full agonist;Agonist;Active;X-ray;2.92
+O00222;6BT5;B;48.0;E7P;Full agonist;Agonist;Active;X-ray;2.92
+O00222;6E5V;A;48.0;HVG;Full agonist;Agonist;Active;X-ray;2.95
+O00222;6E5V;B;49.0;HVG;Full agonist;Agonist;Active;X-ray;2.95
+Q5T848;7EWL;A;41.0;;;;UNK;EM;3.52
+Q5T848;7EWL;B;41.0;;;;UNK;EM;3.52
+Q5T848;7EWP;A;47.0;;;;Full active;EM;4.3
+Q5T848;7EWP;B;41.0;;;;UNK;EM;4.3
+Q5T848;7EWR;A;47.0;;;;Full active;EM;4.7
+Q5T848;7EWR;B;41.0;;;;UNK;EM;4.7
+Q5T848;7SHE;A;45.0;;;;UNK;EM;3.4
+Q5T848;7SHE;B;44.0;;;;UNK;EM;3.4
+Q5T848;7SHF;B;23.0;;;;Full active;EM;3.4
+Q5T848;7SHF;A;24.0;;;;UNK;EM;3.4
+Q14332;6C0B;B;21.0;;;;UNK;X-ray;2.5
+Q14332;7N95;B;21.0;;;;UNK;EM;4.1
+Q14332;7N97;B;21.0;;;;UNK;EM;5.1
+Q14332;7N9S;B;21.0;;;;UNK;EM;5.1
+Q9ULV1;5BPB;A;22.0;;;;UNK;X-ray;2.2
+Q9ULV1;5BPB;B;23.0;;;;UNK;X-ray;2.2
+Q9ULV1;5BPB;D;24.0;;;;UNK;X-ray;2.2
+Q9ULV1;5BPB;C;22.0;;;;UNK;X-ray;2.2
+Q9ULV1;5BPQ;A;22.0;;;;UNK;X-ray;2.4
+Q9ULV1;5BPQ;B;22.0;;;;UNK;X-ray;2.4
+Q9ULV1;5BPQ;C;22.0;;;;UNK;X-ray;2.4
+Q9ULV1;5BPQ;D;22.0;;;;UNK;X-ray;2.4
+Q9ULV1;5BQC;B;23.0;;;;UNK;X-ray;3.0
+Q9ULV1;5BQE;C;23.0;;;;UNK;X-ray;2.3
+Q9ULV1;5CL1;C;22.0;;;;UNK;X-ray;3.8
+Q9ULV1;5CL1;D;22.0;;;;UNK;X-ray;3.8
+Q9ULV1;5CM4;A;23.0;;;;UNK;X-ray;2.4
+Q9ULV1;5CM4;B;23.0;;;;UNK;X-ray;2.4
+Q9ULV1;5UWG;A;22.0;;;;UNK;X-ray;2.56
+Q9ULV1;5UWG;B;21.0;;;;UNK;X-ray;2.56
+Q9ULV1;6BD4;A;61.0;;;;UNK;X-ray;2.4
+Q9ULV1;6NE1;A;22.0;;;;UNK;X-ray;3.011
+Q13467;5URY;A;20.0;;;;UNK;X-ray;2.098
+Q13467;5URY;B;21.0;;;;UNK;X-ray;2.098
+Q13467;5URZ;A;20.0;;;;UNK;X-ray;2.202
+Q13467;5URZ;B;20.0;;;;UNK;X-ray;2.202
+Q13467;6O39;C;21.0;;;;UNK;X-ray;1.8
+Q13467;6WW2;R;55.0;;;;UNK;EM;3.7
+O75084;5T44;A;20.0;;;;UNK;X-ray;1.9944
+O75084;5T44;B;20.0;;;;UNK;X-ray;1.9944
+O75084;5URV;A;21.0;;;;UNK;X-ray;2.2
+O75084;5URV;B;22.0;;;;UNK;X-ray;2.2
+O75084;5WBS;A;21.0;;;;UNK;X-ray;2.88
+O75084;5WBS;B;21.0;;;;UNK;X-ray;2.88
+O75084;5WBS;C;20.0;;;;UNK;X-ray;2.88
+O75084;5WBS;D;20.0;;;;UNK;X-ray;2.88
+O75084;5WBS;E;20.0;;;;UNK;X-ray;2.88
+O75084;5WBS;F;21.0;;;;UNK;X-ray;2.88
+O75084;5WBS;G;21.0;;;;UNK;X-ray;2.88
+O75084;5WBS;H;20.0;;;;UNK;X-ray;2.88
+O75084;6NE2;A;20.0;;;;UNK;X-ray;1.299
+O75084;6NE4;A;20.0;;;;UNK;X-ray;1.648
+O75084;6O3A;E;21.0;;;;UNK;X-ray;2.1
+O75084;6O3B;C;22.0;;;;UNK;X-ray;2.5
+O75084;6O3B;H;21.0;;;;UNK;X-ray;2.5
+O75084;7EVW;R;59.0;;;;Full active;EM;3.22
+Q9H461;5UN5;B;17.0;;;;UNK;X-ray;2.994
+Q9H461;5UN5;A;17.0;;;;UNK;X-ray;2.994
+Q9H461;5UN6;A;17.0;;;;UNK;X-ray;3.2
+Q9H461;5UN6;B;17.0;;;;UNK;X-ray;3.2
+Q9H461;5UN6;C;17.0;;;;UNK;X-ray;3.2
+Q9H461;5UN6;D;17.0;;;;UNK;X-ray;3.2
+Q9H461;6NDZ;A;17.0;;;;UNK;X-ray;2.264
+Q9H461;6NDZ;C;17.0;;;;UNK;X-ray;2.264
+Q9H461;6NDZ;E;17.0;;;;UNK;X-ray;2.264
+P43220;6ORV;R;61.0;N2V;Agonist;Agonist;Full Active;EM;3.0
+Q13639;5EM9;B;1.0;;;;UNK;X-ray;1.6
+P08913;6KUX;A;58.0;;;;UNK;X-ray;2.7
+P08913;6KUY;A;57.0;;;;UNK;X-ray;3.2
+P18825;6KUW;A;60.0;;;;UNK;X-ray;2.8
+P18825;6KUW;B;60.0;;;;UNK;X-ray;2.8
+P08588;7BTS;A;58.0;ALE;Agonist;Agonist;Active;X-ray;3.13
+P08588;7BU6;A;58.0;;;;UNK;X-ray;2.7
+P08588;7BU7;A;58.0;;;;UNK;X-ray;2.6
+P08588;7BVQ;A;60.0;;;;UNK;X-ray;2.5
+P08588;7BVQ;B;60.0;;;;UNK;X-ray;2.5
+P07550;6KR8;A;76.0;;;;UNK;NMR;UNK
+P24530;5GLH;A;66.0;;;;UNK;X-ray;2.8
+P24530;5GLI;A;71.0;;;;UNK;X-ray;2.5
+Q92847;7F9Y;R;78.0;;;;Full active;EM;2.9
+Q92847;7F9Z;R;77.0;;;;Full active;EM;3.2
+Q01726;7F4D;R;83.0;;;;Full active;EM;3.0
+Q01726;7F4F;R;85.0;;;;Full active;EM;2.9
+Q01726;7F4H;R;84.0;;;;Full active;EM;2.7
+Q01726;7F4I;R;84.0;;;;Full active;EM;3.1
+P41143;4RWA;A;77.0;;;;UNK;X-ray;3.28
+P41143;4RWA;B;77.0;;;;UNK;X-ray;3.28
+P41143;4RWD;A;79.0;;;;UNK;X-ray;2.7
+P41143;4RWD;B;79.0;;;;UNK;X-ray;2.7
+P41143;6PT2;A;78.0;;;;UNK;X-ray;2.8
+P41143;6PT2;B;77.0;;;;UNK;X-ray;2.8
+P41143;6PT3;A;78.0;;;;UNK;X-ray;3.3
+P41143;6PT3;B;78.0;;;;UNK;X-ray;3.3
+O43614;7L1U;R;63.0;;;;Full active;EM;3.2
+O43614;7L1V;R;64.0;XGD;Full agonist;Agonist;Full active;EM;3.0
+P30518;7DF9;V;4.0;;;;UNK;X-ray;3.17
+P30518;7DFA;V;4.0;;;;UNK;X-ray;2.54
+P30518;7DFB;V;4.0;;;;UNK;X-ray;3.28
+P30518;7DFC;V;3.0;;;;UNK;X-ray;2.49
+P41597;2MLO;A;4.0;;;;UNK;NMR;UNK
+P41597;2MLQ;A;4.0;;;;UNK;NMR;UNK
+P51681;5YD3;B;2.0;;;;UNK;X-ray;1.35
+P51681;5YD3;D;2.0;;;;UNK;X-ray;1.35
+P51681;5YD3;F;3.0;;;;UNK;X-ray;1.35
+P51681;5YD3;H;2.0;;;;UNK;X-ray;1.35
+P51681;5YD4;B;2.0;;;;UNK;X-ray;1.35
+P51681;5YD4;D;2.0;;;;UNK;X-ray;1.35
+P51681;5YD4;F;3.0;;;;UNK;X-ray;1.35
+P51681;5YD4;H;2.0;;;;UNK;X-ray;1.35
+P51681;5YD5;B;2.0;;;;UNK;X-ray;1.96
+P51681;5YD5;D;2.0;;;;UNK;X-ray;1.96
+P21453;7EVY;D;75.0;J8C;Agonist;Agonist;Full active;EM;2.98
+P21453;7EVZ;D;75.0;JER;Agonist;Agonist;Full active;EM;3.07
+P21453;7EW0;D;74.0;JEU;Agonist;Agonist;Full active;EM;3.42
+P21453;7EW7;D;75.0;JEX;Agonist;Agonist;Full active;EM;3.27
+P21554;2MZ2;A;3.0;;;;UNK;NMR;UNK
+P21554;2MZ3;A;3.0;;;;UNK;NMR;UNK
+P21554;2MZA;A;3.0;;;;UNK;NMR;UNK
+Q13324;3N93;A;23.0;;;;UNK;X-ray;2.5
+Q13324;3N93;B;22.0;;;;UNK;X-ray;2.5
+Q13324;3N95;A;24.0;;;;UNK;X-ray;2.72
+Q13324;3N95;B;24.0;;;;UNK;X-ray;2.72
+Q13324;3N95;C;22.0;;;;UNK;X-ray;2.72
+Q13324;3N95;D;22.0;;;;UNK;X-ray;2.72
+Q13324;3N96;A;25.0;;;;UNK;X-ray;2.75
+Q13324;3N96;B;24.0;;;;UNK;X-ray;2.75
+Q13324;3N96;C;23.0;;;;UNK;X-ray;2.75
+Q13324;3N96;D;23.0;;;;UNK;X-ray;2.75
+P48546;7DTY;R;79.0;;;;Full active;EM;2.98
+O95838;7D68;R;53.0;;;;Full active;EM;3.0
+P47871;2A83;C;2.0;;;;UNK;X-ray;1.4
+Q03431;4Z8J;B;1.0;;;;UNK;X-ray;0.95
+Q03431;5EMB;B;1.0;;;;UNK;X-ray;0.85
+P41586;3N94;A;20.0;;;;UNK;X-ray;1.8
+P41586;6M1H;A;73.0;;;;Full active;EM;3.6
+P41586;6M1I;A;75.0;;;;Full active;EM;3.5
+P32241;3B6S;C;2.0;;;;UNK;X-ray;1.8
+P32241;3DTX;C;2.0;;;;UNK;X-ray;2.1
+P32241;3HCV;C;2.0;;;;UNK;X-ray;1.95
+P32241;5DEF;C;2.0;;;;UNK;X-ray;1.6
+P32241;5DEG;C;2.0;;;;UNK;X-ray;1.83
+P32241;6VN7;R;58.0;;;;Full active;EM;3.2
+Q86Y34;7D76;R;48.0;;;;Full active;EM;3.1
+Q86Y34;7D77;R;48.0;;;;Full active;EM;2.9
+P41180;7SIL;A;72.0;;;;UNK;EM;2.7
+P41180;7SIL;B;72.0;;;;UNK;EM;2.7
+P41180;7SIM;A;72.0;;;;UNK;EM;2.7
+P41180;7SIM;B;72.0;;;;UNK;EM;2.7
+P41180;7SIN;A;74.0;;;;UNK;EM;5.9
+P41180;7SIN;B;73.0;;;;UNK;EM;5.9
+Q14831;7EPC;A;85.0;;;;UNK;EM;4.0
+Q14831;7EPC;B;85.0;;;;UNK;EM;4.0
+Q14416;7EPD;B;91.0;;;;UNK;EM;3.9
+O75084;4Z33;A;29.0;;;;UNK;X-ray;2.45
+O75084;4Z33;B;29.0;;;;UNK;X-ray;2.45
+Q99835;4JKV;A;44.0;1KS;Antagonist;Antagonist;Inactive;X-ray;2.45
+Q99835;4JKV;A;44.0;1KS;Antagonist;Antagonist;Inactive;X-ray;2.45
+Q99835;4JKV;B;44.0;1KS;Antagonist;Antagonist;Inactive;X-ray;2.45
+Q99835;4JKV;B;44.0;1KS;Antagonist;Antagonist;Inactive;X-ray;2.45
+Q99835;4N4W;A;44.0;;;;UNK;X-ray;2.8
+Q99835;4O9R;A;43.0;;;;UNK;X-ray;3.204
+Q99835;4QIM;A;45.0;;;;UNK;X-ray;2.61
+Q99835;4QIN;A;43.0;;;;UNK;X-ray;2.6
+Q99835;5L7D;A;60.0;;;;UNK;X-ray;3.2
+Q99835;5L7D;B;59.0;;;;UNK;X-ray;3.2
+Q99835;5L7I;A;58.0;VIS;Antagonist;Antagonist;Inactive;X-ray;3.3
+Q99835;5L7I;A;58.0;VIS;Antagonist;Antagonist;Inactive;X-ray;3.3
+Q99835;5L7I;B;59.0;VIS;Antagonist;Antagonist;Inactive;X-ray;3.3
+Q99835;5L7I;B;59.0;VIS;Antagonist;Antagonist;Inactive;X-ray;3.3
+Q99835;5V56;A;62.0;;;;UNK;X-ray;2.9
+Q99835;5V56;B;61.0;;;;UNK;X-ray;2.9
+Q99835;5V57;A;62.0;;;;UNK;X-ray;3.0
+Q99835;5V57;B;62.0;;;;UNK;X-ray;3.0
+Q99835;6OT0;R;46.0;;;;Full active;EM;3.9
+Q99835;6XBJ;R;59.0;;;;Full active;EM;3.88
+Q99835;6XBK;R;59.0;;;;Full active;EM;3.24
+Q99835;6XBL;R;59.0;;;;Full active;EM;3.9
+Q99835;6XBM;R;42.0;;;;Full active;EM;3.15
+P07550;6N48;A;69.0;;;;UNK;X-ray;3.2
+P07550;6NI3;R;69.0;;;;Full active;EM;3.8
+P07550;6OBA;A;68.0;;;;UNK;X-ray;3.1
+P07550;6PRZ;A;68.0;;;;UNK;X-ray;2.8
+P07550;6PS0;A;68.0;;;;UNK;X-ray;3.4
+P07550;6PS1;A;68.0;TIM;Antagonist;Antagonist;Inactive;X-ray;3.2
+P07550;6PS2;A;69.0;;;;UNK;X-ray;2.4
+P07550;6PS3;A;68.0;;;;UNK;X-ray;2.5
+P07550;6PS4;A;68.0;;;;UNK;X-ray;2.6
+P07550;6PS5;A;68.0;;;;UNK;X-ray;2.9
+P07550;6PS6;A;69.0;TIM;Antagonist;Antagonist;Inactive;X-ray;2.7
+P07550;7DHI;R;70.0;68H;Partial agonist;Agonist;Full active;EM;3.26
+P07550;7DHR;R;69.0;;;;Full active;EM;3.8
+P29274;5MZJ;A;71.0;TEP;Antagonist;Antagonist;Inactive;X-ray;2.0
+P29274;5MZP;A;71.0;CFF;Antagonist;Antagonist;Inactive;X-ray;2.1
+P29274;5N2R;A;68.0;;;;UNK;X-ray;2.8
+P29274;5NLX;A;71.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;2.14
+P29274;5NM2;A;71.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;1.948
+P29274;5NM4;A;71.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;1.7
+P29274;5OLG;A;71.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;1.87
+P29274;5OLH;A;71.0;9XT;Antagonist;Antagonist;Inactive;X-ray;2.6
+P29274;5OLO;A;71.0;9XW;Antagonist;Antagonist;Inactive;X-ray;3.1
+P29274;5OLV;A;71.0;;;;UNK;X-ray;1.998
+P29274;5OLZ;A;71.0;;;;UNK;X-ray;1.9
+P29274;5OM1;A;71.0;;;;UNK;X-ray;2.1
+P29274;5OM4;A;72.0;;;;UNK;X-ray;2.0
+P29274;5UIG;A;70.0;;;;UNK;X-ray;3.5
+P29274;5UVI;A;72.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;3.2
+P29274;5VRA;A;72.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;2.35
+P29274;5WF5;A;69.0;UKA;Agonist;Agonist;Active;X-ray;2.6
+P29274;5WF6;A;68.0;UKA;Agonist;Agonist;Active;X-ray;2.9
+P29274;6AQF;A;72.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;2.51
+P29274;6GDG;A;64.0;NEC;Full agonist;Agonist;Full active;EM;4.11
+P29274;6GT3;A;71.0;F9Q;Antagonist;Antagonist;Inactive;X-ray;2.0
+P29274;6JZH;A;72.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;2.25
+P29274;6LPJ;A;72.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;1.8
+P29274;6LPK;A;72.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;1.8
+P29274;6LPL;A;72.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;2.0
+P29274;6MH8;A;72.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;4.2
+P29274;6PS7;A;72.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;1.85
+P29274;6S0Q;A;71.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;2.65
+P29274;6WQA;A;72.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;2.0
+P29274;6ZDR;A;71.0;;;;UNK;X-ray;1.918
+P29274;6ZDV;A;71.0;;;;UNK;X-ray;2.13
+P29274;7ARO;A;71.0;;;;UNK;X-ray;3.119
+P29274;7EZC;A;69.0;UKA;Agonist;Agonist;Active;X-ray;3.8
+P29274;7EZC;A;69.0;UKA;Agonist;Agonist;Active;X-ray;3.8
+P29274;7EZC;B;70.0;UKA;Agonist;Agonist;Active;X-ray;3.8
+P29274;7EZC;B;70.0;UKA;Agonist;Agonist;Active;X-ray;3.8
+P29274;7PX4;A;71.0;;;;UNK;X-ray;2.25
+P29274;7PYR;A;71.0;;;;UNK;X-ray;2.6
+P29274;7RM5;A;72.0;ZMA;Antagonist;Antagonist;Inactive;EM;2.79
+P43220;7EVM;R;61.0;;;;Full active;EM;2.5
+P43220;7FIM;R;83.0;;;;Full active;EM;3.4
+P43220;7KI0;R;83.0;;;;Full active;EM;2.5
+P43220;7KI1;R;83.0;;;;Full active;EM;2.5
+P43220;7LCI;R;85.0;;;;Full active;EM;2.9
+P43220;7LCJ;R;84.0;;;;UNK;EM;2.82
+P43220;7LCK;R;84.0;;;;UNK;EM;3.24
+P43220;7LLL;R;79.0;;;;Full active;EM;3.7
+P43220;7LLY;R;77.0;;;;Full active;EM;3.3
+P43220;7RG9;R;58.0;;;;Full active;EM;3.2
+P43220;7RGP;R;82.0;;;;Full active;EM;2.9
+P43220;7RTB;R;83.0;;;;Full active;EM;2.14
+P43220;7S1M;R;82.0;;;;Full active;EM;2.41
+P43220;7S3I;R;57.0;;;;Full active;EM;2.51
+P43220;7VBH;R;83.0;;;;Full active;EM;3.0
+P43220;7VBI;R;83.0;;;;Full active;EM;3.0
+P07550;7BZ2;R;69.0;H98;Agonist;Agonist;Full active;EM;3.82
+P29274;6S0L;A;72.0;ZMA;Antagonist;Antagonist;Inactive;X-ray;2.65
+P30988;5II0;A;21.0;;;;UNK;X-ray;2.097
+P30988;5II0;B;22.0;;;;UNK;X-ray;2.097
+P30988;5II0;C;21.0;;;;UNK;X-ray;2.097
+P30988;5UZ7;R;56.0;;;;Full active;EM;4.1
+P30988;6NIY;R;55.0;;;;Full active;EM;3.34
+P30988;6PFO;A;21.0;;;;UNK;X-ray;1.78
+P30988;6PFO;B;21.0;;;;UNK;X-ray;1.78
+P30988;6PGQ;A;21.0;;;;UNK;X-ray;2.85
+P30988;7TYF;R;77.0;;;;Full active;EM;2.2
+P30988;7TYH;R;78.0;;;;Full active;EM;3.3
+P30988;7TYI;R;77.0;;;;Full active;EM;3.3
+P30988;7TYL;R;78.0;;;;Full active;EM;3.3
+P30988;7TYN;R;79.0;;;;Full active;EM;2.6
+P30988;7TYO;R;76.0;;;;Full active;EM;2.7
+P30988;7TYW;R;78.0;;;;Full active;EM;3.0
+P30988;7TYX;R;77.0;;;;Full active;EM;2.55
+P30988;7TYY;R;78.0;;;;Full active;EM;3.0
+P30988;7TZF;R;77.0;;;;Full active;EM;2.4
+P34998;2L27;A;19.0;;;;UNK;NMR;UNK
+P34998;3EHS;A;19.0;;;;UNK;X-ray;2.76
+P34998;3EHT;A;18.0;;;;UNK;X-ray;3.4
+P34998;3EHU;A;18.0;;;;UNK;X-ray;1.96
+P34998;3EHU;B;18.0;;;;UNK;X-ray;1.96
+P34998;4K5Y;A;56.0;;;;UNK;X-ray;2.977
+P34998;4K5Y;B;53.0;;;;UNK;X-ray;2.977
+P34998;4K5Y;C;56.0;;;;UNK;X-ray;2.977
+P34998;4Z9G;A;59.0;;;;UNK;X-ray;3.183
+P34998;4Z9G;B;57.0;;;;UNK;X-ray;3.183
+P34998;4Z9G;C;55.0;;;;UNK;X-ray;3.183
+P34998;6P9X;R;61.0;;;;Full active;EM;2.91
+P34998;6PB0;R;63.0;;;;Full active;EM;3.0
