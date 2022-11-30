@@ -25,7 +25,6 @@ warnings.filterwarnings('ignore')
 
 
 import os, codecs, re, subprocess, sys
-import pandas as pd
 from IPython.display import display, clear_output, HTML
 from ipywidgets import FileUpload
 import ipywidgets
@@ -316,6 +315,7 @@ class utils:
         return
 
     def getConformation(dir, database):
+        import pandas as pd
         filename = os.path.join(dir, 'templates.hhr')
         GPCR_Ref = database
 
@@ -350,6 +350,7 @@ class utils:
     def hhr_summaryhit_parser(filename, df, col_names):
         """extract for .hhr file the values of the summary hit list 
            store them in a dataframe (previously created) with column names in col_names"""
+        import pandas as pd
         f = open(filename)
         for i, line in enumerate(f):
             if i > 8:
@@ -398,14 +399,14 @@ class utils:
     def retrieve_state(db_name, df):
         """for each hit in df retrives the conformation state of the protein from 'GPCR_Ref.sqlite3' db 
            returns a list"""
-        
+        import pandas as pd
         ref = pd.read_csv(db_name, delimiter=';')
         return list(ref[(ref.pdb == i[7:11]) & (ref.chain ==i[-1])].state.values[0] for i in df.Hit.to_list())
 
     def retrieve_coverage(db_name, df):
         """for each hit in df retrives the conformation state of the protein from 'GPCR_Ref.sqlite3' db 
            returns a list"""
-        
+        import pandas as pd
         ref = pd.read_csv(db_name, delimiter=';')
         return list(int(ref[(ref.pdb == i[7:11]) & (ref.chain ==i[-1])].coverage.values[0]) for i in df.Hit.to_list())
     
@@ -466,6 +467,7 @@ class utils:
         import modeller
         import modeller.parallel
         import modeller.automodel 
+        import pandas as pd
         os.chdir(mydir)
 
         j = modeller.parallel.job()
@@ -570,7 +572,7 @@ class utils:
         import modeller
         import modeller.parallel
         import modeller.automodel
-        
+        import pandas as pd
         os.chdir(mydir)
 
         j = modeller.parallel.Job()
@@ -880,7 +882,7 @@ class RepOdor:
         import ipywidgets, py3Dmol 
         from rdkit import Chem
         from rdkit.Chem import AllChem
-
+        import pandas as pd
 
 
         repodor_db = os.path.join(homedirectory,'databases/RepOdor_v1.2xGoMoDo.csv')

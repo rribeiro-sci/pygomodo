@@ -26,7 +26,6 @@ warnings.filterwarnings('ignore')
 
 ##### Libraries
 import os, re, subprocess
-import pandas as pd
 from IPython.display import clear_output, display
 import ipywidgets, py3Dmol 
 
@@ -258,9 +257,9 @@ class VINA:
         .. note:: Size and Center parameters can be automatica aquired by running Vina.Grid() funtion. 
                     Those parameters will be passed automatically to the function.
         """
-        import openbabel
+        import openbabel, subprocess
         openbabel.obErrorLog.StopLogging()
-        import subprocess  
+        import pandas as pd
     
         if self._center_box_vector:
             self._boxcenter_x = self._center_box_vector[0]
@@ -357,6 +356,7 @@ class VINA:
     def ViewPoses(self,surface=False, fancy=False):
         """3D visualization of the docking poses with py3Dmol."""
         #£import ipywidgets
+        import pandas as pd
         
         def inception(ligand):
             ligand=ligand
@@ -795,7 +795,7 @@ END_SECTION
         def inception(molname):
             
             #£from IPython.core.display import display
-            #£import pandas as pd
+            import pandas as pd
                     
         
             def vismol(pose):

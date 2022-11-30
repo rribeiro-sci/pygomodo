@@ -27,7 +27,6 @@ warnings.filterwarnings('ignore')
 
 ##### Libraries
 import os, subprocess, datetime
-import pandas as pd
 
 from IPython.display import clear_output, display
 import ipywidgets, py3Dmol 
@@ -148,7 +147,7 @@ class Modeller:
     
 
         def parsehhr():
-            #£import pandas as pd
+            import pandas as pd
 
             filename = os.path.join(self._jobdir,'sequence.hhr')
             col_names=utils.hhr_name_parser(filename)
