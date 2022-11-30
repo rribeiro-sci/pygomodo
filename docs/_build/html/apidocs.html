@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Documentation &mdash; pyGOMoDo v1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sidebar.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="What is the pyGOMoDo?" href="about.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> pyGOMoDo
+            <img src="_static/pygomodo_snake.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">What is the pyGOMoDo?</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyGOMoDo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>API Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/apidocs.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-Modeling">
+<span id="api-documentation"></span><h1>API Documentation<a class="headerlink" href="#module-Modeling" title="Permalink to this headline"></a></h1>
+<p>This python wrap-up of the GOMoDO webserver</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="Modeling.Modeller">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Modeling.</span></span><span class="sig-name descname"><span class="pre">Modeller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Modeling.Modeller" title="Permalink to this definition"></a></dt>
+<dd><p>Hommology Modeling with Modeller (<a class="reference external" href="https://salilab.org/modeller/">https://salilab.org/modeller/</a>).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="Modeling.Modeller.CreateHMMProfile">
+<span class="sig-name descname"><span class="pre">CreateHMMProfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Modeling.Modeller.CreateHMMProfile" title="Permalink to this definition"></a></dt>
+<dd><p>Creates HMM profiles with hhblits (<a class="reference external" href="https://github.com/soedinglab/hh-suite">https://github.com/soedinglab/hh-suite</a>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uniprot</strong> – optional (str): Uniprot ID (required if sequence not given)</p></li>
+<li><p><strong>filename</strong> – optional (str): filename or path+filename (default: “sequence.seq”)</p></li>
+<li><p><strong>sequence</strong> – optional (str): sequence of in FASTA format (required if UniprotID not given)</p></li>
+<li><p><strong>ncpus</strong> – optional (int): number of cpus (default: 1)</p></li>
+<li><p><strong>rounds</strong> – optional (int): number of HHBLITS runs (default: 1)</p></li>
+<li><p><strong>databse</strong> – optional (str): dir path of the uniref30 database</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Modeling.Modeller.MakeModels">
+<span class="sig-name descname"><span class="pre">MakeModels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Modeling.Modeller.MakeModels" title="Permalink to this definition"></a></dt>
+<dd><p>Runs Modeller</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>templates</strong> – list of templates</p></li>
+<li><p><strong>nmodels</strong> – (int) number of models</p></li>
+<li><p><strong>loop</strong> – (boolean) loop refinement (default False)</p></li>
+<li><p><strong>nloop</strong> – (int)  number of loop models computed (Default 2)</p></li>
+<li><p><strong>ncpus</strong> – (int) number of cpus (default 1)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Modeling.Modeller.Qmeanbrane">
+<span class="sig-name descname"><span class="pre">Qmeanbrane</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Modeling.Modeller.Qmeanbrane" title="Permalink to this definition"></a></dt>
+<dd><p>Submits a job to the Qmean web-service (<a class="reference external" href="https://swissmodel.expasy.org/qmean">https://swissmodel.expasy.org/qmean</a>)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>models</strong> – required (list) list of models</p></li>
+<li><p><strong>email</strong> – required (str) An email adress is required by the swissmodel webserver.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The e-mail provided is not stored, used or shared with third-parties excepting with swissmodel.org. For details regarding how Sisswmodel uses personal data please visit the Swissmodel website: <a class="reference external" href="https://swissmodel.expasy.org">https://swissmodel.expasy.org</a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Modeling.Modeller.SearchTemplates">
+<span class="sig-name descname"><span class="pre">SearchTemplates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Modeling.Modeller.SearchTemplates" title="Permalink to this definition"></a></dt>
+<dd><p>Searches for homologous templates with hhblits (<a class="reference external" href="https://github.com/soedinglab/hh-suite">https://github.com/soedinglab/hh-suite</a>).
+:parameter hmmprofile: optional (str): user profile path+filename (.a3m file)
+:parameter ncpus:       optional (int): number of cpus (default: 1)
+:parameter rounds:      optional (int): number of HHBLITS runs (default: 1)
+:parameter database     optional (str): dir path of the HHblists database</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Modeling.Modeller.ViewModels">
+<span class="sig-name descname"><span class="pre">ViewModels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Modeling.Modeller.ViewModels" title="Permalink to this definition"></a></dt>
+<dd><p>3D visualization of the models with py3Dmol.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-Docking"></span><p>This python wrap-up of the GOMoDO webserver</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="Docking.RDOCK">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Docking.</span></span><span class="sig-name descname"><span class="pre">RDOCK</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Docking.RDOCK" title="Permalink to this definition"></a></dt>
+<dd><p>Molecular docking with rDock (<a class="reference external" href="http://rdock.sourceforge.net/">http://rdock.sourceforge.net/</a>).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="Docking.RDOCK.AnalyseInteractions">
+<span class="sig-name descname"><span class="pre">AnalyseInteractions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Docking.RDOCK.AnalyseInteractions" title="Permalink to this definition"></a></dt>
+<dd><p>Protein-Ligand interaction analysis with ProLIF (<a class="reference external" href="https://prolif.readthedocs.io/en/latest/index.html">https://prolif.readthedocs.io/en/latest/index.html</a>).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Docking.RDOCK.Cavity">
+<span class="sig-name descname"><span class="pre">Cavity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Docking.RDOCK.Cavity" title="Permalink to this definition"></a></dt>
+<dd><p>rbcavity – Cavity mapping and preparation of docking site</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mol</strong> (<em>recerence</em>) – Required (kwargs str): reference molecule path</p></li>
+<li><p><strong>REF_MOL</strong> – Optional</p></li>
+<li><p><strong>SITE_MAPPER</strong> – Optional (str): default ‘RbtLigandSiteMapper’</p></li>
+<li><p><strong>RADIUS</strong> – Optional (int): default ‘6.0’</p></li>
+<li><p><strong>SMALL_SPHERE</strong> – Optional (int): default ‘1.0’</p></li>
+<li><p><strong>MIN_VOLUME</strong> – Optional (int): default ‘100’</p></li>
+<li><p><strong>MAX_CAVITIES</strong> – Optional (int): default ‘1’</p></li>
+<li><p><strong>VOL_INCR</strong> – Optional (int): default ‘0.0’</p></li>
+<li><p><strong>GRIDSTEP</strong> – Optional (int): default ‘0.5’</p></li>
+<li><p><strong>SCORING_FUNCTION</strong> – Optional (str): default ‘RbtCavityGridSF’</p></li>
+<li><p><strong>WEIGHT</strong> – Optional (int): default ‘1.0’</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a detailed description of the parameters please see rDock documentation <a class="reference external" href="http://rdock.sourceforge.net/">http://rdock.sourceforge.net/</a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Docking.RDOCK.Run">
+<span class="sig-name descname"><span class="pre">Run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tethered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smina_minimize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smina_score_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Docking.RDOCK.Run" title="Permalink to this definition"></a></dt>
+<dd><p>rbdock – the rDock docking engine itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_mol</strong> – Required (list or str): path of target molecule</p></li>
+<li><p><strong>nruns</strong> – Optional (int): number of docking poses (default 10)</p></li>
+<li><p><strong>output_name</strong> – Optional (str): name of the docking files (default ‘docking_poses’)</p></li>
+<li><p><strong>tethered</strong> – (False) If true it will run the tethered docking</p></li>
+<li><p><strong>smina_minimize</strong> – (False) If true the docking solutions will be minimized with smina (<a class="reference external" href="https://sourceforge.net/projects/smina/">https://sourceforge.net/projects/smina/</a>)</p></li>
+<li><p><strong>smina_score_only</strong> – (False) If true the docking solutions will be rescored with smina (<a class="reference external" href="https://sourceforge.net/projects/smina/">https://sourceforge.net/projects/smina/</a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters tethered_parameters</dt>
+<dd class="field-even"><p>{‘TRANS_MODE’:’TETHERED’,
+‘ROT_MODE:’TETHERED’,
+‘DIHEDRAL_MODE=’FREE ‘,
+‘MAX_TRANS’:1.0
+‘MAX_ROT’:30.0}</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a detailed description of the tethered parameters please see rDock documentation <a class="reference external" href="http://rdock.sourceforge.net/">http://rdock.sourceforge.net/</a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Docking.RDOCK.ViewInteractionsMap">
+<span class="sig-name descname"><span class="pre">ViewInteractionsMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">map3D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map2D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fancy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Docking.RDOCK.ViewInteractionsMap" title="Permalink to this definition"></a></dt>
+<dd><p>Protein-Ligand interaction visualization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>map3D</strong> – (True) If true 3D iteraction map is displayed</p></li>
+<li><p><strong>map2D</strong> – (True) If true 2D interaction map id displayed</p></li>
+<li><p><strong>opacity</strong> – (default 0.65) opacity of protein cartoon (map3D must be True)</p></li>
+<li><p><strong>surface</strong> – (default False) add protein surface (map3D must be True)</p></li>
+<li><p><strong>surface_opacity</strong> – (default 0.50) opacity of protein surface (map3D and surface must be True)</p></li>
+<li><p><strong>fancy</strong> – (default Flase) outline color black (map3D must be True)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Docking.RDOCK.ViewPoses">
+<span class="sig-name descname"><span class="pre">ViewPoses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_mol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fancy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.65</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Docking.RDOCK.ViewPoses" title="Permalink to this definition"></a></dt>
+<dd><p>3D visualization of the docking poses with py3Dmol.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ref_mol</strong> – Optional (str) Reference ligand</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="Docking.VINA">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Docking.</span></span><span class="sig-name descname"><span class="pre">VINA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Docking.VINA" title="Permalink to this definition"></a></dt>
+<dd><p>Molecular docking with AutoDock Vina (<a class="reference external" href="https://vina.scripps.edu/">https://vina.scripps.edu/</a>).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="Docking.VINA.AnalyseInteractions">
+<span class="sig-name descname"><span class="pre">AnalyseInteractions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Docking.VINA.AnalyseInteractions" title="Permalink to this definition"></a></dt>
+<dd><p>Protein-Ligand interaction analysis with ProLIF (<a class="reference external" href="https://prolif.readthedocs.io/en/latest/index.html">https://prolif.readthedocs.io/en/latest/index.html</a>).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Docking.VINA.Grid">
+<span class="sig-name descname"><span class="pre">Grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Docking.VINA.Grid" title="Permalink to this definition"></a></dt>
+<dd><p>Performs an automatic detection of the binding pocket center coordinates, 
+for specific proteins families (also works for heteromultimer).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Docking.VINA.Run">
+<span class="sig-name descname"><span class="pre">Run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Docking.VINA.Run" title="Permalink to this definition"></a></dt>
+<dd><p>vina docking engine itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_modes</strong> – exhaustiveness of the global search (roughly proportional to time) (default 20)</p></li>
+<li><p><strong>size_x</strong> – size in the X dimension (Angstroms)</p></li>
+<li><p><strong>size_y</strong> – size in the Y dimension (Angstroms)</p></li>
+<li><p><strong>size_z</strong> – size in the Z dimension (Angstroms)</p></li>
+<li><p><strong>center_x</strong> – X coordinate of the center</p></li>
+<li><p><strong>center_Y</strong> – Y coordinate of the center</p></li>
+<li><p><strong>center_Z</strong> – Z coordinate of the center</p></li>
+<li><p><strong>exhaustiveness</strong> – exhaustiveness of the global search (roughly proportional to time) (default 8)</p></li>
+<li><p><strong>energy_range</strong> – exhaustiveness of the global search (roughly proportional to time) (default 4)</p></li>
+<li><p><strong>cpus</strong> – he number of CPUs to use (default 1)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Size and Center parameters can be automatica aquired by running Vina.Grid() funtion. 
+Those parameters will be passed automatically to the function.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Docking.VINA.ViewInteractionsMap">
+<span class="sig-name descname"><span class="pre">ViewInteractionsMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">map3D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map2D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fancy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Docking.VINA.ViewInteractionsMap" title="Permalink to this definition"></a></dt>
+<dd><p>Protein-Ligand interaction visualization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>map3D</strong> – (True) If true 3D iteraction map is displayed</p></li>
+<li><p><strong>map2D</strong> – (True) If true 2D interaction map id displayed</p></li>
+<li><p><strong>opacity</strong> – (default 0.65) opacity of protein cartoon (map3D must be True)</p></li>
+<li><p><strong>surface</strong> – (default False) add protein surface (map3D must be True)</p></li>
+<li><p><strong>surface_opacity</strong> – (default 0.50) opacity of protein surface (map3D and surface must be True)</p></li>
+<li><p><strong>fancy</strong> – (default Flase) outline color black (map3D must be True)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Docking.VINA.ViewPoses">
+<span class="sig-name descname"><span class="pre">ViewPoses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fancy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Docking.VINA.ViewPoses" title="Permalink to this definition"></a></dt>
+<dd><p>3D visualization of the docking poses with py3Dmol.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-Align"></span><p>This python wrap-up of the GOMoDO webserver</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="Align.Tethering">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Align.</span></span><span class="sig-name descname"><span class="pre">Tethering</span></span><a class="headerlink" href="#Align.Tethering" title="Permalink to this definition"></a></dt>
+<dd><p>Tethered minimization on the MCS of ligands and a reference 3D molecular structure</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="Align.Tethering.MolAlignment">
+<span class="sig-name descname"><span class="pre">MolAlignment</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Align.Tethering.MolAlignment" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reference</strong> – (str) reference 3D molecule</p></li>
+<li><p><strong>target_name</strong> – (str) name of ligand</p></li>
+<li><p><strong>target_smile</strong> – (str) smiles string of ligand</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Align.Tethering.MolsAlignment">
+<span class="sig-name descname"><span class="pre">MolsAlignment</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Align.Tethering.MolsAlignment" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reference</strong> – (str) reference 3D molecule</p></li>
+<li><p><strong>target_name</strong> – (list of str) list of names of ligands</p></li>
+<li><p><strong>target_smile</strong> – (list of str) list of smiles strings of ligands</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-Utils"></span><p>This python wrap-up of the GOMoDO webserver</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="Utils.RepOdor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Utils.</span></span><span class="sig-name descname"><span class="pre">RepOdor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Utils.RepOdor" title="Permalink to this definition"></a></dt>
+<dd><p>API access to the RepOdor database</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="Utils.RepOdor.GenereateConformations">
+<span class="sig-name descname"><span class="pre">GenereateConformations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Utils.RepOdor.GenereateConformations" title="Permalink to this definition"></a></dt>
+<dd><p>Generates 3D ligand conformations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mols</strong> – optional (list): list of odorant names (case and space sensitive)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Utils.RepOdor.search">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uniprotID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show3D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Utils.RepOdor.search" title="Permalink to this definition"></a></dt>
+<dd><p>Queries the RepOdor database, and returns a list of molecules.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uniprotID</strong> – required (str): Uniprot ID</p></li>
+<li><p><strong>show2D</strong> – optionnal (boolean): Shows 2D structure of molecules (Default False)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Example: RepOdor().search(‘Q8NGJ7’, show2D=True)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="Utils.Upload">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Utils.</span></span><span class="sig-name descname"><span class="pre">Upload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Utils.Upload" title="Permalink to this definition"></a></dt>
+<dd><p>Upload Files</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="Utils.Upload.File">
+<span class="sig-name descname"><span class="pre">File</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Utils.Upload.File" title="Permalink to this definition"></a></dt>
+<dd><p>Display Upload widget. It allows to upload one single file. Supports: .pdb, .sd, .sdf, .mol2</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To complete the upload process it is necessary to run the <cite>FileParser()</cite> function.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Utils.Upload.FileParse">
+<span class="sig-name descname"><span class="pre">FileParse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Utils.Upload.FileParse" title="Permalink to this definition"></a></dt>
+<dd><p>Saves the upload file in the working directory.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Utils.Upload.Files">
+<span class="sig-name descname"><span class="pre">Files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Utils.Upload.Files" title="Permalink to this definition"></a></dt>
+<dd><p>Display Upload widget. It allows to upload multiple. Supports: .pdb, .sd, .sdf, .mol2</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To complete the upload process it is necessary to run the <cite>FileParser()</cite> function.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Utils.Upload.FilesParse">
+<span class="sig-name descname"><span class="pre">FilesParse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Utils.Upload.FilesParse" title="Permalink to this definition"></a></dt>
+<dd><p>Saves the upload files in the working directory.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="about.html" class="btn btn-neutral float-left" title="What is the pyGOMoDo?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Rui Pedro Ribeiro.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
