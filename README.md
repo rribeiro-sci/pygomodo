@@ -1,7 +1,15 @@
-
 <img src="https://res.cloudinary.com/djz27k5hg/image/upload/v1667380285/logos/pygomodo_logo_duolry.png"  width="400" align='center' style="margin-top:0px;margin-left:150px"/>
 
-<br>
+<br><br>
+
+[![DOI](https://zenodo.org/badge/497925678.svg)](https://zenodo.org/badge/latestdoi/497925678)
+[![Documentation Status](https://readthedocs.org/projects/pygomodo/badge/?version=latest)](https://pygomodo.readthedocs.io/en/latest/?badge=latest)
+![GitHub](https://img.shields.io/github/license/rribeiro-sci/pygomodo)
+
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/rribeiro-sci/pygomodo)
+![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/rpribeiro/pygomodo)
+![Docker Pulls](https://img.shields.io/docker/pulls/rpribeiro/pygomodo)
+![Docker Stars](https://img.shields.io/docker/stars/rpribeiro/pygomodo)
 
 # Description
 pyGOMoDo is a Python library to perform homology modeling and docking specifically designed for human GPCRs. pyGOMoDo is a python wrap-up of the updated functionalities of GOMoDo web-service (https://gomodo.grs.kfa-juelich.de). It was developed having in mind the ist usage through jupyter notebook, where users can create their own protocols of modeling and docking of GPCRs.
