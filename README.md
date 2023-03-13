@@ -31,6 +31,18 @@ localhost:8886
 ```
 <br>
 
+### How to install docker
+
+Instructinos to install docker [here](https://github.com/rribeiro-sci/pygomodo/wiki/How-to-install-Docker).
+
+
+### Running pyGOMoDo locally
+
+The instructions to install pyGOMoDO [here](https://github.com/rribeiro-sci/pygomodo/wiki/How-to-install-Docker).
+
+<br>
+
+
 ## Documentation
 Documentation can be found online on [ReadTheDocs](https://pygomodo.readthedocs.io). 
 
