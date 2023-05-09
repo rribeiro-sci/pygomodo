@@ -71,11 +71,10 @@ EU Human Brain Project (SGA1 and SGA2): This open source software was developed 
 If you use or adapt the pyGOMoDo for your own research projects please cite us.
 
 ```
-@article{XXX,
-    title={XXX},
-    author={XXX},
-    publisher={XXX},
-    note={\url{XXX}},
-    year={XXX}
+@article{title={pyGOMoDo: GPCRs modeling and docking with python.},
+    author={Ribeiro RP, Giorgetti A.},
+    publisher={Bioinformatics},
+    note={\url{https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btad294/7151066?login=true}},
+    year={2023}
 }
 ```
