@@ -3,6 +3,7 @@
 <br><br>
 
 [![DOI](https://zenodo.org/badge/497925678.svg)](https://zenodo.org/badge/latestdoi/497925678)
+![DOI](https://doi.org/10.1093/bioinformatics/btad294)
 [![Documentation Status](https://readthedocs.org/projects/pygomodo/badge/?version=latest)](https://pygomodo.readthedocs.io/en/latest/?badge=latest)
 ![GitHub](https://img.shields.io/github/license/rribeiro-sci/pygomodo)
 
