@@ -12,12 +12,12 @@
 ![Docker Stars](https://img.shields.io/docker/stars/rpribeiro/pygomodo)
 
 # Description
-pyGOMoDo is a Python library to perform homology modeling and docking specifically designed for human GPCRs. pyGOMoDo is a python wrap-up of the updated functionalities of GOMoDo web-service (https://gomodo.grs.kfa-juelich.de). It was developed having in mind the ist usage through jupyter notebook, where users can create their own protocols of modeling and docking of GPCRs.
+pyGOMoDo is a Python library to performs homology modeling and docking specifically designed for human GPCRs. pyGOMoDo is a python wrap-up of the updated functionalities of GOMoDo web service (https://gomodo.grs.kfa-juelich.de). It was developed having in mind the ist usage through Jupyter Notebook, where users can create their protocols of modeling and docking of GPCRs.
 
 <br><br>
 
 # Quickstart
-We recomend to use pyGOMoDo with Docker([here](https://hub.docker.com/r/rpribeiro/pygomodo)). The container deploys the pyGOMoDo jupyter environment.
+We recommend to use pyGOMoDo with Docker([here](https://hub.docker.com/r/rpribeiro/pygomodo)). The container deploys the pyGOMoDo Jupyter environment.
 
 
 ### Running pyGOMoDo docker container (reading and writing local directories)
@@ -33,7 +33,7 @@ localhost:8886
 
 ### How to install docker
 
-Instructinos to install docker [here](https://github.com/rribeiro-sci/pygomodo/wiki/How-to-install-Docker).
+Instructions to install docker [here](https://github.com/rribeiro-sci/pygomodo/wiki/How-to-install-Docker).
 
 
 ### Running pyGOMoDo locally
@@ -58,7 +58,7 @@ Documentation can be found online on [ReadTheDocs](https://pygomodo.readthedocs.
 <br><br><br><br><br>
 
 # Funded by
-EU Human Brain Project (SGA1 and SGA2): This open source software was developed in part in the Human Brain Project funded from the European Union's Horizon 2020 Framework Programme for Research and Innovation under Specific Grant Agreements No 720270 and No. 78907 (Human Brain Project SGA1 and SGA2).
+EU Human Brain Project (SGA1 and SGA2): This open-source software was developed in part in the Human Brain Project funded by the European Union's Horizon 2020 Framework Programme for Research and Innovation under Specific Grant Agreements No 720270 and No. 78907 (Human Brain Project SGA1 and SGA2).
 <div style="padding-bottom:50px">
 <img src="https://res.cloudinary.com/djz27k5hg/image/upload/v1637657234/logos/HBP_horizontal_logo_qtcyzn.png" width="300" align='left' style="margin-left:50px">
 <img src="https://res.cloudinary.com/djz27k5hg/image/upload/v1642677502/logos/COFUNDED_EU_j2ktlp.jpg" width="300" align='left' style="margin-left:50px">
@@ -68,7 +68,7 @@ EU Human Brain Project (SGA1 and SGA2): This open source software was developed 
 
 
 # Cite Us
-If you use or adapt the pyGOMoDo for your own research projects please cite us.
+Please cite us if you use or adapt the pyGOMoDo for your research proj,e us.
 
 ```
 @article{10.1093/bioinformatics/btad294,
