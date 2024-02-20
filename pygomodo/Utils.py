@@ -53,7 +53,7 @@ def GenerateMolecularConformation(smiles, out, **kwargs):
     mol.write(fout, out+'.'+fout, overwrite=True)
     return out+'.'+fout
 
-def showMolecularStructure(mols):
+def ShowMolecularStructure(mols):
     from openbabel import pybel, obErrorLog
     from rdkit import Chem
     from rdkit.Chem import Draw
@@ -75,7 +75,7 @@ def showMolecularStructure(mols):
             
     return Draw.MolsToGridImage(molecules,molsPerRow=3,useSVG=True, subImgSize=(300, 300),legends=[x.split('.')[0] for x in mols])
 
-def showMolecules(mols):
+def ShowMolecules(mols):
     import py3Dmol, ipywidgets
     from openbabel import pybel
     def viz(molecule):
@@ -97,10 +97,11 @@ class utils:
    
     def MolConvert(fi,outpath,fotype, hyd=False, receptor=False):
         import openbabel
+        from openbabel import pybel
         openbabel.obErrorLog.StopLogging()
 
         fitype=fi.split('.')[1].strip('.')
-        molecule = next(openbabel.pybel.readfile(fitype, fi)).write('pdb')
+        molecule = next(pybel.readfile(fitype, fi)).write('pdb')
         obConversion = openbabel.OBConversion()
         obConversion.SetInAndOutFormats('pdb', fotype)
         if receptor==True: 
@@ -108,12 +109,13 @@ class utils:
             obConversion.SetOptions('r', openbabel.OBConversion.OUTOPTIONS)
         mol = openbabel.OBMol()
         obConversion.ReadString(mol,molecule)
+        
+        mol.DeleteHydrogens()
         if hyd==True:
             mol.AddPolarHydrogens()
-        else:
-            mol.DeleteHydrogens()
-        obConversion.WriteFile(mol, os.path.join(outpath, os.path.splitext(fi)[0]+'.'+fotype))
-        return os.path.join(outpath, os.path.splitext(fi)[0]+'.'+fotype)
+            
+        obConversion.WriteFile(mol, os.path.join(outpath, os.path.splitext(fi)[0]+'_Hyd.'+fotype))
+        return os.path.join(outpath, os.path.splitext(fi)[0]+'_Hyd.'+fotype)
     
     def pdbqt2pdb(fi, outpath):
         import openbabel
@@ -298,7 +300,7 @@ class utils:
         else:
             ext = " -o "
         f = open(output, "w+")
-        command = hhsuitePath+"hhblits -cpu " + str(ncpus) + " -i " + seqfile + " -d "+ hhblitsDbsPath  + ext + output  + " -n " + str(rounds)
+        command = hhsuitePath+"/hhblits -cpu " + str(ncpus) + " -i " + seqfile + " -d "+ hhblitsDbsPath  + ext + output  + " -n " + str(rounds)
         subprocess.call(command, shell=True,stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
         f.close()
         utils.update_logfile(logfilePath, command, "hhblits")
@@ -677,7 +679,7 @@ class utils:
 
         from Bio import pairwise2
         from Bio.Align import substitution_matrices
-        from Bio.Data.SCOPData import protein_letters_3to1 as aa3to1
+        from Bio.Data.PDBData import protein_letters_3to1 as aa3to1
 
 
         def align_sequences(structA, structB):
@@ -873,7 +875,7 @@ class RepOdor:
         self._version = 'RepOdor_v1.2'
         return
 
-    def search(self, uniprotID, show3D=False):
+    def search(self, uniprotID, show2D=False):
         """
         Queries the RepOdor database, and returns a list of molecules.
 
@@ -912,7 +914,7 @@ class RepOdor:
             df_display = df_selection.drop(columns=['Smiles','receptor','UniprotID'])
             
         
-            if show3D == True:
+            if show2D == True:
                 def smi2conf(smiles):
                     mol = Chem.MolFromSmiles(smiles)
                     if mol is not None:

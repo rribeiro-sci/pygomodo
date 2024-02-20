@@ -21,32 +21,23 @@ This python wrap-up of the GOMoDO webserver
 __author__ = "Rui Ribeiro"
 __email__ = "rui.ribeiro@univr.it"
 
-import warnings, os, re, subprocess, sys
+import warnings, os, re, subprocess, sys, shutil
 warnings.filterwarnings('ignore')
 
 homedirectory=os.path.dirname(__file__)
 
-if 'LD_LIBRARY_PATH'  in os.environ.keys(): pass
-else: os.environ['LD_LIBRARY_PATH']='/opt/rDock/lib'
-if 'RBT_ROOT'  in os.environ.keys(): pass
-else: os.environ['RBT_ROOT']='/opt/rDock/'
-if 'PATH'  in os.environ.keys(): pass
-else: os.environ['PATH']='/opt/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/rDock/bin:/opt/hh-suite/bin:/opt/hh-suite/scripts'
-
+try:
+    if 'LD_LIBRARY_PATH'  in os.environ.keys(): pass
+    else: os.environ['LD_LIBRARY_PATH']=os.path.join(os.path.dirname(os.path.dirname(shutil.which('rbdock'))),'lib')
+    if 'RBT_ROOT'  in os.environ.keys(): pass
+    else: os.environ['RBT_ROOT']= os.path.dirname(os.path.dirname(shutil.which('rbdock')))
+    if 'PATH'  in os.environ.keys(): pass
+    else: os.environ['PATH']=f"{os.path.join(os.path.dirname(os.path.dirname(shutil.which('rbdock'))),'bin')}:/opt/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/hh-suite/bin:/opt/hh-suite/scripts"
+except:pass
 sys.path.append(homedirectory)
 
 from Utils import utils, Interactions
 
-import platform
-if platform.system() == 'Linux':
-    vina_path = os.path.join(homedirectory,'opt/vina1.1.2/bin/vina')
-elif platform.system() == 'Darwin':
-    vina_path = os.path.join(homedirectory,'opt/vina1.1.2_mac/bin/vina')
-else:
-    raise ValueError('Platform unknown! The pygomodo was tested in Linux and Darwin (Mac) platforms.')
-
-
-smina_path = os.path.join(homedirectory,'opt/smina/smina.static')
 
 class VINA:
     """Molecular docking with AutoDock Vina (https://vina.scripps.edu/)."""
@@ -255,6 +246,11 @@ class VINA:
         openbabel.obErrorLog.StopLogging()
         import pandas as pd
     
+        #set VINA
+        vina_path = shutil.which('vina')
+        if vina_path: vina_split_path = shutil.which('vina_split')
+        else: raise ValueError('No vina installed')
+
         if self._center_box_vector:
             self._boxcenter_x = self._center_box_vector[0]
             self._boxcenter_y = self._center_box_vector[1]
@@ -297,7 +293,7 @@ class VINA:
 
             ligand_file = utils.pdb2pdbqt(ligand,self._outpath, hyd=True)
 
-            vina_command = vina_path+' --receptor '+receptor4dock+' --ligand '+ligand_file+' --center_x '+str(self._boxcenter_x)+' --center_y '+str(self._boxcenter_y)+' --center_z '+str(self._boxcenter_z)+ ' --size_x '+str(self._boxsize_x)+ ' --size_y '+str(self._boxsize_y)+ ' --size_z '+str(self._boxsize_z)+ ' --exhaustiveness '+str(self._exhaustiveness)+ ' --energy_range '+str(self._energy_range)+ ' --num_modes '+str(self._num_modes)+ ' --cpu '+str(self._ncpu)+ ' --out '+os.path.join(self._outpath, self._receptor_name+'_'+ligand_name+'_vina_out.pdbqt')+' --log '+os.path.join(self._outpath,self._receptor_name+'_'+ligand_name+'_vina_out.log')
+            vina_command = vina_path+' --receptor '+receptor4dock+' --ligand '+ligand_file+' --center_x '+str(self._boxcenter_x)+' --center_y '+str(self._boxcenter_y)+' --center_z '+str(self._boxcenter_z)+ ' --size_x '+str(self._boxsize_x)+ ' --size_y '+str(self._boxsize_y)+ ' --size_z '+str(self._boxsize_z)+ ' --exhaustiveness '+str(self._exhaustiveness)+ ' --energy_range '+str(self._energy_range)+ ' --num_modes '+str(self._num_modes)+ ' --cpu '+str(self._ncpu)+ ' --out '+os.path.join(self._outpath, self._receptor_name+'_'+ligand_name+'_vina_out.pdbqt')+' > '+os.path.join(self._outpath,self._receptor_name+'_'+ligand_name+'_vina_out.log')
             
             print('\tDocking', ligand_name,'\n')
             subprocess.call(vina_command, shell=True,stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
@@ -314,7 +310,7 @@ class VINA:
                 lines = vina_log.read()
                 lines_splitted = lines.split('\n')
             vina_log_data = []
-            for line in lines_splitted[24:-2]:
+            for line in lines_splitted[38:-1]:
                 mode = line.strip().split()
                 vina_log_data.append(mode)
             vina_log_df = pd.DataFrame(vina_log_data, columns=['mode', 'affinity (kcal/mol)', 'rmsd l.b.','rmsd u.b.'])
@@ -326,7 +322,7 @@ class VINA:
             vina_dict[tail] = vina_log.to_dict(orient='records')
             
             #Prepare vina files
-            split_command = vina_path+'_split --input '+dockfile
+            split_command = vina_split_path+' --input '+dockfile
             subprocess.call(split_command, shell=True,stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
             
             mode_files=[]
@@ -501,11 +497,11 @@ class RDOCK:
         .. note:: For a detailed description of the parameters please see rDock documentation http://rdock.sourceforge.net/.
         
         """
-        if 'reference_mol' in kwargs: self._REF_MOL = utils.MolConvert(kwargs.pop('reference_mol'), self._outpath, 'sdf', hyd=True, receptor=True)
+        if 'reference_mol' in kwargs: self._REF_MOL = utils.MolConvert(kwargs.pop('reference_mol'), self._outpath, 'sdf', hyd=True, receptor=False)
 
         if 'SITE_MAPPER' in kwargs: self._SITE_MAPPER = kwargs.pop('SITE_MAPPER')
         else: self._SITE_MAPPER = 'RbtLigandSiteMapper'
-        if 'REF_MOL' in kwargs: self._REF_MOL = utils.MolConvert(kwargs.pop('REF_MOL'), self._outpath, 'sdf', hyd=True, receptor=True)
+        if 'REF_MOL' in kwargs: self._REF_MOL = utils.MolConvert(kwargs.pop('REF_MOL'), self._outpath, 'sdf', hyd=True, receptor=False)
 
         if self._REF_MOL:pass
         else: raise ValueError('reference_mol unknown')
@@ -564,8 +560,10 @@ END_SECTION
         with open('docking.prm', 'w') as f:
             f.write(self.__prm)
 
+        rbcavity_path = shutil.which('rbcavity')
+        if not rbcavity_path: raise ValueError('No rDock installed')
 
-        rbcavity = '/opt/rDock/bin/rbcavity -was -d -r docking.prm > rbcavity.log'
+        rbcavity = f'{rbcavity_path} -was -d -r docking.prm > rbcavity.log'
         subprocess.call(rbcavity, shell=True)
         
         #show output
@@ -594,6 +592,11 @@ END_SECTION
         from openbabel import pybel
         from rdkit import Chem
         from rdkit.Chem import rdMolAlign
+
+        rbdock_path = shutil.which('rbdock')
+        if rbdock_path:
+            sdsort_path = shutil.which('sdsort')
+        else: raise ValueError('No rDock installed')
 
         if 'output_name' in kwargs: 
             output_name = kwargs.pop('output_name')
@@ -657,7 +660,7 @@ END_SECTION
         for target in target_mol:
 
             #Convert ligand
-            target=os.path.basename(utils.MolConvert(target, self._outpath, 'sdf', hyd=True, receptor=True))
+            target=os.path.basename(utils.MolConvert(target, self._outpath, 'sdf', hyd=True, receptor=False))
             target_name, target_ext = os.path.splitext(target)
             self._output_name = target_name+'_'+output_name
             self._output_name_sorted = '{}_sorted.sd'.format(self._output_name)
@@ -665,7 +668,7 @@ END_SECTION
             #RUN rbDock
             print('\tdocking', os.path.basename(target_name),'\n')
 
-            rbdock_cmd = '/opt/rDock/bin/rbdock -i {} -o {} -r docking.prm -p dock.prm -n {}'.format(target, self._output_name, nruns)
+            rbdock_cmd = f'{rbdock_path} -i {target} -o {self._output_name} -r docking.prm -p dock.prm -n {nruns}'
             subprocess.call(rbdock_cmd, shell=True,stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
             
 
@@ -674,7 +677,7 @@ END_SECTION
                 #sort values
                 if 'by' in kwargs: by=kwargs.pop('by')
                 else: by='SCORE'
-                sdsort_cmd = '/opt/rDock/bin/sdsort -n -f{} {}.sd > {}'.format(by,self._output_name, self._output_name_sorted)
+                sdsort_cmd = f'{sdsort_path} -n -f{by} {self._output_name}.sd > {self._output_name_sorted}'
                 subprocess.call(sdsort_cmd, shell=True)
 
                 #Split de .sd file
@@ -694,21 +697,25 @@ END_SECTION
                     contents = f.read()
                 contents = contents.replace(re.findall('\slibRbt.so/\S*\s\S*', contents)[0],'')
                 conformations = contents.split("$$$$")[:-1]
-                conf0 = Chem.MolFromMolBlock(conformations[0].replace('\n  rDOCK(R)','\n\n  rDOCK(R)'))
+                conf0 = Chem.MolFromMolBlock(conformations[0].replace('\n  rDOCK(R)          3D','\n  rDOCK(R)          3D\n\n'))
 
                 rmsd=[]
                 rmsd.append(0.00)
                 for conf in range(1,len(conformations)):
-                    rmsd.append(rdMolAlign.CalcRMS(Chem.MolFromMolBlock(conformations[conf]), conf0))
+                    rmsd.append(rdMolAlign.CalcRMS(Chem.MolFromMolBlock(conformations[conf].replace('\n\n  rDOCK(R)          3D','\n\n  rDOCK(R)          3D\n')), conf0))
                 for i in range(len(mols)):
                     self._scores[target_name][i+1]['RMSD']=rmsd[i]
 
             if smina_minimize is True:
-                smina_command = '{} --receptor {} --ligand {}.sd --out {}_minimized.sd --minimize'.format(smina_path, self._RECEPTOR_FILE,self._output_name, self._output_name )
+
+                smina_path=shutil.which('smina.static')
+                if not smina_path: raise ValueError('No smina installed')
+
+                smina_command = f'{smina_path} --receptor {self._RECEPTOR_FILE} --ligand {self._output_name}.sd --out {self._output_name}_minimized.sd --minimize'
                 smina_log = subprocess.check_output(smina_command, shell=True)
                 smina_log = smina_log.decode('utf-8').splitlines()
                 #Sort
-                sdsort_cmd = '/opt/rDock/bin/sdsort -n -f{} {}_minimized.sd > {}_minimized_sorted.sd'.format('minimizedAffinity',self._output_name, self._output_name)
+                sdsort_cmd = f"{sdsort_path} -n -f{'minimizedAffinity'} {self._output_name}_minimized.sd > {self._output_name}_minimized_sorted.sd"
                 subprocess.call(sdsort_cmd, shell=True)
 
                 #Split de .sd file
@@ -719,7 +726,7 @@ END_SECTION
                 #create a dict with scores
                 self._scores[target_name] = dict(zip(range(1,len(mols)+1), [dict() for i in range(len(mols))]))
             
-                smina_score_command = '{} --receptor {} --ligand {}_minimized_sorted.sd --score_only'.format(smina_path, self._RECEPTOR_FILE,self._output_name)
+                smina_score_command = f'{smina_path} --receptor {self._RECEPTOR_FILE} --ligand {self._output_name}_minimized_sorted.sd --score_only'
                 smina_score_log = subprocess.check_output(smina_score_command, shell=True)
                 smina_score_log = smina_score_log.decode('utf-8').splitlines()
                 affinity_values=[]
@@ -753,7 +760,10 @@ END_SECTION
                 
             
             if smina_minimize is False and smina_score_only is True:
-                smina_command = '{} --receptor {} --ligand {}_sorted.sd --score_only'.format(smina_path, self._RECEPTOR_FILE,self._output_name)
+                smina_path=shutil.which('smina.static')
+                if not smina_path: raise ValueError('No smina installed')
+
+                smina_command = f'{smina_path} --receptor {self._RECEPTOR_FILE} --ligand {self._output_name}_sorted.sd --score_only'
                 smina_score_log = subprocess.check_output(smina_command, shell=True)
                 smina_score_log = smina_score_log.decode('utf-8').splitlines()
                 affinity_values=[]

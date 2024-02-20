@@ -17,7 +17,7 @@ pyGOMoDo is a Python library for homology modeling and docking designed explicit
 <br><br>
 
 # Quickstart
-We recommend to use pyGOMoDo with Docker ([here](https://hub.docker.com/r/rpribeiro/pygomodo)). The container deploys the pyGOMoDo Jupyter environment.
+We recommend using pyGOMoDo with Docker ([here](https://hub.docker.com/r/rpribeiro/pygomodo)). The container deploys the pyGOMoDo Jupyter environment.
 
 
 ### Running pyGOMoDo docker container (reading and writing local directories)
@@ -38,7 +38,7 @@ Instructions to install Docker [here](https://github.com/rribeiro-sci/pygomodo/w
 
 ### Running pyGOMoDo locally
 
-The instructions to install pyGOMoDO [here](https://github.com/rribeiro-sci/pygomodo/wiki/How-to-install-Docker).
+The instructions to install pyGOMoDO [here](https://github.com/rribeiro-sci/pygomodo/wiki/How-to-install-pygomodo-locally).
 
 <br>
 

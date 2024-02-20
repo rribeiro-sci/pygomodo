@@ -21,7 +21,7 @@ This python wrap-up of the GOMoDO webserver
 __author__ = "Rui Ribeiro"
 __email__ = "rui.ribeiro@univr.it"
 
-import os, subprocess, datetime, sys, warnings
+import os, subprocess, datetime, sys, warnings, shutil
 
 warnings.filterwarnings('ignore')
 
@@ -30,10 +30,9 @@ sys.path.append(homedirectory)
 
 
 if 'HHSUITEPATH'  in os.environ.keys(): pass
-else: os.environ['HHSUITEPATH']= '/opt/hh-suite/bin/' 
+else: os.environ['HHSUITEPATH']= os.path.join(os.path.dirname(os.path.dirname(shutil.which('hhblits'))),'bin')
 if 'HHSUITESCRIPTS' in os.environ.keys(): pass
-else: os.environ['HHSUITESCRIPTS']='/opt/hh-suite/scripts/'
-
+else: os.environ['HHSUITESCRIPTS']=os.path.join(homedirectory,'opt/scripts')
 
 from Utils import utils, get
 

@@ -12,4 +12,7 @@ dependencies:
   - bioservices
   - jupyter
   - prolif
+  - vina
+  - smina
+
 
